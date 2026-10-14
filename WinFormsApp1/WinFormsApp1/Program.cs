@@ -1,4 +1,4 @@
-namespace WinFormsApp1
+namespace SchemaX.SIS
 {
     internal static class Program
     {
