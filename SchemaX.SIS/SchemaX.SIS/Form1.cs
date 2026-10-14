@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using SchemaX.SIS.Helpers;
 
 namespace SchemaX.SIS
 {
@@ -15,6 +16,14 @@ namespace SchemaX.SIS
         public Form1()
         {
             InitializeComponent();
+
+            this.BackColor = ThemeColors.Background;
+            btnAdd.BackColor = ThemeColors.Accent;
+            btnAdd.ForeColor = ThemeColors.TextLight;
+            btnDelete.BackColor = ThemeColors.Danger;
+            dgvStudents.ColumnHeadersDefaultCellStyle.BackColor = ThemeColors.Primary;
+            dgvStudents.ColumnHeadersDefaultCellStyle.ForeColor = ThemeColors.TextLight;
+            dgvStudents.AlternatingRowsDefaultCellStyle.BackColor = ThemeColors.GridAlternateRow;
 
             // Apply placeholder to your ComboBox (must be DropDown style, not DropDownList)
             cmbGender.DropDownStyle = ComboBoxStyle.DropDown;
