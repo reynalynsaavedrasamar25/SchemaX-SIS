@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node unique_id="1" master_id="0" name="Team &amp; Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791552760" ts_lastsave="1791999976">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">STUDENT INFORMATION SYSTEM</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team SchemaX | Project Documentation</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">1. PROJECT INFORMATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project Name:</rich_text>
+    <rich_text> Student Information System (Desktop App)
+</rich_text>
+    <rich_text weight="heavy">Group Name:</rich_text>
+    <rich_text> Team SchemaX
+</rich_text>
+    <rich_text weight="heavy">Development Platform:</rich_text>
+    <rich_text> Visual Studio 2026
+</rich_text>
+    <rich_text weight="heavy">Programming Language:</rich_text>
+    <rich_text> C# (.NET Windows Forms)
+</rich_text>
+    <rich_text weight="heavy">Database:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Submission Deadline:</rich_text>
+    <rich_text> October 23, 2026 — 11:59 PM
+</rich_text>
+    <rich_text weight="heavy">GitHub Repository:</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text link="webs https://github.com/reynalynsaavedrasamar25/SchemaX-SIS">https://github.com/reynalynsaavedrasamar25/SchemaX-SIS</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">2. PROJECT OVERVIEW</rich_text>
+    <rich_text>
+The Student Information System (SIS) is a desktop application developed using C# Windows Forms and MySQL.
+The system is designed to help users manage student information through a simple and organized interface.
+</rich_text>
+    <rich_text weight="heavy">Main Features:</rich_text>
+    <rich_text>
+• Add new student records
+
+• View existing student information
+
+• Search for student records
+
+• Edit student details
+
+• Delete student records
+
+• Validate user input
+
+• Handle errors and log exceptions
+
+
+</rich_text>
+    <rich_text style="italic">Note: These are the project's intended features. Some functions are still under development and integration.</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">3. TEAM MEMBERS &amp; RESPONSIBILITIES</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Zedric Zuñiga</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Role:</rich_text>
+    <rich_text> UI Layout &amp; DataGridView Display
+</rich_text>
+    <rich_text weight="heavy">Responsibilities:</rich_text>
+    <rich_text>
+◇ Design the application's user interface
+
+◇ Arrange forms, buttons, and input fields
+
+◇ Configure the DataGridView
+
+◇ Prepare the interface for CRUD integration
+
+
+</rich_text>
+    <rich_text weight="heavy">GitHub Branch:</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">zedric/ui-layout</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Merged PRs:</rich_text>
+    <rich_text> #29, #32, #35
+</rich_text>
+    <rich_text style="italic">PR #29 merged develop into the UI branch. PRs #32 and #35 were merged into develop.</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Reynalyn Samar</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Role:</rich_text>
+    <rich_text> MySQL Setup &amp; Database Connection
+</rich_text>
+    <rich_text weight="heavy">Responsibilities:</rich_text>
+    <rich_text>
+◇ Prepare the MySQL database
+
+◇ Configure database connectivity
+
+◇ Support database integration
+
+◇ Coordinate repository development
+
+
+</rich_text>
+    <rich_text weight="heavy">GitHub Branch:</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">reynalyn/database</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Merged PRs:</rich_text>
+    <rich_text> None confirmed
+
+</rich_text>
+    <rich_text scale="h3">Mariane Nuarin</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Role:</rich_text>
+    <rich_text> CRUD Logic (Add, Edit, Delete)
+</rich_text>
+    <rich_text weight="heavy">Responsibilities:</rich_text>
+    <rich_text>
+◇ Implement adding student records
+
+◇ Implement editing existing records
+
+◇ Implement deleting student records
+
+◇ Integrate CRUD operations with the database
+
+
+</rich_text>
+    <rich_text weight="heavy">GitHub Branch:</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">mariane/crud</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Merged PRs:</rich_text>
+    <rich_text> None confirmed
+
+</rich_text>
+    <rich_text scale="h3">Princess Ida Camasis</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Role:</rich_text>
+    <rich_text> Error Handling &amp; CherryTree Documentation
+</rich_text>
+    <rich_text weight="heavy">Responsibilities:</rich_text>
+    <rich_text>
+◇ Implement input validation
+
+◇ Create exception handling helpers
+
+◇ Implement error logging
+
+◇ Prepare test cases and bug reports
+
+◇ Maintain CherryTree documentation
+
+◇ Assist with application testing
+
+
+</rich_text>
+    <rich_text weight="heavy">GitHub Branch:</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">princessida/error-handling</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Pull Request:</rich_text>
+    <rich_text> #36 — Open, awaiting review/merge
+
+
+</rich_text>
+    <rich_text scale="h2">4. DEVELOPMENT &amp; COLLABORATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Version Control:</rich_text>
+    <rich_text> Git and GitHub
+</rich_text>
+    <rich_text weight="heavy">Documentation Tool:</rich_text>
+    <rich_text> CherryTree
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Visual Studio 2026
+</rich_text>
+    <rich_text weight="heavy">Database Management:</rich_text>
+    <rich_text> MySQL Workbench
+Each team member works on an assigned Git branch. Changes are submitted through pull requests for review before integration into the </rich_text>
+    <rich_text family="monospace">develop</rich_text>
+    <rich_text> branch.
+
+
+</rich_text>
+    <rich_text scale="h2">5. CURRENT PROJECT STATUS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">UI Layout:</rich_text>
+    <rich_text> Initial implementation available
+</rich_text>
+    <rich_text weight="heavy">Database Connection:</rich_text>
+    <rich_text> Pending integration verification
+</rich_text>
+    <rich_text weight="heavy">CRUD Operations:</rich_text>
+    <rich_text> Awaiting implementation/integration
+</rich_text>
+    <rich_text weight="heavy">Input Validation:</rich_text>
+    <rich_text> Implemented and tested
+</rich_text>
+    <rich_text weight="heavy">Exception Handling:</rich_text>
+    <rich_text> Helper implemented and tested
+</rich_text>
+    <rich_text weight="heavy">Error Logging:</rich_text>
+    <rich_text> Implemented and tested
+</rich_text>
+    <rich_text weight="heavy">Documentation:</rich_text>
+    <rich_text> In progress
+</rich_text>
+    <rich_text weight="heavy">Full System Testing:</rich_text>
+    <rich_text> Pending CRUD integration
+</rich_text>
+    <rich_text weight="heavy">Important Notes:</rich_text>
+    <rich_text>
+◇ Error handling and validation changes are submitted through PR #36.
+
+◇ Database-related error handling still requires CRUD integration.
+
+◇ Final testing will be performed after the system components are combined.
+
+
+
+</rich_text>
+    <rich_text weight="heavy">Document:</rich_text>
+    <rich_text> SchemaX SIS — Team &amp; Overview
+</rich_text>
+    <rich_text weight="heavy">Prepared for:</rich_text>
+    <rich_text> Team SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+  </node>
+  <node unique_id="2" master_id="0" name="Database Info" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553218" ts_lastsave="1792000139">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">DATABASE INFORMATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team SchemaX | Student Information System</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">1. DATABASE OVERVIEW</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Database Management System:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Database Management Tool:</rich_text>
+    <rich_text> MySQL Workbench
+</rich_text>
+    <rich_text weight="heavy">Application:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Programming Language:</rich_text>
+    <rich_text> C# (.NET Windows Forms)
+</rich_text>
+    <rich_text weight="heavy">Assigned Developer:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Database Name:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Connection Status:</rich_text>
+    <rich_text> Pending integration verification
+The database is intended to store and manage student information used by the Student Information System.
+
+
+</rich_text>
+    <rich_text scale="h2">2. DATABASE STRUCTURE</rich_text>
+    <rich_text>
+The following information will be completed after the database structure is confirmed.
+</rich_text>
+    <rich_text weight="heavy">Database Tables:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Table Information Required:</rich_text>
+    <rich_text>
+• Table names
+
+• Column names
+
+• Data types
+
+• Primary keys
+
+• Foreign keys
+
+• Relationships between tables
+
+
+</rich_text>
+    <rich_text scale="h2">3. STUDENT RECORD INFORMATION</rich_text>
+    <rich_text>
+The current application interface contains the following student information fields:
+</rich_text>
+    <rich_text weight="heavy">1. Student ID</rich_text>
+    <rich_text>
+• Purpose: Unique identifier for a student
+
+
+</rich_text>
+    <rich_text weight="heavy">2. Student Name</rich_text>
+    <rich_text>
+◇ Purpose: Student's name
+
+
+</rich_text>
+    <rich_text weight="heavy">3. Contact Number</rich_text>
+    <rich_text>
+◇ Purpose: Student's contact information
+
+
+</rich_text>
+    <rich_text weight="heavy">4. Program</rich_text>
+    <rich_text>
+◇ Purpose: Student's academic program
+
+
+</rich_text>
+    <rich_text weight="heavy">5. Gender</rich_text>
+    <rich_text>
+◇ Purpose: Student's gender
+
+
+</rich_text>
+    <rich_text weight="heavy">6. Year Level</rich_text>
+    <rich_text>
+◇ Purpose: Student's current year level
+
+
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> These fields are based on the current application interface. Actual MySQL column names and data types must still be verified.
+
+
+</rich_text>
+    <rich_text scale="h2">4. DATABASE CONNECTION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Connection Method:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Connection Configuration:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Connection Testing:</rich_text>
+    <rich_text> Pending verification
+Connection details will be documented after Reynalyn confirms the database setup.
+</rich_text>
+    <rich_text weight="heavy">Security Note:</rich_text>
+    <rich_text> Database passwords and other credentials must not be included in this documentation or committed to GitHub.
+
+
+</rich_text>
+    <rich_text scale="h2">5. DATABASE OPERATIONS</rich_text>
+    <rich_text>
+The application is intended to support the following operations:
+◇ </rich_text>
+    <rich_text weight="heavy">Create:</rich_text>
+    <rich_text> Add new student records
+
+◇ </rich_text>
+    <rich_text weight="heavy">Read:</rich_text>
+    <rich_text> Retrieve and display student information
+
+◇ </rich_text>
+    <rich_text weight="heavy">Update:</rich_text>
+    <rich_text> Modify existing student records
+
+◇ </rich_text>
+    <rich_text weight="heavy">Delete:</rich_text>
+    <rich_text> Remove student records
+
+◇ </rich_text>
+    <rich_text weight="heavy">Search:</rich_text>
+    <rich_text> Find student records
+
+
+</rich_text>
+    <rich_text weight="heavy">Implementation Status:</rich_text>
+    <rich_text> Pending CRUD integration.
+
+
+</rich_text>
+    <rich_text scale="h2">6. DATABASE ERROR HANDLING</rich_text>
+    <rich_text>
+The error handling module includes:
+◇ </rich_text>
+    <rich_text family="monospace">Validator.cs</rich_text>
+    <rich_text> — Input validation
+
+◇ </rich_text>
+    <rich_text family="monospace">ExceptionHandler.cs</rich_text>
+    <rich_text> — Friendly exception messages
+
+◇ </rich_text>
+    <rich_text family="monospace">ErrorLog.cs</rich_text>
+    <rich_text> — Exception logging
+
+
+</rich_text>
+    <rich_text weight="heavy">Current Status:</rich_text>
+    <rich_text> Helper classes implemented and tested.
+Database-specific exception handling and duplicate-record detection still require integration and testing.
+
+</rich_text>
+    <rich_text weight="heavy">Documentation Status:</rich_text>
+    <rich_text> In Progress
+</rich_text>
+    <rich_text weight="heavy">Responsible Member:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Last Verification:</rich_text>
+    <rich_text> Pending database integration
+</rich_text>
+  </node>
+  <node unique_id="3" master_id="0" name="Setup Guide" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553256" ts_lastsave="1792000325">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">SETUP GUIDE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team SchemaX | Student Information System</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">1. INTRODUCTION</rich_text>
+    <rich_text>
+This guide explains how to prepare the development environment and open the SchemaX Student Information System project.
+The application is developed using C# Windows Forms and MySQL. Visual Studio is used for development, while GitHub is used for version control and collaboration.
+
+
+</rich_text>
+    <rich_text scale="h2">2. SOFTWARE REQUIREMENTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">1. Operating System</rich_text>
+    <rich_text>
+• Windows 11
+
+• Windows 10 may also be compatible, depending on the installed development tools.
+
+
+</rich_text>
+    <rich_text weight="heavy">2. Development Environment</rich_text>
+    <rich_text>
+◇ Visual Studio 2026
+
+◇ .NET 10 SDK
+
+◇ .NET Desktop Development workload
+
+
+</rich_text>
+    <rich_text weight="heavy">3. Database Software</rich_text>
+    <rich_text>
+◇ MySQL Server
+
+◇ MySQL Workbench
+
+
+</rich_text>
+    <rich_text weight="heavy">4. Version Control</rich_text>
+    <rich_text>
+◇ Git
+
+◇ GitHub account
+
+
+</rich_text>
+    <rich_text weight="heavy">5. Documentation</rich_text>
+    <rich_text>
+◇ CherryTree
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">3. DOWNLOAD THE PROJECT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Step 1:</rich_text>
+    <rich_text> Open Visual Studio 2026.
+</rich_text>
+    <rich_text weight="heavy">Step 2:</rich_text>
+    <rich_text> Select "Clone a repository."
+</rich_text>
+    <rich_text weight="heavy">Step 3:</rich_text>
+    <rich_text> Enter the GitHub repository URL:
+</rich_text>
+    <rich_text link="webs https://github.com/reynalynsaavedrasamar25/SchemaX-SIS.git">https://github.com/reynalynsaavedrasamar25/SchemaX-SIS.git</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Step 4:</rich_text>
+    <rich_text> Choose a local folder where the repository will be saved.
+</rich_text>
+    <rich_text weight="heavy">Step 5:</rich_text>
+    <rich_text> Click "Clone" and wait for the process to finish.
+</rich_text>
+    <rich_text weight="heavy">Step 6:</rich_text>
+    <rich_text> Open the SchemaX.SIS solution in Visual Studio.
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> Use the team's designated branch or approved version when testing the project.
+
+
+</rich_text>
+    <rich_text scale="h2">4. OPEN AND BUILD THE APPLICATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Step 1:</rich_text>
+    <rich_text> Open the SchemaX.SIS solution.
+</rich_text>
+    <rich_text weight="heavy">Step 2:</rich_text>
+    <rich_text> Wait for Visual Studio to load the project and restore its dependencies.
+</rich_text>
+    <rich_text weight="heavy">Step 3:</rich_text>
+    <rich_text> Check Solution Explorer to confirm that the project files are available.
+</rich_text>
+    <rich_text weight="heavy">Step 4:</rich_text>
+    <rich_text> Select Build → Build Solution or press Ctrl + Shift + B.
+</rich_text>
+    <rich_text weight="heavy">Step 5:</rich_text>
+    <rich_text> Check the Error List and Output window for any build errors.
+</rich_text>
+    <rich_text weight="heavy">Step 6:</rich_text>
+    <rich_text> Press F5 to run the application.
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+The Student Information System window should open if the project builds and starts successfully.
+
+
+</rich_text>
+    <rich_text scale="h2">5. MYSQL DATABASE SETUP</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned Developer:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Step 1:</rich_text>
+    <rich_text> Install and open MySQL Server and MySQL Workbench.
+</rich_text>
+    <rich_text weight="heavy">Step 2:</rich_text>
+    <rich_text> Ensure that the MySQL service is running.
+</rich_text>
+    <rich_text weight="heavy">Step 3:</rich_text>
+    <rich_text> Open MySQL Workbench and connect to the local MySQL server.
+</rich_text>
+    <rich_text weight="heavy">Step 4:</rich_text>
+    <rich_text> Create or import the database using the team's approved SQL script.
+</rich_text>
+    <rich_text weight="heavy">Step 5:</rich_text>
+    <rich_text> Confirm that the required tables are available.
+</rich_text>
+    <rich_text weight="heavy">Step 6:</rich_text>
+    <rich_text> Configure the application's database connection using the team's approved settings.
+</rich_text>
+    <rich_text weight="heavy">Step 7:</rich_text>
+    <rich_text> Test whether the application can communicate with MySQL.
+</rich_text>
+    <rich_text weight="heavy">Database Name:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">SQL Script Location:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Connection Configuration:</rich_text>
+    <rich_text> Pending confirmation
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> Do not include actual database passwords or other secret credentials in this documentation or GitHub repository.
+
+
+</rich_text>
+    <rich_text scale="h2">6. PROJECT FILES AND MODULES</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Form1.cs</rich_text>
+    <rich_text>
+◇ Contains application form logic and event handlers.
+
+◇ Includes current input validation and selection warnings.
+
+
+</rich_text>
+    <rich_text weight="heavy">Form1.Designer.cs</rich_text>
+    <rich_text>
+◇ Contains the Windows Forms interface components and event connections.
+
+
+</rich_text>
+    <rich_text weight="heavy">Helpers/Validator.cs</rich_text>
+    <rich_text>
+◇ Validates student information and required input formats.
+
+
+</rich_text>
+    <rich_text weight="heavy">Helpers/ExceptionHandler.cs</rich_text>
+    <rich_text>
+◇ Handles exceptions and displays user-friendly error messages.
+
+
+</rich_text>
+    <rich_text weight="heavy">Helpers/ErrorLog.cs</rich_text>
+    <rich_text>
+◇ Records exception information in a local log file.
+
+
+</rich_text>
+    <rich_text weight="heavy">logs/errors.txt</rich_text>
+    <rich_text>
+◇ Generated when errors are logged.
+
+◇ Excluded from Git through </rich_text>
+    <rich_text family="monospace">.gitignore</rich_text>
+    <rich_text>.
+
+
+</rich_text>
+    <rich_text weight="heavy">Database and CRUD Modules</rich_text>
+    <rich_text>
+◇ Awaiting final integration and verification.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">7. BASIC TROUBLESHOOTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Problem: The project does not build.</rich_text>
+    <rich_text>
+Suggested checks:
+◇ Confirm that the required .NET SDK is installed.
+
+◇ Check the Visual Studio Error List.
+
+◇ Restore missing project dependencies.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: The application cannot connect to MySQL.</rich_text>
+    <rich_text>
+Suggested checks:
+◇ Confirm that the MySQL service is running.
+
+◇ Check the database connection settings.
+
+◇ Verify that the database and required tables exist.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: A validation warning appears.</rich_text>
+    <rich_text>
+Suggested checks:
+◇ Confirm that required fields are not empty.
+
+◇ Check the Student ID format.
+
+◇ Review the entered student information.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: An unexpected application error occurs.</rich_text>
+    <rich_text>
+Suggested checks:
+◇ Read the displayed error message.
+
+◇ Check the generated error log, if available.
+
+◇ Report the issue to the assigned developer.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">8. SETUP VERIFICATION STATUS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Visual Studio Project:</rich_text>
+    <rich_text> Previously built and launched successfully.
+</rich_text>
+    <rich_text weight="heavy">Input Validation:</rich_text>
+    <rich_text> Previously tested successfully.
+</rich_text>
+    <rich_text weight="heavy">Error Logging:</rich_text>
+    <rich_text> Previously tested successfully.
+</rich_text>
+    <rich_text weight="heavy">MySQL Integration:</rich_text>
+    <rich_text> Pending final verification.
+</rich_text>
+    <rich_text weight="heavy">Complete CRUD Operations:</rich_text>
+    <rich_text> Pending integration and testing.
+</rich_text>
+    <rich_text weight="heavy">Full Application Setup:</rich_text>
+    <rich_text> Not yet verified on a clean computer.
+
+</rich_text>
+    <rich_text weight="heavy">Document Status:</rich_text>
+    <rich_text> In Progress
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Responsible Team:</rich_text>
+    <rich_text> Team SchemaX
+</rich_text>
+  </node>
+  <node unique_id="4" master_id="0" name="App Walkthrough" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553353" ts_lastsave="1792000303">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">APPLICATION WALKTHROUGH</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team SchemaX | Student Information System</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h2">1. APPLICATION OVERVIEW</rich_text>
+    <rich_text>
+The SchemaX Student Information System is a desktop application developed using C# Windows Forms and MySQL.
+The application is designed to manage student records through a graphical user interface.
+</rich_text>
+    <rich_text weight="heavy">Current Development Status:</rich_text>
+    <rich_text> In Progress
+This walkthrough describes the existing interface, implemented validation checks, and features awaiting integration.
+
+
+</rich_text>
+    <rich_text scale="h2">2. MAIN APPLICATION INTERFACE</rich_text>
+    <rich_text>
+The current application interface contains the following components:
+</rich_text>
+    <rich_text weight="heavy">Student Information Fields:</rich_text>
+    <rich_text>
+• Student ID
+
+• Student Name
+
+• Contact Number
+
+• Program
+
+• Gender
+
+• Year Level
+
+
+</rich_text>
+    <rich_text weight="heavy">Action Buttons:</rich_text>
+    <rich_text>
+◇ Add
+
+◇ Edit
+
+◇ Delete
+
+
+</rich_text>
+    <rich_text weight="heavy">Additional Components:</rich_text>
+    <rich_text>
+◇ Search field
+
+◇ DataGridView for displaying student records
+
+
+</rich_text>
+    <rich_text weight="heavy">Assigned UI Developer:</rich_text>
+    <rich_text> Zedric Zuñiga
+
+
+</rich_text>
+    <rich_text scale="h2">3. ADD STUDENT — INPUT VALIDATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned Developer:</rich_text>
+    <rich_text> Princess Ida Camasis
+The Add button currently validates the information entered by the user.
+
+</rich_text>
+    <rich_text scale="h3">3.1 Student ID Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Required Format:</rich_text>
+    <rich_text> YYYY-XXXXX
+</rich_text>
+    <rich_text weight="heavy">Example:</rich_text>
+    <rich_text> 2026-00001
+</rich_text>
+    <rich_text weight="heavy">Validation Rules:</rich_text>
+    <rich_text>
+◇ Student ID cannot be empty.
+
+◇ Student ID must follow the required format.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+The application displays a warning if the Student ID is missing or incorrectly formatted.
+
+</rich_text>
+    <rich_text scale="h3">3.2 Student Name Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validation Rules:</rich_text>
+    <rich_text>
+◇ Student Name cannot be empty.
+
+◇ Only letters, spaces, hyphens, and apostrophes are accepted.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+Invalid names trigger a validation warning.
+
+</rich_text>
+    <rich_text scale="h3">3.3 Contact Number Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validation Rules:</rich_text>
+    <rich_text>
+◇ Contact number cannot be empty.
+
+◇ Must contain 7–15 characters.
+
+◇ Only numbers, spaces, hyphens, and plus signs are accepted.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+The application displays a warning when the contact number does not follow the required format.
+
+</rich_text>
+    <rich_text scale="h3">3.4 Program Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validation Rule:</rich_text>
+    <rich_text>
+◇ Program cannot be empty or contain only spaces.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+The application displays a warning if the Program field is missing.
+
+</rich_text>
+    <rich_text scale="h3">3.5 Gender Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validation Rules:</rich_text>
+    <rich_text>
+◇ A gender must be selected.
+
+◇ The selected value must match an available ComboBox option.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+Missing or invalid selections trigger a warning.
+
+</rich_text>
+    <rich_text scale="h3">3.6 Year Level Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validation Rules:</rich_text>
+    <rich_text>
+◇ A year level must be selected.
+
+◇ The selected value must match an available ComboBox option.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Behavior:</rich_text>
+    <rich_text>
+Missing or invalid selections trigger a warning.
+</rich_text>
+    <rich_text weight="heavy">Current Status:</rich_text>
+    <rich_text>
+The six form-field validation checks were previously tested successfully.
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> Passing validation does not currently confirm that a student record was saved. Database insertion still requires CRUD integration.
+
+
+</rich_text>
+    <rich_text scale="h2">4. EDIT STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned CRUD Developer:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Current Implemented Behavior:</rich_text>
+    <rich_text>
+◇ Clicking Edit without selecting a student displays a warning.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Final Behavior:</rich_text>
+    <rich_text>
+◇ The user selects an existing student.
+
+◇ The application loads the selected information.
+
+◇ The user modifies the information.
+
+◇ The updated record is saved to the database.
+
+
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> Selection warning implemented; complete editing functionality pending integration.
+
+
+</rich_text>
+    <rich_text scale="h2">5. DELETE STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned CRUD Developer:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Current Implemented Behavior:</rich_text>
+    <rich_text>
+◇ Clicking Delete without selecting a student displays a warning.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Final Behavior:</rich_text>
+    <rich_text>
+◇ The user selects a student.
+
+◇ The application requests confirmation.
+
+◇ The selected student record is deleted from the database.
+
+◇ The displayed records are updated.
+
+
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> Selection warning implemented; complete deletion functionality pending integration.
+
+
+</rich_text>
+    <rich_text scale="h2">6. VIEW AND SEARCH STUDENTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned UI Developer:</rich_text>
+    <rich_text> Zedric Zuñiga
+</rich_text>
+    <rich_text weight="heavy">Expected Final Behavior:</rich_text>
+    <rich_text>
+◇ Student records are displayed in the DataGridView.
+
+◇ Users can search for specific students.
+
+◇ Displayed information reflects the database records.
+
+
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> Interface available; database-backed display and search require final verification.
+
+
+</rich_text>
+    <rich_text scale="h2">7. ERROR HANDLING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Assigned Developer:</rich_text>
+    <rich_text> Princess Ida Camasis
+
+</rich_text>
+    <rich_text scale="h3">7.1 Input Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">File:</rich_text>
+    <rich_text> Helpers/Validator.cs
+Responsible for checking required fields and input formats.
+
+</rich_text>
+    <rich_text scale="h3">7.2 Exception Handling</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">File:</rich_text>
+    <rich_text> Helpers/ExceptionHandler.cs
+Responsible for:
+◇ Handling application exceptions.
+
+◇ Displaying user-friendly error messages.
+
+◇ Calling the error logging helper.
+
+
+
+</rich_text>
+    <rich_text scale="h3">7.3 Error Logging</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">File:</rich_text>
+    <rich_text> Helpers/ErrorLog.cs
+Responsible for:
+◇ Recording exception information.
+
+◇ Adding timestamps to error entries.
+
+◇ Writing errors to logs/errors.txt.
+
+
+</rich_text>
+    <rich_text weight="heavy">Logging Status:</rich_text>
+    <rich_text> Previously tested successfully.
+</rich_text>
+    <rich_text weight="heavy">Database Exception Handling:</rich_text>
+    <rich_text> Pending integration and testing.
+
+
+</rich_text>
+    <rich_text scale="h2">8. TESTING SUMMARY</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Completed Initial Tests:</rich_text>
+    <rich_text>
+◇ Student ID validation
+
+◇ Student Name validation
+
+◇ Contact Number validation
+
+◇ Program required-field validation
+
+◇ Gender selection validation
+
+◇ Year Level selection validation
+
+◇ Edit button without student selection
+
+◇ Delete button without student selection
+
+◇ Error logging helper
+
+◇ Exception handling helper
+
+
+</rich_text>
+    <rich_text weight="heavy">Pending Tests:</rich_text>
+    <rich_text>
+◇ Successful student insertion
+
+◇ Successful student editing
+
+◇ Successful student deletion
+
+◇ Duplicate Student ID or email
+
+◇ Database connection failure
+
+◇ MySQL service stopped during operation
+
+◇ Search functionality
+
+◇ Complete application integration
+
+
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> The initial checks above were performed during development. Formal test cases and testing rounds will be documented separately.
+
+
+</rich_text>
+    <rich_text scale="h2">9. SCREENSHOT DOCUMENTATION</rich_text>
+    <rich_text>
+Screenshots will be added after the relevant application functions have been tested.
+</rich_text>
+    <rich_text weight="heavy">Planned Screenshots:</rich_text>
+    <rich_text>
+◇ Main application window
+
+◇ Student ID validation warning
+
+◇ Student Name validation warning
+
+◇ Contact Number validation warning
+
+◇ Missing required field warning
+
+◇ Edit without selection warning
+
+◇ Delete without selection warning
+
+◇ Successful CRUD operations (pending)
+
+◇ Database error handling (pending)
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">10. FINAL WALKTHROUGH STATUS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">User Interface:</rich_text>
+    <rich_text> Initial implementation available
+</rich_text>
+    <rich_text weight="heavy">Input Validation:</rich_text>
+    <rich_text> Implemented and initially tested
+</rich_text>
+    <rich_text weight="heavy">Error Logging:</rich_text>
+    <rich_text> Implemented and tested
+</rich_text>
+    <rich_text weight="heavy">Exception Handling Helper:</rich_text>
+    <rich_text> Implemented and tested
+</rich_text>
+    <rich_text weight="heavy">CRUD Operations:</rich_text>
+    <rich_text> Pending integration
+</rich_text>
+    <rich_text weight="heavy">Database Operations:</rich_text>
+    <rich_text> Pending final verification
+</rich_text>
+    <rich_text weight="heavy">Complete Application Walkthrough:</rich_text>
+    <rich_text> Pending final integration testing
+
+</rich_text>
+    <rich_text weight="heavy">Document Status:</rich_text>
+    <rich_text> In Progress
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Responsible Team:</rich_text>
+    <rich_text> Team SchemaX
+</rich_text>
+  </node>
+</cherrytree>
