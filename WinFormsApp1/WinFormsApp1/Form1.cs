@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace WinFormsApp1
+namespace SchemaX.SIS
 {
     public partial class Form1 : Form
     {

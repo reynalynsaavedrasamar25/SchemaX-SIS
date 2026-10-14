@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace SchemaX.SIS
 {
     partial class Form1
     {
@@ -262,7 +262,7 @@
             ClientSize = new Size(1008, 601);
             Controls.Add(mainPanel);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Student Information System";
             WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             pnlControl.ResumeLayout(false);
