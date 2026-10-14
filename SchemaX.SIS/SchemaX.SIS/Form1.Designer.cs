@@ -94,6 +94,7 @@
             // 
             // btnDelete
             // 
+            btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Location = new Point(197, 241);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(88, 35);
@@ -103,7 +104,8 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(103, 241);
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Location = new Point(105, 241);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(88, 35);
             btnEdit.TabIndex = 7;
@@ -112,6 +114,7 @@
             // 
             // btnAdd
             // 
+            btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Location = new Point(12, 241);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(88, 35);
@@ -199,6 +202,7 @@
             dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Columns.AddRange(new DataGridViewColumn[] { StudentID, studName, Gender, YearLevel, Program, ContactNumber });
             dgvStudents.Dock = DockStyle.Fill;
+            dgvStudents.EnableHeadersVisualStyles = false;
             dgvStudents.Location = new Point(5, 5);
             dgvStudents.Name = "dgvStudents";
             dgvStudents.Size = new Size(698, 549);
