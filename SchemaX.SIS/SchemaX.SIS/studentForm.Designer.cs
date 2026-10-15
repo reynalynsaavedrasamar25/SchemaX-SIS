@@ -1,6 +1,6 @@
 ﻿namespace SchemaX.SIS
 {
-    partial class Form1
+    partial class studentForm
     {
         /// <summary>
         ///  Required designer variable.

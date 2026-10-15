@@ -7,7 +7,7 @@ using SchemaX.SIS.Helpers;
 
 namespace SchemaX.SIS
 {
-    public partial class Form1 : Form
+    public partial class studentForm : Form
     {
         // Win32 API setup to set cue banner (placeholder) text
         private const int CB_SETCUEBANNER = 0x1703;
@@ -20,7 +20,7 @@ namespace SchemaX.SIS
             [MarshalAs(UnmanagedType.LPWStr)] string lParam
         );
 
-        public Form1()
+        public studentForm()
         {
             InitializeComponent();
 
