@@ -11,7 +11,7 @@ namespace SchemaX.SIS.Models
         public string Surname { get; set; } = string.Empty;
 
         public string Gender { get; set; } = string.Empty;
-        public byte YearLevel { get; set; }
+        public int YearLevel { get; set; }
         public string Program { get; set; } = string.Empty;
         public string Bloc { get; set; } = string.Empty;
         public DateTime Birthday { get; set; }
@@ -33,7 +33,7 @@ namespace SchemaX.SIS.Models
                     return $"{first} {last}".Trim();
                 }
 
-                return $"{first} {middle[0]}. {last}".Trim();
+                return $"{first} {char.ToUpper(middle[0])}. {last}".Trim();
             }
         }
     }
