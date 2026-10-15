@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using SchemaX.SIS.Helpers;
+using SchemaX.SIS.Models;
 
 namespace SchemaX.SIS
 {
@@ -62,6 +63,27 @@ namespace SchemaX.SIS
 
                 return;
             }
+
+            // Get the selected student's information
+            DataGridViewRow row = dgvStudents.SelectedRows[0];
+
+            string studentId = row.Cells[0].Value?.ToString() ?? "";
+            string studentName = row.Cells[1].Value?.ToString() ?? "";
+
+            // Ask for confirmation before deleting
+            DialogResult result = MessageBox.Show(
+                $"Are you sure you want to delete {studentName} ({studentId})?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            // Stop if the user clicks No
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -106,6 +128,28 @@ namespace SchemaX.SIS
                 );
 
                 return;
+            }
+
+            // Check if the Student ID already exists in the grid
+            foreach (DataGridViewRow row in dgvStudents.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+
+                if (string.Equals(
+                    row.Cells[0].Value?.ToString(),
+                    studentId,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show(
+                        "This Student ID already exists.",
+                        "Duplicate Student ID",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
             }
 
             // Student Name validation
@@ -231,6 +275,50 @@ namespace SchemaX.SIS
                 );
                 return;
             }
+
+            // Convert the year level to a number
+            byte year = byte.Parse(yearLevel);
+
+            // Create a Student object
+            Student student = new Student
+            {
+                StudentId = studentId,
+                FirstName = studentName,
+                ContactNo = contactNumber,
+                Program = program,
+                Gender = gender,
+                YearLevel = year
+            };
+
+            dgvStudents.Rows.Add(
+                student.StudentId,
+                student.FullName,
+                student.Gender,
+                student.YearLevel,
+                student.Program,
+                student.ContactNo
+            );
+
+            // Clear the input fields
+            txtStudentID.Clear();
+            txtName.Clear();
+            txtContactNo.Clear();
+            txtProgram.Clear();
+
+            cmbGender.SelectedIndex = -1;
+            cmbGender.Text = "";
+
+            cmbYrLevel.SelectedIndex = -1;
+            cmbYrLevel.Text = "";
+
+            txtStudentID.Focus();
+
+            MessageBox.Show(
+                "Student added to the table!",
+                "Success",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
