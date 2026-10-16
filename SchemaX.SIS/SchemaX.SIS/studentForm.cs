@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using SchemaX.SIS.Data;
 using SchemaX.SIS.Helpers;
 using SchemaX.SIS.Models;
 
@@ -279,51 +280,84 @@ namespace SchemaX.SIS
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
 
+            string middleName = txtMidName.Text.Trim();
+            string surname = txtSurname.Text.Trim();
+            string bloc = txtBloc.Text.Trim();
+            string buEmail = txtBUEmail.Text.Trim();
+
+            if(!DateTime.TryParse(txtBirthdate.Text.Trim(), out DateTime birthday))
+            {
+                MessageBox.Show("Please enter a valid birthday.");
+                return;
+            }
+
             // Create a Student object
             Student student = new Student
             {
                 StudentId = studentId,
                 FirstName = studentName,
-                ContactNo = contactNumber,
-                Program = program,
+                MiddleName = string.IsNullOrWhiteSpace(middleName) ? null : middleName,
+                Surname = surname,
                 Gender = gender,
-                YearLevel = year
+                YearLevel = year,
+                Program = program,
+                Bloc = bloc,
+                Birthday = birthday,
+                BuEmail = buEmail,
+                ContactNo = contactNumber,
+                PhotoPath = null
             };
 
-            dgvStudents.Rows.Add(
+            // save the student to MySQL
+            try
+            {
+                StudentRepository repository = new StudentRepository();
+                repository.Insert(student);
+
+                dgvStudents.Rows.Add(
                 student.StudentId,
                 student.FullName,
                 student.Gender,
                 student.YearLevel,
                 student.Program,
                 student.ContactNo
-            );
+                );
 
-            // Clear the input fields
-            txtStudentID.Clear();
-            txtFirstName.Clear();
-            txtMidName.Clear();
-            txtSurname.Clear();
-            txtContactNo.Clear();
-            txtProgram.Clear();
-            txtBloc.Clear();
-            txtBirthdate.Clear();
-            txtBUEmail.Clear();
+                // Clear the input fields
+                txtStudentID.Clear();
+                txtFirstName.Clear();
+                txtMidName.Clear();
+                txtSurname.Clear();
+                txtContactNo.Clear();
+                txtProgram.Clear();
+                txtBloc.Clear();
+                txtBirthdate.Clear();
+                txtBUEmail.Clear();
 
-            cmbGender.SelectedIndex = -1;
-            cmbGender.Text = "";
+                cmbGender.SelectedIndex = -1;
+                cmbGender.Text = "";
 
-            cmbYrLevel.SelectedIndex = -1;
-            cmbYrLevel.Text = "";
+                cmbYrLevel.SelectedIndex = -1;
+                cmbYrLevel.Text = "";
 
-            txtStudentID.Focus();
+                txtStudentID.Focus();
 
-            MessageBox.Show(
-                "Student added to the table!",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+                MessageBox.Show(
+                    "Student saved successfully!",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to save student to the database.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void btnViewClear_Click(object sender, EventArgs e)
