@@ -38,9 +38,11 @@
             btnExit = new Button();
             btnAttendance = new Button();
             pnlDashboardStatus = new Panel();
+            labelDashboardStatus = new Label();
             pnlDashboardTitle.SuspendLayout();
             pnlDashboardInfo.SuspendLayout();
             pnlDashboardBtns.SuspendLayout();
+            pnlDashboardStatus.SuspendLayout();
             SuspendLayout();
             // 
             // btnEnrolledStd
@@ -133,11 +135,21 @@
             // 
             // pnlDashboardStatus
             // 
+            pnlDashboardStatus.Controls.Add(labelDashboardStatus);
             pnlDashboardStatus.Dock = DockStyle.Fill;
             pnlDashboardStatus.Location = new Point(0, 283);
             pnlDashboardStatus.Name = "pnlDashboardStatus";
             pnlDashboardStatus.Size = new Size(584, 28);
             pnlDashboardStatus.TabIndex = 1;
+            // 
+            // labelDashboardStatus
+            // 
+            labelDashboardStatus.AutoSize = true;
+            labelDashboardStatus.Location = new Point(12, 6);
+            labelDashboardStatus.Name = "labelDashboardStatus";
+            labelDashboardStatus.Size = new Size(48, 15);
+            labelDashboardStatus.TabIndex = 0;
+            labelDashboardStatus.Text = "Status...";
             // 
             // dashboardForm
             // 
@@ -155,6 +167,8 @@
             pnlDashboardInfo.ResumeLayout(false);
             pnlDashboardInfo.PerformLayout();
             pnlDashboardBtns.ResumeLayout(false);
+            pnlDashboardStatus.ResumeLayout(false);
+            pnlDashboardStatus.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -170,5 +184,6 @@
         private Button btnExit;
         private Button btnAttendance;
         private Panel pnlDashboardStatus;
+        private Label labelDashboardStatus;
     }
 }

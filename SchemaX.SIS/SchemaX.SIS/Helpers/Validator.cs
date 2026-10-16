@@ -34,7 +34,7 @@ namespace SchemaX.SIS.Helpers
             return !string.IsNullOrWhiteSpace(email) &&
                    System.Text.RegularExpressions.Regex.IsMatch(
                        email.Trim(),
-                       @"^[A-Za-z0-9._%+-]+@bu\.edu\.ph$",
+                       @"^[A-Za-z0-9._%+-]+@bicol-u\.edu\.ph$",
                        System.Text.RegularExpressions.RegexOptions.IgnoreCase
                    );
         }
