@@ -10,7 +10,7 @@ namespace SchemaX.SIS.Helpers
         {
             return System.Text.RegularExpressions.Regex.IsMatch(
                 studentId,
-                @"^\d{4}-\d{5}$"
+                @"^\d{4}-\d{2}-\d{5}$"
             );
         }
         public static bool IsRequiredFieldValid(string? value)

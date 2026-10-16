@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using SchemaX.SIS.Data;
 using SchemaX.SIS.Helpers;
 using SchemaX.SIS.Models;
 
@@ -10,6 +11,9 @@ namespace SchemaX.SIS
 {
     public partial class studentForm : Form
     {
+        // set up repository for database operations
+        private readonly StudentRepository _studentRepository = new StudentRepository();
+
         // Win32 API setup to set cue banner (placeholder) text
         private const int CB_SETCUEBANNER = 0x1703;
 
@@ -24,6 +28,8 @@ namespace SchemaX.SIS
         public studentForm()
         {
             InitializeComponent();
+
+            dateBirthDate.MaxDate = DateTime.Today;
 
             this.BackColor = ThemeColors.Background;
             btnAdd.BackColor = ThemeColors.Accent;
@@ -40,12 +46,29 @@ namespace SchemaX.SIS
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        public void LoadStudents()
         {
+            List<Student> students = _studentRepository.GetAll();
+            dgvStudents.Rows.Clear();
 
+            foreach (Student student in students)
+            {
+                dgvStudents.Rows.Add(student.StudentId, $"{student.FirstName} {student.Surname}", student.Gender, student.YearLevel, student.Program, student.ContactNo);
+            }
+
+            UnlockIDClearSlction();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void UnlockIDClearSlction()
+        {
+            dgvStudents.ClearSelection();
+
+            labelStudentIDHint.Visible = false;
+            txtStudentID.ReadOnly = false;
+            txtStudentID.BackColor = ThemeColors.Surface; //change the background color to indicate it's read-only
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -84,9 +107,8 @@ namespace SchemaX.SIS
                 return;
             }
 
-            labelStudentIDHint.Visible = false;
-            txtStudentID.ReadOnly = false;
-            txtStudentID.BackColor = ThemeColors.Surface;
+            LoadStudents();
+            UnlockIDClearSlction();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -102,6 +124,9 @@ namespace SchemaX.SIS
 
                 return;
             }
+
+            LoadStudents();
+            UnlockIDClearSlction();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -295,7 +320,7 @@ namespace SchemaX.SIS
 
             dgvStudents.Rows.Add(
                 student.StudentId,
-                student.FullName,
+                $"{student.FirstName} {student.Surname}",
                 student.Gender,
                 student.YearLevel,
                 student.Program,
@@ -326,6 +351,9 @@ namespace SchemaX.SIS
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             );
+
+            LoadStudents();
+            UnlockIDClearSlction();
         }
 
         private void btnViewClear_Click(object sender, EventArgs e)
@@ -333,8 +361,15 @@ namespace SchemaX.SIS
             txtSearch.Clear();
         }
 
+        private void btnViewSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // DO NOT REPLACE WITH UnlockIDClearSlction or I will be very sad :(
+            ///////////////////////////////////////////////
             labelStudentIDHint.Visible = true; //show the hint label
             txtStudentID.ReadOnly = true; //prevents editing the StudentID
             txtStudentID.BackColor = ThemeColors.Danger; //change the background color to indicate it's read-only
@@ -347,11 +382,8 @@ namespace SchemaX.SIS
 
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
-            labelStudentIDHint.Visible = false;
-            txtStudentID.ReadOnly = false;
-            txtStudentID.BackColor = ThemeColors.Surface; //change the background color to indicate it's read-only
-
-            dgvStudents.ClearSelection();
+            LoadStudents();
+            UnlockIDClearSlction();
 
             //clear every field
             txtStudentID.Clear();
@@ -365,5 +397,13 @@ namespace SchemaX.SIS
             cmbGender.SelectedIndex = -1;
             cmbYrLevel.SelectedIndex = -1;
         }
+
+        private void studentForm_Load(object sender, EventArgs e)
+        {
+            LoadStudents();
+            UnlockIDClearSlction();
+        }
+
+        
     }
 }

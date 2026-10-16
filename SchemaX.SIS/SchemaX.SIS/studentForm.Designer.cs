@@ -137,7 +137,7 @@
             // 
             dateBirthDate.Format = DateTimePickerFormat.Short;
             dateBirthDate.Location = new Point(12, 313);
-            dateBirthDate.MaxDate = DateTime.Today;
+            dateBirthDate.MaxDate = new DateTime(2026, 10, 16, 0, 0, 0, 0);
             dateBirthDate.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dateBirthDate.Name = "dateBirthDate";
             dateBirthDate.Size = new Size(276, 23);
@@ -449,7 +449,7 @@
             Name = "studentForm";
             Text = "Student Information System";
             WindowState = FormWindowState.Maximized;
-            Load += Form1_Load;
+            Load += studentForm_Load;
             pnlControl.ResumeLayout(false);
             pnlControl.PerformLayout();
             pnlSearch.ResumeLayout(false);
