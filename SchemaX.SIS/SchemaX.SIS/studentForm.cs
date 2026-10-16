@@ -84,6 +84,9 @@ namespace SchemaX.SIS
                 return;
             }
 
+            labelStudentIDHint.Visible = false;
+            txtStudentID.ReadOnly = false;
+            txtStudentID.BackColor = ThemeColors.Surface;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -307,7 +310,6 @@ namespace SchemaX.SIS
             txtContactNo.Clear();
             txtProgram.Clear();
             txtBloc.Clear();
-            txtBirthdate.Clear();
             txtBUEmail.Clear();
 
             cmbGender.SelectedIndex = -1;
@@ -331,9 +333,37 @@ namespace SchemaX.SIS
             txtSearch.Clear();
         }
 
-        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            labelStudentIDHint.Visible = true; //show the hint label
+            txtStudentID.ReadOnly = true; //prevents editing the StudentID
+            txtStudentID.BackColor = ThemeColors.Danger; //change the background color to indicate it's read-only
+        }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClearSelection_Click(object sender, EventArgs e)
+        {
+            labelStudentIDHint.Visible = false;
+            txtStudentID.ReadOnly = false;
+            txtStudentID.BackColor = ThemeColors.Surface; //change the background color to indicate it's read-only
+
+            dgvStudents.ClearSelection();
+
+            //clear every field
+            txtStudentID.Clear();
+            txtFirstName.Clear();
+            txtMidName.Clear();
+            txtSurname.Clear();
+            txtContactNo.Clear();
+            txtProgram.Clear();
+            txtBloc.Clear();
+            txtBUEmail.Clear();
+            cmbGender.SelectedIndex = -1;
+            cmbYrLevel.SelectedIndex = -1;
         }
     }
 }

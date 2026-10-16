@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlControl = new Panel();
+            labelStudentIDHint = new Label();
+            btnClearSelection = new Button();
+            labelNamePreview = new Label();
+            dateBirthDate = new DateTimePicker();
+            btnBack = new Button();
+            btnExportCSV = new Button();
             txtBUEmail = new TextBox();
-            txtBirthdate = new TextBox();
             txtBloc = new TextBox();
             txtProgram = new TextBox();
             txtSurname = new TextBox();
@@ -59,6 +65,7 @@
             Program = new DataGridViewTextBoxColumn();
             ContactNo = new DataGridViewTextBoxColumn();
             mainPanel = new Panel();
+            tooltipStudentID = new ToolTip(components);
             pnlControl.SuspendLayout();
             pnlSearch.SuspendLayout();
             pnlDGV.SuspendLayout();
@@ -68,8 +75,13 @@
             // 
             // pnlControl
             // 
+            pnlControl.Controls.Add(labelStudentIDHint);
+            pnlControl.Controls.Add(btnClearSelection);
+            pnlControl.Controls.Add(labelNamePreview);
+            pnlControl.Controls.Add(dateBirthDate);
+            pnlControl.Controls.Add(btnBack);
+            pnlControl.Controls.Add(btnExportCSV);
             pnlControl.Controls.Add(txtBUEmail);
-            pnlControl.Controls.Add(txtBirthdate);
             pnlControl.Controls.Add(txtBloc);
             pnlControl.Controls.Add(txtProgram);
             pnlControl.Controls.Add(txtSurname);
@@ -91,58 +103,113 @@
             pnlControl.Size = new Size(300, 601);
             pnlControl.TabIndex = 0;
             // 
+            // labelStudentIDHint
+            // 
+            labelStudentIDHint.Font = new Font("Segoe UI", 7F);
+            labelStudentIDHint.Location = new Point(11, 91);
+            labelStudentIDHint.Name = "labelStudentIDHint";
+            labelStudentIDHint.Size = new Size(277, 25);
+            labelStudentIDHint.TabIndex = 22;
+            labelStudentIDHint.Text = "Student ID can't be changed while editing. Press Clear Selection to add a new student.";
+            labelStudentIDHint.Visible = false;
+            // 
+            // btnClearSelection
+            // 
+            btnClearSelection.FlatStyle = FlatStyle.Flat;
+            btnClearSelection.Location = new Point(11, 443);
+            btnClearSelection.Name = "btnClearSelection";
+            btnClearSelection.Size = new Size(277, 35);
+            btnClearSelection.TabIndex = 14;
+            btnClearSelection.Text = "Clear Selection";
+            btnClearSelection.UseVisualStyleBackColor = true;
+            btnClearSelection.Click += btnClearSelection_Click;
+            // 
+            // labelNamePreview
+            // 
+            labelNamePreview.AutoSize = true;
+            labelNamePreview.Location = new Point(10, 64);
+            labelNamePreview.Name = "labelNamePreview";
+            labelNamePreview.Size = new Size(229, 15);
+            labelNamePreview.TabIndex = 21;
+            labelNamePreview.Text = "Student: [None if new, else existing name]";
+            // 
+            // dateBirthDate
+            // 
+            dateBirthDate.Format = DateTimePickerFormat.Short;
+            dateBirthDate.Location = new Point(12, 313);
+            dateBirthDate.MaxDate = DateTime.Today;
+            dateBirthDate.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dateBirthDate.Name = "dateBirthDate";
+            dateBirthDate.Size = new Size(276, 23);
+            dateBirthDate.TabIndex = 8;
+            dateBirthDate.Value = new DateTime(2026, 10, 16, 0, 0, 0, 0);
+            // 
+            // btnBack
+            // 
+            btnBack.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Location = new Point(11, 525);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(276, 65);
+            btnBack.TabIndex = 15;
+            btnBack.Text = "Back to Dashboard";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
+            // btnExportCSV
+            // 
+            btnExportCSV.FlatStyle = FlatStyle.Flat;
+            btnExportCSV.Location = new Point(11, 484);
+            btnExportCSV.Name = "btnExportCSV";
+            btnExportCSV.Size = new Size(277, 35);
+            btnExportCSV.TabIndex = 14;
+            btnExportCSV.Text = "Export CSV";
+            btnExportCSV.UseVisualStyleBackColor = true;
+            // 
             // txtBUEmail
             // 
-            txtBUEmail.Location = new Point(11, 340);
+            txtBUEmail.Location = new Point(12, 342);
             txtBUEmail.Name = "txtBUEmail";
             txtBUEmail.PlaceholderText = "BU E-mail Address";
-            txtBUEmail.Size = new Size(272, 23);
-            txtBUEmail.TabIndex = 17;
-            // 
-            // txtBirthdate
-            // 
-            txtBirthdate.Location = new Point(11, 311);
-            txtBirthdate.Name = "txtBirthdate";
-            txtBirthdate.PlaceholderText = "Birth Date (MM/DD/YYYY)";
-            txtBirthdate.Size = new Size(273, 23);
-            txtBirthdate.TabIndex = 16;
+            txtBUEmail.Size = new Size(276, 23);
+            txtBUEmail.TabIndex = 9;
             // 
             // txtBloc
             // 
-            txtBloc.Location = new Point(150, 272);
+            txtBloc.Location = new Point(154, 274);
             txtBloc.Name = "txtBloc";
             txtBloc.PlaceholderText = "Bloc";
             txtBloc.Size = new Size(134, 23);
-            txtBloc.TabIndex = 15;
+            txtBloc.TabIndex = 7;
             // 
             // txtProgram
             // 
-            txtProgram.Location = new Point(12, 272);
+            txtProgram.Location = new Point(12, 274);
             txtProgram.Name = "txtProgram";
             txtProgram.PlaceholderText = "Program";
             txtProgram.Size = new Size(135, 23);
-            txtProgram.TabIndex = 14;
+            txtProgram.TabIndex = 6;
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(12, 202);
+            txtSurname.Location = new Point(12, 204);
             txtSurname.Name = "txtSurname";
             txtSurname.PlaceholderText = "Surname";
-            txtSurname.Size = new Size(272, 23);
-            txtSurname.TabIndex = 13;
+            txtSurname.Size = new Size(275, 23);
+            txtSurname.TabIndex = 3;
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(11, 144);
+            txtFirstName.Location = new Point(11, 146);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.PlaceholderText = "First Name";
-            txtFirstName.Size = new Size(273, 23);
-            txtFirstName.TabIndex = 12;
+            txtFirstName.Size = new Size(277, 23);
+            txtFirstName.TabIndex = 1;
             // 
             // labelStudentsShown
             // 
             labelStudentsShown.AutoSize = true;
-            labelStudentsShown.Location = new Point(12, 38);
+            labelStudentsShown.Location = new Point(10, 38);
             labelStudentsShown.Name = "labelStudentsShown";
             labelStudentsShown.Size = new Size(160, 15);
             labelStudentsShown.TabIndex = 11;
@@ -155,7 +222,7 @@
             cmbProgramFilter.Location = new Point(149, 12);
             cmbProgramFilter.Name = "cmbProgramFilter";
             cmbProgramFilter.Size = new Size(135, 23);
-            cmbProgramFilter.TabIndex = 3;
+            cmbProgramFilter.TabIndex = 17;
             cmbProgramFilter.Text = "All Programs";
             // 
             // cmbYrFilter
@@ -165,34 +232,34 @@
             cmbYrFilter.Location = new Point(12, 12);
             cmbYrFilter.Name = "cmbYrFilter";
             cmbYrFilter.Size = new Size(135, 23);
-            cmbYrFilter.TabIndex = 4;
+            cmbYrFilter.TabIndex = 16;
             cmbYrFilter.Text = "All Years";
             // 
             // cmbYrLevel
             // 
             cmbYrLevel.FormattingEnabled = true;
             cmbYrLevel.Items.AddRange(new object[] { "1", "2", "3", "4" });
-            cmbYrLevel.Location = new Point(150, 243);
+            cmbYrLevel.Location = new Point(154, 245);
             cmbYrLevel.Name = "cmbYrLevel";
             cmbYrLevel.Size = new Size(134, 23);
-            cmbYrLevel.TabIndex = 10;
+            cmbYrLevel.TabIndex = 5;
             // 
             // cmbGender
             // 
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Female" });
-            cmbGender.Location = new Point(12, 243);
+            cmbGender.Location = new Point(12, 245);
             cmbGender.Name = "cmbGender";
-            cmbGender.Size = new Size(134, 23);
-            cmbGender.TabIndex = 9;
+            cmbGender.Size = new Size(135, 23);
+            cmbGender.TabIndex = 4;
             // 
             // btnDelete
             // 
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Location = new Point(197, 400);
+            btnDelete.Location = new Point(200, 402);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(88, 35);
-            btnDelete.TabIndex = 8;
+            btnDelete.TabIndex = 13;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
@@ -200,10 +267,10 @@
             // btnEdit
             // 
             btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Location = new Point(105, 400);
+            btnEdit.Location = new Point(107, 402);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(88, 35);
-            btnEdit.TabIndex = 7;
+            btnEdit.TabIndex = 12;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
@@ -211,37 +278,38 @@
             // btnAdd
             // 
             btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Location = new Point(12, 400);
+            btnAdd.Location = new Point(13, 402);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(88, 35);
-            btnAdd.TabIndex = 6;
+            btnAdd.TabIndex = 11;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
             // txtContactNo
             // 
-            txtContactNo.Location = new Point(12, 369);
+            txtContactNo.Location = new Point(13, 371);
             txtContactNo.Name = "txtContactNo";
             txtContactNo.PlaceholderText = "Contact Number";
-            txtContactNo.Size = new Size(272, 23);
-            txtContactNo.TabIndex = 5;
+            txtContactNo.Size = new Size(275, 23);
+            txtContactNo.TabIndex = 10;
             // 
             // txtMidName
             // 
-            txtMidName.Location = new Point(11, 173);
+            txtMidName.Location = new Point(11, 175);
             txtMidName.Name = "txtMidName";
             txtMidName.PlaceholderText = "Middle Name (optional)";
-            txtMidName.Size = new Size(272, 23);
-            txtMidName.TabIndex = 1;
+            txtMidName.Size = new Size(276, 23);
+            txtMidName.TabIndex = 2;
             // 
             // txtStudentID
             // 
-            txtStudentID.Location = new Point(11, 115);
+            txtStudentID.Location = new Point(11, 117);
             txtStudentID.Name = "txtStudentID";
             txtStudentID.PlaceholderText = "Student ID";
-            txtStudentID.Size = new Size(273, 23);
+            txtStudentID.Size = new Size(277, 23);
             txtStudentID.TabIndex = 0;
+            tooltipStudentID.SetToolTip(txtStudentID, "Student ID can't be changed while editing. Press Clear Selection to add a new student.");
             // 
             // pnlSearch
             // 
@@ -261,7 +329,7 @@
             btnViewClear.Location = new Point(570, 5);
             btnViewClear.Name = "btnViewClear";
             btnViewClear.Size = new Size(132, 32);
-            btnViewClear.TabIndex = 9;
+            btnViewClear.TabIndex = 20;
             btnViewClear.Text = "Clear";
             btnViewClear.UseVisualStyleBackColor = true;
             btnViewClear.Click += btnViewClear_Click;
@@ -272,7 +340,7 @@
             btnViewSearch.Location = new Point(435, 5);
             btnViewSearch.Name = "btnViewSearch";
             btnViewSearch.Size = new Size(132, 32);
-            btnViewSearch.TabIndex = 8;
+            btnViewSearch.TabIndex = 19;
             btnViewSearch.Text = "Search";
             btnViewSearch.UseVisualStyleBackColor = true;
             // 
@@ -284,7 +352,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Search students... (leave empty to display all)";
             txtSearch.Size = new Size(421, 32);
-            txtSearch.TabIndex = 1;
+            txtSearch.TabIndex = 18;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // pnlDGV
@@ -313,7 +381,7 @@
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStudents.Size = new Size(698, 549);
             dgvStudents.TabIndex = 0;
-            dgvStudents.CellContentClick += dgvStudents_CellContentClick;
+            dgvStudents.CellClick += dgvStudents_CellClick;
             // 
             // StudentID
             // 
@@ -417,7 +485,6 @@
         private TextBox txtFirstName;
         private TextBox txtSurname;
         private TextBox txtProgram;
-        private TextBox txtBirthdate;
         private TextBox txtBloc;
         private TextBox txtBUEmail;
         private DataGridViewTextBoxColumn StudentID;
@@ -426,5 +493,12 @@
         private DataGridViewTextBoxColumn YearLevel;
         private DataGridViewTextBoxColumn Program;
         private DataGridViewTextBoxColumn ContactNo;
+        private Button btnExportCSV;
+        private Button btnBack;
+        private DateTimePicker dateBirthDate;
+        private Label labelNamePreview;
+        private ToolTip tooltipStudentID;
+        private Button btnClearSelection;
+        private Label labelStudentIDHint;
     }
 }
