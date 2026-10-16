@@ -8,7 +8,7 @@ using SchemaX.SIS.Models;
 
 namespace SchemaX.SIS
 {
-    public partial class Form1 : Form
+    public partial class studentForm : Form
     {
         // Win32 API setup to set cue banner (placeholder) text
         private const int CB_SETCUEBANNER = 0x1703;
@@ -21,7 +21,7 @@ namespace SchemaX.SIS
             [MarshalAs(UnmanagedType.LPWStr)] string lParam
         );
 
-        public Form1()
+        public studentForm()
         {
             InitializeComponent();
 
@@ -33,9 +33,9 @@ namespace SchemaX.SIS
             dgvStudents.ColumnHeadersDefaultCellStyle.ForeColor = ThemeColors.TextLight;
             dgvStudents.AlternatingRowsDefaultCellStyle.BackColor = ThemeColors.GridAlternateRow;
 
-            // Apply placeholder to your ComboBox (must be DropDown style, not DropDownList)
-            cmbGender.DropDownStyle = ComboBoxStyle.DropDown;
-            cmbYrLevel.DropDownStyle = ComboBoxStyle.DropDown;
+            // placeholder text for ComboBoxes
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbYrLevel.DropDownStyle = ComboBoxStyle.DropDownList;
             SendMessage(cmbGender.Handle, CB_SETCUEBANNER, 0, "Gender");
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
         }
@@ -153,7 +153,7 @@ namespace SchemaX.SIS
             }
 
             // Student Name validation
-            string studentName = txtName.Text.Trim();
+            string studentName = txtFirstName.Text.Trim();
 
             if (!Validator.IsRequiredFieldValid(studentName))
             {
@@ -301,9 +301,14 @@ namespace SchemaX.SIS
 
             // Clear the input fields
             txtStudentID.Clear();
-            txtName.Clear();
+            txtFirstName.Clear();
+            txtMidName.Clear();
+            txtSurname.Clear();
             txtContactNo.Clear();
             txtProgram.Clear();
+            txtBloc.Clear();
+            txtBirthdate.Clear();
+            txtBUEmail.Clear();
 
             cmbGender.SelectedIndex = -1;
             cmbGender.Text = "";
@@ -319,6 +324,16 @@ namespace SchemaX.SIS
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             );
+        }
+
+        private void btnViewClear_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+        }
+
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
