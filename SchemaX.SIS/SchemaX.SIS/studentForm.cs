@@ -12,6 +12,9 @@ namespace SchemaX.SIS
 {
     public partial class studentForm : Form
     {
+        // set up repository for database operations
+        private readonly StudentRepository _studentRepository = new StudentRepository();
+
         // Win32 API setup to set cue banner (placeholder) text
         private const int CB_SETCUEBANNER = 0x1703;
 
@@ -26,6 +29,8 @@ namespace SchemaX.SIS
         public studentForm()
         {
             InitializeComponent();
+
+            dateBirthDate.MaxDate = DateTime.Today;
 
             this.BackColor = ThemeColors.Background;
             btnAdd.BackColor = ThemeColors.Accent;
@@ -42,12 +47,29 @@ namespace SchemaX.SIS
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        public void LoadStudents()
         {
+            List<Student> students = _studentRepository.GetAll();
+            dgvStudents.Rows.Clear();
 
+            foreach (Student student in students)
+            {
+                dgvStudents.Rows.Add(student.StudentId, $"{student.FirstName} {student.Surname}", student.Gender, student.YearLevel, student.Program, student.ContactNo);
+            }
+
+            UnlockIDClearSlction();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void UnlockIDClearSlction()
+        {
+            dgvStudents.ClearSelection();
+
+            labelStudentIDHint.Visible = false;
+            txtStudentID.ReadOnly = false;
+            txtStudentID.BackColor = ThemeColors.Surface; //change the background color to indicate it's read-only
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -86,43 +108,8 @@ namespace SchemaX.SIS
                 return;
             }
 
-            // Delete the student from the database
-            try
-            {
-                StudentRepository repository = new StudentRepository();
-                bool deleted = repository.Delete(studentId);
-
-                if (deleted)
-                {
-                    // Remove the student from the grid
-                    dgvStudents.Rows.Remove(row);
-
-                    MessageBox.Show(
-                        "Student deleted successfully!",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "No student record was deleted.",
-                        "Delete Failed",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "Failed to delete student.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
+            LoadStudents();
+            UnlockIDClearSlction();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -523,9 +510,49 @@ namespace SchemaX.SIS
             txtSearch.Clear();
         }
 
-        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnViewSearch_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // DO NOT REPLACE WITH UnlockIDClearSlction or I will be very sad :(
+            ///////////////////////////////////////////////
+            labelStudentIDHint.Visible = true; //show the hint label
+            txtStudentID.ReadOnly = true; //prevents editing the StudentID
+            txtStudentID.BackColor = ThemeColors.Danger; //change the background color to indicate it's read-only
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClearSelection_Click(object sender, EventArgs e)
+        {
+            LoadStudents();
+            UnlockIDClearSlction();
+
+            //clear every field
+            txtStudentID.Clear();
+            txtFirstName.Clear();
+            txtMidName.Clear();
+            txtSurname.Clear();
+            txtContactNo.Clear();
+            txtProgram.Clear();
+            txtBloc.Clear();
+            txtBUEmail.Clear();
+            cmbGender.SelectedIndex = -1;
+            cmbYrLevel.SelectedIndex = -1;
+        }
+
+        private void studentForm_Load(object sender, EventArgs e)
+        {
+            LoadStudents();
+            UnlockIDClearSlction();
+        }
+
+        
     }
 }
