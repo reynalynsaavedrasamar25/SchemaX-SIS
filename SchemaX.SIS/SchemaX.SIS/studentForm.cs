@@ -200,25 +200,28 @@ namespace SchemaX.SIS
                 return;
             }
 
-            // Check if the Student ID already exists in the grid
-            foreach (DataGridViewRow row in dgvStudents.Rows)
+            // Check for duplicate Student ID only when adding a new student
+            if (!_isEdit)
             {
-                if (row.IsNewRow)
-                    continue;
-
-                if (string.Equals(
-                    row.Cells[0].Value?.ToString(),
-                    studentId,
-                    StringComparison.OrdinalIgnoreCase))
+                foreach (DataGridViewRow row in dgvStudents.Rows)
                 {
-                    MessageBox.Show(
-                        "This Student ID already exists.",
-                        "Duplicate Student ID",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
+                    if (row.IsNewRow)
+                        continue;
 
-                    return;
+                    if (string.Equals(
+                        row.Cells[0].Value?.ToString(),
+                        studentId,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show(
+                            "This Student ID already exists.",
+                            "Duplicate Student ID",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+
+                        return;
+                    }
                 }
             }
 
@@ -381,44 +384,94 @@ namespace SchemaX.SIS
             try
             {
                 StudentRepository repository = new StudentRepository();
-                repository.Insert(student);
 
-                dgvStudents.Rows.Add(
-                student.StudentId,
-                student.FullName,
-                student.Gender,
-                student.YearLevel,
-                student.Program,
-                student.ContactNo
-                );
+                if (_isEdit)
+                {
+                    bool updated = repository.Update(student);
 
-                // Clear the input fields
-                txtStudentID.Clear();
-                txtFirstName.Clear();
-                txtMidName.Clear();
-                txtSurname.Clear();
-                txtContactNo.Clear();
-                txtProgram.Clear();
-                txtBloc.Clear();
-                txtBirthdate.Clear();
-                txtBUEmail.Clear();
+                    if (updated)
+                    {
+                        // Update the selected student's information in the grid
+                        foreach (DataGridViewRow row in dgvStudents.Rows)
+                        {
+                            if (row.IsNewRow)
+                                continue;
 
-                cmbGender.SelectedIndex = -1;
-                cmbGender.Text = "";
+                            if (string.Equals(
+                                row.Cells[0].Value?.ToString(),
+                                student.StudentId,
+                                StringComparison.OrdinalIgnoreCase))
+                            {
+                                row.Cells[1].Value = student.FullName;
+                                row.Cells[2].Value = student.Gender;
+                                row.Cells[3].Value = student.YearLevel;
+                                row.Cells[4].Value = student.Program;
+                                row.Cells[5].Value = student.ContactNo;
+                                break;
+                            }
+                        }
 
-                cmbYrLevel.SelectedIndex = -1;
-                cmbYrLevel.Text = "";
+                        MessageBox.Show(
+                            "Student updated successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
 
-                txtStudentID.Focus();
+                        ExitEditMode();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "No student record was updated.",
+                            "Update Failed",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                    }
+                }
+                else
+                {
+                    // Keep your existing Insert functionality for Issue #18
+                    repository.Insert(student);
 
-                MessageBox.Show(
-                    "Student saved successfully!",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                    dgvStudents.Rows.Add(
+                        student.StudentId,
+                        student.FullName,
+                        student.Gender,
+                        student.YearLevel,
+                        student.Program,
+                        student.ContactNo
+                    );
+
+                    // Clear the input fields
+                    txtStudentID.Clear();
+                    txtFirstName.Clear();
+                    txtMidName.Clear();
+                    txtSurname.Clear();
+                    txtContactNo.Clear();
+                    txtProgram.Clear();
+                    txtBloc.Clear();
+                    txtBirthdate.Clear();
+                    txtBUEmail.Clear();
+
+                    cmbGender.SelectedIndex = -1;
+                    cmbGender.Text = "";
+
+                    cmbYrLevel.SelectedIndex = -1;
+                    cmbYrLevel.Text = "";
+
+                    txtStudentID.Focus();
+
+                    MessageBox.Show(
+                        "Student saved successfully!",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(
                     "Failed to save student to the database.\n\n" + ex.Message,
@@ -427,6 +480,7 @@ namespace SchemaX.SIS
                     MessageBoxIcon.Error
                 );
             }
+
         }
 
         private void btnViewClear_Click(object sender, EventArgs e)
