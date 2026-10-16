@@ -86,6 +86,43 @@ namespace SchemaX.SIS
                 return;
             }
 
+            // Delete the student from the database
+            try
+            {
+                StudentRepository repository = new StudentRepository();
+                bool deleted = repository.Delete(studentId);
+
+                if (deleted)
+                {
+                    // Remove the student from the grid
+                    dgvStudents.Rows.Remove(row);
+
+                    MessageBox.Show(
+                        "Student deleted successfully!",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "No student record was deleted.",
+                        "Delete Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to delete student.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -115,7 +152,7 @@ namespace SchemaX.SIS
 
         private bool _isEdit;
 
-        // Checkboxes 2 and 3: fill the fields, lock the Student ID, change the title
+        // fill the fields, lock the Student ID, change the title
         private void EnterEditMode(string studentId)
         {
             try
@@ -149,13 +186,12 @@ namespace SchemaX.SIS
             }
             catch (Exception)
             {
-                // TODO: ErrorLog.Write(ex) once Princess Ida's ErrorLog is merged
                 MessageBox.Show("Cannot connect to the database. Please check that MySQL is running.",
                     "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Returns the form to Add mode (#20 will call this after a successful save)
+        // Returns the form to Add mode 
         private void ExitEditMode()
         {
             _isEdit = false;
@@ -432,7 +468,6 @@ namespace SchemaX.SIS
                 }
                 else
                 {
-                    // Keep your existing Insert functionality for Issue #18
                     repository.Insert(student);
 
                     dgvStudents.Rows.Add(
