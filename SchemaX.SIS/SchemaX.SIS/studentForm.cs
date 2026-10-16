@@ -1,10 +1,12 @@
 
+using SchemaX.SIS.Data;
+using SchemaX.SIS.Helpers;
+using SchemaX.SIS.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using SchemaX.SIS.Helpers;
-using SchemaX.SIS.Models;
 
 namespace SchemaX.SIS
 {
@@ -84,6 +86,43 @@ namespace SchemaX.SIS
                 return;
             }
 
+            // Delete the student from the database
+            try
+            {
+                StudentRepository repository = new StudentRepository();
+                bool deleted = repository.Delete(studentId);
+
+                if (deleted)
+                {
+                    // Remove the student from the grid
+                    dgvStudents.Rows.Remove(row);
+
+                    MessageBox.Show(
+                        "Student deleted successfully!",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "No student record was deleted.",
+                        "Delete Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to delete student.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -99,7 +138,74 @@ namespace SchemaX.SIS
 
                 return;
             }
+
+            string? id = dgvStudents.CurrentRow.Cells["StudentID"].Value?.ToString();
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                MessageBox.Show("Please select a student first.", "No selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            EnterEditMode(id);
         }
+
+        private bool _isEdit;
+
+        // fill the fields, lock the Student ID, change the title
+        private void EnterEditMode(string studentId)
+        {
+            try
+            {
+                StudentRepository repository = new StudentRepository();
+
+                Student? s = repository.GetById(studentId);
+                if (s == null)
+                {
+                    MessageBox.Show("That student no longer exists.", "Not found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                _isEdit = true;
+
+                txtStudentID.Text = s.StudentId;
+                txtFirstName.Text = s.FirstName;
+                txtMidName.Text = s.MiddleName ?? "";
+                txtSurname.Text = s.Surname;
+                cmbGender.Text = s.Gender;
+                cmbYrLevel.Text = s.YearLevel.ToString();
+                txtProgram.Text = s.Program;
+                txtBloc.Text = s.Bloc;
+                txtBirthdate.Text = s.Birthday.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                txtBUEmail.Text = s.BuEmail;
+                txtContactNo.Text = s.ContactNo;
+
+                txtStudentID.ReadOnly = true;                         // lock Student ID
+                Text = "Student Information System - EDIT STUDENT";   // title changes
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot connect to the database. Please check that MySQL is running.",
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Returns the form to Add mode 
+        private void ExitEditMode()
+        {
+            _isEdit = false;
+            txtStudentID.ReadOnly = false;
+            Text = "Student Information System";
+
+            foreach (var tb in new[] { txtStudentID, txtFirstName, txtMidName, txtSurname,
+                               txtProgram, txtBloc, txtBirthdate, txtBUEmail, txtContactNo })
+                tb.Clear();
+
+            cmbGender.SelectedIndex = -1; cmbGender.Text = "";
+            cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -130,25 +236,28 @@ namespace SchemaX.SIS
                 return;
             }
 
-            // Check if the Student ID already exists in the grid
-            foreach (DataGridViewRow row in dgvStudents.Rows)
+            // Check for duplicate Student ID only when adding a new student
+            if (!_isEdit)
             {
-                if (row.IsNewRow)
-                    continue;
-
-                if (string.Equals(
-                    row.Cells[0].Value?.ToString(),
-                    studentId,
-                    StringComparison.OrdinalIgnoreCase))
+                foreach (DataGridViewRow row in dgvStudents.Rows)
                 {
-                    MessageBox.Show(
-                        "This Student ID already exists.",
-                        "Duplicate Student ID",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
+                    if (row.IsNewRow)
+                        continue;
 
-                    return;
+                    if (string.Equals(
+                        row.Cells[0].Value?.ToString(),
+                        studentId,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show(
+                            "This Student ID already exists.",
+                            "Duplicate Student ID",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+
+                        return;
+                    }
                 }
             }
 
@@ -279,51 +388,134 @@ namespace SchemaX.SIS
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
 
+            string middleName = txtMidName.Text.Trim();
+            string surname = txtSurname.Text.Trim();
+            string bloc = txtBloc.Text.Trim();
+            string buEmail = txtBUEmail.Text.Trim();
+
+            if(!DateTime.TryParse(txtBirthdate.Text.Trim(), out DateTime birthday))
+            {
+                MessageBox.Show("Please enter a valid birthday.");
+                return;
+            }
+
             // Create a Student object
             Student student = new Student
             {
                 StudentId = studentId,
                 FirstName = studentName,
-                ContactNo = contactNumber,
-                Program = program,
+                MiddleName = string.IsNullOrWhiteSpace(middleName) ? null : middleName,
+                Surname = surname,
                 Gender = gender,
-                YearLevel = year
+                YearLevel = year,
+                Program = program,
+                Bloc = bloc,
+                Birthday = birthday,
+                BuEmail = buEmail,
+                ContactNo = contactNumber,
+                PhotoPath = null
             };
 
-            dgvStudents.Rows.Add(
-                student.StudentId,
-                student.FullName,
-                student.Gender,
-                student.YearLevel,
-                student.Program,
-                student.ContactNo
-            );
+            // save the student to MySQL
+            try
+            {
+                StudentRepository repository = new StudentRepository();
 
-            // Clear the input fields
-            txtStudentID.Clear();
-            txtFirstName.Clear();
-            txtMidName.Clear();
-            txtSurname.Clear();
-            txtContactNo.Clear();
-            txtProgram.Clear();
-            txtBloc.Clear();
-            txtBirthdate.Clear();
-            txtBUEmail.Clear();
+                if (_isEdit)
+                {
+                    bool updated = repository.Update(student);
 
-            cmbGender.SelectedIndex = -1;
-            cmbGender.Text = "";
+                    if (updated)
+                    {
+                        // Update the selected student's information in the grid
+                        foreach (DataGridViewRow row in dgvStudents.Rows)
+                        {
+                            if (row.IsNewRow)
+                                continue;
 
-            cmbYrLevel.SelectedIndex = -1;
-            cmbYrLevel.Text = "";
+                            if (string.Equals(
+                                row.Cells[0].Value?.ToString(),
+                                student.StudentId,
+                                StringComparison.OrdinalIgnoreCase))
+                            {
+                                row.Cells[1].Value = student.FullName;
+                                row.Cells[2].Value = student.Gender;
+                                row.Cells[3].Value = student.YearLevel;
+                                row.Cells[4].Value = student.Program;
+                                row.Cells[5].Value = student.ContactNo;
+                                break;
+                            }
+                        }
 
-            txtStudentID.Focus();
+                        MessageBox.Show(
+                            "Student updated successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
 
-            MessageBox.Show(
-                "Student added to the table!",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+                        ExitEditMode();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "No student record was updated.",
+                            "Update Failed",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                    }
+                }
+                else
+                {
+                    repository.Insert(student);
+
+                    dgvStudents.Rows.Add(
+                        student.StudentId,
+                        student.FullName,
+                        student.Gender,
+                        student.YearLevel,
+                        student.Program,
+                        student.ContactNo
+                    );
+
+                    // Clear the input fields
+                    txtStudentID.Clear();
+                    txtFirstName.Clear();
+                    txtMidName.Clear();
+                    txtSurname.Clear();
+                    txtContactNo.Clear();
+                    txtProgram.Clear();
+                    txtBloc.Clear();
+                    txtBirthdate.Clear();
+                    txtBUEmail.Clear();
+
+                    cmbGender.SelectedIndex = -1;
+                    cmbGender.Text = "";
+
+                    cmbYrLevel.SelectedIndex = -1;
+                    cmbYrLevel.Text = "";
+
+                    txtStudentID.Focus();
+
+                    MessageBox.Show(
+                        "Student saved successfully!",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to save student to the database.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
         }
 
         private void btnViewClear_Click(object sender, EventArgs e)
