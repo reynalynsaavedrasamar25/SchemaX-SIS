@@ -1,11 +1,12 @@
 
-using System;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using SchemaX.SIS.Data;
 using SchemaX.SIS.Helpers;
 using SchemaX.SIS.Models;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace SchemaX.SIS
 {
@@ -100,7 +101,75 @@ namespace SchemaX.SIS
 
                 return;
             }
+
+            string? id = dgvStudents.CurrentRow.Cells["StudentID"].Value?.ToString();
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                MessageBox.Show("Please select a student first.", "No selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            EnterEditMode(id);
         }
+
+        private bool _isEdit;
+
+        // Checkboxes 2 and 3: fill the fields, lock the Student ID, change the title
+        private void EnterEditMode(string studentId)
+        {
+            try
+            {
+                StudentRepository repository = new StudentRepository();
+
+                Student? s = repository.GetById(studentId);
+                if (s == null)
+                {
+                    MessageBox.Show("That student no longer exists.", "Not found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                _isEdit = true;
+
+                txtStudentID.Text = s.StudentId;
+                txtFirstName.Text = s.FirstName;
+                txtMidName.Text = s.MiddleName ?? "";
+                txtSurname.Text = s.Surname;
+                cmbGender.Text = s.Gender;
+                cmbYrLevel.Text = s.YearLevel.ToString();
+                txtProgram.Text = s.Program;
+                txtBloc.Text = s.Bloc;
+                txtBirthdate.Text = s.Birthday.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                txtBUEmail.Text = s.BuEmail;
+                txtContactNo.Text = s.ContactNo;
+
+                txtStudentID.ReadOnly = true;                         // lock Student ID
+                Text = "Student Information System - EDIT STUDENT";   // title changes
+            }
+            catch (Exception)
+            {
+                // TODO: ErrorLog.Write(ex) once Princess Ida's ErrorLog is merged
+                MessageBox.Show("Cannot connect to the database. Please check that MySQL is running.",
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Returns the form to Add mode (#20 will call this after a successful save)
+        private void ExitEditMode()
+        {
+            _isEdit = false;
+            txtStudentID.ReadOnly = false;
+            Text = "Student Information System";
+
+            foreach (var tb in new[] { txtStudentID, txtFirstName, txtMidName, txtSurname,
+                               txtProgram, txtBloc, txtBirthdate, txtBUEmail, txtContactNo })
+                tb.Clear();
+
+            cmbGender.SelectedIndex = -1; cmbGender.Text = "";
+            cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
