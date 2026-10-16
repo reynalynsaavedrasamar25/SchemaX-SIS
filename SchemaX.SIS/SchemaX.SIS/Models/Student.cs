@@ -19,7 +19,6 @@ namespace SchemaX.SIS.Models
         public string BuEmail { get; set; } = string.Empty;
         public string ContactNo { get; set; } = string.Empty;
         public string? PhotoPath { get; set; }
-        public string? PhotoPath { get; set; }
 
         public string FullName
         {
