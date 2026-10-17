@@ -109,5 +109,17 @@ namespace SchemaX.SIS.Data
             command.Parameters.AddWithValue("@id", enrollmentId);
             return command.ExecuteNonQuery() > 0;
         }
+
+        // Remove ONE enrolled subject (its grade goes with it). Other rows are untouched.
+        public bool RemoveSubject(int enrollmentId)
+        {
+            using var connection = Db.Open();
+
+            string query = "DELETE FROM student_subjects WHERE id = @id;";
+
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@id", enrollmentId);
+            return command.ExecuteNonQuery() > 0;
+        }
     }
 }
