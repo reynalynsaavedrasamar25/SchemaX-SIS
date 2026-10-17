@@ -82,15 +82,13 @@ namespace SchemaX.SIS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Could not load students from the database.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                SchemaX.SIS.Helpers.ExceptionHandler.Handle(
+                    ex,
+                    "Unable to load students. Please check your database connection and try again."
                 );
             }
         }
-
+            
 
         public void UnlockIDClearSlction()
         {
@@ -577,14 +575,26 @@ namespace SchemaX.SIS
                     );
                 }
             }
+
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Failed to save student to the database.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                if (ex is MySqlConnector.MySqlException mysqlEx &&
+                    mysqlEx.Number == 1062)
+                {
+                    MessageBox.Show(
+                        "That Student ID or BU email already exists.",
+                        "Duplicate Student",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+                else
+                {
+                    SchemaX.SIS.Helpers.ExceptionHandler.Handle(
+                        ex,
+                        "Failed to save student. Please check your database connection and try again."
+                    );
+                }
             }
 
         }
