@@ -149,7 +149,6 @@ namespace SchemaX.SIS
                 // Clear the student information fields
                 ClearStudentFields();
 
-                // Keep your teammate's original reset logic
                 UnlockIDClearSlction();
             }
         }
