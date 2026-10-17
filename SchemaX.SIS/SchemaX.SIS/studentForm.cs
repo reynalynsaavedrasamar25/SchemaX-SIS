@@ -126,79 +126,52 @@ namespace SchemaX.SIS
 
             // Ask for confirmation before deleting
             DialogResult result = MessageBox.Show(
-                $"Are you sure you want to delete {studentName} ({studentId})?",
+                $"Are you sure you want to delete {studentName} ({studentId})?\n\n" +
+                "Warning: Deleting this student may also delete related records, " +
+                "such as enrolled subjects and attendance records. This action cannot be undone.",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
 
-            // Stop if the user clicks No
-            if (result == DialogResult.No)
+            if (result != DialogResult.Yes)
             {
                 return;
             }
-
+            bool deleted = false;
             try
             {
-                // Delete the student from MySQL
-                bool deleted = _studentRepository.Delete(studentId);
-
-                if (deleted)
-                {
-                    MessageBox.Show(
-                        "Student deleted successfully!",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "No student record was deleted.",
-                        "Delete Failed",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                }
+                deleted = _studentRepository.Delete(studentId);
+                
+                MessageBox.Show(
+                    deleted ? "Student deleted successfully!" : "No student record was deleted.",
+                    deleted ? "Success" : "Deleted failed", MessageBoxButtons.OK,
+                    deleted ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Failed to delete student from the database.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                ExceptionHandler.Handle(ex, "Could not delete the student. Please try again.");
             }
-
-            finally
-            {
-                // Return to Add Mode after deletion
+            LoadStudents();
+            if (deleted)
                 ExitEditMode();
-
-                // Refresh the DataGridView
-                LoadStudents();
-
-                // Clear the student information fields
-                ClearStudentFields();
-
-                UnlockIDClearSlction();
-            }
-        } private void btnEdit_Click(object sender, EventArgs e)
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (!_isEdit)
+            if (dgvStudents.SelectedRows.Count == 0 || !_isEdit)
             {
                 MessageBox.Show(
                     "Please select a student before editing.",
                     "No Student Selected",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
-                );     return;
+                );
+                return;
             }
 
-            // Use the existing validation and database update logic.
-            _isEdit = true;
+            string? id = dgvStudents.SelectedRows[0]
+                .Cells["StudentID"].Value?.ToString();
+
             SaveStudent(sender, e);
         }
 
@@ -258,6 +231,8 @@ namespace SchemaX.SIS
 
             cmbGender.SelectedIndex = -1; cmbGender.Text = "";
             cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
+
+            UnlockIDClearSlction();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -359,7 +334,7 @@ namespace SchemaX.SIS
             if (!Validator.IsRequiredFieldValid(surname))
             {
                 MessageBox.Show(
-                    "Please enter the student's surname.",
+                    "Please enter a valid surname (letters, spaces, hypens, apostrophes).",
                     "Validation Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -477,10 +452,38 @@ namespace SchemaX.SIS
 
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
-
-            string middleName = txtMidName.Text.Trim(); string bloc = txtBloc.Text.Trim();  string buEmail = txtBUEmail.Text.Trim();
-
             DateTime birthday = dateBirthDate.Value;
+
+            string middleName = txtMidName.Text.Trim();
+            // Middle name validation (optional)
+            if (middleName.Length > 0 && !Validator.IsNameValid(middleName))
+            {
+                Warn("Middle name can only contain letters, spaces, hypens, and apostrophes.");
+                return;
+            }
+
+            string bloc = txtBloc.Text.Trim();
+            // Bloc validation (required)
+            if (!Validator.IsRequiredFieldValid(bloc))
+            {
+                Warn("Please enter the student's bloc.");
+                return;
+            }
+
+            string buEmail = txtBUEmail.Text.Trim();
+            // BU Email validation
+            if (!Validator.IsBuEmailValid(buEmail))
+            {
+                Warn("Email must be a valid @bicol-u.edu.ph address.");
+                return;
+            }
+
+            // Birthday validation
+            if (!Validator.IsBirthdayValid(dateBirthDate.Value))
+            {
+                Warn("Please select a valid birthday (it can't be today or in the future).");
+                return;
+            }
 
             // Create a Student object
             Student student = new Student
@@ -511,33 +514,14 @@ namespace SchemaX.SIS
                     if (updated)
                     {
                         // Update the selected student's information in the grid
-                        foreach (DataGridViewRow row in dgvStudents.Rows)
-                        {
-                            if (row.IsNewRow)
-                                continue;
-
-                            if (string.Equals(
-                                row.Cells[0].Value?.ToString(),
-                                student.StudentId,
-                                StringComparison.OrdinalIgnoreCase))
-                            {
-                                row.Cells[1].Value = student.FullName;
-                                row.Cells[2].Value = student.Gender;
-                                row.Cells[3].Value = student.YearLevel;
-                                row.Cells[4].Value = student.Program;
-                                row.Cells[5].Value = student.ContactNo;
-                                break;
-                            }
-                        }
-
+                        LoadStudents();
+                        ExitEditMode();
                         MessageBox.Show(
                             "Student updated successfully!",
                             "Success",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
-
-                        ExitEditMode();
                     }
                     else
                     {
@@ -553,18 +537,8 @@ namespace SchemaX.SIS
                 {
                     repository.Insert(student);
 
-                    dgvStudents.Rows.Add(
-                        student.StudentId,
-                        student.FullName,
-                        student.Gender,
-                        student.YearLevel,
-                        student.Program,
-                        student.ContactNo
-                    );
-
-                    // Clear the input fields
+                    LoadStudents();
                     ClearStudentFields();
-
                     txtStudentID.Focus();
 
                     MessageBox.Show(
@@ -639,19 +613,6 @@ namespace SchemaX.SIS
         {
             ExitEditMode();
             LoadStudents();
-            UnlockIDClearSlction();
-
-            //clear every field
-            txtStudentID.Clear();
-            txtFirstName.Clear();
-            txtMidName.Clear();
-            txtSurname.Clear();
-            txtContactNo.Clear();
-            txtProgram.Clear();
-            txtBloc.Clear();
-            txtBUEmail.Clear();
-            cmbGender.SelectedIndex = -1;
-            cmbYrLevel.SelectedIndex = -1;
         }
 
         private void studentForm_Load(object sender, EventArgs e)
@@ -744,5 +705,12 @@ namespace SchemaX.SIS
                     MessageBoxIcon.Error);
             }
         }
+
+        private static void Warn(string message) => 
+            MessageBox.Show(message,
+                "Validation Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
     }
 }
