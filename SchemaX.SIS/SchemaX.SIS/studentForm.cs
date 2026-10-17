@@ -47,31 +47,50 @@ namespace SchemaX.SIS
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
         }
 
-       public void LoadStudents()
-{
-    // Item 0 is "All Years" / "All Programs", so index 0 means no filter.
-    // "1st Year" is item 1, "2nd Year" is item 2, and so on.
-    int? year = cmbYrFilter.SelectedIndex > 0 ? cmbYrFilter.SelectedIndex : null;
-    string? program = cmbProgramFilter.SelectedIndex > 0 ? cmbProgramFilter.Text : null;
 
-    try
-    {
-        var students = _studentRepository.Search(txtSearch.Text, year, program);
-
-        dgvStudents.Rows.Clear();
-        foreach (var s in students)
+        public void LoadStudents()
         {
-            dgvStudents.Rows.Add(s.StudentId, s.FullName, s.Gender, s.YearLevel, s.Program, s.ContactNo);
+            string year = cmbYrFilter.SelectedIndex > 0
+                ? cmbYrFilter.SelectedIndex.ToString()
+                : "All";
+
+            string program = cmbProgramFilter.SelectedIndex > 0
+                ? cmbProgramFilter.Text
+                : "All";
+
+            try
+            {
+                var students = _studentRepository.Search(
+                    txtSearch.Text, year, program);
+
+                dgvStudents.Rows.Clear();
+
+                foreach (System.Data.DataRow row in students.Rows)
+                {
+                    dgvStudents.Rows.Add(
+                        row["Student ID"],
+                        row["Name"],
+                        row["Gender"],
+                        row["Year"],
+                        row["Program"],
+                        row["Contact"]
+                    );
+                }
+
+                labelStudentsShown.Text =
+                    $"Students shown: {students.Rows.Count}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Could not load students from the database.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
-        labelStudentsShown.Text = $"Students shown: {students.Count}";
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Could not load students from the database.\n\n" + ex.Message,
-            "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
 
         public void UnlockIDClearSlction()
         {
@@ -154,8 +173,12 @@ namespace SchemaX.SIS
                     MessageBoxIcon.Error
                 );
             }
+
             finally
             {
+                // Return to Add Mode after deletion
+                ExitEditMode();
+
                 // Refresh the DataGridView
                 LoadStudents();
 
@@ -164,31 +187,21 @@ namespace SchemaX.SIS
 
                 UnlockIDClearSlction();
             }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
+        } private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dgvStudents.SelectedRows.Count == 0)
+            if (!_isEdit)
             {
                 MessageBox.Show(
                     "Please select a student before editing.",
                     "No Student Selected",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
-                );
-
-                return;
+                );     return;
             }
 
-            string? id = dgvStudents.CurrentRow.Cells["StudentID"].Value?.ToString();
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                MessageBox.Show("Please select a student first.", "No selection",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            EnterEditMode(id);
+            // Use the existing validation and database update logic.
+            _isEdit = true;
+            SaveStudent(sender, e);
         }
 
         private bool _isEdit;
@@ -248,9 +261,23 @@ namespace SchemaX.SIS
             cmbGender.SelectedIndex = -1; cmbGender.Text = "";
             cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
         }
-
-
         private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (_isEdit)
+            {
+                MessageBox.Show(
+                    "You are editing an existing student. Click Edit to save changes.",
+                    "Edit Mode",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+
+            SaveStudent(sender, e);
+        }
+
+        private void SaveStudent(object sender, EventArgs e)
         {
             // Student ID validation
             string studentId = txtStudentID.Text.Trim();
@@ -270,17 +297,14 @@ namespace SchemaX.SIS
             if (!Validator.IsStudentIdValid(studentId))
             {
                 MessageBox.Show(
-                    "Student ID must follow the format YYYY-XXXXX (e.g., 2026-00001).",
+                    "Student ID must follow the format YYYY-XX-XXXXX (e.g., 2025-01-06767).",
                     "Validation Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
 
                 return;
-            }
-
-            // Check for duplicate Student ID only when adding a new student
-            if (!_isEdit)
+            } if (!_isEdit)
             {
                 foreach (DataGridViewRow row in dgvStudents.Rows)
                 {
@@ -328,6 +352,31 @@ namespace SchemaX.SIS
                     MessageBoxIcon.Warning
                 );
 
+                return;
+            }
+
+            // Surname validation
+            string surname = txtSurname.Text.Trim();
+
+            if (!Validator.IsRequiredFieldValid(surname))
+            {
+                MessageBox.Show(
+                    "Please enter the student's surname.",
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (!Validator.IsNameValid(surname))
+            {
+                MessageBox.Show(
+                    "Surname can only contain letters, spaces, hyphens, and apostrophes.",
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
                 return;
             }
 
@@ -431,10 +480,7 @@ namespace SchemaX.SIS
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
 
-            string middleName = txtMidName.Text.Trim();
-            string surname = txtSurname.Text.Trim();
-            string bloc = txtBloc.Text.Trim();
-            string buEmail = txtBUEmail.Text.Trim();
+            string middleName = txtMidName.Text.Trim(); string bloc = txtBloc.Text.Trim();  string buEmail = txtBUEmail.Text.Trim();
 
             DateTime birthday = dateBirthDate.Value;
 
@@ -553,16 +599,25 @@ namespace SchemaX.SIS
 
         private void btnViewSearch_Click(object sender, EventArgs e)
         {
-        LoadStudents();
+            LoadStudents();
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // DO NOT REPLACE WITH UnlockIDClearSlction or I will be very sad :(
-            ///////////////////////////////////////////////
-            labelStudentIDHint.Visible = true; //show the hint label
-            txtStudentID.ReadOnly = true; //prevents editing the StudentID
-            txtStudentID.BackColor = ThemeColors.Danger; //change the background color to indicate it's read-only
+            if (e.RowIndex < 0)
+                return;
+
+            string studentId =
+                dgvStudents.Rows[e.RowIndex].Cells[0].Value?.ToString() ?? "";
+
+            if (string.IsNullOrWhiteSpace(studentId))
+                return;
+
+            EnterEditMode(studentId);
+
+            labelStudentIDHint.Visible = true;
+            txtStudentID.ReadOnly = true;
+            txtStudentID.BackColor = ThemeColors.Danger;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -572,6 +627,7 @@ namespace SchemaX.SIS
 
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
+            ExitEditMode();
             LoadStudents();
             UnlockIDClearSlction();
 
@@ -590,12 +646,12 @@ namespace SchemaX.SIS
 
         private void studentForm_Load(object sender, EventArgs e)
         {
-        cmbYrFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-        cmbProgramFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-        cmbYrFilter.SelectedIndex = 0;
-        cmbProgramFilter.SelectedIndex = 0;
-        cmbYrFilter.SelectedIndexChanged += (s, e) => LoadStudents();
-        cmbProgramFilter.SelectedIndexChanged += (s, e) => LoadStudents();
+            cmbYrFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProgramFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbYrFilter.SelectedIndex = 0;
+            cmbProgramFilter.SelectedIndex = 0;
+            cmbYrFilter.SelectedIndexChanged += (s, e) => LoadStudents();
+            cmbProgramFilter.SelectedIndexChanged += (s, e) => LoadStudents();
             LoadStudents();
             UnlockIDClearSlction();
         }
@@ -621,5 +677,62 @@ namespace SchemaX.SIS
             dateBirthDate.Value = DateTime.Today;
         }
 
+        private void btnExportCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using SaveFileDialog dialog = new SaveFileDialog
+                {
+                    Filter = "CSV Files (*.csv)|*.csv",
+                    FileName = "Student_Report.csv",
+                    Title = "Export Students to CSV"
+                };
+
+                if (dialog.ShowDialog() != DialogResult.OK)
+                    return;
+
+                using var writer = new System.IO.StreamWriter(
+                    dialog.FileName, false, System.Text.Encoding.UTF8);
+
+                var columns = dgvStudents.Columns
+                    .Cast<DataGridViewColumn>()
+                    .Where(c => c.Visible)
+                    .OrderBy(c => c.DisplayIndex)
+                    .ToList();
+
+                string EscapeCsv(object? value)
+                {
+                    string text = Convert.ToString(value) ?? "";
+                    return "\"" + text.Replace("\"", "\"\"") + "\"";
+                }
+
+                writer.WriteLine(string.Join(",",
+                    columns.Select(c => EscapeCsv(c.HeaderText))));
+
+                foreach (DataGridViewRow row in dgvStudents.Rows)
+                {
+                    if (row.IsNewRow)
+                        continue;
+
+                    writer.WriteLine(string.Join(",",
+                        columns.Select(c => EscapeCsv(
+                            row.Cells[c.Index].FormattedValue))));
+                }
+
+                MessageBox.Show(
+                    "Students exported successfully!",
+                    "Export Complete",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "CSV export failed: " + ex.Message,
+                    "Export Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
     }
 }

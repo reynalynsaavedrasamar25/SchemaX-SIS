@@ -129,7 +129,7 @@
             labelNamePreview.AutoSize = true;
             labelNamePreview.Location = new Point(10, 64);
             labelNamePreview.Name = "labelNamePreview";
-            labelNamePreview.Size = new Size(229, 15);
+            labelNamePreview.Size = new Size(228, 15);
             labelNamePreview.TabIndex = 21;
             labelNamePreview.Text = "Student: [None if new, else existing name]";
             // 
@@ -165,6 +165,7 @@
             btnExportCSV.TabIndex = 14;
             btnExportCSV.Text = "Export CSV";
             btnExportCSV.UseVisualStyleBackColor = true;
+            btnExportCSV.Click += btnExportCSV_Click;
             // 
             // txtBUEmail
             // 
@@ -343,6 +344,7 @@
             btnViewSearch.TabIndex = 19;
             btnViewSearch.Text = "Search";
             btnViewSearch.UseVisualStyleBackColor = true;
+            btnViewSearch.Click += btnViewSearch_Click;
             // 
             // txtSearch
             // 

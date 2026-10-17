@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 **/logs/
+
+# Local database credentials
+SchemaX.SIS/SchemaX.SIS/appsettings.json
