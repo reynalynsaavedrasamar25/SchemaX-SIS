@@ -132,73 +132,44 @@ namespace SchemaX.SIS
                 MessageBoxIcon.Warning
             );
 
-            // Stop if the user clicks No
-            if (result == DialogResult.No)
+            if (result != DialogResult.Yes)
             {
                 return;
             }
-
+            bool deleted = false;
             try
             {
-                // Delete the student from MySQL
-                bool deleted = _studentRepository.Delete(studentId);
-
-                if (deleted)
-                {
-                    MessageBox.Show(
-                        "Student deleted successfully!",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "No student record was deleted.",
-                        "Delete Failed",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                }
+                deleted = _studentRepository.Delete(studentId);
+                
+                MessageBox.Show(
+                    deleted ? "Student deleted successfully!" : "No student record was deleted.",
+                    deleted ? "Success" : "Deleted failed", MessageBoxButtons.OK,
+                    deleted ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Failed to delete student from the database.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                ExceptionHandler.Handle(ex, "Could not delete the student. Please try again.");
             }
-
-            finally
-            {
-                // Return to Add Mode after deletion
+            LoadStudents();
+            if (deleted)
                 ExitEditMode();
-
-                // Refresh the DataGridView
-                LoadStudents();
-
-                // Clear the student information fields
-                ClearStudentFields();
-
-                UnlockIDClearSlction();
-            }
-        } private void btnEdit_Click(object sender, EventArgs e)
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (!_isEdit)
+            if (dgvStudents.SelectedRows.Count == 0 || !_isEdit)
             {
                 MessageBox.Show(
                     "Please select a student before editing.",
                     "No Student Selected",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
-                );     return;
+                );
+                return;
             }
 
-            // Use the existing validation and database update logic.
-            _isEdit = true;
+            string? id = dgvStudents.SelectedRows[0]
+                .Cells["StudentID"].Value?.ToString();
+
             SaveStudent(sender, e);
         }
 
@@ -258,6 +229,8 @@ namespace SchemaX.SIS
 
             cmbGender.SelectedIndex = -1; cmbGender.Text = "";
             cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
+
+            UnlockIDClearSlction();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -638,19 +611,6 @@ namespace SchemaX.SIS
         {
             ExitEditMode();
             LoadStudents();
-            UnlockIDClearSlction();
-
-            //clear every field
-            txtStudentID.Clear();
-            txtFirstName.Clear();
-            txtMidName.Clear();
-            txtSurname.Clear();
-            txtContactNo.Clear();
-            txtProgram.Clear();
-            txtBloc.Clear();
-            txtBUEmail.Clear();
-            cmbGender.SelectedIndex = -1;
-            cmbYrLevel.SelectedIndex = -1;
         }
 
         private void studentForm_Load(object sender, EventArgs e)
