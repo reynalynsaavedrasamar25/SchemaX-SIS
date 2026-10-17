@@ -108,8 +108,50 @@ namespace SchemaX.SIS
                 return;
             }
 
-            LoadStudents();
-            UnlockIDClearSlction();
+            try
+            {
+                // Delete the student from MySQL
+                bool deleted = _studentRepository.Delete(studentId);
+
+                if (deleted)
+                {
+                    MessageBox.Show(
+                        "Student deleted successfully!",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "No student record was deleted.",
+                        "Delete Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to delete student from the database.\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                // Refresh the DataGridView
+                LoadStudents();
+
+                // Clear the student information fields
+                ClearStudentFields();
+
+                // Keep your teammate's original reset logic
+                UnlockIDClearSlction();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -164,7 +206,7 @@ namespace SchemaX.SIS
                 cmbYrLevel.Text = s.YearLevel.ToString();
                 txtProgram.Text = s.Program;
                 txtBloc.Text = s.Bloc;
-                txtBirthdate.Text = s.Birthday.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+                dateBirthDate.Value = s.Birthday;
                 txtBUEmail.Text = s.BuEmail;
                 txtContactNo.Text = s.ContactNo;
 
@@ -186,8 +228,10 @@ namespace SchemaX.SIS
             Text = "Student Information System";
 
             foreach (var tb in new[] { txtStudentID, txtFirstName, txtMidName, txtSurname,
-                               txtProgram, txtBloc, txtBirthdate, txtBUEmail, txtContactNo })
+                           txtProgram, txtBloc, txtBUEmail, txtContactNo })
                 tb.Clear();
+
+            dateBirthDate.Value = DateTime.Today;
 
             cmbGender.SelectedIndex = -1; cmbGender.Text = "";
             cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
@@ -380,11 +424,7 @@ namespace SchemaX.SIS
             string bloc = txtBloc.Text.Trim();
             string buEmail = txtBUEmail.Text.Trim();
 
-            if(!DateTime.TryParse(txtBirthdate.Text.Trim(), out DateTime birthday))
-            {
-                MessageBox.Show("Please enter a valid birthday.");
-                return;
-            }
+            DateTime birthday = dateBirthDate.Value;
 
             // Create a Student object
             Student student = new Student
@@ -467,21 +507,7 @@ namespace SchemaX.SIS
                     );
 
                     // Clear the input fields
-                    txtStudentID.Clear();
-                    txtFirstName.Clear();
-                    txtMidName.Clear();
-                    txtSurname.Clear();
-                    txtContactNo.Clear();
-                    txtProgram.Clear();
-                    txtBloc.Clear();
-                    txtBirthdate.Clear();
-                    txtBUEmail.Clear();
-
-                    cmbGender.SelectedIndex = -1;
-                    cmbGender.Text = "";
-
-                    cmbYrLevel.SelectedIndex = -1;
-                    cmbYrLevel.Text = "";
+                    ClearStudentFields();
 
                     txtStudentID.Focus();
 
@@ -553,6 +579,26 @@ namespace SchemaX.SIS
             UnlockIDClearSlction();
         }
 
-        
+
+        private void ClearStudentFields()
+        {
+            txtStudentID.Clear();
+            txtFirstName.Clear();
+            txtMidName.Clear();
+            txtSurname.Clear();
+            txtContactNo.Clear();
+            txtProgram.Clear();
+            txtBloc.Clear();
+            txtBUEmail.Clear();
+
+            cmbGender.SelectedIndex = -1;
+            cmbGender.Text = "";
+
+            cmbYrLevel.SelectedIndex = -1;
+            cmbYrLevel.Text = "";
+
+            dateBirthDate.Value = DateTime.Today;
+        }
+
     }
 }
