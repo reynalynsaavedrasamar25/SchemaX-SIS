@@ -126,7 +126,9 @@ namespace SchemaX.SIS
 
             // Ask for confirmation before deleting
             DialogResult result = MessageBox.Show(
-                $"Are you sure you want to delete {studentName} ({studentId})?",
+                $"Are you sure you want to delete {studentName} ({studentId})?\n\n" +
+                "Warning: Deleting this student may also delete related records, " +
+                "such as enrolled subjects and attendance records. This action cannot be undone.",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
