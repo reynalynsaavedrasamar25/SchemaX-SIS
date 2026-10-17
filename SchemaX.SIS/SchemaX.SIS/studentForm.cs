@@ -546,11 +546,14 @@ namespace SchemaX.SIS
         private void btnViewClear_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
+            cmbYrFilter.SelectedIndex = 0;
+            cmbProgramFilter.SelectedIndex = 0;
+            LoadStudents();
         }
 
         private void btnViewSearch_Click(object sender, EventArgs e)
         {
-
+        LoadStudents();
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -587,6 +590,12 @@ namespace SchemaX.SIS
 
         private void studentForm_Load(object sender, EventArgs e)
         {
+        cmbYrFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+        cmbProgramFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+        cmbYrFilter.SelectedIndex = 0;
+        cmbProgramFilter.SelectedIndex = 0;
+        cmbYrFilter.SelectedIndexChanged += (s, e) => LoadStudents();
+        cmbProgramFilter.SelectedIndexChanged += (s, e) => LoadStudents();
             LoadStudents();
             UnlockIDClearSlction();
         }
