@@ -82,15 +82,13 @@ namespace SchemaX.SIS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Could not load students from the database.\n\n" + ex.Message,
-                    "Database Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                SchemaX.SIS.Helpers.ExceptionHandler.Handle(
+                    ex,
+                    "Unable to load students. Please check your database connection and try again."
                 );
             }
         }
-
+            
 
         public void UnlockIDClearSlction()
         {
