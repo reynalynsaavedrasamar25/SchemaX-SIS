@@ -47,18 +47,31 @@ namespace SchemaX.SIS
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
         }
 
-        public void LoadStudents()
+       public void LoadStudents()
+{
+    // Item 0 is "All Years" / "All Programs", so index 0 means no filter.
+    // "1st Year" is item 1, "2nd Year" is item 2, and so on.
+    int? year = cmbYrFilter.SelectedIndex > 0 ? cmbYrFilter.SelectedIndex : null;
+    string? program = cmbProgramFilter.SelectedIndex > 0 ? cmbProgramFilter.Text : null;
+
+    try
+    {
+        var students = _studentRepository.Search(txtSearch.Text, year, program);
+
+        dgvStudents.Rows.Clear();
+        foreach (var s in students)
         {
-            List<Student> students = _studentRepository.GetAll();
-            dgvStudents.Rows.Clear();
-
-            foreach (Student student in students)
-            {
-                dgvStudents.Rows.Add(student.StudentId, $"{student.FirstName} {student.Surname}", student.Gender, student.YearLevel, student.Program, student.ContactNo);
-            }
-
-            UnlockIDClearSlction();
+            dgvStudents.Rows.Add(s.StudentId, s.FullName, s.Gender, s.YearLevel, s.Program, s.ContactNo);
         }
+
+        labelStudentsShown.Text = $"Students shown: {students.Count}";
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Could not load students from the database.\n\n" + ex.Message,
+            "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
 
         public void UnlockIDClearSlction()
         {
