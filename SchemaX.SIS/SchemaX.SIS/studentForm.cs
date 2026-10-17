@@ -359,7 +359,7 @@ namespace SchemaX.SIS
             if (!Validator.IsRequiredFieldValid(surname))
             {
                 MessageBox.Show(
-                    "Please enter the student's surname.",
+                    "Please enter a valid surname (letters, spaces, hypens, apostrophes).",
                     "Validation Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -477,10 +477,38 @@ namespace SchemaX.SIS
 
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
-
-            string middleName = txtMidName.Text.Trim(); string bloc = txtBloc.Text.Trim();  string buEmail = txtBUEmail.Text.Trim();
-
             DateTime birthday = dateBirthDate.Value;
+
+            string middleName = txtMidName.Text.Trim();
+            // Middle name validation (optional)
+            if (middleName.Length > 0 && !Validator.IsNameValid(middleName))
+            {
+                Warn("Middle name can only contain letters, spaces, hypens, and apostrophes.");
+                return;
+            }
+
+            string bloc = txtBloc.Text.Trim();
+            // Bloc validation (required)
+            if (!Validator.IsRequiredFieldValid(bloc))
+            {
+                Warn("Please enter the student's bloc.");
+                return;
+            }
+
+            string buEmail = txtBUEmail.Text.Trim();
+            // BU Email validation
+            if (!Validator.IsBuEmailValid(buEmail))
+            {
+                Warn("Email must be a valid @bicol-u.edu.ph address.");
+                return;
+            }
+
+            // Birthday validation
+            if (!Validator.IsBirthdayValid(dateBirthDate.Value))
+            {
+                Warn("Please select a valid birthday (it can't be today or in the future).");
+                return;
+            }
 
             // Create a Student object
             Student student = new Student
@@ -744,5 +772,12 @@ namespace SchemaX.SIS
                     MessageBoxIcon.Error);
             }
         }
+
+        private static void Warn(string message) => 
+            MessageBox.Show(message,
+                "Validation Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
     }
 }

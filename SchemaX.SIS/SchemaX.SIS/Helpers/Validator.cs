@@ -22,7 +22,7 @@ namespace SchemaX.SIS.Helpers
             return !string.IsNullOrWhiteSpace(name) &&
                    System.Text.RegularExpressions.Regex.IsMatch(
                        name,
-                       @"^[A-Za-z\s'-]+$"
+                       @"^[\p{L}\s'.-]+$"
                    );
         }
         public static bool IsBirthdayValid(DateTime birthday)
