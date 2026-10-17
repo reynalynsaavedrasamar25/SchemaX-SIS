@@ -539,33 +539,14 @@ namespace SchemaX.SIS
                     if (updated)
                     {
                         // Update the selected student's information in the grid
-                        foreach (DataGridViewRow row in dgvStudents.Rows)
-                        {
-                            if (row.IsNewRow)
-                                continue;
-
-                            if (string.Equals(
-                                row.Cells[0].Value?.ToString(),
-                                student.StudentId,
-                                StringComparison.OrdinalIgnoreCase))
-                            {
-                                row.Cells[1].Value = student.FullName;
-                                row.Cells[2].Value = student.Gender;
-                                row.Cells[3].Value = student.YearLevel;
-                                row.Cells[4].Value = student.Program;
-                                row.Cells[5].Value = student.ContactNo;
-                                break;
-                            }
-                        }
-
+                        LoadStudents();
+                        ExitEditMode();
                         MessageBox.Show(
                             "Student updated successfully!",
                             "Success",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
-
-                        ExitEditMode();
                     }
                     else
                     {
@@ -581,18 +562,8 @@ namespace SchemaX.SIS
                 {
                     repository.Insert(student);
 
-                    dgvStudents.Rows.Add(
-                        student.StudentId,
-                        student.FullName,
-                        student.Gender,
-                        student.YearLevel,
-                        student.Program,
-                        student.ContactNo
-                    );
-
-                    // Clear the input fields
+                    LoadStudents();
                     ClearStudentFields();
-
                     txtStudentID.Focus();
 
                     MessageBox.Show(
