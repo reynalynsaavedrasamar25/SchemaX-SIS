@@ -12,6 +12,9 @@ namespace SchemaX.SIS
 {
     public partial class dashboardForm : Form
     {
+        // set up repository for student data access
+        private readonly StudentRepository _studentRepository = new StudentRepository();
+
         public dashboardForm()
         {
             InitializeComponent();
