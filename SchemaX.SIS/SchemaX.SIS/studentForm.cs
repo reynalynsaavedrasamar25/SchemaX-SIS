@@ -57,10 +57,6 @@ namespace SchemaX.SIS
 
         public void LoadStudents()
         {
-            // Clear the DGV and load all students
-            List<Student> students = _studentRepository.GetAll();
-            dgvStudents.Rows.Clear();
-            
             string year = cmbYrFilter.SelectedIndex > 0
                 ? cmbYrFilter.SelectedIndex.ToString()
                 : "All";
@@ -98,7 +94,7 @@ namespace SchemaX.SIS
                     "Unable to load students. Please check your database connection and try again."
                 );
             }
-            
+
             UnlockIDClearSlction();
         }
             
@@ -215,9 +211,9 @@ namespace SchemaX.SIS
                 cmbYrLevel.Text = s.YearLevel.ToString();
                 cmbProgram.Text = s.Program;
                 txtBloc.Text = s.Bloc;
-                dateBirthDate.Value = s.Birthday;
                 txtBUEmail.Text = s.BuEmail;
                 txtContactNo.Text = s.ContactNo;
+                dateBirthDate.Value = s.Birthday;
 
                 txtStudentID.ReadOnly = true;                         // lock Student ID
                 Text = "Student Information System - EDIT STUDENT";   // title changes
@@ -248,7 +244,6 @@ namespace SchemaX.SIS
 
             UnlockIDClearSlction();
         }
-        
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (_isEdit)
@@ -465,20 +460,6 @@ namespace SchemaX.SIS
                 return;
             }
 
-            // Year Level validation
-            string buEmail = txtBUEmail.Text.Trim();
-
-            if (!Validator.IsBuEmailValid(buEmail))
-            {
-                MessageBox.Show(
-                    "Please input the BU Email, ensuring it ends with '@bicol-u.edu.ph'.",
-                    "Validation Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-                return;
-            }
-
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
             DateTime birthday = dateBirthDate.Value;
@@ -568,6 +549,8 @@ namespace SchemaX.SIS
 
                     LoadStudents();
                     ClearStudentFields();
+                    cmbProgram.SelectedIndex = -1;
+
                     txtStudentID.Focus();
 
                     MessageBox.Show(
@@ -613,10 +596,11 @@ namespace SchemaX.SIS
         private void btnViewSearch_Click(object sender, EventArgs e)
         {
             LoadStudents();
+
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        { 
             if (e.RowIndex < 0)
                 return;
 
@@ -654,11 +638,9 @@ namespace SchemaX.SIS
             cmbYrFilter.SelectedIndexChanged += (s, e) => LoadStudents();
             cmbProgramFilter.SelectedIndexChanged += (s, e) => LoadStudents();
             LoadStudents();
-            UnlockIDClearSlction();
             ExitEditMode();
             btnAdd.Text = "Add";
         }
-
 
         private void ClearStudentFields()
         {
@@ -680,12 +662,6 @@ namespace SchemaX.SIS
             dateBirthDate.Value = DateTime.Today;
         }
 
-        private void studentForm_Load(object sender, EventArgs e)
-        {   
-            LoadStudents();
-            UnlockIDClearSlction();
-        }
-        
         private void btnExportCSV_Click(object sender, EventArgs e)
         {
             try
@@ -714,7 +690,6 @@ namespace SchemaX.SIS
                     string text = Convert.ToString(value) ?? "";
                     return "\"" + text.Replace("\"", "\"\"") + "\"";
                 }
-
                 writer.WriteLine(string.Join(",",
                     columns.Select(c => EscapeCsv(c.HeaderText))));
 
@@ -750,5 +725,6 @@ namespace SchemaX.SIS
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
             );
+        
     }
 }
