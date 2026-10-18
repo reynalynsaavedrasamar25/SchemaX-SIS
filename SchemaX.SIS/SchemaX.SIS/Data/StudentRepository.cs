@@ -269,31 +269,7 @@ namespace SchemaX.SIS.Data
 
             return command.ExecuteNonQuery() > 0;
         }
-
-                // Returns every distinct program currently saved, for the filter dropdown.
-        public List<string> GetPrograms()
-        {
-            var programs = new List<string>();
-
-            using var connection = Db.Open();
-
-            string query = @"
-                SELECT DISTINCT TRIM(program) AS program
-                FROM students
-                WHERE program IS NOT NULL AND TRIM(program) <> ''
-                ORDER BY program;";
-
-            using var command = new MySqlCommand(query, connection);
-            using var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                programs.Add(reader.GetString("program"));
-            }
-
-            return programs;
-        }
-
+       
         public List<Student> GetAll()
         {
             List<Student> students = new List<Student>();
