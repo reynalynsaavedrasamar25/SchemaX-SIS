@@ -165,6 +165,7 @@
             btnExportCSV.TabIndex = 14;
             btnExportCSV.Text = "Export CSV";
             btnExportCSV.UseVisualStyleBackColor = true;
+            btnExportCSV.Click += btnExportCSV_Click;
             // 
             // txtBUEmail
             // 

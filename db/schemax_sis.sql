@@ -7,6 +7,8 @@ drop table if exists student_subjects;
 drop table if exists subjects;
 drop table if exists students;
 
+-- WARNING: drops and recreates all tables. Do not run on a database with real data.
+
 create table students (
 student_id varchar(15) not null,
 first_name varchar(50) not null,
