@@ -41,14 +41,22 @@ namespace SchemaX.SIS
             dgvStudents.AlternatingRowsDefaultCellStyle.BackColor = ThemeColors.GridAlternateRow;
 
             // placeholder text for ComboBoxes
+            cmbProgramFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbYrFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            SendMessage(cmbProgramFilter.Handle, CB_SETCUEBANNER, 0, "Program");
+            SendMessage(cmbYrFilter.Handle, CB_SETCUEBANNER, 0, "Year Level");
+
             cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbYrLevel.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProgram.DropDownStyle = ComboBoxStyle.DropDownList;
             SendMessage(cmbGender.Handle, CB_SETCUEBANNER, 0, "Gender");
             SendMessage(cmbYrLevel.Handle, CB_SETCUEBANNER, 0, "Year Level");
+            SendMessage(cmbProgram.Handle, CB_SETCUEBANNER, 0, "Program");
         }
 
         public void LoadStudents()
         {
+            // Clear the DGV and load all students
             List<Student> students = _studentRepository.GetAll();
             dgvStudents.Rows.Clear();
 
@@ -57,6 +65,8 @@ namespace SchemaX.SIS
                 dgvStudents.Rows.Add(student.StudentId, $"{student.FirstName} {student.Surname}", student.Gender, student.YearLevel, student.Program, student.ContactNo);
             }
 
+            // Count students for dashboard
+            labelStudentsShown.Text = $"Showing {dgvStudents.Rows.Count} out of {students.Count} student(s)";
             UnlockIDClearSlction();
         }
 
@@ -162,11 +172,11 @@ namespace SchemaX.SIS
                 txtSurname.Text = s.Surname;
                 cmbGender.Text = s.Gender;
                 cmbYrLevel.Text = s.YearLevel.ToString();
-                txtProgram.Text = s.Program;
+                cmbProgram.Text = s.Program;
                 txtBloc.Text = s.Bloc;
-                txtBirthdate.Text = s.Birthday.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
                 txtBUEmail.Text = s.BuEmail;
                 txtContactNo.Text = s.ContactNo;
+                dateBirthDate.Value = s.Birthday;
 
                 txtStudentID.ReadOnly = true;                         // lock Student ID
                 Text = "Student Information System - EDIT STUDENT";   // title changes
@@ -186,11 +196,12 @@ namespace SchemaX.SIS
             Text = "Student Information System";
 
             foreach (var tb in new[] { txtStudentID, txtFirstName, txtMidName, txtSurname,
-                               txtProgram, txtBloc, txtBirthdate, txtBUEmail, txtContactNo })
+                               txtBloc, txtBUEmail, txtContactNo })
                 tb.Clear();
 
             cmbGender.SelectedIndex = -1; cmbGender.Text = "";
             cmbYrLevel.SelectedIndex = -1; cmbYrLevel.Text = "";
+            cmbProgram.SelectedIndex = -1; cmbProgram.Text = "";
         }
 
 
@@ -301,12 +312,12 @@ namespace SchemaX.SIS
             }
 
             // Program validation
-            string program = txtProgram.Text.Trim();
+            string program = cmbProgram.Text.Trim();
 
             if (!Validator.IsRequiredFieldValid(program))
             {
                 MessageBox.Show(
-                    "Please enter the student's program.",
+                    "Please select the student's program.",
                     "Validation Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -372,19 +383,26 @@ namespace SchemaX.SIS
                 return;
             }
 
+            // Year Level validation
+            string buEmail = txtBUEmail.Text.Trim();
+
+            if (!Validator.IsBuEmailValid(buEmail))
+            {
+                MessageBox.Show(
+                    "Please input the BU Email, ensuring it ends with '@bicol-u.edu.ph'.",
+                    "Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
             // Convert the year level to a number
             byte year = byte.Parse(yearLevel);
 
             string middleName = txtMidName.Text.Trim();
             string surname = txtSurname.Text.Trim();
             string bloc = txtBloc.Text.Trim();
-            string buEmail = txtBUEmail.Text.Trim();
-
-            if(!DateTime.TryParse(txtBirthdate.Text.Trim(), out DateTime birthday))
-            {
-                MessageBox.Show("Please enter a valid birthday.");
-                return;
-            }
 
             // Create a Student object
             Student student = new Student
@@ -397,7 +415,7 @@ namespace SchemaX.SIS
                 YearLevel = year,
                 Program = program,
                 Bloc = bloc,
-                Birthday = birthday,
+                Birthday = dateBirthDate.Value.Date,
                 BuEmail = buEmail,
                 ContactNo = contactNumber,
                 PhotoPath = null
@@ -472,9 +490,8 @@ namespace SchemaX.SIS
                     txtMidName.Clear();
                     txtSurname.Clear();
                     txtContactNo.Clear();
-                    txtProgram.Clear();
+                    cmbProgram.SelectedIndex = -1;
                     txtBloc.Clear();
-                    txtBirthdate.Clear();
                     txtBUEmail.Clear();
 
                     cmbGender.SelectedIndex = -1;
@@ -512,16 +529,19 @@ namespace SchemaX.SIS
 
         private void btnViewSearch_Click(object sender, EventArgs e)
         {
-
+            /////////////////////////////////////////////////////////////////
+            //Need input
+            /////////////////////////////////////////////////////////////////
         }
 
         private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // DO NOT REPLACE WITH UnlockIDClearSlction or I will be very sad :(
-            ///////////////////////////////////////////////
+            // DO NOT REPLACE WITH UnlockIDClearSlction
             labelStudentIDHint.Visible = true; //show the hint label
             txtStudentID.ReadOnly = true; //prevents editing the StudentID
             txtStudentID.BackColor = ThemeColors.Danger; //change the background color to indicate it's read-only
+
+            btnAdd.Text = "Update";
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -533,6 +553,8 @@ namespace SchemaX.SIS
         {
             LoadStudents();
             UnlockIDClearSlction();
+            ExitEditMode();
+            btnAdd.Text = "Add";
 
             //clear every field
             txtStudentID.Clear();
@@ -540,7 +562,7 @@ namespace SchemaX.SIS
             txtMidName.Clear();
             txtSurname.Clear();
             txtContactNo.Clear();
-            txtProgram.Clear();
+            cmbProgram.SelectedIndex = -1;
             txtBloc.Clear();
             txtBUEmail.Clear();
             cmbGender.SelectedIndex = -1;
@@ -548,11 +570,9 @@ namespace SchemaX.SIS
         }
 
         private void studentForm_Load(object sender, EventArgs e)
-        {
+        {   
             LoadStudents();
             UnlockIDClearSlction();
         }
-
-        
     }
 }
