@@ -10,6 +10,12 @@ Group 3 - Team SchemaX
 - Princess Ida Camasis: Error Handling and CherryTree Documentation
 
 ## Setup
+Requires: .NET 10 SDK, MySQL 8.0.16 or newer (the schema uses CHECK constraints), and
+Visual Studio 2022 or newer with the ".NET desktop development" workload.
+
 1. Import db/schemax_sis.sql into MySQL.
-2. Copy appsettings.example.json to appsettings.json and set your password.
-3. open SchemaXSIS.sln in Visual Studio and press F5.
+   WARNING: the script drops and recreates all tables, so importing it again erases existing data.
+2. In SchemaX.SIS/SchemaX.SIS/, copy appsettings.example.json to appsettings.json
+   and set your MySQL password. This file is git-ignored; never commit it.
+3. Open SchemaX.SIS/SchemaX.SIS.slnx in Visual Studio and press F5.
+4. To run the tests: dotnet test SchemaX.ValidatorTests

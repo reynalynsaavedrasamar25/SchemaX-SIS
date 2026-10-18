@@ -1,11 +1,50 @@
 ﻿using MySqlConnector;
 using SchemaX.SIS.Models;
 using System.Reflection.Metadata;
+using System.Data;
+using System.Text;
 
 namespace SchemaX.SIS.Data
 {
     public class StudentRepository
     {
+         public DataTable Search(string text, string year, string program)
+ {
+     var sql = new StringBuilder(@"
+ SELECT student_id AS 'Student ID',
+        CONCAT(surname, ', ', first_name,
+               IFNULL(CONCAT(' ', LEFT(middle_name, 1), '.'), '')) AS 'Name',
+        gender AS 'Gender', year_level AS 'Year',
+        program AS 'Program', contact_no AS 'Contact'
+ FROM students WHERE 1 = 1");
+
+     using var con = Db.Open();
+     using var cmd = new MySqlCommand { Connection = con };
+
+     if (!string.IsNullOrWhiteSpace(text))
+     {
+         sql.Append(@" AND (student_id LIKE @q
+               OR CONCAT_WS(' ', first_name, middle_name, surname) LIKE @q)");
+         cmd.Parameters.AddWithValue("@q", "%" + text.Trim() + "%");
+     }
+     if (year != "All" && year != "")
+     {
+         sql.Append(" AND year_level = @yl");
+         cmd.Parameters.AddWithValue("@yl", int.Parse(year));
+     }
+     if (program != "All" && program != "")
+     {
+         sql.Append(" AND program = @pg");
+         cmd.Parameters.AddWithValue("@pg", program);
+     }
+     sql.Append(" ORDER BY surname, first_name");
+
+     cmd.CommandText = sql.ToString();
+     var table = new DataTable();
+     using var adapter = new MySqlDataAdapter(cmd);
+     adapter.Fill(table);
+     return table;
+ }
         // 1: ADD a new Student
         public bool Insert(Student student)
         {
@@ -230,7 +269,7 @@ namespace SchemaX.SIS.Data
 
             return command.ExecuteNonQuery() > 0;
         }
-
+       
         public List<Student> GetAll()
         {
             List<Student> students = new List<Student>();

@@ -160,6 +160,7 @@
             Controls.Add(pnlDashboardBtns);
             Controls.Add(pnlDashboardInfo);
             Controls.Add(pnlDashboardTitle);
+            MaximizeBox = false;
             Name = "dashboardForm";
             Text = "SchemaX SIS Dashboard";
             pnlDashboardTitle.ResumeLayout(false);
