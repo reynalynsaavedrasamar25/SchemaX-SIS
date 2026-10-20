@@ -1,8 +1,10 @@
 ﻿using MySqlConnector;
 using SchemaX.SIS.Models;
+using SchemaX.SIS.Helpers;
 using System.Reflection.Metadata;
 using System.Data;
 using System.Text;
+using System.Security.Cryptography;
 
 namespace SchemaX.SIS.Data
 {
@@ -16,10 +18,11 @@ namespace SchemaX.SIS.Data
                IFNULL(CONCAT(' ', LEFT(middle_name, 1), '.'), '')) AS 'Name',
         gender AS 'Gender', year_level AS 'Year',
         program AS 'Program', contact_no AS 'Contact'
- FROM students WHERE 1 = 1");
+ FROM students WHERE user_id = @uid");
 
      using var con = Db.Open();
      using var cmd = new MySqlCommand { Connection = con };
+            cmd.Parameters.AddWithValue("@uid", Session.CurrentUserId);
 
      if (!string.IsNullOrWhiteSpace(text))
      {
@@ -54,6 +57,7 @@ namespace SchemaX.SIS.Data
                 INSERT INTO students
                 (
                     student_id,
+                    user_id,
                     first_name,
                     middle_name,
                     surname,
@@ -69,6 +73,7 @@ namespace SchemaX.SIS.Data
                 VALUES
                 (
                     @student_id,
+                    @user_id,
                     @first_name,
                     @middle_name,
                     @surname,
@@ -84,43 +89,31 @@ namespace SchemaX.SIS.Data
 
             using var command = new MySqlCommand(query, connection);
 
-            command.Parameters.AddWithValue(
-                "@student_id", student.StudentId);
+            command.Parameters.AddWithValue("@student_id", student.StudentId);
 
-            command.Parameters.AddWithValue(
-                "@first_name", student.FirstName);
+            command.Parameters.AddWithValue("@user_id", Session.CurrentUserId);
 
-            command.Parameters.AddWithValue(
-                "@middle_name",
-                (object?)student.MiddleName ?? DBNull.Value);
+            command.Parameters.AddWithValue("@first_name", student.FirstName);
 
-            command.Parameters.AddWithValue(
-                "@surname", student.Surname);
+            command.Parameters.AddWithValue("@middle_name", (object?)student.MiddleName ?? DBNull.Value);
 
-            command.Parameters.AddWithValue(
-                "@gender", student.Gender);
+            command.Parameters.AddWithValue("@surname", student.Surname);
 
-            command.Parameters.AddWithValue(
-                "@year_level", student.YearLevel);
+            command.Parameters.AddWithValue("@gender", student.Gender);
 
-            command.Parameters.AddWithValue(
-                "@program", student.Program);
+            command.Parameters.AddWithValue("@year_level", student.YearLevel);
 
-            command.Parameters.AddWithValue(
-                "@bloc", student.Bloc);
+            command.Parameters.AddWithValue("@program", student.Program);
 
-            command.Parameters.AddWithValue(
-                "@birthday", student.Birthday.Date);
+            command.Parameters.AddWithValue("@bloc", student.Bloc);
 
-            command.Parameters.AddWithValue(
-                "@bu_email", student.BuEmail);
+            command.Parameters.AddWithValue("@birthday", student.Birthday.Date);
 
-            command.Parameters.AddWithValue(
-                "@contact_no", student.ContactNo);
+            command.Parameters.AddWithValue("@bu_email", student.BuEmail);
 
-            command.Parameters.AddWithValue(
-                "@photo_path",
-                (object?)student.PhotoPath ?? DBNull.Value);
+            command.Parameters.AddWithValue("@contact_no", student.ContactNo);
+
+            command.Parameters.AddWithValue("@photo_path", (object?)student.PhotoPath ?? DBNull.Value);
 
             return command.ExecuteNonQuery() > 0;
         }
@@ -133,12 +126,12 @@ namespace SchemaX.SIS.Data
             string query = @"
                 SELECT *
                 FROM students
-                WHERE student_id = @student_id;";
+                WHERE student_id = @student_id AND user_id = @uid;";
 
             using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@student_id", studentId);
 
-            command.Parameters.AddWithValue(
-                "@student_id", studentId);
+            command.Parameters.AddWithValue("@uid", Session.CurrentUserId);
 
             using var reader = command.ExecuteReader();
 
@@ -149,39 +142,29 @@ namespace SchemaX.SIS.Data
 
             return new Student
             {
-                StudentId = Convert.ToString(
-                    reader["student_id"]) ?? "",
+                StudentId = Convert.ToString(reader["student_id"]) ?? "",
 
-                FirstName = Convert.ToString(
-                    reader["first_name"]) ?? "",
+                FirstName = Convert.ToString(reader["first_name"]) ?? "",
 
                 MiddleName = reader["middle_name"] == DBNull.Value
                     ? null
                     : Convert.ToString(reader["middle_name"]),
 
-                Surname = Convert.ToString(
-                    reader["surname"]) ?? "",
+                Surname = Convert.ToString(reader["surname"]) ?? "",
 
-                Gender = Convert.ToString(
-                    reader["gender"]) ?? "",
+                Gender = Convert.ToString(reader["gender"]) ?? "",
 
-                YearLevel = Convert.ToInt32(
-                    reader["year_level"]),
+                YearLevel = Convert.ToInt32(reader["year_level"]),
 
-                Program = Convert.ToString(
-                    reader["program"]) ?? "",
+                Program = Convert.ToString(reader["program"]) ?? "",
 
-                Bloc = Convert.ToString(
-                    reader["bloc"]) ?? "",
+                Bloc = Convert.ToString(reader["bloc"]) ?? "",
 
-                Birthday = Convert.ToDateTime(
-                    reader["birthday"]),
+                Birthday = Convert.ToDateTime(reader["birthday"]),
 
-                BuEmail = Convert.ToString(
-                    reader["bu_email"]) ?? "",
+                BuEmail = Convert.ToString(reader["bu_email"]) ?? "",
 
-                ContactNo = Convert.ToString(
-                    reader["contact_no"]) ?? "",
+                ContactNo = Convert.ToString(reader["contact_no"]) ?? "",
 
                 PhotoPath = reader["photo_path"] == DBNull.Value
                     ? null
@@ -206,49 +189,33 @@ namespace SchemaX.SIS.Data
                     bloc = @bloc,
                     birthday = @birthday,
                     bu_email = @bu_email,
-                    contact_no = @contact_no,
-                    photo_path = @photo_path
-                WHERE student_id = @student_id;";
+                    contact_no = @contact_no
+                WHERE student_id = @student_id AND user_id = @uid;";
 
             using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@student_id", student.StudentId);
 
-            command.Parameters.AddWithValue(
-                "@student_id", student.StudentId);
+            command.Parameters.AddWithValue("@uid", Session.CurrentUserId);
 
-            command.Parameters.AddWithValue(
-                "@first_name", student.FirstName);
+            command.Parameters.AddWithValue("@first_name", student.FirstName);
 
-            command.Parameters.AddWithValue(
-                "@middle_name",
-                (object?)student.MiddleName ?? DBNull.Value);
+            command.Parameters.AddWithValue("@middle_name", (object?)student.MiddleName ?? DBNull.Value);
 
-            command.Parameters.AddWithValue(
-                "@surname", student.Surname);
+            command.Parameters.AddWithValue("@surname", student.Surname);
 
-            command.Parameters.AddWithValue(
-                "@gender", student.Gender);
+            command.Parameters.AddWithValue("@gender", student.Gender);
 
-            command.Parameters.AddWithValue(
-                "@year_level", student.YearLevel);
+            command.Parameters.AddWithValue("@year_level", student.YearLevel);
 
-            command.Parameters.AddWithValue(
-                "@program", student.Program);
+            command.Parameters.AddWithValue("@program", student.Program);
 
-            command.Parameters.AddWithValue(
-                "@bloc", student.Bloc);
+            command.Parameters.AddWithValue("@bloc", student.Bloc);
 
-            command.Parameters.AddWithValue(
-                "@birthday", student.Birthday.Date);
+            command.Parameters.AddWithValue("@birthday", student.Birthday.Date);
 
-            command.Parameters.AddWithValue(
-                "@bu_email", student.BuEmail);
+            command.Parameters.AddWithValue("@bu_email", student.BuEmail);
 
-            command.Parameters.AddWithValue(
-                "@contact_no", student.ContactNo);
-
-            command.Parameters.AddWithValue(
-                "@photo_path",
-                (object?)student.PhotoPath ?? DBNull.Value);
+            command.Parameters.AddWithValue("@contact_no", student.ContactNo);
 
             return command.ExecuteNonQuery() > 0;
         }
@@ -260,12 +227,12 @@ namespace SchemaX.SIS.Data
 
             string query = @"
                 DELETE FROM students
-                WHERE student_id = @student_id;";
+                WHERE student_id = @student_id AND user_id = @uid;";
 
             using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@student_id", studentId);
 
-            command.Parameters.AddWithValue(
-                "@student_id", studentId);
+            command.Parameters.AddWithValue("@uid", Session.CurrentUserId);
 
             return command.ExecuteNonQuery() > 0;
         }
@@ -281,9 +248,11 @@ namespace SchemaX.SIS.Data
                gender, year_level, program, bloc, birthday,
                bu_email, contact_no, photo_path
         FROM students
+        WHERE user_id = @uid
         ORDER BY student_id;";
 
             using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@uid", Session.CurrentUserId);
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
@@ -315,5 +284,75 @@ namespace SchemaX.SIS.Data
 
             return students;
         }
+        // Students of the logged-in user for the Student Record page
+        public List<Student> GetList(string text, int yearLevel, string program, bool alphabetical)
+        {
+            var list = new List<Student>();
+            var sql = new StringBuilder(@"
+                SELECT student_id, first_name, middle_name, surname, gender, year_level,
+                       program, bloc, birthday, bu_email, contact_no, photo_path
+                FROM students
+                WHERE user_id = @uid");
+
+            using var con = Db.Open();
+            using var cmd = new MySqlCommand { Connection = con };
+            cmd.Parameters.AddWithValue("@uid", Session.CurrentUserId);
+
+            string q = System.Text.RegularExpressions.Regex.Replace(
+                (text ?? "").Replace(',', ' ').Trim(), @"\s+", " ");
+            if (q.Length > 0)
+            {
+                sql.Append(@" AND (student_id LIKE @q
+                              OR first_name LIKE @q OR middle_name LIKE @q OR surname LIKE @q
+                              OR CONCAT_WS(' ', first_name, middle_name, surname) LIKE @q
+                              OR CONCAT_WS(' ', surname, first_name, middle_name) LIKE @q)");
+                cmd.Parameters.AddWithValue("@q", "%" + q + "%");
+            }
+            if (yearLevel > 0)
+            {
+                sql.Append(" AND year_level = @yl");
+                cmd.Parameters.AddWithValue("@yl", yearLevel);
+            }
+            if (!string.IsNullOrEmpty(program))
+            {
+                sql.Append(" AND program = @pg");
+                cmd.Parameters.AddWithValue("@pg", program);
+            }
+            sql.Append(alphabetical ? " ORDER BY surname, first_name" : " ORDER BY student_id");
+
+            cmd.CommandText = sql.ToString();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Student
+                {
+                    StudentId = reader.GetString("student_id"),
+                    FirstName = reader.GetString("first_name"),
+                    MiddleName = reader.IsDBNull(reader.GetOrdinal("middle_name")) ? null : reader.GetString("middle_name"),
+                    Surname = reader.GetString("surname"),
+                    Gender = reader.GetString("gender"),
+                    YearLevel = reader.GetInt32("year_level"),
+                    Program = reader.GetString("program"),
+                    Bloc = reader.GetString("bloc"),
+                    Birthday = reader.GetDateTime("birthday"),
+                    BuEmail = reader.GetString("bu_email"),
+                    ContactNo = reader.GetString("contact_no"),
+                    PhotoPath = reader.IsDBNull(reader.GetOrdinal("photo_path")) ? null : reader.GetString("photo_path")
+                });
+            }
+            return list;
+        }
+
+        public bool UpdatePhotoPath(string studentId, string? path)
+        {
+            using var con = Db.Open();
+            using var cmd = new MySqlCommand(
+                "UPDATE students SET photo_path = @p WHERE student_id = @id AND user_id = @uid;", con);
+            cmd.Parameters.AddWithValue("@p", (object?)path ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@id", studentId);
+            cmd.Parameters.AddWithValue("@uid", Session.CurrentUserId);
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
     }
 }

@@ -2,15 +2,8 @@
 {
     partial class dashboardForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,169 +15,247 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            pnlHeader = new Panel();
+            lblAppName = new Label();
+            btnHelp = new Button();
+            pnlSidebar = new Panel();
+            btnUser = new Button();
             btnEnrolledStd = new Button();
-            pnlDashboardTitle = new Panel();
-            labelDashboardTitle = new Label();
-            pnlDashboardInfo = new Panel();
-            labelDashboardInfoMain = new Label();
-            labelDashboardMain = new Label();
-            pnlDashboardBtns = new Panel();
+            btnStudentRecord = new Button();
             btnExit = new Button();
-            btnAttendance = new Button();
-            pnlDashboardStatus = new Panel();
-            labelDashboardStatus = new Label();
-            pnlDashboardTitle.SuspendLayout();
-            pnlDashboardInfo.SuspendLayout();
-            pnlDashboardBtns.SuspendLayout();
-            pnlDashboardStatus.SuspendLayout();
+            pnlUserInfo = new Panel();
+            lblUserName = new Label();
+            lblUserUsername = new Label();
+            lblUserEmail = new Label();
+            btnLogout = new Button();
+            lblHello = new Label();
+            lblOverviewTitle = new Label();
+            pnlOverview = new Panel();
+            flowStats = new FlowLayoutPanel();
+            lblBreakdown = new Label();
+            lblStatus = new Label();
+            pnlHeader.SuspendLayout();
+            pnlSidebar.SuspendLayout();
+            pnlUserInfo.SuspendLayout();
+            pnlOverview.SuspendLayout();
             SuspendLayout();
+            // 
+            // pnlHeader
+            // 
+            pnlHeader.Controls.Add(lblAppName);
+            pnlHeader.Controls.Add(btnHelp);
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Size = new Size(900, 70);
+            pnlHeader.TabIndex = 0;
+            // 
+            // lblAppName
+            // 
+            lblAppName.AutoSize = true;
+            lblAppName.Location = new Point(20, 15);
+            lblAppName.Name = "lblAppName";
+            lblAppName.Size = new Size(74, 15);
+            lblAppName.TabIndex = 0;
+            lblAppName.Text = "SchemaX SIS";
+            // 
+            // btnHelp
+            // 
+            btnHelp.Location = new Point(836, 13);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new Size(44, 44);
+            btnHelp.TabIndex = 1;
+            btnHelp.Text = "?";
+            btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // pnlSidebar
+            // 
+            pnlSidebar.Controls.Add(btnUser);
+            pnlSidebar.Controls.Add(btnEnrolledStd);
+            pnlSidebar.Controls.Add(btnStudentRecord);
+            pnlSidebar.Controls.Add(pnlUserInfo);
+            pnlSidebar.Controls.Add(btnExit);
+            pnlSidebar.Location = new Point(0, 70);
+            pnlSidebar.Name = "pnlSidebar";
+            pnlSidebar.Size = new Size(230, 490);
+            pnlSidebar.TabIndex = 1;
+            // 
+            // btnUser
+            // 
+            btnUser.Location = new Point(10, 15);
+            btnUser.Name = "btnUser";
+            btnUser.Size = new Size(210, 60);
+            btnUser.TabIndex = 0;
+            btnUser.Text = "User";
+            btnUser.UseVisualStyleBackColor = true;
             // 
             // btnEnrolledStd
             // 
-            btnEnrolledStd.Location = new Point(52, 41);
+            btnEnrolledStd.Location = new Point(10, 90);
             btnEnrolledStd.Name = "btnEnrolledStd";
-            btnEnrolledStd.Size = new Size(132, 43);
-            btnEnrolledStd.TabIndex = 0;
+            btnEnrolledStd.Size = new Size(210, 60);
+            btnEnrolledStd.TabIndex = 1;
             btnEnrolledStd.Text = "Enrolled Students";
             btnEnrolledStd.UseVisualStyleBackColor = true;
-            btnEnrolledStd.Click += btnEnrolledStd_Click;
             // 
-            // pnlDashboardTitle
+            // btnStudentRecord
             // 
-            pnlDashboardTitle.Controls.Add(labelDashboardTitle);
-            pnlDashboardTitle.Dock = DockStyle.Top;
-            pnlDashboardTitle.Location = new Point(0, 0);
-            pnlDashboardTitle.Name = "pnlDashboardTitle";
-            pnlDashboardTitle.Size = new Size(584, 81);
-            pnlDashboardTitle.TabIndex = 1;
-            // 
-            // labelDashboardTitle
-            // 
-            labelDashboardTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            labelDashboardTitle.AutoSize = true;
-            labelDashboardTitle.Font = new Font("Segoe UI", 14F);
-            labelDashboardTitle.Location = new Point(229, 28);
-            labelDashboardTitle.Name = "labelDashboardTitle";
-            labelDashboardTitle.Size = new Size(119, 25);
-            labelDashboardTitle.TabIndex = 0;
-            labelDashboardTitle.Text = "SchemaX SIS";
-            // 
-            // pnlDashboardInfo
-            // 
-            pnlDashboardInfo.Controls.Add(labelDashboardInfoMain);
-            pnlDashboardInfo.Controls.Add(labelDashboardMain);
-            pnlDashboardInfo.Dock = DockStyle.Top;
-            pnlDashboardInfo.Location = new Point(0, 81);
-            pnlDashboardInfo.Name = "pnlDashboardInfo";
-            pnlDashboardInfo.Size = new Size(584, 68);
-            pnlDashboardInfo.TabIndex = 2;
-            // 
-            // labelDashboardInfoMain
-            // 
-            labelDashboardInfoMain.AutoSize = true;
-            labelDashboardInfoMain.Location = new Point(12, 39);
-            labelDashboardInfoMain.Name = "labelDashboardInfoMain";
-            labelDashboardInfoMain.Size = new Size(146, 15);
-            labelDashboardInfoMain.TabIndex = 1;
-            labelDashboardInfoMain.Text = "Stats breakdown go here...";
-            // 
-            // labelDashboardMain
-            // 
-            labelDashboardMain.AutoSize = true;
-            labelDashboardMain.Location = new Point(12, 11);
-            labelDashboardMain.Name = "labelDashboardMain";
-            labelDashboardMain.Size = new Size(155, 15);
-            labelDashboardMain.TabIndex = 0;
-            labelDashboardMain.Text = "Student Information System";
-            // 
-            // pnlDashboardBtns
-            // 
-            pnlDashboardBtns.Controls.Add(btnExit);
-            pnlDashboardBtns.Controls.Add(btnAttendance);
-            pnlDashboardBtns.Controls.Add(btnEnrolledStd);
-            pnlDashboardBtns.Dock = DockStyle.Top;
-            pnlDashboardBtns.Location = new Point(0, 149);
-            pnlDashboardBtns.Name = "pnlDashboardBtns";
-            pnlDashboardBtns.Size = new Size(584, 134);
-            pnlDashboardBtns.TabIndex = 3;
+            btnStudentRecord.Location = new Point(10, 165);
+            btnStudentRecord.Name = "btnStudentRecord";
+            btnStudentRecord.Size = new Size(210, 60);
+            btnStudentRecord.TabIndex = 2;
+            btnStudentRecord.Text = "Student Record";
+            btnStudentRecord.UseVisualStyleBackColor = true;
+
+            // pnlUserInfo
+            pnlUserInfo.Controls.Add(lblUserName);
+            pnlUserInfo.Controls.Add(lblUserUsername);
+            pnlUserInfo.Controls.Add(lblUserEmail);
+            pnlUserInfo.Controls.Add(btnLogout);
+            pnlUserInfo.Location = new Point(10, 240);
+            pnlUserInfo.Name = "pnlUserInfo";
+            pnlUserInfo.Size = new Size(210, 150);
+            pnlUserInfo.TabIndex = 3;
+            
+            // lblUserName
+            lblUserName.AutoEllipsis = true;
+            lblUserName.Location = new Point(8, 8);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(192, 24);
+            lblUserName.TabIndex = 0;
+            lblUserName.Text = "Full Name";
+
+            // lblUserUsername
+            lblUserUsername.AutoEllipsis = true;
+            lblUserUsername.Location = new Point(8, 38);
+            lblUserUsername.Name = "lblUserUsername";
+            lblUserUsername.Size = new Size(192, 22);
+            lblUserUsername.TabIndex = 1;
+            lblUserUsername.Text = "Username";
+            
+            // lblUserEmail
+            lblUserEmail.AutoEllipsis = true;
+            lblUserEmail.Location = new Point(8, 64);
+            lblUserEmail.Name = "lblUserEmail";
+            lblUserEmail.Size = new Size(192, 36);
+            lblUserEmail.TabIndex = 2;
+            lblUserEmail.Text = "Email";
+            
+            // btnLogout
+            btnLogout.Location = new Point(8, 106);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(192, 34);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "Log out";
+            btnLogout.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(382, 41);
+            btnExit.Location = new Point(10, 430);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(132, 43);
-            btnExit.TabIndex = 2;
+            btnExit.Size = new Size(210, 45);
+            btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
-            btnExit.Click += btnExit_Click;
             // 
-            // btnAttendance
+            // lblHello
             // 
-            btnAttendance.Location = new Point(216, 41);
-            btnAttendance.Name = "btnAttendance";
-            btnAttendance.Size = new Size(132, 43);
-            btnAttendance.TabIndex = 1;
-            btnAttendance.Text = "Attendance";
-            btnAttendance.UseVisualStyleBackColor = true;
+            lblHello.Location = new Point(260, 90);
+            lblHello.Name = "lblHello";
+            lblHello.Size = new Size(610, 50);
+            lblHello.TabIndex = 2;
+            lblHello.Text = "Hello!";
+            lblHello.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pnlDashboardStatus
+            // lblOverviewTitle
             // 
-            pnlDashboardStatus.Controls.Add(labelDashboardStatus);
-            pnlDashboardStatus.Dock = DockStyle.Fill;
-            pnlDashboardStatus.Location = new Point(0, 283);
-            pnlDashboardStatus.Name = "pnlDashboardStatus";
-            pnlDashboardStatus.Size = new Size(584, 28);
-            pnlDashboardStatus.TabIndex = 1;
+            lblOverviewTitle.Location = new Point(260, 150);
+            lblOverviewTitle.Name = "lblOverviewTitle";
+            lblOverviewTitle.Size = new Size(610, 35);
+            lblOverviewTitle.TabIndex = 3;
+            lblOverviewTitle.Text = "Overview";
+            lblOverviewTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // labelDashboardStatus
+            // pnlOverview
             // 
-            labelDashboardStatus.AutoSize = true;
-            labelDashboardStatus.Location = new Point(12, 6);
-            labelDashboardStatus.Name = "labelDashboardStatus";
-            labelDashboardStatus.Size = new Size(48, 15);
-            labelDashboardStatus.TabIndex = 0;
-            labelDashboardStatus.Text = "Status...";
+            pnlOverview.BorderStyle = BorderStyle.FixedSingle;
+            pnlOverview.Controls.Add(flowStats);
+            pnlOverview.Controls.Add(lblBreakdown);
+            pnlOverview.Location = new Point(280, 195);
+            pnlOverview.Name = "pnlOverview";
+            pnlOverview.Size = new Size(570, 320);
+            pnlOverview.TabIndex = 4;
+            // 
+            // flowStats
+            // 
+            flowStats.Location = new Point(10, 10);
+            flowStats.Name = "flowStats";
+            flowStats.Size = new Size(548, 110);
+            flowStats.TabIndex = 0;
+            // 
+            // lblBreakdown
+            // 
+            lblBreakdown.Location = new Point(14, 135);
+            lblBreakdown.Name = "lblBreakdown";
+            lblBreakdown.Size = new Size(540, 170);
+            lblBreakdown.TabIndex = 1;
+            lblBreakdown.Text = "Breakdown";
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(280, 528);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(48, 15);
+            lblStatus.TabIndex = 5;
+            lblStatus.Text = "Status...";
             // 
             // dashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 311);
-            Controls.Add(pnlDashboardStatus);
-            Controls.Add(pnlDashboardBtns);
-            Controls.Add(pnlDashboardInfo);
-            Controls.Add(pnlDashboardTitle);
+            ClientSize = new Size(900, 560);
+            Controls.Add(lblStatus);
+            Controls.Add(pnlOverview);
+            Controls.Add(lblOverviewTitle);
+            Controls.Add(lblHello);
+            Controls.Add(pnlSidebar);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "dashboardForm";
-            Text = "SchemaX SIS Dashboard";
-            pnlDashboardTitle.ResumeLayout(false);
-            pnlDashboardTitle.PerformLayout();
-            pnlDashboardInfo.ResumeLayout(false);
-            pnlDashboardInfo.PerformLayout();
-            pnlDashboardBtns.ResumeLayout(false);
-            pnlDashboardStatus.ResumeLayout(false);
-            pnlDashboardStatus.PerformLayout();
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SchemaX SIS";
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            pnlSidebar.ResumeLayout(false);
+            pnlUserInfo.ResumeLayout(false);
+            pnlOverview.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
+        private Panel pnlHeader;
+        private Label lblAppName;
+        private Button btnHelp;
+        private Panel pnlSidebar;
+        private Button btnUser;
         private Button btnEnrolledStd;
-        private Panel pnlDashboardTitle;
-        private Label labelDashboardTitle;
-        private Panel pnlDashboardInfo;
-        private Label labelDashboardInfoMain;
-        private Label labelDashboardMain;
-        private Panel pnlDashboardBtns;
+        private Button btnStudentRecord;
         private Button btnExit;
-        private Button btnAttendance;
-        private Panel pnlDashboardStatus;
-        private Label labelDashboardStatus;
+        private Panel pnlUserInfo;
+        private Label lblUserName;
+        private Label lblUserUsername;
+        private Label lblUserEmail;
+        private Button btnLogout;
+        private Label lblHello;
+        private Label lblOverviewTitle;
+        private Panel pnlOverview;
+        private FlowLayoutPanel flowStats;
+        private Label lblBreakdown;
+        private Label lblStatus;
     }
 }
