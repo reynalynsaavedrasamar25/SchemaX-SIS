@@ -365,7 +365,7 @@ FodyWeavers.xsd
 **/logs/
 
 # Local database credentials
-SchemaX.SIS/SchemaX.SIS/appsettings.jsonappsettings.json
+appsettings.json
 bin/
 obj/
 logs/
