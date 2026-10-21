@@ -18,7 +18,132 @@ namespace SchemaX.SIS
         public SignUpForm()
         {
             InitializeComponent();
+            StyleForm();
+            ArrangeFields();
+            ButtonStyler.Apply(btnSignUp, "", ButtonKind.Solid, ThemeColors.Accent);
+            ButtonStyler.Apply(btnBack, "", ButtonKind.Menu);
         }
+
+        private void StyleForm()
+        {
+            BackColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            AcceptButton = btnSignUp;
+            CancelButton = btnBack;
+            foreach (Label l in Controls.OfType<Label>())
+            {
+                if (l == lblError)
+                {
+                    l.ForeColor = ThemeColors.Danger;
+                    l.Font = new Font("Segoe UI", 9F);
+                }
+                else if (l.Font.Size >= 14)
+                {
+                    l.ForeColor = ThemeColors.Primary;
+                    l.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+                }
+                else if (l.Text.StartsWith("Must end", StringComparison.OrdinalIgnoreCase))
+                {
+                    l.ForeColor = Color.Gray;
+                    l.Font = new Font("Segoe UI", 8.5F);
+                }
+                else
+                {
+                    l.ForeColor = ThemeColors.TextDark;        
+                    l.Font = new Font("Segoe UI Semibold", 9.5F);
+                }
+            }
+
+            foreach (TextBox t in new[] { txtFirstName, txtSurname, txtEmail, txtUsername, textBox1, txtConfirm })
+            {
+                t.BorderStyle = BorderStyle.FixedSingle;
+                t.Font = new Font("Segoe UI", 10.5F);
+                t.BackColor = Color.White;
+            }
+
+            ButtonStyler.Apply(btnSignUp, "", ButtonKind.Solid, ThemeColors.Accent); 
+            ButtonStyler.Apply(btnBack, "", ButtonKind.Menu);                          
+        }
+
+        // Stacks everything in one centered column with equal spacing.
+        private void ArrangeFields()
+        {
+            const int fieldW = 280;
+            int x = (ClientSize.Width - fieldW) / 2;
+            int y = 24;
+
+            // heading, centered
+            Label? title = Controls.OfType<Label>().FirstOrDefault(l => l.Font.Size >= 19);
+            if (title != null)
+            {
+                title.Top = y;
+                title.Left = (ClientSize.Width - title.Width) / 2;
+                y += title.Height + 18;
+            }
+
+            void Place(TextBox box, string labelText)
+            {
+                Label? lbl = Controls.OfType<Label>().FirstOrDefault(
+                    l => l.Text.Equals(labelText, StringComparison.OrdinalIgnoreCase));
+                if (lbl != null) lbl.Location = new Point(x, y);
+                box.Location = new Point(x, y + 22);
+                box.Width = fieldW;
+                y += 22 + box.Height + 12;
+            }
+
+            Place(txtFirstName, "First Name");
+            Place(txtSurname, "Surname");
+            Place(txtEmail, "Bicol University Email");
+
+            // email hint sits right under the email box
+            Label? hint = Controls.OfType<Label>().FirstOrDefault(
+                l => l.Text.StartsWith("Must end", StringComparison.OrdinalIgnoreCase));
+            if (hint != null)
+            {
+                hint.Location = new Point(x, txtEmail.Bottom + 2);
+                y = hint.Bottom + 10;
+            }
+
+            Place(txtUsername, "Username");
+            Place(textBox1, "Password");
+            Place(txtConfirm, "Confirm password");
+
+            // "Show passwords" checkbox (small extra)
+            var chkShow = new CheckBox
+            {
+                Text = "Show passwords",
+                AutoSize = true,
+                ForeColor = ThemeColors.TextDark,
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(x, y - 4)
+            };
+            chkShow.CheckedChanged += (s, e) =>
+            {
+                char c = chkShow.Checked ? '\0' : '*';
+                textBox1.PasswordChar = c;
+                txtConfirm.PasswordChar = c;
+            };
+            Controls.Add(chkShow);
+            y += 28;
+
+            // error message line
+            lblError.AutoSize = false;
+            lblError.Location = new Point(x, y);
+            lblError.Size = new Size(fieldW, 36);
+            y += 40;
+
+            // buttons, same width as the fields
+            btnSignUp.Location = new Point(x, y);
+            btnSignUp.Size = new Size(fieldW, 42);
+            y += 52;
+            btnBack.Location = new Point(x, y);
+            btnBack.Size = new Size(fieldW, 38);
+            y += 38 + 24;
+
+            ClientSize = new Size(ClientSize.Width, y);     // form height fits the content
+        }
+
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
