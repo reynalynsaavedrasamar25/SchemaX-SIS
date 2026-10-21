@@ -307,6 +307,5 @@ namespace SchemaX.SIS
         {
             Application.Exit();
         }
-
     }
 }

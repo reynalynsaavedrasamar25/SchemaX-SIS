@@ -26,9 +26,26 @@ namespace SchemaX.SIS
             [MarshalAs(UnmanagedType.LPWStr)] string lParam
         );
 
+        private void StyleControls()
+        {
+            BackColor = ThemeColors.Background;
+
+            pnlControl.BackColor = ThemeColors.Surface;
+
+            pnlDGV.BackColor = ThemeColors.Surface;
+
+            ButtonStyler.Apply(btnAdd, "\xE710", ButtonKind.Menu);
+            ButtonStyler.Apply(btnEdit, "\xE70F", ButtonKind.Menu);
+            ButtonStyler.Apply(btnDelete, "\xE74D", ButtonKind.Danger);
+            ButtonStyler.Apply(btnClearSelection, "\xE75C", ButtonKind.Solid);
+            ButtonStyler.Apply(btnExportCSV, "\xE8A5", ButtonKind.Menu);
+            ButtonStyler.Apply(btnBack, "\xE72B", ButtonKind.Menu);
+        }
+
         public studentForm()
         {
             InitializeComponent();
+            StyleControls();
 
             dateBirthDate.MaxDate = DateTime.Today;
 
@@ -613,7 +630,6 @@ namespace SchemaX.SIS
             labelStudentIDHint.Visible = true;
             txtStudentID.ReadOnly = true;
             txtStudentID.BackColor = ThemeColors.Danger;
-            btnAdd.Text = "Update";
         }
 
         private void btnBack_Click(object sender, EventArgs e)

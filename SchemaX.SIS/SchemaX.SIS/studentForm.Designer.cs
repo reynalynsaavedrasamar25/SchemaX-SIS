@@ -100,7 +100,7 @@
             pnlControl.Dock = DockStyle.Left;
             pnlControl.Location = new Point(0, 0);
             pnlControl.Name = "pnlControl";
-            pnlControl.Size = new Size(300, 601);
+            pnlControl.Size = new Size(439, 601);
             pnlControl.TabIndex = 0;
             // 
             // labelFilterTitle
@@ -117,10 +117,10 @@
             // 
             cmbProgram.FormattingEnabled = true;
             cmbProgram.Items.AddRange(new object[] { "BSCS", "BSIT" });
-            cmbProgram.Location = new Point(12, 283);
+            cmbProgram.Location = new Point(293, 253);
             cmbProgram.Name = "cmbProgram";
             cmbProgram.Size = new Size(135, 23);
-            cmbProgram.TabIndex = 6;
+            cmbProgram.TabIndex = 10;
             // 
             // labelStudentIDHint
             // 
@@ -134,11 +134,12 @@
             // 
             // btnClearSelection
             // 
+            btnClearSelection.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnClearSelection.FlatStyle = FlatStyle.Flat;
             btnClearSelection.Location = new Point(11, 443);
             btnClearSelection.Name = "btnClearSelection";
-            btnClearSelection.Size = new Size(277, 35);
-            btnClearSelection.TabIndex = 14;
+            btnClearSelection.Size = new Size(417, 35);
+            btnClearSelection.TabIndex = 15;
             btnClearSelection.Text = "Clear Selection";
             btnClearSelection.UseVisualStyleBackColor = true;
             btnClearSelection.Click += btnClearSelection_Click;
@@ -146,12 +147,12 @@
             // dateBirthDate
             // 
             dateBirthDate.Format = DateTimePickerFormat.Short;
-            dateBirthDate.Location = new Point(12, 313);
+            dateBirthDate.Location = new Point(293, 166);
             dateBirthDate.MaxDate = new DateTime(2026, 10, 16, 0, 0, 0, 0);
             dateBirthDate.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dateBirthDate.Name = "dateBirthDate";
-            dateBirthDate.Size = new Size(276, 23);
-            dateBirthDate.TabIndex = 8;
+            dateBirthDate.Size = new Size(135, 23);
+            dateBirthDate.TabIndex = 7;
             dateBirthDate.Value = new DateTime(2026, 10, 16, 0, 0, 0, 0);
             // 
             // btnBack
@@ -160,42 +161,43 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Location = new Point(11, 525);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(276, 65);
-            btnBack.TabIndex = 15;
+            btnBack.Size = new Size(417, 65);
+            btnBack.TabIndex = 17;
             btnBack.Text = "Back to Dashboard";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
             // btnExportCSV
             // 
+            btnExportCSV.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnExportCSV.FlatStyle = FlatStyle.Flat;
             btnExportCSV.Location = new Point(11, 484);
             btnExportCSV.Name = "btnExportCSV";
-            btnExportCSV.Size = new Size(277, 35);
-            btnExportCSV.TabIndex = 14;
+            btnExportCSV.Size = new Size(417, 35);
+            btnExportCSV.TabIndex = 16;
             btnExportCSV.Text = "Export CSV";
             btnExportCSV.UseVisualStyleBackColor = true;
             btnExportCSV.Click += btnExportCSV_Click;
             // 
             // txtBUEmail
             // 
-            txtBUEmail.Location = new Point(12, 342);
+            txtBUEmail.Location = new Point(10, 253);
             txtBUEmail.Name = "txtBUEmail";
             txtBUEmail.PlaceholderText = "BU E-mail Address";
-            txtBUEmail.Size = new Size(276, 23);
-            txtBUEmail.TabIndex = 9;
+            txtBUEmail.Size = new Size(275, 23);
+            txtBUEmail.TabIndex = 4;
             // 
             // txtBloc
             // 
-            txtBloc.Location = new Point(154, 283);
+            txtBloc.Location = new Point(251, 282);
             txtBloc.Name = "txtBloc";
             txtBloc.PlaceholderText = "Bloc";
-            txtBloc.Size = new Size(134, 23);
-            txtBloc.TabIndex = 7;
+            txtBloc.Size = new Size(34, 23);
+            txtBloc.TabIndex = 6;
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(12, 224);
+            txtSurname.Location = new Point(10, 224);
             txtSurname.Name = "txtSurname";
             txtSurname.PlaceholderText = "Surname";
             txtSurname.Size = new Size(275, 23);
@@ -203,10 +205,10 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(11, 166);
+            txtFirstName.Location = new Point(10, 166);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.PlaceholderText = "First Name";
-            txtFirstName.Size = new Size(277, 23);
+            txtFirstName.Size = new Size(275, 23);
             txtFirstName.TabIndex = 1;
             // 
             // labelStudentsShown
@@ -222,9 +224,9 @@
             // 
             cmbProgramFilter.FormattingEnabled = true;
             cmbProgramFilter.Items.AddRange(new object[] { "All Programs", "BSCS", "BSIT" });
-            cmbProgramFilter.Location = new Point(149, 48);
+            cmbProgramFilter.Location = new Point(223, 48);
             cmbProgramFilter.Name = "cmbProgramFilter";
-            cmbProgramFilter.Size = new Size(135, 23);
+            cmbProgramFilter.Size = new Size(205, 23);
             cmbProgramFilter.TabIndex = 17;
             cmbProgramFilter.Text = "All Programs";
             // 
@@ -232,86 +234,89 @@
             // 
             cmbYrFilter.FormattingEnabled = true;
             cmbYrFilter.Items.AddRange(new object[] { "All Years", "1st Year", "2nd Year", "3rd Year", "4th Year" });
-            cmbYrFilter.Location = new Point(12, 48);
+            cmbYrFilter.Location = new Point(10, 48);
             cmbYrFilter.Name = "cmbYrFilter";
-            cmbYrFilter.Size = new Size(135, 23);
+            cmbYrFilter.Size = new Size(205, 23);
             cmbYrFilter.TabIndex = 16;
             cmbYrFilter.Text = "All Years";
             // 
             // cmbYrLevel
             // 
             cmbYrLevel.FormattingEnabled = true;
-            cmbYrLevel.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
-            cmbYrLevel.Location = new Point(154, 254);
+            cmbYrLevel.Items.AddRange(new object[] { "1", "2", "3", "4" });
+            cmbYrLevel.Location = new Point(293, 224);
             cmbYrLevel.Name = "cmbYrLevel";
-            cmbYrLevel.Size = new Size(134, 23);
-            cmbYrLevel.TabIndex = 5;
+            cmbYrLevel.Size = new Size(135, 23);
+            cmbYrLevel.TabIndex = 9;
             // 
             // cmbGender
             // 
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
-            cmbGender.Location = new Point(12, 254);
+            cmbGender.Location = new Point(293, 195);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(135, 23);
-            cmbGender.TabIndex = 4;
+            cmbGender.TabIndex = 8;
             // 
             // btnDelete
             // 
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Location = new Point(200, 402);
+            btnDelete.Location = new Point(293, 384);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(88, 35);
-            btnDelete.TabIndex = 13;
+            btnDelete.Size = new Size(135, 53);
+            btnDelete.TabIndex = 14;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Location = new Point(107, 402);
+            btnEdit.Location = new Point(152, 384);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(88, 35);
-            btnEdit.TabIndex = 12;
-            btnEdit.Text = "Edit Mode";
+            btnEdit.Size = new Size(135, 53);
+            btnEdit.TabIndex = 13;
+            btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
+            btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Location = new Point(13, 402);
+            btnAdd.Location = new Point(12, 384);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(88, 35);
-            btnAdd.TabIndex = 11;
+            btnAdd.Size = new Size(133, 53);
+            btnAdd.TabIndex = 12;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
             // txtContactNo
             // 
-            txtContactNo.Location = new Point(13, 371);
+            txtContactNo.Location = new Point(10, 282);
             txtContactNo.Name = "txtContactNo";
             txtContactNo.PlaceholderText = "Contact Number";
-            txtContactNo.Size = new Size(275, 23);
-            txtContactNo.TabIndex = 10;
+            txtContactNo.Size = new Size(235, 23);
+            txtContactNo.TabIndex = 5;
             // 
             // txtMidName
             // 
-            txtMidName.Location = new Point(11, 195);
+            txtMidName.Location = new Point(10, 195);
             txtMidName.Name = "txtMidName";
             txtMidName.PlaceholderText = "Middle Name (optional)";
-            txtMidName.Size = new Size(276, 23);
+            txtMidName.Size = new Size(275, 23);
             txtMidName.TabIndex = 2;
             // 
             // txtStudentID
             // 
-            txtStudentID.Location = new Point(11, 137);
+            txtStudentID.Location = new Point(293, 282);
             txtStudentID.Name = "txtStudentID";
             txtStudentID.PlaceholderText = "Student ID";
-            txtStudentID.Size = new Size(277, 23);
-            txtStudentID.TabIndex = 0;
+            txtStudentID.Size = new Size(135, 23);
+            txtStudentID.TabIndex = 11;
             tooltipStudentID.SetToolTip(txtStudentID, "Student ID can't be changed while editing. Press Clear Selection to add a new student.");
             // 
             // pnlSearch
@@ -320,16 +325,16 @@
             pnlSearch.Controls.Add(btnViewSearch);
             pnlSearch.Controls.Add(txtSearch);
             pnlSearch.Dock = DockStyle.Top;
-            pnlSearch.Location = new Point(300, 0);
+            pnlSearch.Location = new Point(439, 0);
             pnlSearch.Name = "pnlSearch";
             pnlSearch.Padding = new Padding(5);
-            pnlSearch.Size = new Size(708, 42);
+            pnlSearch.Size = new Size(569, 42);
             pnlSearch.TabIndex = 1;
             // 
             // btnViewClear
             // 
             btnViewClear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnViewClear.Location = new Point(570, 5);
+            btnViewClear.Location = new Point(431, 5);
             btnViewClear.Name = "btnViewClear";
             btnViewClear.Size = new Size(132, 32);
             btnViewClear.TabIndex = 20;
@@ -340,7 +345,7 @@
             // btnViewSearch
             // 
             btnViewSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnViewSearch.Location = new Point(435, 5);
+            btnViewSearch.Location = new Point(296, 5);
             btnViewSearch.Name = "btnViewSearch";
             btnViewSearch.Size = new Size(132, 32);
             btnViewSearch.TabIndex = 19;
@@ -355,7 +360,7 @@
             txtSearch.Location = new Point(8, 5);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Search students... (leave empty to display all)";
-            txtSearch.Size = new Size(421, 32);
+            txtSearch.Size = new Size(282, 32);
             txtSearch.TabIndex = 18;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -363,10 +368,10 @@
             // 
             pnlDGV.Controls.Add(dgvStudents);
             pnlDGV.Dock = DockStyle.Fill;
-            pnlDGV.Location = new Point(300, 42);
+            pnlDGV.Location = new Point(439, 42);
             pnlDGV.Name = "pnlDGV";
             pnlDGV.Padding = new Padding(5);
-            pnlDGV.Size = new Size(708, 559);
+            pnlDGV.Size = new Size(569, 559);
             pnlDGV.TabIndex = 2;
             // 
             // dgvStudents
@@ -383,7 +388,7 @@
             dgvStudents.Name = "dgvStudents";
             dgvStudents.ReadOnly = true;
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudents.Size = new Size(698, 549);
+            dgvStudents.Size = new Size(559, 549);
             dgvStudents.TabIndex = 0;
             dgvStudents.CellClick += dgvStudents_CellClick;
             // 

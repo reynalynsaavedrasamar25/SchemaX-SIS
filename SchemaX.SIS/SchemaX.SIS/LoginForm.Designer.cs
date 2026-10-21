@@ -67,7 +67,7 @@
             txtUsername.Location = new Point(52, 149);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(263, 23);
-            txtUsername.TabIndex = 8;
+            txtUsername.TabIndex = 0;
             // 
             // lblPass
             // 
@@ -86,7 +86,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(263, 23);
-            txtPassword.TabIndex = 4;
+            txtPassword.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -96,7 +96,7 @@
             btnLogin.Location = new Point(130, 243);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(108, 26);
-            btnLogin.TabIndex = 5;
+            btnLogin.TabIndex = 2;
             btnLogin.Text = "Log In";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
@@ -117,7 +117,7 @@
             btnSignUp.Location = new Point(130, 330);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(108, 23);
-            btnSignUp.TabIndex = 7;
+            btnSignUp.TabIndex = 3;
             btnSignUp.Text = "Sign up";
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
