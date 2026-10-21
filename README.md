@@ -1,21 +1,56 @@
-# SchemaX SIS
+SCHEMAX — STUDENT INFORMATION SYSTEM
+====================================
 
-Student Information System
-Group 3 - Team SchemaX
+PROJECT INFORMATION
 
-## Members
-- Zedric Zuñiga: UI Layout and DataGridView Display
-- Reynalyn Samar: MySQL Setup & Database Connection
-- Mariane Nuarin: CRUD Logic (Add, Edit, Delete)
-- Princess Ida Camasis: Error Handling and CherryTree Documentation
+Project Name: SchemaX Student Information System (SIS)
+Team Name: SchemaX
+Application Type: Desktop Application
+Programming Language: C#
+Framework: .NET 10 Windows Forms
+Database: MySQL
+Development IDE: Visual Studio 2026
+Documentation Tool: CherryTree
 
-## Setup
-Requires: .NET 10 SDK, MySQL 8.0.16 or newer (the schema uses CHECK constraints), and
-Visual Studio 2022 or newer with the ".NET desktop development" workload.
+GITHUB REPOSITORY
 
-1. Import db/schemax_sis.sql into MySQL.
-   WARNING: the script drops and recreates all tables, so importing it again erases existing data.
-2. In SchemaX.SIS/SchemaX.SIS/, copy appsettings.example.json to appsettings.json
-   and set your MySQL password. This file is git-ignored; never commit it.
-3. Open SchemaX.SIS/SchemaX.SIS.slnx in Visual Studio and press F5.
-4. To run the tests: dotnet test SchemaX.ValidatorTests
+https://github.com/reynalynsaavedrasamar25/SchemaX-SIS
+
+TEAM MEMBERS AND RESPONSIBILITIES
+
+1. Zedric Zuñiga
+   Role: UI Layout and DataGridView Display
+
+2. Reynalyn Samar
+   Role: MySQL Database Setup and Connection
+
+3. Mariane Nuarin
+   Role: CRUD Logic (Add, Edit, Delete)
+
+4. Princess Ida Camasis
+   Role: Error Handling, Testing, and CherryTree Documentation
+
+PROJECT DESCRIPTION
+
+The SchemaX Student Information System is a desktop application developed using C# Windows Forms and MySQL.
+
+The system allows users to manage student information through a graphical interface. It supports student registration, record viewing, editing, deletion, searching, and filtering.
+
+The project also includes input validation, exception handling, database integration, and automated testing.
+
+PROJECT DOCUMENTATION
+
+CherryTree Documentation:
+docs/SchemaX-SIS.ctd
+
+Database SQL Script:
+db/schemax_sis.sql
+
+GitHub Branch:
+develop
+
+FINAL SUBMISSION
+
+This README.txt contains the project information, team members, assigned responsibilities, and GitHub repository link.
+
+Additional submission requirements include the demonstration video, Visual Studio solution, SQL database script, and CherryTree documentation.
