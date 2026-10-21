@@ -20,6 +20,16 @@ namespace SchemaX.SIS
                 try { Helpers.ErrorLog.LogError((Exception)e.ExceptionObject); } catch { }
             };
 
+            using (var splash = new SplashForm())
+            {
+                splash.ShowDialog();
+            }
+
+            using (var login = new LoginForm())
+            {
+                if (login.ShowDialog() != DialogResult.OK) return;
+            }
+
             Application.Run(new dashboardForm());
         }
 

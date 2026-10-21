@@ -121,5 +121,70 @@ namespace SchemaX.SIS.Data
             command.Parameters.AddWithValue("@id", enrollmentId);
             return command.ExecuteNonQuery() > 0;
         }
+
+        public Subject? GetSubjectByCode(string code)
+        {
+            using var con = Db.Open();
+            using var cmd = new MySqlCommand(
+                "SELECT subject_id, subject_code, title, units FROM subjects WHERE subject_code = @c;", con);
+            cmd.Parameters.AddWithValue("@c", code);
+            using var r = cmd.ExecuteReader();
+            if (!r.Read()) return null;
+            return new Subject
+            {
+                SubjectId = Convert.ToInt32(r["subject_id"]),
+                SubjectCode = Convert.ToString(r["subject_code"]) ?? "",
+                Title = Convert.ToString(r["title"]) ?? "",
+                Units = Convert.ToInt32(r["units"])
+            };
+        }
+
+        // Find or create the subject by code, then add it to the student (grade may be null).
+        public void AddSubjectToStudent(string studentId, string code, string title, int units, decimal? grade)
+        {
+            using var con = Db.Open();
+            using var tx = con.BeginTransaction();
+
+            int subjectId = 0;
+            using (var find = new MySqlCommand(
+                "SELECT subject_id, title, units FROM subjects WHERE subject_code = @c;", con, tx))
+            {
+                find.Parameters.AddWithValue("@c", code);
+                using var r = find.ExecuteReader();
+                if (r.Read())
+                {
+                    string oldTitle = Convert.ToString(r["title"]) ?? "";
+                    int oldUnits = Convert.ToInt32(r["units"]);
+                    if (!oldTitle.Equals(title, StringComparison.OrdinalIgnoreCase) || oldUnits != units)
+                        throw new InvalidOperationException(
+                            $"{code} already exists as \"{oldTitle}\" ({oldUnits} units). " +
+                            "Use the same subject name and units, or a different subject code.");
+                    subjectId = Convert.ToInt32(r["subject_id"]);
+                }
+            }
+
+            if (subjectId == 0)
+            {
+                using var ins = new MySqlCommand(
+                    "INSERT INTO subjects (subject_code, title, units) VALUES (@c, @t, @u); SELECT LAST_INSERT_ID();",
+                    con, tx);
+                ins.Parameters.AddWithValue("@c", code);
+                ins.Parameters.AddWithValue("@t", title);
+                ins.Parameters.AddWithValue("@u", units);
+                subjectId = Convert.ToInt32(ins.ExecuteScalar());
+            }
+
+            using (var link = new MySqlCommand(
+                "INSERT INTO student_subjects (student_id, subject_id, grade) VALUES (@s, @sub, @g);", con, tx))
+            {
+                link.Parameters.AddWithValue("@s", studentId);
+                link.Parameters.AddWithValue("@sub", subjectId);
+                link.Parameters.AddWithValue("@g", grade.HasValue ? grade.Value : DBNull.Value);
+                link.ExecuteNonQuery();
+            }
+
+            tx.Commit();
+        }
+
     }
 }

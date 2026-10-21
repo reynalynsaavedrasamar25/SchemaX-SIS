@@ -54,7 +54,6 @@ namespace SchemaX.SIS
             SendMessage(cmbProgram.Handle, CB_SETCUEBANNER, 0, "Program");
         }
 
-
         public void LoadStudents()
         {
             string year = cmbYrFilter.SelectedIndex > 0
@@ -159,7 +158,7 @@ namespace SchemaX.SIS
             }
             catch (Exception ex)
             {
-                ExceptionHandler.Handle(ex, "Could not delete the student. Please try again.");
+                SchemaX.SIS.Helpers.ExceptionHandler.Handle(ex, "Could not delete the student. Please try again.");
             }
             LoadStudents();
             if (deleted)
@@ -218,10 +217,9 @@ namespace SchemaX.SIS
                 txtStudentID.ReadOnly = true;                         // lock Student ID
                 Text = "Student Information System - EDIT STUDENT";   // title changes
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Cannot connect to the database. Please check that MySQL is running.",
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SchemaX.SIS.Helpers.ExceptionHandler.Handle(ex, "Could not load the selected student. Please try again.");
             }
         }
 

@@ -6,11 +6,25 @@ drop table if exists attendance;
 drop table if exists student_subjects;
 drop table if exists subjects;
 drop table if exists students;
+drop table if exists users;
 
 -- WARNING: drops and recreates all tables. Do not run on a database with real data.
 
+create table users (
+user_id int auto_increment primary key,
+first_name varchar(50) not null,
+surname varchar(50) not null,
+bu_email varchar(100) not null,
+username varchar(50) not null,
+password_hash varchar(255) not null,
+created_at timestamp not null default current_timestamp,
+unique key uq_users_username (username),
+unique key uq_users_email (bu_email)
+) engine=InnoDB;
+
 create table students (
 student_id varchar(15) not null,
+user_id int not null,
 first_name varchar(50) not null,
 middle_name varchar(50) null,
 surname varchar(50) not null,
@@ -25,8 +39,10 @@ photo_path varchar(300) null,
 created_at timestamp not null default current_timestamp,
 primary key (student_id),
 unique key uq_students_email (bu_email),
+constraint fk_students_user foreign key (user_id)
+references users(user_id) on delete cascade,
 constraint chk_year_level check (year_level between 1 and 5)
-) engine=InnoDB;
+)engine=InnoDB;
 
 create table subjects (
 subject_id int auto_increment primary key,
@@ -63,13 +79,23 @@ insert into subjects (subject_code, title,  units) values
 ('GEC14', 'Mathematics in Modern World', 3),
 ('MathElec1', 'Linear Algebra', 3);
 
+insert into users (first_name, surname, bu_email, username, password_hash) values
+('Reyna', 'Saavedra', 'reynasamar.saavedra25@bicol-u.edu.ph', 'reynasaavedra', '100000.Z1+aV9crFAbJq7rTN4kbiw==.jIVmdkLkZ7wRP5vipMEdEGxBpFUVZMkmw+CU4U9jPaE=');
+
+set @demo_id = (select user_id from users where username = 'reynasaavedra');
+
 insert into students
-(student_id, first_name, middle_name, surname, gender, year_level, program, bloc,
+(student_id, user_id, first_name, middle_name, surname, gender, year_level, program, bloc,
 birthday, bu_email, contact_no) values
-('2025-06969', 'Reynalyn', 'Saavedra', 'Samar', 'Female',2,'BSCS', '2B', '2006-10-06', 
+('2025-01-06969', @demo_id, 'Reynalyn', 'Saavedra', 'Samar', 'Female',2,'BSCS', '2B', '2006-10-06', 
 'reynalynsaavedra.samar25@bicol-u.edu.ph', '09762662951'),
-('2025-06767', 'Mariane', 'Nonsol', 'Nuarin', 'Female',2,'BSCS', '2B', '2006-11-09', 
+('2025-01-06767', @demo_id, 'Mariane', 'Nonsol', 'Nuarin', 'Female',2,'BSCS', '2B', '2006-11-09', 
 'marianenonsol.nuarin25@bicol-u.edu.ph', '09335467892');
 
 insert into student_subjects (student_id, subject_id, grade) values
-('2025-06969', 1, 2.00), ('2025-06969', 2, 1.50), ('2025-06969', 3, NULL);
+('2025-01-06969', 1, 2.00), ('2025-01-06969', 2, 1.50), ('2025-01-06969', 3, NULL);
+
+use schemax_sis;
+alter table subjects add constraint chk_units check (units between 1 and 6);
+alter table student_subjects add constraint chk_grade check (grade between 1.00 and 5.00);
+alter table students add index idx_students_user_name (user_id, surname, first_name);
