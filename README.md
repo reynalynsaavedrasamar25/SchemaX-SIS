@@ -1,7 +1,7 @@
 SCHEMAX — STUDENT INFORMATION SYSTEM
 ====================================
 
-PROJECT INFORMATION
+## PROJECT INFORMATION
 
 Project Name: SchemaX Student Information System (SIS)
 Team Name: SchemaX
@@ -12,11 +12,11 @@ Database: MySQL
 Development IDE: Visual Studio 2026
 Documentation Tool: CherryTree
 
-GITHUB REPOSITORY
+## GITHUB REPOSITORY
 
 https://github.com/reynalynsaavedrasamar25/SchemaX-SIS
 
-TEAM MEMBERS AND RESPONSIBILITIES
+## TEAM MEMBERS AND RESPONSIBILITIES
 
 1. Zedric Zuñiga
    Role: UI Layout and DataGridView Display
@@ -30,7 +30,7 @@ TEAM MEMBERS AND RESPONSIBILITIES
 4. Princess Ida Camasis
    Role: Error Handling, Testing, and CherryTree Documentation
 
-PROJECT DESCRIPTION
+## PROJECT DESCRIPTION
 
 The SchemaX Student Information System is a desktop application developed using C# Windows Forms and MySQL.
 
@@ -38,7 +38,7 @@ The system allows users to manage student information through a graphical interf
 
 The project also includes input validation, exception handling, database integration, and automated testing.
 
-PROJECT DOCUMENTATION
+## PROJECT DOCUMENTATION
 
 CherryTree Documentation:
 docs/SchemaX-SIS.ctd
@@ -49,7 +49,7 @@ db/schemax_sis.sql
 GitHub Branch:
 develop
 
-FINAL SUBMISSION
+## FINAL SUBMISSION
 
 This README.txt contains the project information, team members, assigned responsibilities, and GitHub repository link.
 
