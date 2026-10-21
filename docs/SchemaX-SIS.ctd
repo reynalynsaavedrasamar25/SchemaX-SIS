@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Team &amp; Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791552760" ts_lastsave="1791999976">
+  <node unique_id="1" master_id="0" name="Team &amp; Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791552760" ts_lastsave="1792609488">
     <rich_text>
 </rich_text>
     <rich_text scale="h1">STUDENT INFORMATION SYSTEM</rich_text>
@@ -9,7 +9,6 @@
 </rich_text>
     <rich_text weight="heavy">Team SchemaX | Project Documentation</rich_text>
     <rich_text>
-
 
 </rich_text>
     <rich_text scale="h2">1. PROJECT INFORMATION</rich_text>
@@ -25,10 +24,10 @@
     <rich_text> Visual Studio 2026
 </rich_text>
     <rich_text weight="heavy">Programming Language:</rich_text>
-    <rich_text> C# (.NET Windows Forms)
+    <rich_text> C# (.NET 10 Windows Forms)
 </rich_text>
     <rich_text weight="heavy">Database:</rich_text>
-    <rich_text> MySQL
+    <rich_text> MySQL 8.0
 </rich_text>
     <rich_text weight="heavy">Version:</rich_text>
     <rich_text> 1.0
@@ -41,34 +40,49 @@
 </rich_text>
     <rich_text link="webs https://github.com/reynalynsaavedrasamar25/SchemaX-SIS">https://github.com/reynalynsaavedrasamar25/SchemaX-SIS</rich_text>
     <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Documentation Tool:</rich_text>
+    <rich_text> CherryTree
+</rich_text>
+    <rich_text weight="heavy">Version Control:</rich_text>
+    <rich_text> Git and GitHub
 
 
 </rich_text>
     <rich_text scale="h2">2. PROJECT OVERVIEW</rich_text>
     <rich_text>
 The Student Information System (SIS) is a desktop application developed using C# Windows Forms and MySQL.
-The system is designed to help users manage student information through a simple and organized interface.
-</rich_text>
-    <rich_text weight="heavy">Main Features:</rich_text>
-    <rich_text>
-• Add new student records
-
-• View existing student information
-
-• Search for student records
-
-• Edit student details
-
-• Delete student records
-
-• Validate user input
-
-• Handle errors and log exceptions
-
+The system is designed to help users manage student records, perform database operations, view student information, and organize academic records through a graphical interface.
 
 </rich_text>
-    <rich_text style="italic">Note: These are the project's intended features. Some functions are still under development and integration.</rich_text>
+    <rich_text scale="h3">Main Features</rich_text>
     <rich_text>
+• User registration and login
+
+• Dashboard with student statistics
+
+• Add, view, edit, and delete student records
+
+• Search students by name or Student ID
+
+• Filter records by year level and program
+
+• Student profile and academic record management
+
+• Subject enrollment and grade management
+
+• General Weighted Average (GWA) calculation
+
+• CSV export
+
+• Input validation
+
+• Exception handling and error logging
+
+
+</rich_text>
+    <rich_text weight="heavy">Implementation Note:</rich_text>
+    <rich_text> Features listed above have corresponding development work in the repository. Not all features have been retested after the latest integration changes.
 
 
 </rich_text>
@@ -84,13 +98,15 @@ The system is designed to help users manage student information through a simple
 </rich_text>
     <rich_text weight="heavy">Responsibilities:</rich_text>
     <rich_text>
-◇ Design the application's user interface
+◇ Design and organize application forms
 
-◇ Arrange forms, buttons, and input fields
+◇ Configure DataGridView presentation
 
-◇ Configure the DataGridView
+◇ Arrange input fields, buttons, and navigation
 
-◇ Prepare the interface for CRUD integration
+◇ Improve the visual consistency of the interface
+
+◇ Support UI integration
 
 
 </rich_text>
@@ -99,11 +115,11 @@ The system is designed to help users manage student information through a simple
     <rich_text family="monospace">zedric/ui-layout</rich_text>
     <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Merged PRs:</rich_text>
+    <rich_text weight="heavy">Related Pull Requests:</rich_text>
     <rich_text> #29, #32, #35
 </rich_text>
-    <rich_text style="italic">PR #29 merged develop into the UI branch. PRs #32 and #35 were merged into develop.</rich_text>
-    <rich_text>
+    <rich_text weight="heavy">Module Notes:</rich_text>
+    <rich_text> The application includes a dashboard, student management interface, login form, and registration form. Recent repository updates also introduced additional UI/UX improvements and optimized tab navigation.
 
 </rich_text>
     <rich_text scale="h3">Reynalyn Samar</rich_text>
@@ -114,13 +130,15 @@ The system is designed to help users manage student information through a simple
 </rich_text>
     <rich_text weight="heavy">Responsibilities:</rich_text>
     <rich_text>
-◇ Prepare the MySQL database
+◇ Prepare the MySQL database structure
 
 ◇ Configure database connectivity
 
+◇ Implement database-related functionality
+
 ◇ Support database integration
 
-◇ Coordinate repository development
+◇ Coordinate repository changes
 
 
 </rich_text>
@@ -129,8 +147,15 @@ The system is designed to help users manage student information through a simple
     <rich_text family="monospace">reynalyn/database</rich_text>
     <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Merged PRs:</rich_text>
-    <rich_text> None confirmed
+    <rich_text weight="heavy">Related Repository Work:</rich_text>
+    <rich_text> PR #39 (database schema and sample data), PR #45 (SQL update), PR #51 (dashboard queries).
+</rich_text>
+    <rich_text weight="heavy">Module Notes:</rich_text>
+    <rich_text> MySQL connectivity and database-backed student loading were verified during integration. The latest application also uses a </rich_text>
+    <rich_text family="monospace">users</rich_text>
+    <rich_text> table for account registration and a </rich_text>
+    <rich_text family="monospace">user_id</rich_text>
+    <rich_text> field in student records for account-specific data.
 
 </rich_text>
     <rich_text scale="h3">Mariane Nuarin</rich_text>
@@ -141,13 +166,15 @@ The system is designed to help users manage student information through a simple
 </rich_text>
     <rich_text weight="heavy">Responsibilities:</rich_text>
     <rich_text>
-◇ Implement adding student records
+◇ Implement student insertion
 
-◇ Implement editing existing records
+◇ Implement student record updates
 
-◇ Implement deleting student records
+◇ Implement student deletion
 
-◇ Integrate CRUD operations with the database
+◇ Connect CRUD operations to MySQL
+
+◇ Support validation and DataGridView refreshing
 
 
 </rich_text>
@@ -156,99 +183,306 @@ The system is designed to help users manage student information through a simple
     <rich_text family="monospace">mariane/crud</rich_text>
     <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Merged PRs:</rich_text>
-    <rich_text> None confirmed
+    <rich_text weight="heavy">Related Repository Work:</rich_text>
+    <rich_text> PR #42 (student CRUD), PR #50 (validation, editing, and deletion improvements).
+</rich_text>
+    <rich_text weight="heavy">Module Notes:</rich_text>
+    <rich_text> Student Add, Edit, and Delete operations have been implemented and tested during earlier development. Additional improvements addressed field validation, grid refreshing, edit-mode reset, and deletion confirmation.
 
 </rich_text>
     <rich_text scale="h3">Princess Ida Camasis</rich_text>
     <rich_text>
 </rich_text>
     <rich_text weight="heavy">Role:</rich_text>
-    <rich_text> Error Handling &amp; CherryTree Documentation
+    <rich_text> Error Handling, Testing &amp; CherryTree Documentation
 </rich_text>
     <rich_text weight="heavy">Responsibilities:</rich_text>
     <rich_text>
 ◇ Implement input validation
 
-◇ Create exception handling helpers
+◇ Develop exception handling helpers
 
 ◇ Implement error logging
 
-◇ Prepare test cases and bug reports
+◇ Prepare automated validator tests
 
-◇ Maintain CherryTree documentation
+◇ Conduct functional testing
 
-◇ Assist with application testing
+◇ Maintain test-case sheets and bug reports
+
+◇ Prepare and update CherryTree documentation
 
 
 </rich_text>
-    <rich_text weight="heavy">GitHub Branch:</rich_text>
-    <rich_text> </rich_text>
+    <rich_text weight="heavy">GitHub Branches:</rich_text>
+    <rich_text>
+◇ </rich_text>
     <rich_text family="monospace">princessida/error-handling</rich_text>
     <rich_text>
+
+◇ </rich_text>
+    <rich_text family="monospace">princessida/validator-unit-tests</rich_text>
+    <rich_text>
+
+◇ </rich_text>
+    <rich_text family="monospace">princessida/sis-integration-fixes</rich_text>
+    <rich_text>
+
+
 </rich_text>
-    <rich_text weight="heavy">Pull Request:</rich_text>
-    <rich_text> #36 — Open, awaiting review/merge
+    <rich_text weight="heavy">Merged Pull Requests:</rich_text>
+    <rich_text>
+◇ PR #36 — Student validation and exception handling helpers
+
+◇ PR #43 — 25 automated validator unit tests
+
+◇ PR #48 — SIS integration fixes and improved validation
+
+◇ PR #49 — Database loading exception handling and error logging
+
+
+</rich_text>
+    <rich_text weight="heavy">Module Notes:</rich_text>
+    <rich_text>
+◇ Developed input validation and exception handling helpers.
+
+◇ Implemented logging through </rich_text>
+    <rich_text family="monospace">logs/errors.txt</rich_text>
+    <rich_text>.
+
+◇ Verified appropriate warning and error messages.
+
+◇ Completed 25 automated validator unit tests.
+
+◇ Prepared and maintained the 14 functional test cases.
+
+◇ Documented integration problems and their fixes.
+
+◇ Updated CherryTree testing and project documentation.
+
+
 
 
 </rich_text>
     <rich_text scale="h2">4. DEVELOPMENT &amp; COLLABORATION</rich_text>
     <rich_text>
-</rich_text>
-    <rich_text weight="heavy">Version Control:</rich_text>
-    <rich_text> Git and GitHub
-</rich_text>
-    <rich_text weight="heavy">Documentation Tool:</rich_text>
-    <rich_text> CherryTree
-</rich_text>
-    <rich_text weight="heavy">Development Environment:</rich_text>
-    <rich_text> Visual Studio 2026
-</rich_text>
-    <rich_text weight="heavy">Database Management:</rich_text>
-    <rich_text> MySQL Workbench
-Each team member works on an assigned Git branch. Changes are submitted through pull requests for review before integration into the </rich_text>
+The team used Git and GitHub for source control and collaborative development.
+Each member was assigned specific responsibilities, with changes submitted through branches and pull requests.
+The </rich_text>
     <rich_text family="monospace">develop</rich_text>
-    <rich_text> branch.
+    <rich_text> branch was used for integrating application components.
+</rich_text>
+    <rich_text weight="heavy">Development Tools:</rich_text>
+    <rich_text>
+◇ Visual Studio 2026
+
+◇ C# and .NET 10 Windows Forms
+
+◇ MySQL Server and MySQL Workbench
+
+◇ Git and GitHub
+
+◇ CherryTree
+
+◇ xUnit for automated validator testing
 
 
 </rich_text>
-    <rich_text scale="h2">5. CURRENT PROJECT STATUS</rich_text>
+    <rich_text weight="heavy">Recent Integration Updates:</rich_text>
+    <rich_text>
+◇ PR #48 — Student management integration and validation fixes
+
+◇ PR #49 — Database error handling improvements
+
+◇ PR #50 — CRUD validation and deletion improvements
+
+◇ PR #51 — Dashboard database queries
+
+◇ PR #52 — Student form and dashboard enhancements
+
+◇ PR #54 — Working-version fix
+
+◇ PR #55 — UI/UX improvements and optimized tab order
+
+
+The integration process included troubleshooting form behavior, database connections, input validation, and MySQL schema compatibility.
+
+
+</rich_text>
+    <rich_text scale="h2">5. TESTING AND VERIFICATION</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Automated Testing</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Validator Unit Tests:</rich_text>
+    <rich_text>
+◇ Total: 25
+
+◇ Passed: 25
+
+◇ Failed: 0
+
+
+These automated tests covered required fields, student ID validation, names, dates, email validation, and related input checks.
+
+</rich_text>
+    <rich_text scale="h3">Functional Testing — Round 1</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Testing Date:</rich_text>
+    <rich_text> October 16, 2026
+◇ Total Test Cases: 14
+
+◇ Passed: 9
+
+◇ Failed: 1
+
+◇ Blocked: 4
+
+
+
+</rich_text>
+    <rich_text scale="h3">Functional Testing — Round 2</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Testing Date:</rich_text>
+    <rich_text> October 17, 2026
+◇ Total Test Cases: 14
+
+◇ Passed: 14
+
+◇ Failed: 0
+
+◇ Blocked: 0
+
+
+</rich_text>
+    <rich_text weight="heavy">Overall Round 2 Result:</rich_text>
+    <rich_text> PASS
+All 14 planned functional test cases passed during Round 2. Additional verification was conducted after later integration changes.
+
+</rich_text>
+    <rich_text scale="h3">Latest Integration Verification — October 22, 2026</rich_text>
+    <rich_text>
+The latest </rich_text>
+    <rich_text family="monospace">develop</rich_text>
+    <rich_text> version was retrieved and built in Visual Studio.
+</rich_text>
+    <rich_text weight="heavy">Verified Results:</rich_text>
+    <rich_text>
+◇ Solution build succeeded: 2 projects, 0 failures
+
+◇ Application launched successfully
+
+◇ Login required-field validation worked
+
+◇ MySQL database connection succeeded
+
+◇ User registration created a test account
+
+◇ Registered user successfully accessed the dashboard
+
+◇ Dashboard displayed two student records
+
+◇ Dashboard year-level and program breakdowns displayed correctly
+
+◇ Manage Students loaded two existing records
+
+
+</rich_text>
+    <rich_text weight="heavy">Integration Problems Identified and Resolved Locally:</rich_text>
+    <rich_text>
+◇ Incorrect MySQL authentication settings
+
+◇ Invalid local </rich_text>
+    <rich_text family="monospace">appsettings.json</rich_text>
+    <rich_text> structure
+
+◇ Missing </rich_text>
+    <rich_text family="monospace">users</rich_text>
+    <rich_text> database table
+
+◇ Missing </rich_text>
+    <rich_text family="monospace">user_id</rich_text>
+    <rich_text> column in the existing students table
+
+◇ Existing student records required account ownership assignment
+
+
+</rich_text>
+    <rich_text weight="heavy">Outstanding Verification:</rich_text>
+    <rich_text> Final testing of all application features after the latest integration changes, including academic records, deletion-related regression testing, and complete UI behavior.
+
+
+</rich_text>
+    <rich_text scale="h2">6. CURRENT PROJECT STATUS</rich_text>
     <rich_text>
 </rich_text>
     <rich_text weight="heavy">UI Layout:</rich_text>
-    <rich_text> Initial implementation available
+    <rich_text> Implemented; recent improvements merged
 </rich_text>
     <rich_text weight="heavy">Database Connection:</rich_text>
-    <rich_text> Pending integration verification
+    <rich_text> Verified working
+</rich_text>
+    <rich_text weight="heavy">User Registration:</rich_text>
+    <rich_text> Verified with a test account
+</rich_text>
+    <rich_text weight="heavy">Login:</rich_text>
+    <rich_text> Verified successful
+</rich_text>
+    <rich_text weight="heavy">Dashboard:</rich_text>
+    <rich_text> Verified displaying statistics
+</rich_text>
+    <rich_text weight="heavy">Student List:</rich_text>
+    <rich_text> Verified loading 2 existing records
 </rich_text>
     <rich_text weight="heavy">CRUD Operations:</rich_text>
-    <rich_text> Awaiting implementation/integration
+    <rich_text> Implemented; previously tested
+</rich_text>
+    <rich_text weight="heavy">Search and Filters:</rich_text>
+    <rich_text> Previously tested
 </rich_text>
     <rich_text weight="heavy">Input Validation:</rich_text>
     <rich_text> Implemented and tested
 </rich_text>
     <rich_text weight="heavy">Exception Handling:</rich_text>
-    <rich_text> Helper implemented and tested
+    <rich_text> Implemented and tested
 </rich_text>
     <rich_text weight="heavy">Error Logging:</rich_text>
     <rich_text> Implemented and tested
 </rich_text>
-    <rich_text weight="heavy">Documentation:</rich_text>
+    <rich_text weight="heavy">Automated Unit Testing:</rich_text>
+    <rich_text> 25 tests passed
+</rich_text>
+    <rich_text weight="heavy">Functional Testing Round 2:</rich_text>
+    <rich_text> Pending confirmation of final results
+</rich_text>
+    <rich_text weight="heavy">Final Documentation:</rich_text>
     <rich_text> In progress
 </rich_text>
-    <rich_text weight="heavy">Full System Testing:</rich_text>
-    <rich_text> Pending CRUD integration
+    <rich_text weight="heavy">Final Submission Package:</rich_text>
+    <rich_text> Pending completion
+
 </rich_text>
-    <rich_text weight="heavy">Important Notes:</rich_text>
+    <rich_text scale="h3">Known Considerations</rich_text>
     <rich_text>
-◇ Error handling and validation changes are submitted through PR #36.
+The latest application uses account-specific database queries. Existing local databases may require updates to support the </rich_text>
+    <rich_text family="monospace">users</rich_text>
+    <rich_text> table and </rich_text>
+    <rich_text family="monospace">user_id</rich_text>
+    <rich_text> column.
+Final screenshots, testing verification, and documentation must be completed before submission.
 
-◇ Database-related error handling still requires CRUD integration.
 
-◇ Final testing will be performed after the system components are combined.
-
-
-
+</rich_text>
+    <rich_text scale="h2">7. CONCLUSION</rich_text>
+    <rich_text>
+Team SchemaX developed a Student Information System using C# Windows Forms and MySQL.
+The project demonstrates collaboration through GitHub, database integration, CRUD development, input validation, exception handling, automated testing, and functional verification.
+The 14 planned functional test cases passed during Round 2, and the latest integrated application successfully launched, authenticated a test account, connected to MySQL, and displayed student statistics and existing student records.
+Further final-version verification and documentation packaging remain necessary before submission.
 </rich_text>
     <rich_text weight="heavy">Document:</rich_text>
     <rich_text> SchemaX SIS — Team &amp; Overview
@@ -259,8 +493,3002 @@ Each team member works on an assigned Git branch. Changes are submitted through 
     <rich_text weight="heavy">Project Version:</rich_text>
     <rich_text> 1.0
 </rich_text>
+    <rich_text weight="heavy">Updated:</rich_text>
+    <rich_text> October 22, 2026
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — REYNALYN SAMAR</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> MySQL Database Setup and Database Connection
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The Database Module provides persistent storage for the SchemaX Student Information System.
+It allows the application to connect to MySQL and manage student records and related academic information.
+
+</rich_text>
+    <rich_text scale="h3">2. DATABASE SETUP</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Database Name:</rich_text>
+    <rich_text> schemax_sis
+</rich_text>
+    <rich_text weight="heavy">Database Management System:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Database Management Tool:</rich_text>
+    <rich_text> MySQL Workbench
+</rich_text>
+    <rich_text weight="heavy">SQL Setup File:</rich_text>
+    <rich_text> db/schemax_sis.sql
+The original database setup contains four primary application tables:
+1. students — Stores student information.
+
+2. subjects — Stores subject information.
+
+3. student_subjects — Stores student enrollments and grades.
+
+4. attendance — Stores attendance records.
+
+The database uses relational tables to organize student and academic information.
+
+</rich_text>
+    <rich_text scale="h3">3. DATABASE CONNECTION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Data/Db.cs
+The Db class is responsible for opening MySQL database connections.
+The application reads its connection string from appsettings.json.
+The Db.Open() method creates and opens a MySQL connection.
+Database credentials must remain private and should not be uploaded to GitHub.
+
+</rich_text>
+    <rich_text scale="h3">4. DATABASE REPOSITORY COMPONENTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">StudentRepository.cs</rich_text>
+    <rich_text>
+Contains database operations for inserting, retrieving, updating, deleting, searching, and filtering student records.
+</rich_text>
+    <rich_text weight="heavy">AcademicRepository.cs</rich_text>
+    <rich_text>
+Contains database operations for managing subjects, student enrollments, and grades.
+</rich_text>
+    <rich_text weight="heavy">DashboardRepository.cs</rich_text>
+    <rich_text>
+Retrieves database statistics used by the application's dashboard.
+</rich_text>
+    <rich_text weight="heavy">UserRepository.cs</rich_text>
+    <rich_text>
+Provides database operations for user registration and authentication.
+These components are present in the integrated project. Their inclusion here documents the database module's interfaces with the rest of the application; it does not attribute every repository implementation to one developer.
+
+</rich_text>
+    <rich_text scale="h3">5. DATABASE INTEGRATION TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Student Record Retrieval:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Add Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Edit Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Delete Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Search Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Year Level and Program Filtering:</rich_text>
+    <rich_text> PASS
+The application successfully connected to MySQL and performed the tested student management operations.
+
+</rich_text>
+    <rich_text scale="h3">6. OCTOBER 22 INTEGRATION UPDATE</rich_text>
+    <rich_text>
+The latest application required additional local database changes to support authentication and dashboard functionality.
+</rich_text>
+    <rich_text weight="heavy">Issue 1: Missing users Table</rich_text>
+    <rich_text>
+The local database did not contain the users table required for registration and login.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> The required table was created locally.
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> Registration and login passed.
+</rich_text>
+    <rich_text weight="heavy">Issue 2: Missing students.user_id Column</rich_text>
+    <rich_text>
+Dashboard queries required a user_id column that was absent from the original students table.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> The existing table was backed up, the column was added, and the two original student records were associated with the registered test account.
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> Dashboard statistics and student record retrieval passed.
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> These local corrections must be reflected in the final database setup or migration scripts before deployment.
+
+</rich_text>
+    <rich_text scale="h3">7. VERIFIED RESULTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">October 17:</rich_text>
+    <rich_text>
+Student CRUD and Search integration passed.
+</rich_text>
+    <rich_text weight="heavy">October 22:</rich_text>
+    <rich_text>
+Application database connection: PASS
+User registration: PASS
+User authentication: PASS
+Dashboard loading: PASS
+Student record retrieval: PASS
+</rich_text>
+    <rich_text weight="heavy">Final Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">8. REMAINING WORK</rich_text>
+    <rich_text>
+1. Confirm that the final SQL setup includes the users table and student ownership column.
+
+2. Resolve the Student ID format inconsistency.
+
+3. Verify database setup on a clean computer.
+
+4. Complete academic and attendance module testing.
+
+5. Perform final regression testing after integration changes.
+
+
+</rich_text>
+    <rich_text scale="h3">9. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The Database Module supports persistent student information storage and provides the connection infrastructure required by the application.
+Testing confirmed working student database operations on October 17 and successful login, dashboard, and student retrieval integration on October 22 after local configuration updates.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED CORE OPERATIONS — FINAL DEPLOYMENT CHECKS PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — MARIANE NUARIN</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> CRUD Logic (Add, Edit, Delete)
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The CRUD Module allows users to create, retrieve, update, and delete student records through the Student Information System.
+It connects the Windows Forms interface to the MySQL database through the StudentRepository class.
+
+</rich_text>
+    <rich_text scale="h3">2. CREATE — ADD STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Insert()
+The Add Student feature validates the entered student information before attempting to save a new record.
+The repository executes a parameterized SQL INSERT statement to store the student's information.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+A valid temporary student record was successfully saved to MySQL and displayed in the application.
+The temporary record was removed after testing.
+
+</rich_text>
+    <rich_text scale="h3">3. READ — VIEW STUDENT RECORDS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Methods:</rich_text>
+    <rich_text>
+StudentRepository.GetAll()
+StudentRepository.GetById()
+The application retrieves student information from MySQL and displays existing records in the DataGridView.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+Existing student records were successfully loaded and displayed.
+
+</rich_text>
+    <rich_text scale="h3">4. UPDATE — EDIT STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Update()
+The Edit Student feature allows the user to select an existing student, modify information, and save the changes.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+An existing student's block was modified and saved successfully.
+The updated value was verified in MySQL, and the original value was restored after testing.
+
+</rich_text>
+    <rich_text scale="h3">5. DELETE — REMOVE STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Delete()
+The Delete Student feature allows the user to remove an existing record after confirmation.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+A confirmed deletion successfully removed the selected student record.
+Canceling deletion preserved the record.
+Deleting without selecting a student displayed the appropriate warning.
+
+</rich_text>
+    <rich_text scale="h3">6. SEARCH AND FILTERING INTEGRATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Search()
+The application supports searching and filtering student records.
+Verified scenarios included:
+• Student ID searching
+
+• Student name searching
+
+• Partial matching
+
+• Case-insensitive searching
+
+• Year Level filtering
+
+• Program filtering
+
+• Combined search and filtering
+
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+The application displayed matching student records as expected.
+Search and filtering are included here as related student-management integration features, not as exclusively Mariane's assigned work.
+
+</rich_text>
+    <rich_text scale="h3">7. INPUT VALIDATION AND DUPLICATE HANDLING</rich_text>
+    <rich_text>
+The CRUD interface uses validation checks before saving student information.
+Tested scenarios included:
+◇ Missing Student ID
+
+◇ Invalid Student ID format
+
+◇ Missing student name
+
+◇ Invalid contact number
+
+◇ Missing program
+
+◇ Missing gender
+
+◇ Missing year level
+
+◇ Duplicate Student ID
+
+
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS for the recorded functional tests.
+Duplicate BU email handling was also tested during subsequent integration work.
+
+</rich_text>
+    <rich_text scale="h3">8. IDENTIFIED BUG — EDIT MODE AFTER DELETION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Bug ID:</rich_text>
+    <rich_text> BUG-007
+</rich_text>
+    <rich_text weight="heavy">Date Identified:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Problem:</rich_text>
+    <rich_text> After deleting a student, the application could remain in Edit Mode.
+</rich_text>
+    <rich_text weight="heavy">Cause:</rich_text>
+    <rich_text> The _isEdit state was not reset after deletion.
+</rich_text>
+    <rich_text weight="heavy">Correction Implemented:</rich_text>
+    <rich_text> Added ExitEditMode() to the deletion handler's finally block.
+</rich_text>
+    <rich_text weight="heavy">Build Result:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Final Regression Test:</rich_text>
+    <rich_text> PENDING
+Immediate Add Mode behavior after deletion without using Clear Selection still requires verification.
+
+</rich_text>
+    <rich_text scale="h3">9. TESTING SUMMARY</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">October 16 — Initial Testing:</rich_text>
+    <rich_text>
+Student database integration was incomplete.
+Add, Edit, and Delete testing was blocked.
+</rich_text>
+    <rich_text weight="heavy">October 17 — Integration Retesting:</rich_text>
+    <rich_text>
+Create: PASS
+Read: PASS
+Update: PASS
+Delete: PASS
+Search: PASS
+Filtering: PASS
+The core CRUD operations successfully interacted with the local MySQL database in the tested application version.
+
+</rich_text>
+    <rich_text scale="h3">10. REMAINING WORK</rich_text>
+    <rich_text>
+1. Complete the deletion-related Edit Mode regression test.
+
+2. Confirm Student ID format consistency.
+
+3. Verify duplicate-record handling after final integration.
+
+4. Repeat CRUD testing against the final application version.
+
+5. Verify that the final database schema supports the latest student repository operations.
+
+
+</rich_text>
+    <rich_text scale="h3">11. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The CRUD Module provides the student record management operations required by the SchemaX Student Information System.
+Testing on October 17 confirmed that Create, Read, Update, and Delete operations worked correctly in the tested application version.
+A separate Edit Mode issue was identified and corrected, with final regression verification still pending.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> CORE CRUD OPERATIONS VERIFIED — FINAL REGRESSION TESTING PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — ZEDRIC ZUÑIGA</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Zedric Zuñiga
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> UI Layout and DataGridView Display
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The User Interface (UI) Module provides the visual components that allow users to interact with the SchemaX Student Information System.
+It presents student information, accepts user input, and provides controls for student management operations.
+
+</rich_text>
+    <rich_text scale="h3">2. WINDOWS FORMS INTERFACE</rich_text>
+    <rich_text>
+The application uses Windows Forms to provide a desktop graphical user interface.
+The integrated application includes interfaces for:
+• User Login
+
+• User Registration
+
+• Dashboard
+
+• Student Information Management
+
+
+These interfaces support navigation between the application's main features.
+
+</rich_text>
+    <rich_text scale="h3">3. STUDENT INFORMATION FORM</rich_text>
+    <rich_text>
+The Student Information Form provides input controls for managing student records.
+The student information fields include:
+◇ Student ID
+
+◇ First Name
+
+◇ Middle Name
+
+◇ Surname
+
+◇ Gender
+
+◇ Year Level
+
+◇ Program
+
+◇ Block
+
+◇ Birthday
+
+◇ BU Email
+
+◇ Contact Number
+
+◇ Optional Student Photo
+
+
+The form allows users to enter and review student information before performing database operations.
+
+</rich_text>
+    <rich_text scale="h3">4. DATAGRIDVIEW DISPLAY</rich_text>
+    <rich_text>
+The DataGridView component presents student records in a structured format.
+The integrated application retrieves student records from MySQL and displays them in the DataGridView.
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS
+Existing student records appeared successfully after database integration fixes.
+
+</rich_text>
+    <rich_text scale="h3">5. STUDENT MANAGEMENT CONTROLS</rich_text>
+    <rich_text>
+The student management interface provides controls for:
+◇ Adding student records
+
+◇ Editing existing student information
+
+◇ Deleting student records
+
+◇ Searching for students
+
+◇ Filtering student records
+
+◇ Clearing selected records
+
+◇ Exporting student information to CSV
+
+
+These controls connect the user interface to the application's student management logic.
+
+</rich_text>
+    <rich_text scale="h3">6. SEARCH AND FILTERING INTERFACE</rich_text>
+    <rich_text>
+The student management interface supports searching and filtering.
+Tested features included:
+◇ Student ID search
+
+◇ Student name search
+
+◇ Partial matching
+
+◇ Case-insensitive search
+
+◇ Year Level filtering
+
+◇ Program filtering
+
+◇ Combined search and filtering
+
+
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS
+The DataGridView displayed matching student records in the tested scenarios.
+
+</rich_text>
+    <rich_text scale="h3">7. USER INTERFACE VALIDATION FEEDBACK</rich_text>
+    <rich_text>
+The application displays warning and information messages to guide users during student management operations.
+Examples include:
+◇ Missing required fields
+
+◇ Invalid input formats
+
+◇ Duplicate student information
+
+◇ No student selected for editing or deletion
+
+◇ Deletion confirmation
+
+◇ Database-related errors
+
+
+These messages help users understand why an operation cannot proceed or whether an action requires confirmation.
+
+</rich_text>
+    <rich_text scale="h3">8. OCTOBER 22 INTERFACE VERIFICATION</rich_text>
+    <rich_text>
+The latest integrated application was launched and tested.
+</rich_text>
+    <rich_text weight="heavy">Application Startup:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Login Form:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Registration Form:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Dashboard Display:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Manage Students Navigation:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Student Records Display:</rich_text>
+    <rich_text> PASS
+The dashboard successfully displayed information from the local MySQL database.
+</rich_text>
+    <rich_text weight="heavy">Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">9. IDENTIFIED INTERFACE ISSUE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Bug ID:</rich_text>
+    <rich_text> BUG-007
+</rich_text>
+    <rich_text weight="heavy">Issue:</rich_text>
+    <rich_text> Application remains in Edit Mode after deletion.
+</rich_text>
+    <rich_text weight="heavy">Date Identified:</rich_text>
+    <rich_text> October 17, 2026
+The interface could remain in Edit Mode after deleting a student record.
+A correction was implemented by calling ExitEditMode() after the deletion operation.
+</rich_text>
+    <rich_text weight="heavy">Build Result:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Final Regression Test:</rich_text>
+    <rich_text> PENDING
+This issue involves interaction between UI state management and CRUD logic.
+
+</rich_text>
+    <rich_text scale="h3">10. REMAINING WORK</rich_text>
+    <rich_text>
+1. Complete final interface regression testing.
+
+2. Verify immediate Add Mode behavior after deletion.
+
+3. Confirm consistent validation messages across the application.
+
+4. Verify UI behavior after database connection failures.
+
+5. Check interface usability and layout on the final submission build.
+
+
+</rich_text>
+    <rich_text scale="h3">11. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The UI Module provides the visual interface for interacting with the SchemaX Student Information System.
+Testing confirmed successful student record display, navigation, searching, filtering, and user interaction in the tested application versions.
+The October 22 walkthrough also confirmed that the Login, Registration, Dashboard, and Manage Students interfaces opened successfully.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED INTERFACE FEATURES — FINAL REGRESSION TESTING PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Zedric Zuñiga
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> This section documents the integrated UI features associated with Zedric's assigned module. It does not establish individual authorship of every interface component.
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — PRINCESS IDA CAMASIS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> Error Handling, Testing, and CherryTree Documentation
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL, xUnit, CherryTree
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The Error Handling and Testing Module helps ensure that the SchemaX Student Information System handles invalid input, duplicate records, and database errors appropriately.
+The documentation responsibility includes maintaining the project's technical notes, testing results, bug reports, and integration progress in CherryTree.
+
+</rich_text>
+    <rich_text scale="h3">2. INPUT VALIDATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/Validator.cs
+The Validator class checks student information before database operations are performed.
+Validation scenarios include:
+• Required Student ID
+
+• Student ID format
+
+• Required student names
+
+• Name format
+
+• BU email validation
+
+• Contact number validation
+
+• Birthday validation
+
+• Required academic information
+
+
+</rich_text>
+    <rich_text weight="heavy">Testing Result:</rich_text>
+    <rich_text> PASS for the documented validation scenarios.
+
+</rich_text>
+    <rich_text scale="h3">3. EXCEPTION HANDLING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/ExceptionHandler.cs
+The ExceptionHandler class provides centralized exception handling.
+Its responsibilities include:
+◇ Handling application exceptions
+
+◇ Displaying user-friendly error messages
+
+◇ Preventing raw technical error details from being shown unnecessarily
+
+◇ Coordinating with the error logging helper
+
+
+Database-related error handling was tested during integration work.
+
+</rich_text>
+    <rich_text scale="h3">4. ERROR LOGGING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/ErrorLog.cs
+The ErrorLog class records exception information for troubleshooting.
+</rich_text>
+    <rich_text weight="heavy">Log Location:</rich_text>
+    <rich_text> logs/errors.txt
+The recorded information includes:
+◇ Date and time
+
+◇ Exception type
+
+◇ Error message
+
+◇ Stack trace
+
+
+</rich_text>
+    <rich_text weight="heavy">Verification Result:</rich_text>
+    <rich_text> PASS for the tested exception scenarios.
+
+</rich_text>
+    <rich_text scale="h3">5. DUPLICATE STUDENT HANDLING</rich_text>
+    <rich_text>
+Duplicate-record handling was tested for:
+◇ Duplicate Student ID
+
+◇ Duplicate BU email
+
+
+The application displayed an appropriate warning when duplicate student information was submitted.
+</rich_text>
+    <rich_text weight="heavy">Verified Warning:</rich_text>
+    <rich_text>
+"That Student ID or BU email already exists."
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS in the tested application version.
+
+</rich_text>
+    <rich_text scale="h3">6. AUTOMATED UNIT TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Testing Framework:</rich_text>
+    <rich_text> xUnit
+</rich_text>
+    <rich_text weight="heavy">Test Project:</rich_text>
+    <rich_text> SchemaX.ValidatorTests
+</rich_text>
+    <rich_text weight="heavy">Test File:</rich_text>
+    <rich_text> UnitTest1.cs
+</rich_text>
+    <rich_text weight="heavy">Testing Date:</rich_text>
+    <rich_text> October 16, 2026
+</rich_text>
+    <rich_text weight="heavy">Total Tests:</rich_text>
+    <rich_text> 25
+</rich_text>
+    <rich_text weight="heavy">Passed:</rich_text>
+    <rich_text> 25
+</rich_text>
+    <rich_text weight="heavy">Failed:</rich_text>
+    <rich_text> 0
+</rich_text>
+    <rich_text weight="heavy">Skipped:</rich_text>
+    <rich_text> 0
+The automated tests covered selected Validator class scenarios, including student information and input validation.
+</rich_text>
+    <rich_text weight="heavy">GitHub Pull Request:</rich_text>
+    <rich_text> #43
+</rich_text>
+    <rich_text weight="heavy">Title:</rich_text>
+    <rich_text> test: add 25 validator unit tests
+</rich_text>
+    <rich_text weight="heavy">Integration Status:</rich_text>
+    <rich_text> MERGED INTO DEVELOP
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> The recorded 25/25 result is from October 16. A complete rerun against the latest October 22 integrated version has not yet been confirmed.
+
+</rich_text>
+    <rich_text scale="h3">7. MANUAL FUNCTIONAL TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Test Case Sheet:</rich_text>
+    <rich_text> SchemaX SIS — Test Case Sheet v1.0
+</rich_text>
+    <rich_text weight="heavy">Total Functional Test Cases:</rich_text>
+    <rich_text> 14
+</rich_text>
+    <rich_text weight="heavy">Round 1 — October 16, 2026</rich_text>
+    <rich_text>
+Passed: 9
+Failed: 1
+Blocked: 4
+</rich_text>
+    <rich_text weight="heavy">Round 2 — October 17, 2026</rich_text>
+    <rich_text>
+Passed: 14
+Failed: 0
+Blocked: 0
+</rich_text>
+    <rich_text weight="heavy">Round 2 Result:</rich_text>
+    <rich_text> PASS — 14/14
+The testing covered application startup, student record loading, CRUD operations, searching, and input validation.
+
+</rich_text>
+    <rich_text scale="h3">8. BUG REPORTING AND RETESTING</rich_text>
+    <rich_text>
+The following bugs were documented:
+</rich_text>
+    <rich_text weight="heavy">BUG-001:</rich_text>
+    <rich_text> Existing student records not displayed — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-002:</rich_text>
+    <rich_text> Add Student not saving to MySQL — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-003:</rich_text>
+    <rich_text> Edit Student functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-004:</rich_text>
+    <rich_text> Delete Student functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-005:</rich_text>
+    <rich_text> Search functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-006:</rich_text>
+    <rich_text> Student ID format mismatch — OPEN, PENDING TEAM REVIEW
+</rich_text>
+    <rich_text weight="heavy">BUG-007:</rich_text>
+    <rich_text> Application remains in Edit Mode after deletion — FIX IMPLEMENTED, FINAL REGRESSION TEST PENDING
+The bug log preserves the original findings and subsequent retesting results.
+
+</rich_text>
+    <rich_text scale="h3">9. GITHUB INTEGRATION WORK</rich_text>
+    <rich_text>
+The error-handling and testing work includes:
+◇ Validator unit testing
+
+◇ Database exception handling
+
+◇ Friendly error messages
+
+◇ Duplicate-record warning improvements
+
+◇ Bug documentation
+
+◇ Functional retesting
+
+◇ CherryTree documentation updates
+
+
+</rich_text>
+    <rich_text weight="heavy">Verified Pull Request:</rich_text>
+    <rich_text>
+PR #43 — Automated Validator Unit Tests — MERGED
+Additional integration fixes were prepared through the team's Git workflow.
+The merge status of other changes must be confirmed separately.
+
+</rich_text>
+    <rich_text scale="h3">10. CHERRYTREE DOCUMENTATION</rich_text>
+    <rich_text>
+The project documentation includes:
+◇ Team &amp; Overview
+
+◇ Database Information
+
+◇ Setup Guide
+
+◇ Application Walkthrough
+
+◇ Testing &amp; Bug Log
+
+◇ Automated Unit Testing
+
+◇ Test Case Sheet
+
+◇ Individual Team Member Module Notes
+
+
+The documentation records development progress, verification results, known issues, and remaining tasks.
+
+</rich_text>
+    <rich_text scale="h3">11. DOCUMENTATION SUBMISSION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository:</rich_text>
+    <rich_text> reynalynsaavedrasamar25/SchemaX-SIS
+</rich_text>
+    <rich_text weight="heavy">Branch:</rich_text>
+    <rich_text> develop
+</rich_text>
+    <rich_text weight="heavy">File:</rich_text>
+    <rich_text> docs/SchemaX-SIS.ctd
+</rich_text>
+    <rich_text weight="heavy">Previous Documentation Commit:</rich_text>
+    <rich_text> 1a01a52
+</rich_text>
+    <rich_text weight="heavy">Commit Message:</rich_text>
+    <rich_text> docs: update CherryTree documentation for final integration
+</rich_text>
+    <rich_text weight="heavy">Previous Upload Status:</rich_text>
+    <rich_text> SUCCESSFUL
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> The four individual member sections added after this commit must be saved and uploaded in a new documentation commit.
+
+</rich_text>
+    <rich_text scale="h3">12. REMAINING WORK</rich_text>
+    <rich_text>
+1. Rerun the 25 automated unit tests against the final integrated version.
+
+2. Complete the post-deletion Edit Mode regression test.
+
+3. Resolve the Student ID format inconsistency.
+
+4. Confirm outstanding error-handling fixes are integrated into develop.
+
+5. Verify the final application build and functional behavior.
+
+6. Upload the latest CherryTree file containing all four member documentation sections.
+
+
+</rich_text>
+    <rich_text scale="h3">13. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The Error Handling, Testing, and Documentation Module supports application reliability, validation, troubleshooting, and project verification.
+The recorded testing includes 25 passing automated Validator tests and 14 passing Round 2 functional test cases.
+The CherryTree documentation consolidates the team's implementation details, testing results, bug reports, and integration updates.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> DOCUMENTED AND TESTED FOR RECORDED SCENARIOS — FINAL REGRESSION VERIFICATION PENDING
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
   </node>
-  <node unique_id="2" master_id="0" name="Database Info" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553218" ts_lastsave="1792000139">
+  <node unique_id="5" master_id="0" name="Testing &amp; Bug Log" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1792108095" ts_lastsave="1792605238">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">SchemaX SIS — TESTING &amp; BUG LOG</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Test Date:</rich_text>
+    <rich_text> October 16, 2026
+</rich_text>
+    <rich_text weight="heavy">Testing Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10
+</rich_text>
+    <rich_text weight="heavy">Testing Scope:</rich_text>
+    <rich_text> Build Verification, Input Validation, UI Behavior, Error Logging, and Integration Investigation
+
+
+</rich_text>
+    <rich_text scale="h2">1. BUILD VERIFICATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Test:</rich_text>
+    <rich_text> Build Solution in Visual Studio
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Project compiles without errors.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Build succeeded (1 succeeded, 0 failed).
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+
+</rich_text>
+    <rich_text scale="h2">2. FUNCTIONAL TEST CASES</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">TC-01: Empty Student ID</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a required-field warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please enter a Student ID."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-02: Invalid Student ID Format</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a warning requiring the YYYY-XXXXX format.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Student ID format validation warning displayed.
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-03: Empty Student Name</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a required-field warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please enter the student's name."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-04: Student Name Contains Numbers</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display an invalid-name warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Name format validation warning displayed.
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-05: Empty Contact Number</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a required-field warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please enter a contact number."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-06: Invalid Contact Number Length</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a contact number format warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Contact number format validation warning displayed.
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-07: Empty Program</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a required-field warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please enter the student's program."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-08: Gender Not Selected</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a gender selection warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please select a gender."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-09: Year Level Not Selected</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a year level selection warning.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please select a year level."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-10: Edit Without Student Selection</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a warning requiring student selection.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please select a student before editing."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-11: Delete Without Student Selection</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Display a warning requiring student selection.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> "Please select a student before deleting."
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-12: Open Enrolled Students</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Open the Student Information System form.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Student Information System form opened successfully.
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">TC-13: Attendance Button</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> To be confirmed with the team.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> No visible response when clicked.
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PENDING INVESTIGATION
+
+</rich_text>
+    <rich_text scale="h3">TC-14: Exit Button</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text> Application closes normally.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text> Application exited with code 0 (0x0).
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+
+</rich_text>
+    <rich_text scale="h2">3. TEST EXECUTION SUMMARY</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Total Functional Test Cases:</rich_text>
+    <rich_text> 14
+</rich_text>
+    <rich_text weight="heavy">Passed:</rich_text>
+    <rich_text> 13
+</rich_text>
+    <rich_text weight="heavy">Failed:</rich_text>
+    <rich_text> 0 recorded in the functional test cases
+</rich_text>
+    <rich_text weight="heavy">Pending Investigation:</rich_text>
+    <rich_text> 1
+</rich_text>
+    <rich_text weight="heavy">Build Verification:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Error Logging Verification:</rich_text>
+    <rich_text> PASS (previously executed tests)
+</rich_text>
+    <rich_text weight="heavy">Database CRUD Integration Testing:</rich_text>
+    <rich_text> PENDING
+</rich_text>
+    <rich_text weight="heavy">Overall Integration Testing:</rich_text>
+    <rich_text> INCOMPLETE
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> The bug reports below document additional issues identified through UI observation and source-code inspection. They are tracked separately from the 14 functional test cases.
+
+
+</rich_text>
+    <rich_text scale="h2">4. BUG REPORTS</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">BUG-01: Search Button Not Responding</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Severity:</rich_text>
+    <rich_text> Medium
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> OPEN — Pending Team Coordination
+</rich_text>
+    <rich_text weight="heavy">Type:</rich_text>
+    <rich_text> UI Functionality / Integration
+</rich_text>
+    <rich_text weight="heavy">Steps to Reproduce:</rich_text>
+    <rich_text>
+1. Open the Enrolled Students form.
+
+2. Enter "John" in the Search field.
+
+3. Click the Search button.
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+The application should display matching student records or an appropriate no-results response.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text>
+No visible response occurs when the Search button is clicked.
+</rich_text>
+    <rich_text weight="heavy">Investigation Findings:</rich_text>
+    <rich_text>
+• The Search button's Click event field is blank in the Windows Forms Designer.
+
+• The </rich_text>
+    <rich_text family="monospace">txtSearch_TextChanged()</rich_text>
+    <rich_text> method exists but has an empty body.
+
+• No </rich_text>
+    <rich_text family="monospace">btnSearch</rich_text>
+    <rich_text> reference was found in </rich_text>
+    <rich_text family="monospace">studentForm.cs</rich_text>
+    <rich_text>.
+
+
+</rich_text>
+    <rich_text weight="heavy">Possible Cause:</rich_text>
+    <rich_text>
+The Search event handler or search functionality has not yet been implemented or connected.
+</rich_text>
+    <rich_text weight="heavy">Recommended Action:</rich_text>
+    <rich_text>
+Coordinate with the team to complete Search functionality and retest after integration.
+
+
+</rich_text>
+    <rich_text scale="h3">BUG-02: CRUD Database Integration Incomplete</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Severity:</rich_text>
+    <rich_text> High
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> OPEN
+</rich_text>
+    <rich_text weight="heavy">Type:</rich_text>
+    <rich_text> Database / CRUD Integration
+</rich_text>
+    <rich_text weight="heavy">Investigation Findings:</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">ADD:</rich_text>
+    <rich_text>
+◇ Input validation is implemented.
+
+◇ Valid student information is added to the DataGridView.
+
+◇ The inspected </rich_text>
+    <rich_text family="monospace">btnAdd_Click()</rich_text>
+    <rich_text> method does not call the repository's </rich_text>
+    <rich_text family="monospace">Insert()</rich_text>
+    <rich_text> method.
+
+◇ Database persistence is not implemented in the inspected handler.
+
+
+</rich_text>
+    <rich_text weight="heavy">EDIT:</rich_text>
+    <rich_text>
+◇ The no-selection validation is implemented.
+
+◇ The inspected </rich_text>
+    <rich_text family="monospace">btnEdit_Click()</rich_text>
+    <rich_text> method contains no editing or database update logic after the selection check.
+
+
+</rich_text>
+    <rich_text weight="heavy">DELETE:</rich_text>
+    <rich_text>
+◇ The no-selection validation is implemented.
+
+◇ A confirmation dialog is displayed when a student is selected.
+
+◇ The inspected </rich_text>
+    <rich_text family="monospace">btnDelete_Click()</rich_text>
+    <rich_text> method ends after checking the confirmation response.
+
+◇ No actual deletion logic is implemented in the inspected handler.
+
+
+</rich_text>
+    <rich_text weight="heavy">SEARCH:</rich_text>
+    <rich_text>
+◇ Search functionality is documented separately under BUG-01.
+
+
+</rich_text>
+    <rich_text weight="heavy">DATABASE REPOSITORY:</rich_text>
+    <rich_text>
+◇ </rich_text>
+    <rich_text family="monospace">StudentRepository.cs</rich_text>
+    <rich_text> contains the following methods:
+▪ </rich_text>
+    <rich_text family="monospace">Insert()</rich_text>
+    <rich_text>
+
+▪ </rich_text>
+    <rich_text family="monospace">GetById()</rich_text>
+    <rich_text>
+
+▪ </rich_text>
+    <rich_text family="monospace">Update()</rich_text>
+    <rich_text>
+
+▪ </rich_text>
+    <rich_text family="monospace">Delete()</rich_text>
+    <rich_text>
+
+▪ </rich_text>
+    <rich_text family="monospace">GetAll()</rich_text>
+    <rich_text>
+
+
+
+◇ These methods use </rich_text>
+    <rich_text family="monospace">Db.Open()</rich_text>
+    <rich_text> to establish a MySQL connection.
+
+◇ The inspected student form handlers do not call the repository methods.
+
+◇ Successful database connectivity has not yet been verified.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+CRUD operations should save, retrieve, update, and delete student records in MySQL, with corresponding changes displayed in the user interface.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text>
+The inspected student form handlers perform validation and limited UI operations but do not execute database CRUD operations.
+</rich_text>
+    <rich_text weight="heavy">Recommended Action:</rich_text>
+    <rich_text>
+Complete UI-to-repository integration and perform end-to-end database testing.
+
+
+</rich_text>
+    <rich_text scale="h3">BUG-03: Exception Handling Not Integrated</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Severity:</rich_text>
+    <rich_text> High
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> OPEN
+</rich_text>
+    <rich_text weight="heavy">Type:</rich_text>
+    <rich_text> Error Handling / Integration
+</rich_text>
+    <rich_text weight="heavy">Investigation Findings:</rich_text>
+    <rich_text>
+◇ Searched the entire Visual Studio solution using Find in Files.
+
+◇ The search covered 19 files.
+
+◇ No calls to </rich_text>
+    <rich_text family="monospace">ExceptionHandler.Handle()</rich_text>
+    <rich_text> were found.
+
+◇ The only call to </rich_text>
+    <rich_text family="monospace">ErrorLog.LogError()</rich_text>
+    <rich_text> was located in </rich_text>
+    <rich_text family="monospace">ExceptionHandler.cs</rich_text>
+    <rich_text>.
+
+◇ The only </rich_text>
+    <rich_text family="monospace">catch</rich_text>
+    <rich_text> block found was also located in </rich_text>
+    <rich_text family="monospace">ExceptionHandler.cs</rich_text>
+    <rich_text>.
+
+◇ No application-level exception-handling integration was identified in the searched source files.
+
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+Application operations should handle relevant exceptions, display user-friendly error messages, and record technical details in the error log.
+</rich_text>
+    <rich_text weight="heavy">Actual Result:</rich_text>
+    <rich_text>
+The error-handling utilities exist and have passed earlier tests, but integration into the application's operational code was not found.
+</rich_text>
+    <rich_text weight="heavy">Recommended Action:</rich_text>
+    <rich_text>
+Integrate exception handling into appropriate application operations and verify its behavior through end-to-end testing.
+</rich_text>
+    <rich_text weight="heavy">Integration Testing Status:</rich_text>
+    <rich_text>
+PENDING — Requires completed application and database integration.
+
+
+</rich_text>
+    <rich_text scale="h2">5. ERROR LOGGING AND EXCEPTION HANDLING VERIFICATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Test:</rich_text>
+    <rich_text> Error Logging and Exception Handling
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS — Previously Executed Tests
+</rich_text>
+    <rich_text weight="heavy">Evidence Verified:</rich_text>
+    <rich_text> October 16, 2026
+</rich_text>
+    <rich_text weight="heavy">Evidence:</rich_text>
+    <rich_text>
+◇ The </rich_text>
+    <rich_text family="monospace">logs</rich_text>
+    <rich_text> folder exists in the application's runtime directory.
+
+◇ The </rich_text>
+    <rich_text family="monospace">errors.txt</rich_text>
+    <rich_text> file exists inside the folder.
+
+◇ </rich_text>
+    <rich_text family="monospace">ErrorLogTest.RunTest()</rich_text>
+    <rich_text> recorded a test exception on October 14, 2026.
+
+◇ </rich_text>
+    <rich_text family="monospace">ExceptionHandlerTest.RunTest()</rich_text>
+    <rich_text> recorded a test exception on October 14, 2026.
+
+◇ Both entries contain:
+▪ Date and time
+
+▪ Exception type
+
+▪ Exception message
+
+▪ Stack trace
+
+
+
+◇ Both test records are present in the same log file.
+
+
+</rich_text>
+    <rich_text weight="heavy">Conclusion:</rich_text>
+    <rich_text>
+Error logging successfully recorded the two previously executed test exceptions. The </rich_text>
+    <rich_text family="monospace">ExceptionHandler</rich_text>
+    <rich_text> implementation also includes protection against failures during logging.
+</rich_text>
+    <rich_text weight="heavy">Limitation:</rich_text>
+    <rich_text>
+These results verify test exception logging. Exception handling during actual CRUD and MySQL failures remains untested.
+
+
+</rich_text>
+    <rich_text scale="h2">6. PENDING TESTS AND INVESTIGATIONS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">PENDING-01: Attendance Button</rich_text>
+    <rich_text>
+◇ Confirm the intended functionality with the team.
+
+◇ Retest after implementation or integration.
+
+
+</rich_text>
+    <rich_text weight="heavy">PENDING-02: End-to-End Database CRUD</rich_text>
+    <rich_text>
+◇ Verify MySQL connectivity.
+
+◇ Test inserting a valid student.
+
+◇ Test retrieving saved student records.
+
+◇ Test editing an existing student.
+
+◇ Test deleting a student.
+
+◇ Verify database persistence after restarting the application.
+
+
+</rich_text>
+    <rich_text weight="heavy">PENDING-03: Duplicate Student ID</rich_text>
+    <rich_text>
+◇ Verify duplicate ID handling in the user interface.
+
+◇ Verify database-level duplicate prevention after integration.
+
+
+</rich_text>
+    <rich_text weight="heavy">PENDING-04: Search Functionality</rich_text>
+    <rich_text>
+◇ Retest Search after the event handler and search logic are connected.
+
+
+</rich_text>
+    <rich_text weight="heavy">PENDING-05: Application Exception Handling</rich_text>
+    <rich_text>
+◇ Verify appropriate exception handling during database failures.
+
+◇ Confirm that user-friendly error messages appear.
+
+◇ Confirm that technical error details are recorded in </rich_text>
+    <rich_text family="monospace">errors.txt</rich_text>
+    <rich_text>.
+
+
+</rich_text>
+    <rich_text scale="h2">7. OVERALL TESTING CONCLUSION</rich_text>
+    <rich_text>
+The SchemaX Student Information System successfully passed build verification and 13 of the 14 recorded functional test cases. Input validation, basic UI behavior, and previously executed error-logging tests produced the expected results.
+Source-code investigation identified incomplete Search, CRUD database integration, and application-level exception-handling integration.
+The </rich_text>
+    <rich_text family="monospace">StudentRepository</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">ExceptionHandler</rich_text>
+    <rich_text>, and </rich_text>
+    <rich_text family="monospace">ErrorLog</rich_text>
+    <rich_text> components are implemented, but their complete integration with the student form has not yet been verified.
+</rich_text>
+    <rich_text weight="heavy">Overall Status:</rich_text>
+    <rich_text> PARTIALLY TESTED — FINAL INTEGRATION TESTING PENDING
+</rich_text>
+    <rich_text weight="heavy">Next Action:</rich_text>
+    <rich_text> Complete the remaining integration work, coordinate with the team, and perform end-to-end testing before final project submission.
+
+
+</rich_text>
+    <rich_text scale="h1">8. INTEGRATION TESTING UPDATE — OCTOBER 17, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Test Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+
+</rich_text>
+    <rich_text scale="h2">8.1 Purpose</rich_text>
+    <rich_text>
+This update records the results of additional functional and integration testing performed after the initial October 16 testing report.
+The original report is retained as a historical record of previously identified issues.
+
+</rich_text>
+    <rich_text scale="h2">8.2 Verified Test Results</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Test 01: Solution Build</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 02: Student Creation and Required-Field Validation</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 03: Duplicate Student ID Validation</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 04: Student Record Editing</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 05: Student Record Deletion and Confirmation</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 06: Search by Name and Student ID</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 07: Case-Insensitive and Partial Search</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 08: Year Level Filtering</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 09: Program Filtering</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 10: Combined Search and Filtering</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 11: Clear Search and Reset Filters</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 12: CSV Export of All Displayed Records</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 13: CSV Export With Active Search Filter</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 14: CSV Export Cancellation</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 15: CSV Export With Zero Results</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Test 16: Clear Selection and Return to Add Mode</rich_text>
+    <rich_text>
+Status: PASS
+</rich_text>
+    <rich_text weight="heavy">Summary:</rich_text>
+    <rich_text> 16 test areas passed in the tested scenarios.
+
+</rich_text>
+    <rich_text scale="h2">8.3 Bug Resolution Updates</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">BUG-01: Search Button Not Responding</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Updated Status:</rich_text>
+    <rich_text> RESOLVED — Functional testing passed.
+Search functionality successfully returned matching records and handled searches with no results. Combined search and filtering were also verified.
+</rich_text>
+    <rich_text weight="heavy">BUG-02: CRUD Database Integration Incomplete</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Updated Status:</rich_text>
+    <rich_text> RESOLVED FOR TESTED OPERATIONS.
+Add, Edit, and Delete operations were tested through the application. Database changes were also verified during testing. This supersedes the earlier finding that CRUD integration was incomplete.
+</rich_text>
+    <rich_text weight="heavy">BUG-03: Exception Handling Not Integrated</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Updated Status:</rich_text>
+    <rich_text> PENDING VERIFICATION.
+The earlier error-logging tests passed. However, application-level exception handling during actual database failures has not yet been verified.
+</rich_text>
+    <rich_text weight="heavy">BUG-04: Application Remains in Edit Mode After Deletion</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Severity:</rich_text>
+    <rich_text> Medium
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> FIX IMPLEMENTED — FINAL REGRESSION TEST PENDING
+</rich_text>
+    <rich_text weight="heavy">Observed Behavior:</rich_text>
+    <rich_text> After deleting a selected student, clicking Add displayed a message instructing the user to click Edit instead.
+</rich_text>
+    <rich_text weight="heavy">Cause Identified:</rich_text>
+    <rich_text> The </rich_text>
+    <rich_text family="monospace">_isEdit</rich_text>
+    <rich_text> state was not reset in the deletion handler.
+</rich_text>
+    <rich_text weight="heavy">Correction Applied:</rich_text>
+    <rich_text> Added </rich_text>
+    <rich_text family="monospace">ExitEditMode();</rich_text>
+    <rich_text> to the </rich_text>
+    <rich_text family="monospace">finally</rich_text>
+    <rich_text> block of </rich_text>
+    <rich_text family="monospace">btnDelete_Click()</rich_text>
+    <rich_text>.
+</rich_text>
+    <rich_text weight="heavy">Build Result:</rich_text>
+    <rich_text> Successful.
+</rich_text>
+    <rich_text weight="heavy">Verification Limitation:</rich_text>
+    <rich_text> Add Mode validation passed after clearing the selection. The behavior immediately following a successful deletion, without using Clear Selection, still requires a separate regression test.
+
+</rich_text>
+    <rich_text scale="h2">8.4 Data Integrity Verification</rich_text>
+    <rich_text>
+The two original student records, Mariane Nuarin and Reynalyn Samar, were confirmed present at the end of testing.
+A previously deleted student record was restored during testing, and the final application view displayed both original records.
+</rich_text>
+    <rich_text weight="heavy">Final Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h2">8.5 Remaining Investigations</rich_text>
+    <rich_text>
+• Attendance button functionality and intended behavior.
+
+• Application-level exception handling during database failures.
+
+• Final regression test for returning to Add Mode immediately after successful deletion.
+
+• Final team integration review before submission.
+
+</rich_text>
+    <rich_text scale="h2">8.6 Updated Testing Conclusion</rich_text>
+    <rich_text>
+The October 17 testing demonstrated substantial progress beyond the October 16 report. Core student management functions, input validation, searching, filtering, and CSV export produced the expected results in the tested scenarios.
+Previously reported Search and CRUD integration issues were resolved for the operations tested. A separate Edit Mode state-management bug was identified and corrected, with final regression verification still pending.
+</rich_text>
+    <rich_text weight="heavy">Overall Status:</rich_text>
+    <rich_text> CORE FUNCTIONAL TESTING PASSED — REMAINING INTEGRATION CHECKS PENDING.
+
+
+</rich_text>
+    <rich_text scale="h2">9. FINAL INTEGRATION TESTING UPDATE — OCTOBER 22, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Testing Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL 8.0
+
+</rich_text>
+    <rich_text scale="h3">9.1 Build and Application Verification</rich_text>
+    <rich_text>
+• Solution Build: PASS — 2 projects succeeded, 0 failed
+
+• Application Startup: PASS
+
+• MySQL Connection: PASS
+
+• User Registration: PASS
+
+• User Login: PASS
+
+• Dashboard Loading: PASS
+
+• Student Record Retrieval: PASS
+
+
+
+</rich_text>
+    <rich_text scale="h3">9.2 Database Integration</rich_text>
+    <rich_text>
+The application initially encountered database authentication and schema errors.
+</rich_text>
+    <rich_text weight="heavy">Problems identified:</rich_text>
+    <rich_text>
+◇ MySQL authentication failure
+
+◇ Invalid local application configuration
+
+◇ Missing users table
+
+◇ Missing user_id column in students
+
+◇ Existing student records without assigned user ownership
+
+
+</rich_text>
+    <rich_text weight="heavy">Corrective actions:</rich_text>
+    <rich_text>
+◇ Corrected local database configuration
+
+◇ Created the missing users table
+
+◇ Added the user_id column
+
+◇ Assigned the two existing student records to the test account
+
+◇ Verified that both student records remained available
+
+
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> Database integration successfully restored in the local testing environment.
+
+</rich_text>
+    <rich_text scale="h3">9.3 Dashboard Verification</rich_text>
+    <rich_text>
+The dashboard successfully displayed:
+◇ Total Students: 2
+
+◇ Total Subjects: 0
+
+◇ Total Enrollments: 0
+
+◇ Ungraded Enrollments: 0
+
+◇ Year Level 2: 2 students
+
+◇ BSCS Program: 2 students
+
+
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">9.4 Student Management Verification</rich_text>
+    <rich_text>
+The Student Information System form successfully retrieved and displayed the two original student records.
+</rich_text>
+    <rich_text weight="heavy">Verified Records:</rich_text>
+    <rich_text>
+◇ Mariane Nuarin
+
+◇ Reynalyn Samar
+
+
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">9.5 Remaining Verification</rich_text>
+    <rich_text>
+◇ Complete final regression testing after recent integration changes
+
+◇ Verify academic record functions
+
+◇ Confirm final application behavior before submission
+
+◇ Ensure the final database schema is included in the project setup instructions
+
+
+
+</rich_text>
+    <rich_text scale="h3">9.6 Conclusion</rich_text>
+    <rich_text>
+The October 22 integration testing confirmed that the application could connect to MySQL, authenticate a registered user, display dashboard statistics, and retrieve existing student records.
+Earlier testing also verified CRUD, searching, filtering, validation, and CSV export functionality.
+</rich_text>
+    <rich_text weight="heavy">Overall Status:</rich_text>
+    <rich_text> CORE APPLICATION FUNCTIONS VERIFIED — FINAL REGRESSION CHECKS REMAINING.
+</rich_text>
+    <node unique_id="6" master_id="0" name="Automated Unit Testing - Validator" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1792149980" ts_lastsave="1792605428">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h1">SchemaX SIS — Automated Unit Testing Report</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Date:</rich_text>
+      <rich_text> October 16, 2026
+</rich_text>
+      <rich_text weight="heavy">Project:</rich_text>
+      <rich_text> SchemaX Student Information System
+</rich_text>
+      <rich_text weight="heavy">Testing Framework:</rich_text>
+      <rich_text> xUnit
+</rich_text>
+      <rich_text weight="heavy">Development Environment:</rich_text>
+      <rich_text> Visual Studio 2026, C#, .NET 10
+</rich_text>
+      <rich_text weight="heavy">Test Project:</rich_text>
+      <rich_text> SchemaX.ValidatorTests
+</rich_text>
+      <rich_text weight="heavy">Test File:</rich_text>
+      <rich_text> UnitTest1.cs
+
+</rich_text>
+      <rich_text scale="h2">1. Testing Objective</rich_text>
+      <rich_text>
+To verify that the Validator class correctly accepts valid student information and rejects invalid inputs.
+
+</rich_text>
+      <rich_text scale="h2">2. Test Coverage</rich_text>
+      <rich_text>
+The 25 automated tests cover:
+• Birthday validation: past and future dates
+
+• Required fields: empty, whitespace-only, and valid inputs
+
+• Name validation: valid names, numbers, hyphens, apostrophes, and invalid special characters
+
+• BU email validation: valid email, invalid domain, missing @ symbol, and Gmail address
+
+• Contact number validation: valid 11-digit number, incorrect length, and letters
+
+• Student ID validation: correct format, missing input, letters, incorrect length, and whitespace
+
+</rich_text>
+      <rich_text scale="h2">3. Test Execution Results</rich_text>
+      <rich_text>
+Total Tests: 25
+Passed: 25
+Failed: 0
+Skipped: 0
+Result: PASS
+Execution Time: 117 ms
+
+</rich_text>
+      <rich_text scale="h2">4. Testing Tools</rich_text>
+      <rich_text>
+◇ Visual Studio Test Explorer
+
+◇ xUnit testing framework
+
+◇ C# Validator class
+
+</rich_text>
+      <rich_text scale="h2">5. Conclusion</rich_text>
+      <rich_text>
+All 25 automated unit tests passed successfully. The tested validation methods returned the expected results for the selected valid and invalid inputs.
+These results confirm the behavior of the tested validation scenarios. Additional integration and end-to-end testing are still necessary to verify the complete Student Information System.
+
+</rich_text>
+      <rich_text scale="h2">6. Evidence</rich_text>
+      <rich_text>
+Screenshot: Visual Studio Test Explorer showing 25 Passed, 0 Failed, and 0 Skipped on October 16, 2026.
+
+</rich_text>
+      <rich_text scale="h2">7. GitHub Pull Request</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">PR Number:</rich_text>
+      <rich_text> #43
+</rich_text>
+      <rich_text weight="heavy">Title:</rich_text>
+      <rich_text> test: add 25 validator unit tests
+</rich_text>
+      <rich_text weight="heavy">Source Branch:</rich_text>
+      <rich_text> princessida/validator-unit-tests
+</rich_text>
+      <rich_text weight="heavy">Target Branch:</rich_text>
+      <rich_text> develop
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> MERGED — Successfully merged into the develop branch.
+</rich_text>
+      <rich_text weight="heavy">Verification Date:</rich_text>
+      <rich_text> October 17, 2026
+</rich_text>
+      <rich_text weight="heavy">PR Link:</rich_text>
+      <rich_text> </rich_text>
+      <rich_text link="webs https://github.com/reynalynsaavedrasamar25/SchemaX-SIS/pull/43">https://github.com/reynalynsaavedrasamar25/SchemaX-SIS/pull/43</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Description:</rich_text>
+      <rich_text>
+The 25 automated Validator unit tests were committed and pushed to GitHub through the </rich_text>
+      <rich_text family="monospace">princessida/validator-unit-tests</rich_text>
+      <rich_text> branch.
+Pull Request #43 was created to submit the automated testing implementation for team review and integration into the </rich_text>
+      <rich_text family="monospace">develop</rich_text>
+      <rich_text> branch.
+The pull request was subsequently merged successfully, incorporating the automated Validator unit tests into the team's development branch.
+</rich_text>
+      <rich_text weight="heavy">Final Result:</rich_text>
+      <rich_text> PASS — Pull request merged and unit testing implementation integrated.
+</rich_text>
+      <rich_text weight="heavy">Note:</rich_text>
+      <rich_text> The recorded execution results of 25 passed, 0 failed, and 0 skipped are from October 16, 2026. A new test execution is required to confirm the results against the latest integrated project version.
+
+</rich_text>
+      <rich_text scale="h2">8. FINAL INTEGRATION UPDATE — OCTOBER 22, 2026</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Project:</rich_text>
+      <rich_text> SchemaX Student Information System
+</rich_text>
+      <rich_text weight="heavy">Development Environment:</rich_text>
+      <rich_text> Visual Studio 2026, C#, .NET 10
+</rich_text>
+      <rich_text weight="heavy">Test Framework:</rich_text>
+      <rich_text> xUnit
+</rich_text>
+      <rich_text weight="heavy">Test Project:</rich_text>
+      <rich_text> SchemaX.ValidatorTests
+
+</rich_text>
+      <rich_text scale="h3">8.1 Latest Build Verification</rich_text>
+      <rich_text>
+The latest integrated source code was retrieved from the GitHub develop branch and opened in Visual Studio 2026.
+</rich_text>
+      <rich_text weight="heavy">Build Results:</rich_text>
+      <rich_text>
+• Projects Succeeded: 2
+
+• Projects Failed: 0
+
+• Build Status: PASS
+
+
+Both the SchemaX.SIS application and SchemaX.ValidatorTests project compiled successfully.
+
+</rich_text>
+      <rich_text scale="h3">8.2 Automated Unit Testing Status</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Previously Recorded Results — October 16, 2026</rich_text>
+      <rich_text>
+◇ Total Tests: 25
+
+◇ Passed: 25
+
+◇ Failed: 0
+
+◇ Skipped: 0
+
+◇ Result: PASS
+
+
+These results verify the Validator class against the test cases executed on October 16, 2026.
+
+</rich_text>
+      <rich_text scale="h3">8.3 GitHub Integration</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Pull Request:</rich_text>
+      <rich_text> #43
+</rich_text>
+      <rich_text weight="heavy">Title:</rich_text>
+      <rich_text> test: add 25 validator unit tests
+</rich_text>
+      <rich_text weight="heavy">Source Branch:</rich_text>
+      <rich_text> princessida/validator-unit-tests
+</rich_text>
+      <rich_text weight="heavy">Target Branch:</rich_text>
+      <rich_text> develop
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> MERGED
+The automated testing implementation was successfully integrated into the team's development branch.
+
+</rich_text>
+      <rich_text scale="h3">8.4 Remaining Verification</rich_text>
+      <rich_text>
+Although the latest solution built successfully, the complete set of 25 automated unit tests has not yet been rerun during the October 22 final walkthrough.
+A successful build confirms compilation but does not independently confirm that all tests still pass.
+
+</rich_text>
+      <rich_text scale="h3">8.5 Updated Conclusion</rich_text>
+      <rich_text>
+The Validator automated testing implementation is complete and integrated into the team repository.
+All 25 tests passed during the recorded October 16 execution. The latest project also compiled successfully on October 22.
+</rich_text>
+      <rich_text weight="heavy">Overall Status:</rich_text>
+      <rich_text> AUTOMATED TESTING IMPLEMENTED — PREVIOUS EXECUTION PASSED — FINAL RERUN PENDING.
+</rich_text>
+    </node>
+    <node unique_id="7" master_id="0" name="Manual Testing &amp; Bug Log" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1792157177" ts_lastsave="1792605508">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h1">BUG RETEST UPDATE — OCTOBER 17, 2026</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Project:</rich_text>
+      <rich_text> SchemaX Student Information System
+</rich_text>
+      <rich_text weight="heavy">Test Type:</rich_text>
+      <rich_text> Manual Functional and Integration Retesting
+</rich_text>
+      <rich_text weight="heavy">Environment:</rich_text>
+      <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+
+</rich_text>
+      <rich_text scale="h2">BUG-001: Existing Student Records Not Displayed</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+The application successfully retrieved and displayed existing student records from MySQL in the DataGridView.
+Both Mariane Nuarin and Reynalyn Samar were visible during the final verification.
+
+</rich_text>
+      <rich_text scale="h2">BUG-002: Add Student Does Not Save to Database</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+A valid temporary student was successfully added through the application. Duplicate Student ID and required-field validation were also verified.
+The temporary test record was subsequently removed.
+
+</rich_text>
+      <rich_text scale="h2">BUG-003: Edit Student Functionality Not Implemented</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+The Edit functionality was corrected to execute the student update operation.
+A change to an existing student's block was successfully saved and verified in MySQL. The original block value was restored afterward.
+
+</rich_text>
+      <rich_text scale="h2">BUG-004: Delete Student Functionality Not Implemented</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+The application successfully deleted student records after confirmation. Cancellation and no-selection warnings were also tested.
+A separate Edit Mode issue discovered during deletion testing is documented under BUG-007.
+
+</rich_text>
+      <rich_text scale="h2">BUG-005: Student Search Functionality Not Implemented</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+Search functionality successfully handled student names, Student IDs, partial matches, case-insensitive searches, and searches with no matching records.
+Year Level and Program filtering were also tested individually and in combination.
+
+</rich_text>
+      <rich_text scale="h2">BUG-006: Student ID Format Mismatch</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Updated Status:</rich_text>
+      <rich_text> OPEN — PENDING TEAM REVIEW
+The application validation format and existing database Student IDs remain inconsistent.
+</rich_text>
+      <rich_text weight="heavy">Recommended Action:</rich_text>
+      <rich_text> Confirm the official Student ID format with the team and align validation rules with the database requirements.
+
+</rich_text>
+      <rich_text scale="h2">BUG-007: Application Remains in Edit Mode After Deletion</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Date Identified:</rich_text>
+      <rich_text> October 17, 2026
+</rich_text>
+      <rich_text weight="heavy">Severity:</rich_text>
+      <rich_text> Medium
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> FIX IMPLEMENTED — FINAL REGRESSION TEST PENDING
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> After successfully deleting a student, the application should return to Add Mode.
+</rich_text>
+      <rich_text weight="heavy">Actual Result:</rich_text>
+      <rich_text> Clicking Add after deletion displayed a message instructing the user to click Edit.
+</rich_text>
+      <rich_text weight="heavy">Identified Cause:</rich_text>
+      <rich_text> The </rich_text>
+      <rich_text family="monospace">_isEdit</rich_text>
+      <rich_text> state was not reset after deletion.
+</rich_text>
+      <rich_text weight="heavy">Correction Applied:</rich_text>
+      <rich_text> Added </rich_text>
+      <rich_text family="monospace">ExitEditMode();</rich_text>
+      <rich_text> inside the </rich_text>
+      <rich_text family="monospace">finally</rich_text>
+      <rich_text> block of </rich_text>
+      <rich_text family="monospace">btnDelete_Click()</rich_text>
+      <rich_text>.
+</rich_text>
+      <rich_text weight="heavy">Build Result:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> Add Mode validation passed after using Clear Selection. Immediate Add Mode behavior following a successful deletion without using Clear Selection remains to be verified.
+
+</rich_text>
+      <rich_text scale="h2">RETEST SUMMARY</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Original Bugs Reviewed:</rich_text>
+      <rich_text> 6
+</rich_text>
+      <rich_text weight="heavy">Resolved:</rich_text>
+      <rich_text> 5
+</rich_text>
+      <rich_text weight="heavy">Still Open:</rich_text>
+      <rich_text> 1
+</rich_text>
+      <rich_text weight="heavy">Additional Bug Identified:</rich_text>
+      <rich_text> 1
+</rich_text>
+      <rich_text weight="heavy">Additional Bug Fix Implemented:</rich_text>
+      <rich_text> 1
+</rich_text>
+      <rich_text weight="heavy">Outstanding Work:</rich_text>
+      <rich_text> Student ID format alignment and final regression testing of the deletion-related Edit Mode fix.
+</rich_text>
+      <rich_text weight="heavy">Conclusion:</rich_text>
+      <rich_text> Previously identified DataGridView, Add, Edit, Delete, and Search functionality issues were resolved in the tested application version. Remaining issues are documented for final verification before submission.
+
+</rich_text>
+      <rich_text scale="h2">ADDITIONAL BUG AND INTEGRATION UPDATE — OCTOBER 22, 2026</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Project:</rich_text>
+      <rich_text> SchemaX Student Information System
+</rich_text>
+      <rich_text weight="heavy">Testing Environment:</rich_text>
+      <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL 8.0
+
+</rich_text>
+      <rich_text scale="h3">BUG-008: User Login Database Table Missing</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Severity:</rich_text>
+      <rich_text> High
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> RESOLVED IN LOCAL TEST ENVIRONMENT
+</rich_text>
+      <rich_text weight="heavy">Problem:</rich_text>
+      <rich_text> The Login feature initially failed because the MySQL database did not contain the required users table.
+</rich_text>
+      <rich_text weight="heavy">Error:</rich_text>
+      <rich_text> Table 'schemax_sis.users' doesn't exist.
+</rich_text>
+      <rich_text weight="heavy">Correction:</rich_text>
+      <rich_text> Created the users table with the columns required by UserRepository.cs.
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS — A test account was registered and successfully authenticated.
+
+</rich_text>
+      <rich_text scale="h3">BUG-009: Dashboard Statistics Fail Due to Missing user_id</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Severity:</rich_text>
+      <rich_text> High
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> RESOLVED IN LOCAL TEST ENVIRONMENT
+</rich_text>
+      <rich_text weight="heavy">Problem:</rich_text>
+      <rich_text> The Dashboard failed to retrieve student statistics because the existing students table did not contain the user_id column.
+</rich_text>
+      <rich_text weight="heavy">Error:</rich_text>
+      <rich_text> Unknown column 'user_id' in 'where clause'.
+</rich_text>
+      <rich_text weight="heavy">Correction:</rich_text>
+      <rich_text>
+• Backed up the existing students table.
+
+• Added the missing user_id column.
+
+• Assigned the two existing student records to the registered test account.
+
+• Verified that both original student records were preserved.
+
+
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Verified Dashboard Results:</rich_text>
+      <rich_text>
+◇ Total Students: 2
+
+◇ Total Subjects: 0
+
+◇ Total Enrollments: 0
+
+◇ Year Level 2 Students: 2
+
+◇ BSCS Students: 2
+
+
+
+</rich_text>
+      <rich_text scale="h3">BUG-010: Local Database Configuration Errors</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Severity:</rich_text>
+      <rich_text> High
+</rich_text>
+      <rich_text weight="heavy">Status:</rich_text>
+      <rich_text> RESOLVED IN LOCAL TEST ENVIRONMENT
+</rich_text>
+      <rich_text weight="heavy">Problems Identified:</rich_text>
+      <rich_text>
+◇ MySQL authentication failure
+
+◇ Invalid appsettings.json structure
+
+
+</rich_text>
+      <rich_text weight="heavy">Correction:</rich_text>
+      <rich_text> Updated the local MySQL connection configuration and corrected the JSON structure.
+</rich_text>
+      <rich_text weight="heavy">Retest Result:</rich_text>
+      <rich_text> PASS — The application successfully connected to MySQL.
+
+</rich_text>
+      <rich_text scale="h3">UPDATED BUG STATUS</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">BUG-001:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">BUG-002:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">BUG-003:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">BUG-004:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">BUG-005:</rich_text>
+      <rich_text> RESOLVED
+</rich_text>
+      <rich_text weight="heavy">BUG-006:</rich_text>
+      <rich_text> OPEN — Student ID format inconsistency
+</rich_text>
+      <rich_text weight="heavy">BUG-007:</rich_text>
+      <rich_text> FIX IMPLEMENTED — Final deletion regression test pending
+</rich_text>
+      <rich_text weight="heavy">BUG-008:</rich_text>
+      <rich_text> RESOLVED LOCALLY — Users table
+</rich_text>
+      <rich_text weight="heavy">BUG-009:</rich_text>
+      <rich_text> RESOLVED LOCALLY — Dashboard database schema
+</rich_text>
+      <rich_text weight="heavy">BUG-010:</rich_text>
+      <rich_text> RESOLVED LOCALLY — Database configuration
+
+</rich_text>
+      <rich_text scale="h3">REMAINING WORK</rich_text>
+      <rich_text>
+1. Confirm the official Student ID format.
+
+2. Complete the immediate post-deletion Edit Mode regression test.
+
+3. Ensure the team's final database setup script includes the required schema updates.
+
+4. Perform final verification of recently merged application features.
+
+
+</rich_text>
+      <rich_text scale="h3">CONCLUSION</rich_text>
+      <rich_text>
+The October 22 integration walkthrough identified and resolved three additional local configuration and database compatibility issues.
+Following these corrections, the application successfully launched, authenticated a registered user, loaded dashboard statistics, and displayed the two original student records.
+</rich_text>
+      <rich_text weight="heavy">Overall Status:</rich_text>
+      <rich_text> MAJOR INTEGRATION ISSUES RESOLVED LOCALLY — FINAL REGRESSION TESTING AND DATABASE SCRIPT VERIFICATION PENDING.
+</rich_text>
+    </node>
+    <node unique_id="8" master_id="0" name="14 Test Cases — Round 1 &amp; Round 2" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1792157826" ts_lastsave="1792605739">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h1">SchemaX SIS — TEST CASE SHEET v1.0</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Project:</rich_text>
+      <rich_text> SchemaX Student Information System
+</rich_text>
+      <rich_text weight="heavy">Team:</rich_text>
+      <rich_text> SchemaX
+</rich_text>
+      <rich_text weight="heavy">Test Environment:</rich_text>
+      <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+      <rich_text weight="heavy">Testing Round 1:</rich_text>
+      <rich_text> October 16, 2026
+</rich_text>
+      <rich_text weight="heavy">Testing Round 2:</rich_text>
+      <rich_text> October 17, 2026 — COMPLETED
+</rich_text>
+      <rich_text weight="heavy">Document Updated:</rich_text>
+      <rich_text> October 22, 2026
+
+
+</rich_text>
+      <rich_text scale="h2">1. TESTING OBJECTIVE</rich_text>
+      <rich_text>
+The purpose of this test-case sheet is to verify that the Student Information System performs its intended functions correctly.
+Testing focuses on student record management, input validation, database integration, editing, deletion, and searching.
+Two rounds of functional testing were conducted to identify problems during initial development and verify corrections after integration.
+
+</rich_text>
+      <rich_text scale="h2">2. TEST RESULT LEGEND</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">PASS:</rich_text>
+      <rich_text> The feature was tested and behaved as expected.
+</rich_text>
+      <rich_text weight="heavy">FAIL:</rich_text>
+      <rich_text> The feature was tested but did not produce the expected result.
+</rich_text>
+      <rich_text weight="heavy">BLOCKED:</rich_text>
+      <rich_text> Testing could not be completed because a required feature or integration was unavailable.
+</rich_text>
+      <rich_text weight="heavy">NOT RUN:</rich_text>
+      <rich_text> The test had not yet been executed.
+
+
+</rich_text>
+      <rich_text scale="h2">3. COMPLETE TEST CASE RESULTS</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text scale="h3">TC-01: Open Student Information Form</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The Student Information Form opens successfully.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The Student Information Form opened successfully.
+
+</rich_text>
+      <rich_text scale="h3">TC-02: Load Existing Students</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> Existing MySQL student records appear correctly in the DataGridView.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> FAIL
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> Existing student records were successfully retrieved from MySQL and displayed in the DataGridView.
+
+</rich_text>
+      <rich_text scale="h3">TC-03: Add Student With Valid Information</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> A valid student record is saved to MySQL and displayed in the application.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> BLOCKED
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> A valid temporary student record was successfully saved and displayed. The temporary record was subsequently removed.
+
+</rich_text>
+      <rich_text scale="h3">TC-04: Add Student With Empty Student ID</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> A required-field validation warning appears.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The required Student ID warning appeared.
+
+</rich_text>
+      <rich_text scale="h3">TC-05: Add Student With Invalid Student ID</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The application rejects an invalid Student ID format.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The invalid-format warning appeared.
+
+</rich_text>
+      <rich_text scale="h3">TC-06: Add Student With Empty Name</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> A required-field validation warning appears.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The application displayed the required-name warning.
+
+</rich_text>
+      <rich_text scale="h3">TC-07: Add Student With Invalid Contact Number</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> Invalid contact number input is rejected.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The application rejected an invalid contact number.
+
+</rich_text>
+      <rich_text scale="h3">TC-08: Add Student With Duplicate ID</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The application prevents duplicate Student IDs.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> Duplicate Student ID validation prevented the duplicate entry.
+
+</rich_text>
+      <rich_text scale="h3">TC-09: Edit an Existing Student</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> Changes to an existing student are saved to MySQL.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> BLOCKED
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> An existing student's block was modified, saved, and verified in MySQL. The original value was restored afterward.
+
+</rich_text>
+      <rich_text scale="h3">TC-10: Delete Student and Confirm Yes</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The selected student record is deleted from MySQL after confirmation.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> BLOCKED
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> Confirmed deletion successfully removed the selected student record.
+
+</rich_text>
+      <rich_text scale="h3">TC-11: Delete Student and Select No</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> Canceling deletion preserves the selected student record.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The selected record remained unchanged after deletion was canceled.
+
+</rich_text>
+      <rich_text scale="h3">TC-12: Search Student by ID or Name</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> Matching student records are displayed.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> BLOCKED
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> Search successfully returned matching records using Student IDs, names, partial matches, and case-insensitive queries.
+
+</rich_text>
+      <rich_text scale="h3">TC-13: Submit With Missing Program</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The application displays a required-program warning.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> The required-program validation warning appeared.
+
+</rich_text>
+      <rich_text scale="h3">TC-14: Submit With Missing Gender or Year Level</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Expected Result:</rich_text>
+      <rich_text> The application displays the appropriate required-selection warning.
+</rich_text>
+      <rich_text weight="heavy">Round 1:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Round 2 Actual Result:</rich_text>
+      <rich_text> Both missing-gender and missing-year-level scenarios produced the expected warnings.
+
+
+</rich_text>
+      <rich_text scale="h2">4. ROUND 1 SUMMARY — OCTOBER 16, 2026</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Total Test Cases:</rich_text>
+      <rich_text> 14
+</rich_text>
+      <rich_text weight="heavy">Passed:</rich_text>
+      <rich_text> 9
+</rich_text>
+      <rich_text weight="heavy">Failed:</rich_text>
+      <rich_text> 1
+</rich_text>
+      <rich_text weight="heavy">Blocked:</rich_text>
+      <rich_text> 4
+</rich_text>
+      <rich_text weight="heavy">Not Run:</rich_text>
+      <rich_text> 0
+</rich_text>
+      <rich_text weight="heavy">Passed Test Cases:</rich_text>
+      <rich_text>
+TC-01, TC-04, TC-05, TC-06, TC-07, TC-08, TC-11, TC-13, TC-14
+</rich_text>
+      <rich_text weight="heavy">Failed Test Case:</rich_text>
+      <rich_text>
+TC-02 — Existing MySQL student records did not appear in the DataGridView.
+</rich_text>
+      <rich_text weight="heavy">Blocked Test Cases:</rich_text>
+      <rich_text>
+TC-03 — Add student to MySQL
+TC-09 — Edit existing student in MySQL
+TC-10 — Delete student from MySQL
+TC-12 — Search student by ID or name
+
+</rich_text>
+      <rich_text scale="h3">Round 1 Findings</rich_text>
+      <rich_text>
+• Input validation checks passed for Student ID, student name, contact number, program, gender, and year level.
+
+• Duplicate Student ID validation passed against the records available in the interface.
+
+• Canceling deletion preserved the selected student record.
+
+• Existing MySQL student records were not successfully loaded into the DataGridView.
+
+• Database-backed Add, Edit, Delete, and Search functionality could not be fully tested because integration was incomplete.
+
+
+</rich_text>
+      <rich_text weight="heavy">Round 1 Status:</rich_text>
+      <rich_text> COMPLETED — 9 PASS, 1 FAIL, 4 BLOCKED.
+All 14 planned test cases received a recorded outcome.
+
+
+</rich_text>
+      <rich_text scale="h2">5. ROUND 2 SUMMARY — OCTOBER 17, 2026</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Total Test Cases:</rich_text>
+      <rich_text> 14
+</rich_text>
+      <rich_text weight="heavy">Passed:</rich_text>
+      <rich_text> 14
+</rich_text>
+      <rich_text weight="heavy">Failed:</rich_text>
+      <rich_text> 0
+</rich_text>
+      <rich_text weight="heavy">Blocked:</rich_text>
+      <rich_text> 0
+</rich_text>
+      <rich_text weight="heavy">Not Run:</rich_text>
+      <rich_text> 0
+</rich_text>
+      <rich_text weight="heavy">Round 2 Status:</rich_text>
+      <rich_text> COMPLETED — PASS
+
+</rich_text>
+      <rich_text scale="h3">Round 2 Findings</rich_text>
+      <rich_text>
+◇ Existing student records loaded successfully from MySQL.
+
+◇ Valid student records were saved and displayed.
+
+◇ Required-field and format validation behaved as expected.
+
+◇ Duplicate Student IDs were rejected.
+
+◇ Student records were successfully edited and verified in MySQL.
+
+◇ Confirmed deletion removed the selected record.
+
+◇ Canceling deletion preserved the selected record.
+
+◇ Search functionality returned matching student records.
+
+◇ Missing program, gender, and year-level selections produced the expected warnings.
+
+
+</rich_text>
+      <rich_text weight="heavy">Round 2 Result:</rich_text>
+      <rich_text> PASS — 14/14 FUNCTIONAL TEST CASES.
+
+
+</rich_text>
+      <rich_text scale="h2">6. ROUND 1 AND ROUND 2 COMPARISON</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Round 1 — October 16, 2026</rich_text>
+      <rich_text>
+Passed: 9
+Failed: 1
+Blocked: 4
+Not Run: 0
+</rich_text>
+      <rich_text weight="heavy">Round 2 — October 17, 2026</rich_text>
+      <rich_text>
+Passed: 14
+Failed: 0
+Blocked: 0
+Not Run: 0
+
+</rich_text>
+      <rich_text scale="h3">Improvement Summary</rich_text>
+      <rich_text>
+The number of passed test cases increased from 9 to 14.
+The failed test case from Round 1 passed during Round 2.
+All four blocked test cases were successfully executed and passed during Round 2.
+No failed or blocked test cases remained in the final recorded Round 2 results.
+
+
+</rich_text>
+      <rich_text scale="h2">7. ADDITIONAL FUNCTIONAL TESTING</rich_text>
+      <rich_text>
+Additional testing was performed beyond the original 14 test cases.
+</rich_text>
+      <rich_text weight="heavy">Additional Tested Areas:</rich_text>
+      <rich_text>
+◇ Search by Student ID and student name
+
+◇ Partial and case-insensitive searching
+
+◇ Year Level filtering
+
+◇ Program filtering
+
+◇ Combined Year Level and Program filtering
+
+◇ Clearing search and resetting filters
+
+◇ Clear Selection behavior
+
+◇ CSV export of displayed records
+
+◇ CSV export with an active search filter
+
+◇ CSV export cancellation
+
+◇ CSV export with no matching records
+
+
+These additional functional scenarios produced the expected results during the October 17 testing.
+
+
+</rich_text>
+      <rich_text scale="h2">8. BUG RETEST AND REGRESSION NOTES</rich_text>
+      <rich_text>
+The following issues were reviewed during integration testing.
+</rich_text>
+      <rich_text weight="heavy">BUG-001: Existing Student Records Not Displayed</rich_text>
+      <rich_text>
+Status: RESOLVED
+Retest: PASS
+</rich_text>
+      <rich_text weight="heavy">BUG-002: Add Student Does Not Save to Database</rich_text>
+      <rich_text>
+Status: RESOLVED
+Retest: PASS
+</rich_text>
+      <rich_text weight="heavy">BUG-003: Edit Student Functionality Not Implemented</rich_text>
+      <rich_text>
+Status: RESOLVED
+Retest: PASS
+</rich_text>
+      <rich_text weight="heavy">BUG-004: Delete Student Functionality Not Implemented</rich_text>
+      <rich_text>
+Status: RESOLVED
+Retest: PASS
+</rich_text>
+      <rich_text weight="heavy">BUG-005: Student Search Functionality Not Implemented</rich_text>
+      <rich_text>
+Status: RESOLVED
+Retest: PASS
+</rich_text>
+      <rich_text weight="heavy">BUG-006: Student ID Format Mismatch</rich_text>
+      <rich_text>
+Status: OPEN — PENDING TEAM REVIEW
+The application validation format and existing database Student IDs require alignment.
+</rich_text>
+      <rich_text weight="heavy">BUG-007: Application Remains in Edit Mode After Deletion</rich_text>
+      <rich_text>
+Status: FIX IMPLEMENTED — FINAL REGRESSION TEST PENDING
+A correction was implemented to reset Edit Mode after deletion. The build succeeded, but the immediate post-deletion behavior still requires final regression verification.
+
+
+</rich_text>
+      <rich_text scale="h2">9. LATEST INTEGRATION VERIFICATION — OCTOBER 22, 2026</rich_text>
+      <rich_text>
+The latest integrated version was retrieved from the GitHub </rich_text>
+      <rich_text family="monospace">develop</rich_text>
+      <rich_text> branch and opened in Visual Studio 2026.
+
+</rich_text>
+      <rich_text scale="h3">Build Verification</rich_text>
+      <rich_text>
+Projects Succeeded: 2
+Projects Failed: 0
+</rich_text>
+      <rich_text weight="heavy">Result:</rich_text>
+      <rich_text> PASS
+
+</rich_text>
+      <rich_text scale="h3">Application Verification</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Application Startup:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Login Required-Field Validation:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">MySQL Database Connection:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">User Registration:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Successful Login:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Dashboard Loading:</rich_text>
+      <rich_text> PASS
+</rich_text>
+      <rich_text weight="heavy">Student Record Retrieval:</rich_text>
+      <rich_text> PASS
+
+</rich_text>
+      <rich_text scale="h3">Database Integration Findings</rich_text>
+      <rich_text>
+The latest application initially encountered local database configuration and schema compatibility errors.
+These included:
+◇ MySQL authentication failure
+
+◇ Invalid local appsettings.json structure
+
+◇ Missing users table
+
+◇ Missing user_id column in the students table
+
+
+Corrections were applied to the local test environment.
+The application subsequently connected to MySQL, authenticated the registered test account, displayed dashboard statistics, and retrieved both original student records.
+
+</rich_text>
+      <rich_text scale="h3">Verified Dashboard Results</rich_text>
+      <rich_text>
+Total Students: 2
+Total Subjects: 0
+Total Enrollments: 0
+Ungraded Enrollments: 0
+Year Level 2 Students: 2
+BSCS Students: 2
+
+</rich_text>
+      <rich_text scale="h3">Verification Limitation</rich_text>
+      <rich_text>
+The October 22 walkthrough did not repeat all 14 functional test cases against the latest integrated version.
+Therefore, the Round 2 result of 14/14 PASS applies to the application version tested on October 17, 2026.
+
+
+</rich_text>
+      <rich_text scale="h2">10. REMAINING WORK</rich_text>
+      <rich_text>
+◇ Resolve the Student ID format inconsistency.
+
+◇ Complete the deletion-related Edit Mode regression test.
+
+◇ Verify the remaining application-level exception-handling scenarios.
+
+◇ Confirm that the final database setup script matches the latest application requirements.
+
+◇ Complete final testing of features modified after October 17.
+
+◇ Finalize documentation and submission materials.
+
+
+
+
+</rich_text>
+      <rich_text scale="h2">11. FINAL TESTING CONCLUSION</rich_text>
+      <rich_text>
+The SchemaX Student Information System underwent two rounds of planned functional testing.
+Round 1 identified incomplete database integration and blocked CRUD and Search operations.
+Following integration improvements, Round 2 successfully passed all 14 planned functional test cases.
+Additional tests also verified searching, filtering, Clear Selection behavior, and CSV export functionality.
+During the October 22 integration walkthrough, the latest application successfully built, connected to MySQL, authenticated a registered user, displayed dashboard statistics, and retrieved existing student records after local database compatibility issues were corrected.
+The remaining work concerns final-version regression verification, database setup consistency, and documentation completion.
+</rich_text>
+      <rich_text weight="heavy">FINAL RECORDED ROUND 2 RESULT: PASS — 14/14</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">LATEST INTEGRATION STATUS: CORE STARTUP, LOGIN, DASHBOARD, AND STUDENT LOADING VERIFIED</rich_text>
+      <rich_text>
+</rich_text>
+      <rich_text weight="heavy">Document:</rich_text>
+      <rich_text> SchemaX SIS — Test Case Sheet v1.0
+</rich_text>
+      <rich_text weight="heavy">Prepared for:</rich_text>
+      <rich_text> Team SchemaX
+</rich_text>
+      <rich_text weight="heavy">Last Updated:</rich_text>
+      <rich_text> October 22, 2026
+</rich_text>
+    </node>
+  </node>
+  <node unique_id="2" master_id="0" name="Database Info" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553218" ts_lastsave="1792605824">
     <rich_text>
 </rich_text>
     <rich_text scale="h1">DATABASE INFORMATION</rich_text>
@@ -268,6 +3496,15 @@ Each team member works on an assigned Git branch. Changes are submitted through 
 </rich_text>
     <rich_text weight="heavy">Team SchemaX | Student Information System</rich_text>
     <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Database:</rich_text>
+    <rich_text> schemax_sis
+</rich_text>
+    <rich_text weight="heavy">Last Updated:</rich_text>
+    <rich_text> October 22, 2026
 
 
 </rich_text>
@@ -284,169 +3521,610 @@ Each team member works on an assigned Git branch. Changes are submitted through 
     <rich_text> SchemaX Student Information System
 </rich_text>
     <rich_text weight="heavy">Programming Language:</rich_text>
-    <rich_text> C# (.NET Windows Forms)
+    <rich_text> C# (.NET 10 Windows Forms)
 </rich_text>
     <rich_text weight="heavy">Assigned Developer:</rich_text>
     <rich_text> Reynalyn Samar
 </rich_text>
     <rich_text weight="heavy">Database Name:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text> schemax_sis
 </rich_text>
-    <rich_text weight="heavy">Connection Status:</rich_text>
-    <rich_text> Pending integration verification
-The database is intended to store and manage student information used by the Student Information System.
+    <rich_text weight="heavy">Local Database Setup:</rich_text>
+    <rich_text> VERIFIED
+</rich_text>
+    <rich_text weight="heavy">Application Database Integration:</rich_text>
+    <rich_text> VERIFIED FOR TESTED FEATURES
+The schemax_sis database stores student records, academic information, attendance data, and registered user accounts.
+The initial database structure was created using the project's SQL setup script. Additional local schema updates were required during final integration testing to support the latest login and dashboard features.
 
 
 </rich_text>
     <rich_text scale="h2">2. DATABASE STRUCTURE</rich_text>
     <rich_text>
-The following information will be completed after the database structure is confirmed.
+The following five application tables were verified in MySQL Workbench on October 22, 2026.
 </rich_text>
-    <rich_text weight="heavy">Database Tables:</rich_text>
-    <rich_text> Pending confirmation
-</rich_text>
-    <rich_text weight="heavy">Table Information Required:</rich_text>
+    <rich_text weight="heavy">1. students</rich_text>
     <rich_text>
-• Table names
-
-• Column names
-
-• Data types
-
-• Primary keys
-
-• Foreign keys
-
-• Relationships between tables
+Stores student personal information, academic details, and account ownership.
+</rich_text>
+    <rich_text weight="heavy">2. subjects</rich_text>
+    <rich_text>
+Stores subject information, including subject identifiers, titles, and units.
+</rich_text>
+    <rich_text weight="heavy">3. student_subjects</rich_text>
+    <rich_text>
+Associates students with subjects and stores related academic information, including grades.
+</rich_text>
+    <rich_text weight="heavy">4. attendance</rich_text>
+    <rich_text>
+Stores student attendance records.
+</rich_text>
+    <rich_text weight="heavy">5. users</rich_text>
+    <rich_text>
+Stores registered application user accounts and password hashes.
+</rich_text>
+    <rich_text weight="heavy">Storage Engine:</rich_text>
+    <rich_text> InnoDB
+</rich_text>
+    <rich_text weight="heavy">Character Set:</rich_text>
+    <rich_text> utf8mb4
+</rich_text>
+    <rich_text weight="heavy">Collation:</rich_text>
+    <rich_text> utf8mb4_unicode_ci
+The original database schema includes primary keys, unique constraints, foreign keys, and a year-level check constraint.
+The exact constraints of the newly created users table should be included in the final SQL setup script.
 
 
 </rich_text>
     <rich_text scale="h2">3. STUDENT RECORD INFORMATION</rich_text>
     <rich_text>
-The current application interface contains the following student information fields:
+The students table contains the following columns:
 </rich_text>
-    <rich_text weight="heavy">1. Student ID</rich_text>
+    <rich_text weight="heavy">student_id:</rich_text>
+    <rich_text> Student identifier and primary key
+</rich_text>
+    <rich_text weight="heavy">first_name:</rich_text>
+    <rich_text> Student's first name
+</rich_text>
+    <rich_text weight="heavy">middle_name:</rich_text>
+    <rich_text> Optional middle name
+</rich_text>
+    <rich_text weight="heavy">surname:</rich_text>
+    <rich_text> Student's surname
+</rich_text>
+    <rich_text weight="heavy">gender:</rich_text>
+    <rich_text> Student's gender
+</rich_text>
+    <rich_text weight="heavy">year_level:</rich_text>
+    <rich_text> Current year level
+</rich_text>
+    <rich_text weight="heavy">program:</rich_text>
+    <rich_text> Academic program
+</rich_text>
+    <rich_text weight="heavy">bloc:</rich_text>
+    <rich_text> Student's block
+</rich_text>
+    <rich_text weight="heavy">birthday:</rich_text>
+    <rich_text> Date of birth
+</rich_text>
+    <rich_text weight="heavy">bu_email:</rich_text>
+    <rich_text> University email address
+</rich_text>
+    <rich_text weight="heavy">contact_no:</rich_text>
+    <rich_text> Contact number
+</rich_text>
+    <rich_text weight="heavy">photo_path:</rich_text>
+    <rich_text> Optional photo path
+</rich_text>
+    <rich_text weight="heavy">created_at:</rich_text>
+    <rich_text> Record creation timestamp
+</rich_text>
+    <rich_text weight="heavy">user_id:</rich_text>
+    <rich_text> Identifier of the registered user associated with the student record
+
+</rich_text>
+    <rich_text scale="h3">Student Ownership Integration</rich_text>
     <rich_text>
-• Purpose: Unique identifier for a student
+The latest application uses user_id to associate student records with a logged-in account.
+During October 22 testing, the existing students table did not contain this column.
+The column was added locally, and the two existing student records were assigned to the registered test account.
+</rich_text>
+    <rich_text weight="heavy">Verification Result:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Records Preserved:</rich_text>
+    <rich_text> 2
 
 
 </rich_text>
-    <rich_text weight="heavy">2. Student Name</rich_text>
+    <rich_text scale="h2">4. USER ACCOUNT INFORMATION</rich_text>
     <rich_text>
-◇ Purpose: Student's name
-
+The users table supports application registration and authentication.
+The following columns were implemented in the local testing environment:
+</rich_text>
+    <rich_text weight="heavy">user_id:</rich_text>
+    <rich_text> Integer primary key with automatic numbering
+</rich_text>
+    <rich_text weight="heavy">first_name:</rich_text>
+    <rich_text> Registered user's first name
+</rich_text>
+    <rich_text weight="heavy">surname:</rich_text>
+    <rich_text> Registered user's surname
+</rich_text>
+    <rich_text weight="heavy">bu_email:</rich_text>
+    <rich_text> Registered user's university email address
+</rich_text>
+    <rich_text weight="heavy">username:</rich_text>
+    <rich_text> Unique account username
+</rich_text>
+    <rich_text weight="heavy">password_hash:</rich_text>
+    <rich_text> Stored password hash
 
 </rich_text>
-    <rich_text weight="heavy">3. Contact Number</rich_text>
-    <rich_text>
-◇ Purpose: Student's contact information
-
-
-</rich_text>
-    <rich_text weight="heavy">4. Program</rich_text>
-    <rich_text>
-◇ Purpose: Student's academic program
-
-
-</rich_text>
-    <rich_text weight="heavy">5. Gender</rich_text>
-    <rich_text>
-◇ Purpose: Student's gender
-
-
-</rich_text>
-    <rich_text weight="heavy">6. Year Level</rich_text>
-    <rich_text>
-◇ Purpose: Student's current year level
-
-
-</rich_text>
-    <rich_text weight="heavy">Note:</rich_text>
-    <rich_text> These fields are based on the current application interface. Actual MySQL column names and data types must still be verified.
-
-
-</rich_text>
-    <rich_text scale="h2">4. DATABASE CONNECTION</rich_text>
+    <rich_text scale="h3">User Account Operations</rich_text>
     <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Connection Method:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text weight="heavy">UserRepository.UsernameExists()</rich_text>
+    <rich_text>
+Checks whether a username already exists.
+</rich_text>
+    <rich_text weight="heavy">UserRepository.EmailExists()</rich_text>
+    <rich_text>
+Checks whether a university email is already registered.
+</rich_text>
+    <rich_text weight="heavy">UserRepository.Create()</rich_text>
+    <rich_text>
+Creates a new user account.
+</rich_text>
+    <rich_text weight="heavy">UserRepository.Authenticate()</rich_text>
+    <rich_text>
+Checks login credentials and retrieves the authenticated user.
+
+</rich_text>
+    <rich_text scale="h3">Security Implementation</rich_text>
+    <rich_text>
+The application uses a PasswordHasher helper to hash passwords before storing them.
+The repository also uses parameterized SQL queries to handle user-provided values.
+The users table enforces unique usernames and university email addresses.
+</rich_text>
+    <rich_text weight="heavy">Registration Test:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Login Test:</rich_text>
+    <rich_text> PASS
+
+
+</rich_text>
+    <rich_text scale="h2">5. DATABASE CONNECTION</rich_text>
+    <rich_text>
 </rich_text>
     <rich_text weight="heavy">Connection Configuration:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text> appsettings.json
 </rich_text>
-    <rich_text weight="heavy">Connection Testing:</rich_text>
-    <rich_text> Pending verification
-Connection details will be documented after Reynalyn confirms the database setup.
+    <rich_text weight="heavy">Server:</rich_text>
+    <rich_text> localhost
 </rich_text>
-    <rich_text weight="heavy">Security Note:</rich_text>
-    <rich_text> Database passwords and other credentials must not be included in this documentation or committed to GitHub.
+    <rich_text weight="heavy">Port:</rich_text>
+    <rich_text> 3306
+</rich_text>
+    <rich_text weight="heavy">Database:</rich_text>
+    <rich_text> schemax_sis
+</rich_text>
+    <rich_text weight="heavy">Database User:</rich_text>
+    <rich_text> root
+The Db.Open() method reads the configured connection string and establishes a MySQL connection.
+Database credentials must be protected and should not be committed to a public GitHub repository.
 
-
 </rich_text>
-    <rich_text scale="h2">5. DATABASE OPERATIONS</rich_text>
+    <rich_text scale="h3">October 22 Connection Verification</rich_text>
     <rich_text>
-The application is intended to support the following operations:
-◇ </rich_text>
-    <rich_text weight="heavy">Create:</rich_text>
-    <rich_text> Add new student records
-
-◇ </rich_text>
-    <rich_text weight="heavy">Read:</rich_text>
-    <rich_text> Retrieve and display student information
-
-◇ </rich_text>
-    <rich_text weight="heavy">Update:</rich_text>
-    <rich_text> Modify existing student records
-
-◇ </rich_text>
-    <rich_text weight="heavy">Delete:</rich_text>
-    <rich_text> Remove student records
-
-◇ </rich_text>
-    <rich_text weight="heavy">Search:</rich_text>
-    <rich_text> Find student records
+The application initially encountered MySQL authentication and local configuration errors.
+The local connection settings and JSON configuration were corrected.
+Following these changes, the application successfully connected to MySQL.
+</rich_text>
+    <rich_text weight="heavy">MySQL Workbench Connection:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Application Database Connection:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">User Authentication:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Student Record Retrieval:</rich_text>
+    <rich_text> PASS
 
 
 </rich_text>
-    <rich_text weight="heavy">Implementation Status:</rich_text>
-    <rich_text> Pending CRUD integration.
-
-
-</rich_text>
-    <rich_text scale="h2">6. DATABASE ERROR HANDLING</rich_text>
+    <rich_text scale="h2">6. DATABASE OPERATIONS</rich_text>
     <rich_text>
-The error handling module includes:
-◇ </rich_text>
-    <rich_text family="monospace">Validator.cs</rich_text>
-    <rich_text> — Input validation
+The StudentRepository class provides database operations for managing student records.
 
-◇ </rich_text>
-    <rich_text family="monospace">ExceptionHandler.cs</rich_text>
-    <rich_text> — Friendly exception messages
+</rich_text>
+    <rich_text scale="h3">CREATE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Method:</rich_text>
+    <rich_text> StudentRepository.Insert()
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+A valid temporary student record was inserted through the application during October 17 testing.
 
-◇ </rich_text>
-    <rich_text family="monospace">ErrorLog.cs</rich_text>
-    <rich_text> — Exception logging
+</rich_text>
+    <rich_text scale="h3">READ</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Methods:</rich_text>
+    <rich_text>
+• StudentRepository.GetAll()
+
+• StudentRepository.GetById()
 
 
 </rich_text>
-    <rich_text weight="heavy">Current Status:</rich_text>
-    <rich_text> Helper classes implemented and tested.
-Database-specific exception handling and duplicate-record detection still require integration and testing.
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+Existing student records were successfully retrieved from MySQL and displayed in the application.
 
 </rich_text>
-    <rich_text weight="heavy">Documentation Status:</rich_text>
-    <rich_text> In Progress
+    <rich_text scale="h3">UPDATE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Method:</rich_text>
+    <rich_text> StudentRepository.Update()
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+An existing student's block was modified, saved, and verified in MySQL.
+The original value was restored afterward.
+
+</rich_text>
+    <rich_text scale="h3">DELETE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Method:</rich_text>
+    <rich_text> StudentRepository.Delete()
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+A student record was successfully removed after confirmation.
+Deletion cancellation and no-selection validation were also tested.
+
+</rich_text>
+    <rich_text scale="h3">SEARCH AND FILTERING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+The application successfully performed:
+◇ Student ID searching
+
+◇ Student name searching
+
+◇ Partial matching
+
+◇ Case-insensitive searching
+
+◇ Year Level filtering
+
+◇ Program filtering
+
+◇ Combined search and filtering
+
+
+These results were recorded during October 17 functional testing.
+
+
+</rich_text>
+    <rich_text scale="h2">7. DASHBOARD DATABASE INTEGRATION</rich_text>
+    <rich_text>
+The DashboardRepository class retrieves information used by the dashboard.
+
+</rich_text>
+    <rich_text scale="h3">Dashboard Features</rich_text>
+    <rich_text>
+◇ Total student count
+
+◇ Total subject count
+
+◇ Total enrollment count
+
+◇ Ungraded enrollment count
+
+◇ Students grouped by year level
+
+◇ Students grouped by program
+
+◇ Student GWA calculation support
+
+
+
+</rich_text>
+    <rich_text scale="h3">October 22 Dashboard Verification</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Total Students:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Total Subjects:</rich_text>
+    <rich_text> 0
+</rich_text>
+    <rich_text weight="heavy">Total Enrollments:</rich_text>
+    <rich_text> 0
+</rich_text>
+    <rich_text weight="heavy">Ungraded Enrollments:</rich_text>
+    <rich_text> 0
+</rich_text>
+    <rich_text weight="heavy">Year Level 2 Students:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">BSCS Students:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Dashboard Loading:</rich_text>
+    <rich_text> PASS
+The dashboard successfully displayed statistics after the local database schema was updated.
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> The GWA calculation and academic enrollment features were not fully verified during the October 22 walkthrough.
+
+
+</rich_text>
+    <rich_text scale="h2">8. DATABASE ERROR HANDLING</rich_text>
+    <rich_text>
+The error-handling module includes the following helper classes:
+</rich_text>
+    <rich_text weight="heavy">Validator.cs</rich_text>
+    <rich_text>
+Validates student information and required fields.
+</rich_text>
+    <rich_text weight="heavy">ExceptionHandler.cs</rich_text>
+    <rich_text>
+Handles exceptions and displays user-friendly error messages.
+</rich_text>
+    <rich_text weight="heavy">ErrorLog.cs</rich_text>
+    <rich_text>
+Records exception details in logs/errors.txt.
+
+</rich_text>
+    <rich_text scale="h3">Error Log Information</rich_text>
+    <rich_text>
+The error log records:
+◇ Date and time
+
+◇ Exception type
+
+◇ Error message
+
+◇ Stack trace
+
+
+
+</rich_text>
+    <rich_text scale="h3">Verified Error Handling</rich_text>
+    <rich_text>
+◇ Missing required fields: PASS
+
+◇ Invalid input formats: PASS
+
+◇ Duplicate Student ID detection: PASS
+
+◇ Duplicate BU email warning: PASS in earlier integration testing
+
+◇ Database error logging: PASS
+
+◇ Friendly database error message: PASS in earlier integration testing
+
+
+
+</rich_text>
+    <rich_text scale="h3">Remaining Verification</rich_text>
+    <rich_text>
+Not every application-level database exception scenario has been retested after the latest integration changes.
+
+
+</rich_text>
+    <rich_text scale="h2">9. DATABASE INTEGRATION VERIFICATION — OCTOBER 17, 2026</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">9.1 Connection Testing</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+The application successfully retrieved existing student records from MySQL and displayed them in the DataGridView.
+
+</rich_text>
+    <rich_text scale="h3">9.2 CRUD Testing</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">CREATE:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">READ:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">UPDATE:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">DELETE:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">9.3 Search and Filtering</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> PASS
+Searching and filtering returned the expected records.
+
+</rich_text>
+    <rich_text scale="h3">9.4 Data Integrity Verification</rich_text>
+    <rich_text>
+The following original student records were confirmed present after testing.
+</rich_text>
+    <rich_text weight="heavy">Student 1:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Student ID:</rich_text>
+    <rich_text> 2025-01-06767
+</rich_text>
+    <rich_text weight="heavy">Student 2:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Student ID:</rich_text>
+    <rich_text> 2025-01-06969
+</rich_text>
+    <rich_text weight="heavy">Final Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">9.5 October 17 Conclusion</rich_text>
+    <rich_text>
+Student CRUD, Search, and filtering functionality were successfully verified in the tested application version.
+
+
+</rich_text>
+    <rich_text scale="h2">10. FINAL DATABASE INTEGRATION UPDATE — OCTOBER 22, 2026</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">10.1 Missing Users Table</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Error:</rich_text>
+    <rich_text> Table 'schemax_sis.users' doesn't exist.
+</rich_text>
+    <rich_text weight="heavy">Cause:</rich_text>
+    <rich_text> The local database did not contain the users table required by the new authentication feature.
+</rich_text>
+    <rich_text weight="heavy">Correction:</rich_text>
+    <rich_text> Created the users table based on the columns referenced by UserRepository.cs.
+</rich_text>
+    <rich_text weight="heavy">Retest Result:</rich_text>
+    <rich_text> PASS
+A test account was successfully registered and authenticated.
+
+</rich_text>
+    <rich_text scale="h3">10.2 Missing user_id Column</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Error:</rich_text>
+    <rich_text> Unknown column 'user_id' in 'where clause'.
+</rich_text>
+    <rich_text weight="heavy">Cause:</rich_text>
+    <rich_text> DashboardRepository queries required the user_id column, which was absent from the existing students table.
+</rich_text>
+    <rich_text weight="heavy">Correction:</rich_text>
+    <rich_text>
+◇ Created a backup of the students table.
+
+◇ Added the user_id column.
+
+◇ Assigned the two existing student records to the registered test account.
+
+◇ Verified both student records were preserved.
+
+
+</rich_text>
+    <rich_text weight="heavy">Retest Result:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">10.3 Database Backup</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Backup Table:</rich_text>
+    <rich_text> students_backup_20261022
+</rich_text>
+    <rich_text weight="heavy">Original Record Count:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Backup Record Count:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Backup Verification:</rich_text>
+    <rich_text> PASS
+The backup was created before updating the students table.
+
+</rich_text>
+    <rich_text scale="h3">10.4 Final Application Verification</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Application Startup:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">MySQL Connection:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">User Registration:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Login:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Dashboard Statistics:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Student Record Loading:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Verified Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">10.5 Integration Conclusion</rich_text>
+    <rich_text>
+The October 22 walkthrough confirmed that the latest application could connect to MySQL, authenticate a registered user, display dashboard statistics, and retrieve existing student records after local database compatibility issues were corrected.
+
+
+</rich_text>
+    <rich_text scale="h2">11. REMAINING DATABASE WORK</rich_text>
+    <rich_text>
+1. Confirm the official Student ID format and align application validation with database requirements.
+
+2. Update the final SQL setup script to include the users table and student user_id column.
+
+3. Review account ownership constraints and relationships before final database deployment.
+
+4. Complete the post-deletion Edit Mode regression test.
+
+5. Verify subject enrollment, grades, GWA calculation, and attendance functionality.
+
+6. Complete final regression testing after the latest application integration changes.
+
+7. Ensure local credentials and configuration files are handled securely.
+
+
+
+</rich_text>
+    <rich_text scale="h2">12. FINAL CONCLUSION</rich_text>
+    <rich_text>
+The SchemaX Student Information System uses MySQL to store student records, user accounts, subjects, enrollments, and attendance information.
+Database-backed student CRUD, Search, and filtering operations passed functional testing on October 17, 2026.
+Additional integration testing on October 22 confirmed successful user registration, login, dashboard loading, and student record retrieval after local database configuration and schema issues were resolved.
+The latest application demonstrated working integration with the local MySQL database.
+Final database script consistency and additional academic-module testing remain necessary before project submission.
+</rich_text>
+    <rich_text weight="heavy">Overall Database Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED CORE FUNCTIONS — FINAL INTEGRATION CHECKS REMAINING
 </rich_text>
     <rich_text weight="heavy">Responsible Member:</rich_text>
     <rich_text> Reynalyn Samar
 </rich_text>
-    <rich_text weight="heavy">Last Verification:</rich_text>
-    <rich_text> Pending database integration
+    <rich_text weight="heavy">Document:</rich_text>
+    <rich_text> SchemaX SIS — Database Information
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Last Updated:</rich_text>
+    <rich_text> October 22, 2026
 </rich_text>
   </node>
-  <node unique_id="3" master_id="0" name="Setup Guide" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553256" ts_lastsave="1792000325">
+  <node unique_id="3" master_id="0" name="Setup Guide" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553256" ts_lastsave="1792605920">
     <rich_text>
 </rich_text>
     <rich_text scale="h1">SETUP GUIDE</rich_text>
@@ -504,8 +4182,6 @@ The application is developed using C# Windows Forms and MySQL. Visual Studio is 
     <rich_text weight="heavy">5. Documentation</rich_text>
     <rich_text>
 ◇ CherryTree
-
-
 
 
 </rich_text>
@@ -568,41 +4244,79 @@ The Student Information System window should open if the project builds and star
     <rich_text scale="h2">5. MYSQL DATABASE SETUP</rich_text>
     <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Assigned Developer:</rich_text>
-    <rich_text> Reynalyn Samar
-</rich_text>
-    <rich_text weight="heavy">Step 1:</rich_text>
-    <rich_text> Install and open MySQL Server and MySQL Workbench.
-</rich_text>
-    <rich_text weight="heavy">Step 2:</rich_text>
-    <rich_text> Ensure that the MySQL service is running.
-</rich_text>
-    <rich_text weight="heavy">Step 3:</rich_text>
-    <rich_text> Open MySQL Workbench and connect to the local MySQL server.
-</rich_text>
-    <rich_text weight="heavy">Step 4:</rich_text>
-    <rich_text> Create or import the database using the team's approved SQL script.
-</rich_text>
-    <rich_text weight="heavy">Step 5:</rich_text>
-    <rich_text> Confirm that the required tables are available.
-</rich_text>
-    <rich_text weight="heavy">Step 6:</rich_text>
-    <rich_text> Configure the application's database connection using the team's approved settings.
-</rich_text>
-    <rich_text weight="heavy">Step 7:</rich_text>
-    <rich_text> Test whether the application can communicate with MySQL.
-</rich_text>
     <rich_text weight="heavy">Database Name:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text> </rich_text>
+    <rich_text family="monospace">schemax_sis</rich_text>
+    <rich_text>
 </rich_text>
     <rich_text weight="heavy">SQL Script Location:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text> </rich_text>
+    <rich_text family="monospace">db/schemax_sis.sql</rich_text>
+    <rich_text>
 </rich_text>
     <rich_text weight="heavy">Connection Configuration:</rich_text>
-    <rich_text> Pending confirmation
+    <rich_text> </rich_text>
+    <rich_text family="monospace">SchemaX.SIS/appsettings.json</rich_text>
+    <rich_text>
 </rich_text>
-    <rich_text weight="heavy">Note:</rich_text>
-    <rich_text> Do not include actual database passwords or other secret credentials in this documentation or GitHub repository.
+    <rich_text weight="heavy">Verified Database Setup Procedure:</rich_text>
+    <rich_text>
+1. Install MySQL Server and MySQL Workbench.
+
+2. Start the MySQL80 service.
+
+3. Open MySQL Workbench and connect to the local server.
+
+4. Open and execute </rich_text>
+    <rich_text family="monospace">db/schemax_sis.sql</rich_text>
+    <rich_text>.
+
+5. Verify that the </rich_text>
+    <rich_text family="monospace">students</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">subjects</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">student_subjects</rich_text>
+    <rich_text>, and </rich_text>
+    <rich_text family="monospace">attendance</rich_text>
+    <rich_text> tables exist.
+
+6. Confirm that the two sample student records can be retrieved.
+
+7. In </rich_text>
+    <rich_text family="monospace">SchemaX.SIS</rich_text>
+    <rich_text>, create </rich_text>
+    <rich_text family="monospace">appsettings.json</rich_text>
+    <rich_text> using </rich_text>
+    <rich_text family="monospace">appsettings.example.json</rich_text>
+    <rich_text> as the template.
+
+8. Configure the local MySQL connection string with the correct database credentials.
+
+9. Keep </rich_text>
+    <rich_text family="monospace">appsettings.json</rich_text>
+    <rich_text> excluded from Git.
+
+10. Open the solution in Visual Studio 2026, restore NuGet packages if necessary, build the project, and press F5.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Results:</rich_text>
+    <rich_text>
+• Local MySQL database successfully created.
+
+• Four required tables verified.
+
+• Two sample student records retrieved in MySQL Workbench.
+
+• Application successfully launched in Visual Studio.
+
+
+</rich_text>
+    <rich_text weight="heavy">Pending:</rich_text>
+    <rich_text> Complete application-to-database integration and CRUD verification.
+</rich_text>
+    <rich_text weight="heavy">Security Reminder:</rich_text>
+    <rich_text> Never include actual database passwords in documentation, screenshots, or GitHub commits.
 
 
 </rich_text>
@@ -656,8 +4370,6 @@ The Student Information System window should open if the project builds and star
 ◇ Awaiting final integration and verification.
 
 
-
-
 </rich_text>
     <rich_text scale="h2">7. BASIC TROUBLESHOOTING</rich_text>
     <rich_text>
@@ -705,6 +4417,91 @@ Suggested checks:
 ◇ Report the issue to the assigned developer.
 
 
+</rich_text>
+    <rich_text scale="h3">Additional Common Problems and Fixes</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Problem: MySQL Workbench cannot connect to the database.</rich_text>
+    <rich_text>
+Possible fixes:
+• Verify that the MySQL80 service is running.
+
+• Confirm that the username and password are correct.
+
+• Check that MySQL is listening on the configured port (default: 3306).
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Database tables are missing.</rich_text>
+    <rich_text>
+Possible fixes:
+◇ Open </rich_text>
+    <rich_text family="monospace">db/schemax_sis.sql</rich_text>
+    <rich_text> in MySQL Workbench.
+
+◇ Execute the SQL script.
+
+◇ Refresh the Schemas panel.
+
+◇ Verify that the </rich_text>
+    <rich_text family="monospace">schemax_sis</rich_text>
+    <rich_text> database contains four tables.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Existing students do not appear in the DataGridView.</rich_text>
+    <rich_text>
+Current finding:
+◇ Student records exist in MySQL, but the form does not load them.
+
+◇ </rich_text>
+    <rich_text family="monospace">StudentRepository.GetAll()</rich_text>
+    <rich_text> exists but is not called by the current Student Information Form.
+
+
+Resolution:
+◇ Complete the form-to-repository integration.
+
+◇ Retest student loading after the integration changes are merged.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Add, Edit, or Delete does not update MySQL.</rich_text>
+    <rich_text>
+Current finding:
+◇ CRUD repository methods exist, but the form's database operations are not fully integrated.
+
+
+Resolution:
+◇ Complete CRUD integration.
+
+◇ Verify the changes in MySQL Workbench.
+
+◇ Record the results in the Testing &amp; Bug Log.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: NuGet dependencies are missing.</rich_text>
+    <rich_text>
+Possible fixes:
+◇ Open the solution in Visual Studio.
+
+◇ Right-click the solution and select Restore NuGet Packages.
+
+◇ Rebuild the solution and inspect any remaining errors.
+
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Database credentials might be exposed in Git.</rich_text>
+    <rich_text>
+Prevention:
+◇ Keep actual credentials only in the local </rich_text>
+    <rich_text family="monospace">appsettings.json</rich_text>
+    <rich_text>.
+
+◇ Verify that the file is ignored by Git.
+
+◇ Never upload passwords to GitHub or include them in screenshots.
 
 
 </rich_text>
@@ -738,9 +4535,370 @@ Suggested checks:
 </rich_text>
     <rich_text weight="heavy">Responsible Team:</rich_text>
     <rich_text> Team SchemaX
+
+
+</rich_text>
+    <rich_text scale="h2">9. SETUP AND INTEGRATION UPDATE — OCTOBER 17, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+
+</rich_text>
+    <rich_text scale="h3">9.1 Updated Application Status</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Solution Build:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Application Startup:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">MySQL Student Record Retrieval:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Add Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Edit Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Delete Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Search Student Records:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Year Level and Program Filtering:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">CSV Export:</rich_text>
+    <rich_text> PASS
+These results were verified in the configured local development environment.
+
+</rich_text>
+    <rich_text scale="h3">9.2 Updated Database Integration</rich_text>
+    <rich_text>
+The Student Information Form successfully connected to the local </rich_text>
+    <rich_text family="monospace">schemax_sis</rich_text>
+    <rich_text> database.
+The application retrieved student records and performed the tested Create, Read, Update, and Delete operations through MySQL.
+Search and filtering functionality were also verified.
+The October 16 integration findings remain part of the project's testing history but no longer describe the current functionality of the tested student management module.
+
+</rich_text>
+    <rich_text scale="h3">9.3 Important SQL Setup Warning</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">WARNING: Do not execute the database setup script against an existing database without reviewing its contents and creating a backup.</rich_text>
+    <rich_text>
+The SQL script may contain DROP TABLE statements that remove existing tables and student records.
+For an existing installation:
+1. Back up the database before making structural changes.
+
+2. Review the SQL script before executing it.
+
+3. Do not rerun destructive database initialization statements merely to repair an application connection.
+
+4. Verify the existing tables and records using MySQL Workbench.
+
+
+</rich_text>
+    <rich_text scale="h3">9.4 Updated Troubleshooting</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Problem: Student records do not appear.</rich_text>
+    <rich_text>
+Recommended checks:
+1. Confirm that MySQL Server is running.
+
+2. Verify the connection string in the local </rich_text>
+    <rich_text family="monospace">appsettings.json</rich_text>
+    <rich_text>.
+
+3. Confirm that the correct database is selected.
+
+4. Check whether the </rich_text>
+    <rich_text family="monospace">students</rich_text>
+    <rich_text> table contains records.
+
+5. Verify that the application is running the latest approved code.
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Add, Edit, or Delete does not save changes.</rich_text>
+    <rich_text>
+Recommended checks:
+1. Confirm that the database connection is available.
+
+2. Check the application's validation warnings.
+
+3. Confirm that the correct student is selected for Edit or Delete.
+
+4. Check the database records using MySQL Workbench.
+
+5. Report any remaining error to the assigned team member.
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Add Button Still Displays Edit Mode Warning.</rich_text>
+    <rich_text>
+A state-management issue was identified during deletion testing.
+A correction was implemented by calling </rich_text>
+    <rich_text family="monospace">ExitEditMode()</rich_text>
+    <rich_text> in the deletion handler's </rich_text>
+    <rich_text family="monospace">finally</rich_text>
+    <rich_text> block.
+The solution built successfully. Final regression testing immediately after successful deletion remains pending.
+
+</rich_text>
+    <rich_text scale="h3">9.5 Remaining Setup Verification</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Clean Computer Installation:</rich_text>
+    <rich_text> NOT YET VERIFIED
+</rich_text>
+    <rich_text weight="heavy">Application-Level Database Exception Handling:</rich_text>
+    <rich_text> PENDING
+</rich_text>
+    <rich_text weight="heavy">Student ID Format Consistency:</rich_text>
+    <rich_text> PENDING TEAM REVIEW
+</rich_text>
+    <rich_text weight="heavy">Attendance and Other Database Modules:</rich_text>
+    <rich_text> NOT VERIFIED IN THIS TESTING ROUND
+
+</rich_text>
+    <rich_text scale="h3">9.6 Updated Setup Conclusion</rich_text>
+    <rich_text>
+The project successfully built and ran in the configured development environment.
+Database integration for the tested student management operations was verified on October 17, 2026.
+A clean installation on another computer has not yet been tested.
+</rich_text>
+    <rich_text weight="heavy">Updated Status:</rich_text>
+    <rich_text> LOCAL SETUP AND STUDENT MANAGEMENT INTEGRATION VERIFIED — FINAL DEPLOYMENT CHECKS PENDING.
+
+
+</rich_text>
+    <rich_text scale="h2">10. FINAL SETUP AND INTEGRATION UPDATE — OCTOBER 22, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">10.1 Latest Application Setup Verification</rich_text>
+    <rich_text>
+The latest integrated project was retrieved from the GitHub develop branch and opened in Visual Studio 2026.
+</rich_text>
+    <rich_text weight="heavy">Verification Results:</rich_text>
+    <rich_text>
+• Solution Build: PASS — 2 projects succeeded, 0 failed
+
+• Application Startup: PASS
+
+• MySQL Connection: PASS
+
+• User Registration: PASS
+
+• User Login: PASS
+
+• Dashboard Loading: PASS
+
+• Student Record Retrieval: PASS
+
+
+These results were verified in the configured local development environment.
+
+</rich_text>
+    <rich_text scale="h3">10.2 Updated Database Requirements</rich_text>
+    <rich_text>
+The latest application requires the following five main database tables:
+1. students
+
+2. subjects
+
+3. student_subjects
+
+4. attendance
+
+5. users
+
+The users table supports account registration and login.
+The students table must also include a user_id column to support account-specific student records.
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> The final SQL setup script must be reviewed to confirm that it includes these requirements.
+
+</rich_text>
+    <rich_text scale="h3">10.3 Users Table Setup</rich_text>
+    <rich_text>
+During testing, the application initially displayed:
+Table 'schemax_sis.users' doesn't exist.
+The local database was missing the table required by UserRepository.cs.
+The following structure was used to resolve the issue:
+</rich_text>
+    <rich_text family="monospace">USE schemax_sis;
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
+    bu_email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL
+);</rich_text>
+    <rich_text weight="heavy">Verification Result:</rich_text>
+    <rich_text> PASS
+A test account was successfully registered and authenticated.
+
+</rich_text>
+    <rich_text scale="h3">10.4 Student Ownership Schema Update</rich_text>
+    <rich_text>
+The DashboardRepository class requires a user_id column in the students table.
+Without this column, the application displayed:
+Unknown column 'user_id' in 'where clause'.
+For the existing local database, the missing column was added using:
+</rich_text>
+    <rich_text family="monospace">ALTER TABLE students
+ADD COLUMN user_id INT NULL;</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> This statement must only be executed if the column does not already exist.
+The two existing student records were then assigned to the registered test account after confirming its user_id.
+The actual account ID must be verified before assigning ownership. Do not assume every installation uses user_id = 1.
+</rich_text>
+    <rich_text weight="heavy">Verification Result:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">10.5 Database Backup Verification</rich_text>
+    <rich_text>
+Before changing the students table, a backup was created.
+</rich_text>
+    <rich_text weight="heavy">Backup Table:</rich_text>
+    <rich_text> students_backup_20261022
+</rich_text>
+    <rich_text weight="heavy">Original Student Count:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Backup Student Count:</rich_text>
+    <rich_text> 2
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS
+The two original student records were preserved.
+
+</rich_text>
+    <rich_text scale="h3">10.6 Dashboard Verification</rich_text>
+    <rich_text>
+After the database updates, the application successfully displayed:
+◇ Total Students: 2
+
+◇ Total Subjects: 0
+
+◇ Total Enrollments: 0
+
+◇ Ungraded Enrollments: 0
+
+◇ Year Level 2 Students: 2
+
+◇ BSCS Students: 2
+
+
+</rich_text>
+    <rich_text weight="heavy">Dashboard Status:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">10.7 Troubleshooting New Database Errors</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Problem: Login fails because the users table is missing.</rich_text>
+    <rich_text>
+Recommended checks:
+1. Confirm that MySQL Server is running.
+
+2. Confirm that the application connects to schemax_sis.
+
+3. Verify that the users table exists.
+
+4. Compare the table columns with UserRepository.cs.
+
+5. Apply the approved database migration if required.
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Dashboard displays a database error.</rich_text>
+    <rich_text>
+Recommended checks:
+1. Open logs/errors.txt.
+
+2. Read the latest error message.
+
+3. Confirm that students contains the user_id column.
+
+4. Verify that existing student records have appropriate account ownership.
+
+5. Confirm that the application uses the expected database.
+
+</rich_text>
+    <rich_text weight="heavy">Problem: Database connection fails.</rich_text>
+    <rich_text>
+Recommended checks:
+1. Confirm the MySQL service is running.
+
+2. Check the connection string in appsettings.json.
+
+3. Verify the username, password, server, port, and database name.
+
+4. Confirm that the JSON file is correctly formatted.
+
+5. Rebuild and restart the application after correcting the configuration.
+
+
+</rich_text>
+    <rich_text scale="h3">10.8 Remaining Setup Verification</rich_text>
+    <rich_text>
+◇ Final SQL script compatibility: PENDING
+
+◇ Clean computer installation: NOT YET VERIFIED
+
+◇ Student ID format consistency: PENDING TEAM REVIEW
+
+◇ Post-deletion regression testing: PENDING
+
+◇ Academic module integration testing: PENDING
+
+◇ Full final-version regression testing: PENDING
+
+
+
+</rich_text>
+    <rich_text scale="h3">10.9 Final Setup Conclusion</rich_text>
+    <rich_text>
+The October 22 integration walkthrough confirmed that SchemaX SIS successfully built, connected to MySQL, registered and authenticated a user, displayed dashboard statistics, and retrieved existing student records.
+The local database required additional schema updates to support the latest application features.
+The final SQL setup script must include the necessary schema changes before deployment on another computer.
+</rich_text>
+    <rich_text weight="heavy">Overall Status:</rich_text>
+    <rich_text> LOCAL APPLICATION SETUP VERIFIED — FINAL DEPLOYMENT CHECKS PENDING.
+</rich_text>
+    <rich_text weight="heavy">Document:</rich_text>
+    <rich_text> SchemaX SIS — Setup Guide
+</rich_text>
+    <rich_text weight="heavy">Last Updated:</rich_text>
+    <rich_text> October 22, 2026
 </rich_text>
   </node>
-  <node unique_id="4" master_id="0" name="App Walkthrough" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553353" ts_lastsave="1792000303">
+  <node unique_id="4" master_id="0" name="App Walkthrough" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791553353" ts_lastsave="1792605990">
     <rich_text>
 </rich_text>
     <rich_text scale="h1">APPLICATION WALKTHROUGH</rich_text>
@@ -1131,8 +5289,6 @@ Screenshots will be added after the relevant application functions have been tes
 ◇ Database error handling (pending)
 
 
-
-
 </rich_text>
     <rich_text scale="h2">10. FINAL WALKTHROUGH STATUS</rich_text>
     <rich_text>
@@ -1167,6 +5323,572 @@ Screenshots will be added after the relevant application functions have been tes
 </rich_text>
     <rich_text weight="heavy">Responsible Team:</rich_text>
     <rich_text> Team SchemaX
+
+
+</rich_text>
+    <rich_text scale="h2">11. UPDATED APPLICATION WALKTHROUGH — OCTOBER 17, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Application Type:</rich_text>
+    <rich_text> C# Windows Forms Desktop Application
+</rich_text>
+    <rich_text weight="heavy">Framework:</rich_text>
+    <rich_text> .NET 10
+</rich_text>
+    <rich_text weight="heavy">Database:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Testing Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+
+</rich_text>
+    <rich_text scale="h3">11.1 Student Information Form</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+The Student Information Form successfully opens and displays student records retrieved from the MySQL database.
+The interface provides student information fields, a DataGridView, and controls for adding, editing, deleting, searching, filtering, and exporting student records.
+
+</rich_text>
+    <rich_text scale="h3">11.2 Add Student</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Open the Student Information Form.
+
+2. Click Clear Selection to return to Add Mode.
+
+3. Enter a valid Student ID.
+
+4. Complete the required student information fields.
+
+5. Click Add.
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+The application validates the information and saves the student record to MySQL.
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+A temporary student was successfully added and displayed in the student table.
+Required-field, invalid-format, and duplicate Student ID validations were also tested successfully.
+
+</rich_text>
+    <rich_text scale="h3">11.3 Edit Student</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Select an existing student in the DataGridView.
+
+2. Modify the required information.
+
+3. Click Edit to save the changes.
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+The updated information is saved to MySQL and reflected in the student table.
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+An existing student's block was successfully modified and verified in MySQL. The original value was restored after testing.
+
+</rich_text>
+    <rich_text scale="h3">11.4 Delete Student</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Select a student in the DataGridView.
+
+2. Click Delete.
+
+3. Review the confirmation message.
+
+4. Click Yes to confirm or No to cancel.
+
+</rich_text>
+    <rich_text weight="heavy">Expected Result:</rich_text>
+    <rich_text>
+Confirming deletion removes the selected student from MySQL. Cancelling preserves the record.
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+Both confirmed deletion and cancellation behavior were successfully tested.
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> Use temporary test records for future deletion tests. Do not delete original student records.
+
+</rich_text>
+    <rich_text scale="h3">11.5 Search Student Records</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Enter a student name or Student ID in the Search field.
+
+2. Click Search.
+
+3. Review the matching records in the DataGridView.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+Search successfully handled full names, partial names, Student IDs, partial IDs, case-insensitive input, and searches with no matching records.
+
+</rich_text>
+    <rich_text scale="h3">11.6 Year Level and Program Filtering</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+The application allows users to filter displayed students by Year Level and Program.
+Combined search and filtering were also tested.
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+Matching records were displayed correctly, and conflicting filter combinations returned zero results.
+
+</rich_text>
+    <rich_text scale="h3">11.7 Clear Search and Clear Selection</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Clear Search:</rich_text>
+    <rich_text>
+Resets the Search field, Year Level filter, and Program filter, then restores the full student list.
+</rich_text>
+    <rich_text weight="heavy">Clear Selection:</rich_text>
+    <rich_text>
+Clears the selected student's information and returns the form to Add Mode.
+Both functions produced the expected results during testing.
+
+</rich_text>
+    <rich_text scale="h3">11.8 Export Student Records to CSV</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Display the required student records.
+
+2. Click Export CSV.
+
+3. Select the destination and filename.
+
+4. Save the file.
+
+5. Open the exported CSV in Excel.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Results:</rich_text>
+    <rich_text>
+• Exporting the complete student list succeeded.
+
+• Exporting filtered student records succeeded.
+
+• Cancelling export did not create an unwanted file.
+
+• Exporting zero search results produced a header-only CSV file.
+
+
+
+</rich_text>
+    <rich_text scale="h3">11.9 Input Validation</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+The application successfully displayed validation warnings for the tested invalid inputs, including:
+◇ Missing or invalid Student ID
+
+◇ Duplicate Student ID
+
+◇ Missing or invalid student name
+
+◇ Missing or invalid contact number
+
+◇ Missing Program
+
+◇ Missing Gender selection
+
+◇ Missing Year Level selection
+
+
+
+</rich_text>
+    <rich_text scale="h3">11.10 Error Handling and Logging</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Error Logging Helper:</rich_text>
+    <rich_text> PASS — Previously Tested
+</rich_text>
+    <rich_text weight="heavy">Exception Handling Helper:</rich_text>
+    <rich_text> PASS — Previously Tested
+</rich_text>
+    <rich_text weight="heavy">Application-Level Database Exception Handling:</rich_text>
+    <rich_text> PENDING VERIFICATION
+The helper components successfully recorded test exceptions in the local error log.
+Handling of actual MySQL connection failures and other application-level database exceptions remains to be verified.
+
+</rich_text>
+    <rich_text scale="h3">11.11 Known Issues and Remaining Verification</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Student ID Format Consistency:</rich_text>
+    <rich_text> PENDING TEAM REVIEW
+Existing sample Student IDs and the application's validation format are inconsistent.
+</rich_text>
+    <rich_text weight="heavy">Edit Mode After Deletion:</rich_text>
+    <rich_text> FIX IMPLEMENTED — FINAL REGRESSION TEST PENDING
+A state-management issue was identified after deleting a student. The deletion handler was updated to call ExitEditMode(), and the solution built successfully.
+Immediate Add Mode behavior following successful deletion, without using Clear Selection, still requires final verification.
+</rich_text>
+    <rich_text weight="heavy">Attendance Functionality:</rich_text>
+    <rich_text> PENDING INVESTIGATION
+The intended behavior and implementation status of the Attendance button require team confirmation.
+
+</rich_text>
+    <rich_text scale="h3">11.12 Final Data Verification</rich_text>
+    <rich_text>
+Both original student records were confirmed present after testing:
+</rich_text>
+    <rich_text weight="heavy">Mariane Nuarin</rich_text>
+    <rich_text> — 2025-01-06767
+</rich_text>
+    <rich_text weight="heavy">Reynalyn Samar</rich_text>
+    <rich_text> — 2025-01-06969
+</rich_text>
+    <rich_text weight="heavy">Final Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">11.13 Updated Walkthrough Conclusion</rich_text>
+    <rich_text>
+The October 17 tests verified the core student management features, including Add, Edit, Delete, Search, filtering, input validation, and CSV export.
+The application successfully performed the tested student database operations.
+Outstanding investigations remain documented separately in the Testing &amp; Bug Log.
+</rich_text>
+    <rich_text weight="heavy">Updated Status:</rich_text>
+    <rich_text> CORE STUDENT MANAGEMENT FUNCTIONS VERIFIED — FINAL REGRESSION AND INTEGRATION CHECKS PENDING.
+
+
+</rich_text>
+    <rich_text scale="h2">12. FINAL APPLICATION WALKTHROUGH — OCTOBER 22, 2026</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> SchemaX Student Information System
+</rich_text>
+    <rich_text weight="heavy">Application Type:</rich_text>
+    <rich_text> Windows Forms Desktop Application
+</rich_text>
+    <rich_text weight="heavy">Programming Language:</rich_text>
+    <rich_text> C#
+</rich_text>
+    <rich_text weight="heavy">Framework:</rich_text>
+    <rich_text> .NET 10
+</rich_text>
+    <rich_text weight="heavy">Database:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Testing Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">12.1 Application Startup</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Open the SchemaX.SIS solution in Visual Studio 2026.
+
+2. Build the solution.
+
+3. Press F5 to start the application.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+The solution built successfully with two projects succeeded and zero failures.
+The application launched and displayed the Login form.
+
+</rich_text>
+    <rich_text scale="h3">12.2 User Login</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Open the application.
+
+2. Enter a registered username.
+
+3. Enter the corresponding password.
+
+4. Click Log In.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+The application successfully authenticated the registered test account and opened the dashboard.
+</rich_text>
+    <rich_text weight="heavy">Additional Validation:</rich_text>
+    <rich_text>
+Clicking Log In with empty credentials displayed the expected required-field warning.
+
+</rich_text>
+    <rich_text scale="h3">12.3 User Registration</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Open the Login form.
+
+2. Click Sign Up.
+
+3. Enter the required registration information.
+
+4. Enter and confirm a password.
+
+5. Submit the registration form.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+The registration form opened successfully.
+A test account was successfully registered and subsequently authenticated.
+</rich_text>
+    <rich_text weight="heavy">Database Requirement:</rich_text>
+    <rich_text>
+The users table must exist in the schemax_sis database.
+
+</rich_text>
+    <rich_text scale="h3">12.4 Dashboard Overview</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Log in using a registered account.
+
+2. Wait for the dashboard to load.
+
+3. Review the displayed student and academic statistics.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Results:</rich_text>
+    <rich_text>
+Total Students: 2
+Total Subjects: 0
+Total Enrollments: 0
+Ungraded Enrollments: 0
+Students in Year Level 2: 2
+Students in BSCS: 2
+The dashboard displayed statistics after the local database schema was updated.
+
+</rich_text>
+    <rich_text scale="h3">12.5 Manage Students</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED — PASS
+</rich_text>
+    <rich_text weight="heavy">Procedure:</rich_text>
+    <rich_text>
+1. Open the dashboard.
+
+2. Click Manage Students.
+
+3. Wait for the Student Information System form to load.
+
+4. Review the displayed records.
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result:</rich_text>
+    <rich_text>
+The application successfully retrieved and displayed the two existing student records.
+</rich_text>
+    <rich_text weight="heavy">Verified Students:</rich_text>
+    <rich_text>
+Mariane Nuarin
+Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">12.6 Student Management Features</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Previously Verified:</rich_text>
+    <rich_text> October 17, 2026
+The following functions passed the recorded functional testing:
+• Add Student
+
+• View Student Records
+
+• Edit Student
+
+• Delete Student
+
+• Search Student Records
+
+• Year Level Filtering
+
+• Program Filtering
+
+• Combined Search and Filtering
+
+• Clear Search
+
+• Clear Selection
+
+• CSV Export
+
+• Input Validation
+
+
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> These results were obtained during the October 17 testing round. A complete regression test was not repeated on October 22.
+
+</rich_text>
+    <rich_text scale="h3">12.7 Exception Handling and Error Logging</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED SCENARIOS
+The application uses the following helper classes:
+</rich_text>
+    <rich_text weight="heavy">Validator.cs</rich_text>
+    <rich_text>
+Checks student information and required input formats.
+</rich_text>
+    <rich_text weight="heavy">ExceptionHandler.cs</rich_text>
+    <rich_text>
+Displays user-friendly error messages when exceptions are handled.
+</rich_text>
+    <rich_text weight="heavy">ErrorLog.cs</rich_text>
+    <rich_text>
+Records technical exception details in logs/errors.txt.
+During October 22 testing, database errors were recorded in the application error log.
+The recorded errors included:
+◇ Missing users table
+
+◇ Missing user_id column in students
+
+
+After correcting the local database schema, the application successfully loaded the dashboard.
+
+</rich_text>
+    <rich_text scale="h3">12.8 Database Integration Issues Resolved</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Issue 1: Missing Users Table</rich_text>
+    <rich_text>
+The login feature initially failed because the users table was missing.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> Created the required table in the local database.
+</rich_text>
+    <rich_text weight="heavy">Retest:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Issue 2: Missing Student Ownership Column</rich_text>
+    <rich_text>
+Dashboard statistics initially failed because students did not contain user_id.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> Backed up the students table, added the column, and assigned the two existing student records to the registered test account.
+</rich_text>
+    <rich_text weight="heavy">Retest:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Issue 3: Database Configuration</rich_text>
+    <rich_text>
+The application initially encountered MySQL authentication and configuration errors.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> Corrected the local database connection configuration.
+</rich_text>
+    <rich_text weight="heavy">Retest:</rich_text>
+    <rich_text> PASS
+
+</rich_text>
+    <rich_text scale="h3">12.9 Remaining Verification</rich_text>
+    <rich_text>
+The following items require final review:
+1. Student ID format consistency.
+
+2. Immediate Add Mode behavior following deletion.
+
+3. Academic record and subject management functionality.
+
+4. Attendance functionality.
+
+5. Complete application regression testing after recent integration changes.
+
+6. Final SQL setup script compatibility.
+
+
+</rich_text>
+    <rich_text scale="h3">12.10 Final Walkthrough Conclusion</rich_text>
+    <rich_text>
+The October 22 walkthrough confirmed that the latest SchemaX Student Information System successfully launched, connected to MySQL, registered and authenticated a user, loaded dashboard statistics, and retrieved existing student records.
+The October 17 testing previously verified core student management features, including CRUD operations, searching, filtering, input validation, and CSV export.
+The application demonstrated working core functionality in the tested scenarios.
+</rich_text>
+    <rich_text weight="heavy">Overall Status:</rich_text>
+    <rich_text> CORE APPLICATION WALKTHROUGH VERIFIED — FINAL REGRESSION CHECKS REMAINING
+</rich_text>
+    <rich_text weight="heavy">Document:</rich_text>
+    <rich_text> SchemaX SIS — Application Walkthrough
+</rich_text>
+    <rich_text weight="heavy">Project Version:</rich_text>
+    <rich_text> 1.0
+</rich_text>
+    <rich_text weight="heavy">Last Updated:</rich_text>
+    <rich_text> October 22, 2026
 </rich_text>
   </node>
 </cherrytree>
