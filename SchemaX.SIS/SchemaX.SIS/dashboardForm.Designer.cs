@@ -136,7 +136,7 @@
             // pnlDashboardStatus
             // 
             pnlDashboardStatus.Controls.Add(labelDashboardStatus);
-            pnlDashboardStatus.Dock = DockStyle.Fill;
+            pnlDashboardStatus.Dock = DockStyle.Bottom;
             pnlDashboardStatus.Location = new Point(0, 283);
             pnlDashboardStatus.Name = "pnlDashboardStatus";
             pnlDashboardStatus.Size = new Size(584, 28);
