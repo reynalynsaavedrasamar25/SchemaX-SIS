@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node unique_id="1" master_id="0" name="Team &amp; Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791552760" ts_lastsave="1792605097">
+  <node unique_id="1" master_id="0" name="Team &amp; Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1791552760" ts_lastsave="1792609488">
     <rich_text>
 </rich_text>
     <rich_text scale="h1">STUDENT INFORMATION SYSTEM</rich_text>
@@ -495,6 +495,970 @@ Further final-version verification and documentation packaging remain necessary 
 </rich_text>
     <rich_text weight="heavy">Updated:</rich_text>
     <rich_text> October 22, 2026
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — REYNALYN SAMAR</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> MySQL Database Setup and Database Connection
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The Database Module provides persistent storage for the SchemaX Student Information System.
+It allows the application to connect to MySQL and manage student records and related academic information.
+
+</rich_text>
+    <rich_text scale="h3">2. DATABASE SETUP</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Database Name:</rich_text>
+    <rich_text> schemax_sis
+</rich_text>
+    <rich_text weight="heavy">Database Management System:</rich_text>
+    <rich_text> MySQL
+</rich_text>
+    <rich_text weight="heavy">Database Management Tool:</rich_text>
+    <rich_text> MySQL Workbench
+</rich_text>
+    <rich_text weight="heavy">SQL Setup File:</rich_text>
+    <rich_text> db/schemax_sis.sql
+The original database setup contains four primary application tables:
+1. students — Stores student information.
+
+2. subjects — Stores subject information.
+
+3. student_subjects — Stores student enrollments and grades.
+
+4. attendance — Stores attendance records.
+
+The database uses relational tables to organize student and academic information.
+
+</rich_text>
+    <rich_text scale="h3">3. DATABASE CONNECTION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Data/Db.cs
+The Db class is responsible for opening MySQL database connections.
+The application reads its connection string from appsettings.json.
+The Db.Open() method creates and opens a MySQL connection.
+Database credentials must remain private and should not be uploaded to GitHub.
+
+</rich_text>
+    <rich_text scale="h3">4. DATABASE REPOSITORY COMPONENTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">StudentRepository.cs</rich_text>
+    <rich_text>
+Contains database operations for inserting, retrieving, updating, deleting, searching, and filtering student records.
+</rich_text>
+    <rich_text weight="heavy">AcademicRepository.cs</rich_text>
+    <rich_text>
+Contains database operations for managing subjects, student enrollments, and grades.
+</rich_text>
+    <rich_text weight="heavy">DashboardRepository.cs</rich_text>
+    <rich_text>
+Retrieves database statistics used by the application's dashboard.
+</rich_text>
+    <rich_text weight="heavy">UserRepository.cs</rich_text>
+    <rich_text>
+Provides database operations for user registration and authentication.
+These components are present in the integrated project. Their inclusion here documents the database module's interfaces with the rest of the application; it does not attribute every repository implementation to one developer.
+
+</rich_text>
+    <rich_text scale="h3">5. DATABASE INTEGRATION TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Student Record Retrieval:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Add Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Edit Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Delete Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Search Student:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Year Level and Program Filtering:</rich_text>
+    <rich_text> PASS
+The application successfully connected to MySQL and performed the tested student management operations.
+
+</rich_text>
+    <rich_text scale="h3">6. OCTOBER 22 INTEGRATION UPDATE</rich_text>
+    <rich_text>
+The latest application required additional local database changes to support authentication and dashboard functionality.
+</rich_text>
+    <rich_text weight="heavy">Issue 1: Missing users Table</rich_text>
+    <rich_text>
+The local database did not contain the users table required for registration and login.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> The required table was created locally.
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> Registration and login passed.
+</rich_text>
+    <rich_text weight="heavy">Issue 2: Missing students.user_id Column</rich_text>
+    <rich_text>
+Dashboard queries required a user_id column that was absent from the original students table.
+</rich_text>
+    <rich_text weight="heavy">Resolution:</rich_text>
+    <rich_text> The existing table was backed up, the column was added, and the two original student records were associated with the registered test account.
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> Dashboard statistics and student record retrieval passed.
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> These local corrections must be reflected in the final database setup or migration scripts before deployment.
+
+</rich_text>
+    <rich_text scale="h3">7. VERIFIED RESULTS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">October 17:</rich_text>
+    <rich_text>
+Student CRUD and Search integration passed.
+</rich_text>
+    <rich_text weight="heavy">October 22:</rich_text>
+    <rich_text>
+Application database connection: PASS
+User registration: PASS
+User authentication: PASS
+Dashboard loading: PASS
+Student record retrieval: PASS
+</rich_text>
+    <rich_text weight="heavy">Final Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">8. REMAINING WORK</rich_text>
+    <rich_text>
+1. Confirm that the final SQL setup includes the users table and student ownership column.
+
+2. Resolve the Student ID format inconsistency.
+
+3. Verify database setup on a clean computer.
+
+4. Complete academic and attendance module testing.
+
+5. Perform final regression testing after integration changes.
+
+
+</rich_text>
+    <rich_text scale="h3">9. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The Database Module supports persistent student information storage and provides the connection infrastructure required by the application.
+Testing confirmed working student database operations on October 17 and successful login, dashboard, and student retrieval integration on October 22 after local configuration updates.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED CORE OPERATIONS — FINAL DEPLOYMENT CHECKS PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Reynalyn Samar
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — MARIANE NUARIN</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> CRUD Logic (Add, Edit, Delete)
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The CRUD Module allows users to create, retrieve, update, and delete student records through the Student Information System.
+It connects the Windows Forms interface to the MySQL database through the StudentRepository class.
+
+</rich_text>
+    <rich_text scale="h3">2. CREATE — ADD STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Insert()
+The Add Student feature validates the entered student information before attempting to save a new record.
+The repository executes a parameterized SQL INSERT statement to store the student's information.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+A valid temporary student record was successfully saved to MySQL and displayed in the application.
+The temporary record was removed after testing.
+
+</rich_text>
+    <rich_text scale="h3">3. READ — VIEW STUDENT RECORDS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Methods:</rich_text>
+    <rich_text>
+StudentRepository.GetAll()
+StudentRepository.GetById()
+The application retrieves student information from MySQL and displays existing records in the DataGridView.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+Existing student records were successfully loaded and displayed.
+
+</rich_text>
+    <rich_text scale="h3">4. UPDATE — EDIT STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Update()
+The Edit Student feature allows the user to select an existing student, modify information, and save the changes.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+An existing student's block was modified and saved successfully.
+The updated value was verified in MySQL, and the original value was restored after testing.
+
+</rich_text>
+    <rich_text scale="h3">5. DELETE — REMOVE STUDENT</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Delete()
+The Delete Student feature allows the user to remove an existing record after confirmation.
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+A confirmed deletion successfully removed the selected student record.
+Canceling deletion preserved the record.
+Deleting without selecting a student displayed the appropriate warning.
+
+</rich_text>
+    <rich_text scale="h3">6. SEARCH AND FILTERING INTEGRATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository Method:</rich_text>
+    <rich_text> StudentRepository.Search()
+The application supports searching and filtering student records.
+Verified scenarios included:
+• Student ID searching
+
+• Student name searching
+
+• Partial matching
+
+• Case-insensitive searching
+
+• Year Level filtering
+
+• Program filtering
+
+• Combined search and filtering
+
+
+</rich_text>
+    <rich_text weight="heavy">Verified Result — October 17: PASS</rich_text>
+    <rich_text>
+The application displayed matching student records as expected.
+Search and filtering are included here as related student-management integration features, not as exclusively Mariane's assigned work.
+
+</rich_text>
+    <rich_text scale="h3">7. INPUT VALIDATION AND DUPLICATE HANDLING</rich_text>
+    <rich_text>
+The CRUD interface uses validation checks before saving student information.
+Tested scenarios included:
+◇ Missing Student ID
+
+◇ Invalid Student ID format
+
+◇ Missing student name
+
+◇ Invalid contact number
+
+◇ Missing program
+
+◇ Missing gender
+
+◇ Missing year level
+
+◇ Duplicate Student ID
+
+
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS for the recorded functional tests.
+Duplicate BU email handling was also tested during subsequent integration work.
+
+</rich_text>
+    <rich_text scale="h3">8. IDENTIFIED BUG — EDIT MODE AFTER DELETION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Bug ID:</rich_text>
+    <rich_text> BUG-007
+</rich_text>
+    <rich_text weight="heavy">Date Identified:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Problem:</rich_text>
+    <rich_text> After deleting a student, the application could remain in Edit Mode.
+</rich_text>
+    <rich_text weight="heavy">Cause:</rich_text>
+    <rich_text> The _isEdit state was not reset after deletion.
+</rich_text>
+    <rich_text weight="heavy">Correction Implemented:</rich_text>
+    <rich_text> Added ExitEditMode() to the deletion handler's finally block.
+</rich_text>
+    <rich_text weight="heavy">Build Result:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Final Regression Test:</rich_text>
+    <rich_text> PENDING
+Immediate Add Mode behavior after deletion without using Clear Selection still requires verification.
+
+</rich_text>
+    <rich_text scale="h3">9. TESTING SUMMARY</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">October 16 — Initial Testing:</rich_text>
+    <rich_text>
+Student database integration was incomplete.
+Add, Edit, and Delete testing was blocked.
+</rich_text>
+    <rich_text weight="heavy">October 17 — Integration Retesting:</rich_text>
+    <rich_text>
+Create: PASS
+Read: PASS
+Update: PASS
+Delete: PASS
+Search: PASS
+Filtering: PASS
+The core CRUD operations successfully interacted with the local MySQL database in the tested application version.
+
+</rich_text>
+    <rich_text scale="h3">10. REMAINING WORK</rich_text>
+    <rich_text>
+1. Complete the deletion-related Edit Mode regression test.
+
+2. Confirm Student ID format consistency.
+
+3. Verify duplicate-record handling after final integration.
+
+4. Repeat CRUD testing against the final application version.
+
+5. Verify that the final database schema supports the latest student repository operations.
+
+
+</rich_text>
+    <rich_text scale="h3">11. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The CRUD Module provides the student record management operations required by the SchemaX Student Information System.
+Testing on October 17 confirmed that Create, Read, Update, and Delete operations worked correctly in the tested application version.
+A separate Edit Mode issue was identified and corrected, with final regression verification still pending.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> CORE CRUD OPERATIONS VERIFIED — FINAL REGRESSION TESTING PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Mariane Nuarin
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — ZEDRIC ZUÑIGA</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Zedric Zuñiga
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> UI Layout and DataGridView Display
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The User Interface (UI) Module provides the visual components that allow users to interact with the SchemaX Student Information System.
+It presents student information, accepts user input, and provides controls for student management operations.
+
+</rich_text>
+    <rich_text scale="h3">2. WINDOWS FORMS INTERFACE</rich_text>
+    <rich_text>
+The application uses Windows Forms to provide a desktop graphical user interface.
+The integrated application includes interfaces for:
+• User Login
+
+• User Registration
+
+• Dashboard
+
+• Student Information Management
+
+
+These interfaces support navigation between the application's main features.
+
+</rich_text>
+    <rich_text scale="h3">3. STUDENT INFORMATION FORM</rich_text>
+    <rich_text>
+The Student Information Form provides input controls for managing student records.
+The student information fields include:
+◇ Student ID
+
+◇ First Name
+
+◇ Middle Name
+
+◇ Surname
+
+◇ Gender
+
+◇ Year Level
+
+◇ Program
+
+◇ Block
+
+◇ Birthday
+
+◇ BU Email
+
+◇ Contact Number
+
+◇ Optional Student Photo
+
+
+The form allows users to enter and review student information before performing database operations.
+
+</rich_text>
+    <rich_text scale="h3">4. DATAGRIDVIEW DISPLAY</rich_text>
+    <rich_text>
+The DataGridView component presents student records in a structured format.
+The integrated application retrieves student records from MySQL and displays them in the DataGridView.
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS
+Existing student records appeared successfully after database integration fixes.
+
+</rich_text>
+    <rich_text scale="h3">5. STUDENT MANAGEMENT CONTROLS</rich_text>
+    <rich_text>
+The student management interface provides controls for:
+◇ Adding student records
+
+◇ Editing existing student information
+
+◇ Deleting student records
+
+◇ Searching for students
+
+◇ Filtering student records
+
+◇ Clearing selected records
+
+◇ Exporting student information to CSV
+
+
+These controls connect the user interface to the application's student management logic.
+
+</rich_text>
+    <rich_text scale="h3">6. SEARCH AND FILTERING INTERFACE</rich_text>
+    <rich_text>
+The student management interface supports searching and filtering.
+Tested features included:
+◇ Student ID search
+
+◇ Student name search
+
+◇ Partial matching
+
+◇ Case-insensitive search
+
+◇ Year Level filtering
+
+◇ Program filtering
+
+◇ Combined search and filtering
+
+
+</rich_text>
+    <rich_text weight="heavy">Verification Date:</rich_text>
+    <rich_text> October 17, 2026
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS
+The DataGridView displayed matching student records in the tested scenarios.
+
+</rich_text>
+    <rich_text scale="h3">7. USER INTERFACE VALIDATION FEEDBACK</rich_text>
+    <rich_text>
+The application displays warning and information messages to guide users during student management operations.
+Examples include:
+◇ Missing required fields
+
+◇ Invalid input formats
+
+◇ Duplicate student information
+
+◇ No student selected for editing or deletion
+
+◇ Deletion confirmation
+
+◇ Database-related errors
+
+
+These messages help users understand why an operation cannot proceed or whether an action requires confirmation.
+
+</rich_text>
+    <rich_text scale="h3">8. OCTOBER 22 INTERFACE VERIFICATION</rich_text>
+    <rich_text>
+The latest integrated application was launched and tested.
+</rich_text>
+    <rich_text weight="heavy">Application Startup:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Login Form:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Registration Form:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Dashboard Display:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Manage Students Navigation:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Student Records Display:</rich_text>
+    <rich_text> PASS
+The dashboard successfully displayed information from the local MySQL database.
+</rich_text>
+    <rich_text weight="heavy">Displayed Student Count:</rich_text>
+    <rich_text> 2
+
+</rich_text>
+    <rich_text scale="h3">9. IDENTIFIED INTERFACE ISSUE</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Bug ID:</rich_text>
+    <rich_text> BUG-007
+</rich_text>
+    <rich_text weight="heavy">Issue:</rich_text>
+    <rich_text> Application remains in Edit Mode after deletion.
+</rich_text>
+    <rich_text weight="heavy">Date Identified:</rich_text>
+    <rich_text> October 17, 2026
+The interface could remain in Edit Mode after deleting a student record.
+A correction was implemented by calling ExitEditMode() after the deletion operation.
+</rich_text>
+    <rich_text weight="heavy">Build Result:</rich_text>
+    <rich_text> PASS
+</rich_text>
+    <rich_text weight="heavy">Final Regression Test:</rich_text>
+    <rich_text> PENDING
+This issue involves interaction between UI state management and CRUD logic.
+
+</rich_text>
+    <rich_text scale="h3">10. REMAINING WORK</rich_text>
+    <rich_text>
+1. Complete final interface regression testing.
+
+2. Verify immediate Add Mode behavior after deletion.
+
+3. Confirm consistent validation messages across the application.
+
+4. Verify UI behavior after database connection failures.
+
+5. Check interface usability and layout on the final submission build.
+
+
+</rich_text>
+    <rich_text scale="h3">11. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The UI Module provides the visual interface for interacting with the SchemaX Student Information System.
+Testing confirmed successful student record display, navigation, searching, filtering, and user interaction in the tested application versions.
+The October 22 walkthrough also confirmed that the Login, Registration, Dashboard, and Manage Students interfaces opened successfully.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> VERIFIED FOR TESTED INTERFACE FEATURES — FINAL REGRESSION TESTING PENDING.
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Zedric Zuñiga
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Note:</rich_text>
+    <rich_text> This section documents the integrated UI features associated with Zedric's assigned module. It does not establish individual authorship of every interface component.
+
+
+</rich_text>
+    <rich_text scale="h2">TEAM MEMBER MODULE DOCUMENTATION — PRINCESS IDA CAMASIS</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Team:</rich_text>
+    <rich_text> SchemaX
+</rich_text>
+    <rich_text weight="heavy">Project:</rich_text>
+    <rich_text> Student Information System
+</rich_text>
+    <rich_text weight="heavy">Member:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Assigned Responsibility:</rich_text>
+    <rich_text> Error Handling, Testing, and CherryTree Documentation
+</rich_text>
+    <rich_text weight="heavy">Development Environment:</rich_text>
+    <rich_text> Windows 11, Visual Studio 2026, C# Windows Forms, .NET 10, MySQL, xUnit, CherryTree
+</rich_text>
+    <rich_text weight="heavy">Documentation Date:</rich_text>
+    <rich_text> October 22, 2026
+
+</rich_text>
+    <rich_text scale="h3">1. MODULE OBJECTIVE</rich_text>
+    <rich_text>
+The Error Handling and Testing Module helps ensure that the SchemaX Student Information System handles invalid input, duplicate records, and database errors appropriately.
+The documentation responsibility includes maintaining the project's technical notes, testing results, bug reports, and integration progress in CherryTree.
+
+</rich_text>
+    <rich_text scale="h3">2. INPUT VALIDATION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/Validator.cs
+The Validator class checks student information before database operations are performed.
+Validation scenarios include:
+• Required Student ID
+
+• Student ID format
+
+• Required student names
+
+• Name format
+
+• BU email validation
+
+• Contact number validation
+
+• Birthday validation
+
+• Required academic information
+
+
+</rich_text>
+    <rich_text weight="heavy">Testing Result:</rich_text>
+    <rich_text> PASS for the documented validation scenarios.
+
+</rich_text>
+    <rich_text scale="h3">3. EXCEPTION HANDLING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/ExceptionHandler.cs
+The ExceptionHandler class provides centralized exception handling.
+Its responsibilities include:
+◇ Handling application exceptions
+
+◇ Displaying user-friendly error messages
+
+◇ Preventing raw technical error details from being shown unnecessarily
+
+◇ Coordinating with the error logging helper
+
+
+Database-related error handling was tested during integration work.
+
+</rich_text>
+    <rich_text scale="h3">4. ERROR LOGGING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Source File:</rich_text>
+    <rich_text> Helpers/ErrorLog.cs
+The ErrorLog class records exception information for troubleshooting.
+</rich_text>
+    <rich_text weight="heavy">Log Location:</rich_text>
+    <rich_text> logs/errors.txt
+The recorded information includes:
+◇ Date and time
+
+◇ Exception type
+
+◇ Error message
+
+◇ Stack trace
+
+
+</rich_text>
+    <rich_text weight="heavy">Verification Result:</rich_text>
+    <rich_text> PASS for the tested exception scenarios.
+
+</rich_text>
+    <rich_text scale="h3">5. DUPLICATE STUDENT HANDLING</rich_text>
+    <rich_text>
+Duplicate-record handling was tested for:
+◇ Duplicate Student ID
+
+◇ Duplicate BU email
+
+
+The application displayed an appropriate warning when duplicate student information was submitted.
+</rich_text>
+    <rich_text weight="heavy">Verified Warning:</rich_text>
+    <rich_text>
+"That Student ID or BU email already exists."
+</rich_text>
+    <rich_text weight="heavy">Result:</rich_text>
+    <rich_text> PASS in the tested application version.
+
+</rich_text>
+    <rich_text scale="h3">6. AUTOMATED UNIT TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Testing Framework:</rich_text>
+    <rich_text> xUnit
+</rich_text>
+    <rich_text weight="heavy">Test Project:</rich_text>
+    <rich_text> SchemaX.ValidatorTests
+</rich_text>
+    <rich_text weight="heavy">Test File:</rich_text>
+    <rich_text> UnitTest1.cs
+</rich_text>
+    <rich_text weight="heavy">Testing Date:</rich_text>
+    <rich_text> October 16, 2026
+</rich_text>
+    <rich_text weight="heavy">Total Tests:</rich_text>
+    <rich_text> 25
+</rich_text>
+    <rich_text weight="heavy">Passed:</rich_text>
+    <rich_text> 25
+</rich_text>
+    <rich_text weight="heavy">Failed:</rich_text>
+    <rich_text> 0
+</rich_text>
+    <rich_text weight="heavy">Skipped:</rich_text>
+    <rich_text> 0
+The automated tests covered selected Validator class scenarios, including student information and input validation.
+</rich_text>
+    <rich_text weight="heavy">GitHub Pull Request:</rich_text>
+    <rich_text> #43
+</rich_text>
+    <rich_text weight="heavy">Title:</rich_text>
+    <rich_text> test: add 25 validator unit tests
+</rich_text>
+    <rich_text weight="heavy">Integration Status:</rich_text>
+    <rich_text> MERGED INTO DEVELOP
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> The recorded 25/25 result is from October 16. A complete rerun against the latest October 22 integrated version has not yet been confirmed.
+
+</rich_text>
+    <rich_text scale="h3">7. MANUAL FUNCTIONAL TESTING</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Test Case Sheet:</rich_text>
+    <rich_text> SchemaX SIS — Test Case Sheet v1.0
+</rich_text>
+    <rich_text weight="heavy">Total Functional Test Cases:</rich_text>
+    <rich_text> 14
+</rich_text>
+    <rich_text weight="heavy">Round 1 — October 16, 2026</rich_text>
+    <rich_text>
+Passed: 9
+Failed: 1
+Blocked: 4
+</rich_text>
+    <rich_text weight="heavy">Round 2 — October 17, 2026</rich_text>
+    <rich_text>
+Passed: 14
+Failed: 0
+Blocked: 0
+</rich_text>
+    <rich_text weight="heavy">Round 2 Result:</rich_text>
+    <rich_text> PASS — 14/14
+The testing covered application startup, student record loading, CRUD operations, searching, and input validation.
+
+</rich_text>
+    <rich_text scale="h3">8. BUG REPORTING AND RETESTING</rich_text>
+    <rich_text>
+The following bugs were documented:
+</rich_text>
+    <rich_text weight="heavy">BUG-001:</rich_text>
+    <rich_text> Existing student records not displayed — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-002:</rich_text>
+    <rich_text> Add Student not saving to MySQL — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-003:</rich_text>
+    <rich_text> Edit Student functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-004:</rich_text>
+    <rich_text> Delete Student functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-005:</rich_text>
+    <rich_text> Search functionality incomplete — RESOLVED
+</rich_text>
+    <rich_text weight="heavy">BUG-006:</rich_text>
+    <rich_text> Student ID format mismatch — OPEN, PENDING TEAM REVIEW
+</rich_text>
+    <rich_text weight="heavy">BUG-007:</rich_text>
+    <rich_text> Application remains in Edit Mode after deletion — FIX IMPLEMENTED, FINAL REGRESSION TEST PENDING
+The bug log preserves the original findings and subsequent retesting results.
+
+</rich_text>
+    <rich_text scale="h3">9. GITHUB INTEGRATION WORK</rich_text>
+    <rich_text>
+The error-handling and testing work includes:
+◇ Validator unit testing
+
+◇ Database exception handling
+
+◇ Friendly error messages
+
+◇ Duplicate-record warning improvements
+
+◇ Bug documentation
+
+◇ Functional retesting
+
+◇ CherryTree documentation updates
+
+
+</rich_text>
+    <rich_text weight="heavy">Verified Pull Request:</rich_text>
+    <rich_text>
+PR #43 — Automated Validator Unit Tests — MERGED
+Additional integration fixes were prepared through the team's Git workflow.
+The merge status of other changes must be confirmed separately.
+
+</rich_text>
+    <rich_text scale="h3">10. CHERRYTREE DOCUMENTATION</rich_text>
+    <rich_text>
+The project documentation includes:
+◇ Team &amp; Overview
+
+◇ Database Information
+
+◇ Setup Guide
+
+◇ Application Walkthrough
+
+◇ Testing &amp; Bug Log
+
+◇ Automated Unit Testing
+
+◇ Test Case Sheet
+
+◇ Individual Team Member Module Notes
+
+
+The documentation records development progress, verification results, known issues, and remaining tasks.
+
+</rich_text>
+    <rich_text scale="h3">11. DOCUMENTATION SUBMISSION</rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text weight="heavy">Repository:</rich_text>
+    <rich_text> reynalynsaavedrasamar25/SchemaX-SIS
+</rich_text>
+    <rich_text weight="heavy">Branch:</rich_text>
+    <rich_text> develop
+</rich_text>
+    <rich_text weight="heavy">File:</rich_text>
+    <rich_text> docs/SchemaX-SIS.ctd
+</rich_text>
+    <rich_text weight="heavy">Previous Documentation Commit:</rich_text>
+    <rich_text> 1a01a52
+</rich_text>
+    <rich_text weight="heavy">Commit Message:</rich_text>
+    <rich_text> docs: update CherryTree documentation for final integration
+</rich_text>
+    <rich_text weight="heavy">Previous Upload Status:</rich_text>
+    <rich_text> SUCCESSFUL
+</rich_text>
+    <rich_text weight="heavy">Important:</rich_text>
+    <rich_text> The four individual member sections added after this commit must be saved and uploaded in a new documentation commit.
+
+</rich_text>
+    <rich_text scale="h3">12. REMAINING WORK</rich_text>
+    <rich_text>
+1. Rerun the 25 automated unit tests against the final integrated version.
+
+2. Complete the post-deletion Edit Mode regression test.
+
+3. Resolve the Student ID format inconsistency.
+
+4. Confirm outstanding error-handling fixes are integrated into develop.
+
+5. Verify the final application build and functional behavior.
+
+6. Upload the latest CherryTree file containing all four member documentation sections.
+
+
+</rich_text>
+    <rich_text scale="h3">13. MODULE CONCLUSION</rich_text>
+    <rich_text>
+The Error Handling, Testing, and Documentation Module supports application reliability, validation, troubleshooting, and project verification.
+The recorded testing includes 25 passing automated Validator tests and 14 passing Round 2 functional test cases.
+The CherryTree documentation consolidates the team's implementation details, testing results, bug reports, and integration updates.
+</rich_text>
+    <rich_text weight="heavy">Module Status:</rich_text>
+    <rich_text> DOCUMENTED AND TESTED FOR RECORDED SCENARIOS — FINAL REGRESSION VERIFICATION PENDING
+</rich_text>
+    <rich_text weight="heavy">Assigned Team Member:</rich_text>
+    <rich_text> Princess Ida Camasis
+</rich_text>
+    <rich_text weight="heavy">Documentation Prepared By:</rich_text>
+    <rich_text> Princess Ida Camasis
 </rich_text>
   </node>
   <node unique_id="5" master_id="0" name="Testing &amp; Bug Log" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1792108095" ts_lastsave="1792605238">
