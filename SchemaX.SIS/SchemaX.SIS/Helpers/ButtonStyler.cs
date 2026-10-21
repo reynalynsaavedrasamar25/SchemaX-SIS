@@ -9,7 +9,7 @@ namespace SchemaX.SIS.Helpers
     {
         private class State
         {
-            public bool Hover, Down, Active;
+            public bool Hover, Down, Active, Focus; //added Focus field for keyboard users
             public string Glyph = "";
             public ButtonKind Kind;
             public Color Base = ThemeColors.Danger;
@@ -28,13 +28,17 @@ namespace SchemaX.SIS.Helpers
             b.FlatAppearance.BorderSize = 0;
             b.UseVisualStyleBackColor = false;
             b.Cursor = Cursors.Hand;
-            b.Font = new Font("Segoe UI Semibold", 11.5F);
+            b.Font = new Font("Segoe UI Semibold", 9F);
 
             b.Paint -= OnPaint; b.Paint += OnPaint;
             b.MouseEnter -= OnEnter; b.MouseEnter += OnEnter;
             b.MouseLeave -= OnLeave; b.MouseLeave += OnLeave;
             b.MouseDown -= OnDown; b.MouseDown += OnDown;
             b.MouseUp -= OnUp; b.MouseUp += OnUp;
+
+            b.GotFocus -= OnFocus; b.GotFocus += OnFocus;
+            b.LostFocus -= OnBlur; b.LostFocus += OnBlur;
+
             b.Invalidate();
         }
 
@@ -53,6 +57,10 @@ namespace SchemaX.SIS.Helpers
         private static void OnDown(object? sender, MouseEventArgs e) => Change(sender, s => s.Down = true);
         private static void OnUp(object? sender, MouseEventArgs e) => Change(sender, s => s.Down = false);
 
+        // add focus and blur events for keyboard users
+        private static void OnFocus(object? sender, EventArgs e) => Change(sender, s => s.Focus = true);
+        private static void OnBlur(object? sender, EventArgs e) => Change(sender, s => s.Focus = false);
+
         private static void OnPaint(object? sender, PaintEventArgs e)
         {
             if (sender is not Button b || !States.TryGetValue(b, out var s)) return;
@@ -60,6 +68,8 @@ namespace SchemaX.SIS.Helpers
             var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
             g.Clear(b.Parent?.BackColor ?? SystemColors.Control);
+
+            bool isHighlighted = s.Hover || s.Focus; // highlight on hover or focus
 
             Color fill, border, textColor, circle, glyphColor;
             switch (s.Kind)
@@ -81,9 +91,9 @@ namespace SchemaX.SIS.Helpers
                     glyphColor = s.Base;
                     break;
                 default: // Menu
-                    fill = s.Down ? Color.FromArgb(211, 224, 247)
-                         : s.Hover ? Color.FromArgb(230, 238, 251) : Color.White;
-                    border = Color.FromArgb(213, 222, 234);
+                    fill = s.Down ? Color.FromArgb(169, 182, 204)
+                         : s.Hover ? Color.FromArgb(186, 200, 222) : Color.White;
+                    border = Color.FromArgb(186, 200, 222);
                     textColor = ThemeColors.TextDark;
                     circle = ThemeColors.Accent;
                     glyphColor = Color.White;
