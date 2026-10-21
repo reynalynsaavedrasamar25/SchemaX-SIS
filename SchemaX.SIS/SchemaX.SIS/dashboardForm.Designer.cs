@@ -17,26 +17,30 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboardForm));
             pnlHeader = new Panel();
+            pictureBox1 = new PictureBox();
             lblAppName = new Label();
             btnHelp = new Button();
             pnlSidebar = new Panel();
             btnUser = new Button();
             btnEnrolledStd = new Button();
             btnStudentRecord = new Button();
-            btnExit = new Button();
             pnlUserInfo = new Panel();
             lblUserName = new Label();
             lblUserUsername = new Label();
             lblUserEmail = new Label();
             btnLogout = new Button();
+            btnExit = new Button();
             lblHello = new Label();
             lblOverviewTitle = new Label();
             pnlOverview = new Panel();
             flowStats = new FlowLayoutPanel();
             lblBreakdown = new Label();
             lblStatus = new Label();
+            label1 = new Label();
             pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlSidebar.SuspendLayout();
             pnlUserInfo.SuspendLayout();
             pnlOverview.SuspendLayout();
@@ -44,6 +48,7 @@
             // 
             // pnlHeader
             // 
+            pnlHeader.Controls.Add(pictureBox1);
             pnlHeader.Controls.Add(lblAppName);
             pnlHeader.Controls.Add(btnHelp);
             pnlHeader.Location = new Point(0, 0);
@@ -51,10 +56,20 @@
             pnlHeader.Size = new Size(900, 70);
             pnlHeader.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(18, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(82, 70);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // lblAppName
             // 
             lblAppName.AutoSize = true;
-            lblAppName.Location = new Point(20, 15);
+            lblAppName.Location = new Point(94, 13);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(74, 15);
             lblAppName.TabIndex = 0;
@@ -96,7 +111,7 @@
             btnEnrolledStd.Name = "btnEnrolledStd";
             btnEnrolledStd.Size = new Size(210, 60);
             btnEnrolledStd.TabIndex = 1;
-            btnEnrolledStd.Text = "Enrolled Students";
+            btnEnrolledStd.Text = "Manage Students";
             btnEnrolledStd.UseVisualStyleBackColor = true;
             // 
             // btnStudentRecord
@@ -107,8 +122,9 @@
             btnStudentRecord.TabIndex = 2;
             btnStudentRecord.Text = "Student Record";
             btnStudentRecord.UseVisualStyleBackColor = true;
-
+            // 
             // pnlUserInfo
+            // 
             pnlUserInfo.Controls.Add(lblUserName);
             pnlUserInfo.Controls.Add(lblUserUsername);
             pnlUserInfo.Controls.Add(lblUserEmail);
@@ -117,32 +133,36 @@
             pnlUserInfo.Name = "pnlUserInfo";
             pnlUserInfo.Size = new Size(210, 150);
             pnlUserInfo.TabIndex = 3;
-            
+            // 
             // lblUserName
+            // 
             lblUserName.AutoEllipsis = true;
             lblUserName.Location = new Point(8, 8);
             lblUserName.Name = "lblUserName";
             lblUserName.Size = new Size(192, 24);
             lblUserName.TabIndex = 0;
             lblUserName.Text = "Full Name";
-
+            // 
             // lblUserUsername
+            // 
             lblUserUsername.AutoEllipsis = true;
             lblUserUsername.Location = new Point(8, 38);
             lblUserUsername.Name = "lblUserUsername";
             lblUserUsername.Size = new Size(192, 22);
             lblUserUsername.TabIndex = 1;
             lblUserUsername.Text = "Username";
-            
+            // 
             // lblUserEmail
+            // 
             lblUserEmail.AutoEllipsis = true;
             lblUserEmail.Location = new Point(8, 64);
             lblUserEmail.Name = "lblUserEmail";
             lblUserEmail.Size = new Size(192, 36);
             lblUserEmail.TabIndex = 2;
             lblUserEmail.Text = "Email";
-            
+            // 
             // btnLogout
+            // 
             btnLogout.Location = new Point(8, 106);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(192, 34);
@@ -152,18 +172,18 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(10, 430);
+            btnExit.Location = new Point(67, 447);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(210, 45);
+            btnExit.Size = new Size(91, 26);
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             // 
             // lblHello
             // 
-            lblHello.Location = new Point(260, 90);
+            lblHello.Location = new Point(260, 85);
             lblHello.Name = "lblHello";
-            lblHello.Size = new Size(610, 50);
+            lblHello.Size = new Size(610, 43);
             lblHello.TabIndex = 2;
             lblHello.Text = "Hello!";
             lblHello.TextAlign = ContentAlignment.MiddleCenter;
@@ -211,11 +231,22 @@
             lblStatus.TabIndex = 5;
             lblStatus.Text = "Status...";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(409, 131);
+            label1.Name = "label1";
+            label1.Size = new Size(320, 17);
+            label1.TabIndex = 6;
+            label1.Text = "Welcome to SchemaX Student Information System";
+            // 
             // dashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 560);
+            Controls.Add(label1);
             Controls.Add(lblStatus);
             Controls.Add(pnlOverview);
             Controls.Add(lblOverviewTitle);
@@ -229,6 +260,7 @@
             Text = "SchemaX SIS";
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlSidebar.ResumeLayout(false);
             pnlUserInfo.ResumeLayout(false);
             pnlOverview.ResumeLayout(false);
@@ -257,5 +289,7 @@
         private FlowLayoutPanel flowStats;
         private Label lblBreakdown;
         private Label lblStatus;
+        private Label label1;
+        private PictureBox pictureBox1;
     }
 }

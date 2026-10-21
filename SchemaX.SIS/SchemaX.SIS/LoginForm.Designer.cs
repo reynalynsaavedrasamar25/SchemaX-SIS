@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             lblTitle = new Label();
             lblUser = new Label();
             txtUsername = new TextBox();
@@ -36,16 +37,18 @@
             btnLogin = new Button();
             lblNew = new Label();
             btnSignUp = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
             // 
-            lblTitle.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 30);
+            lblTitle.Location = new Point(66, 86);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(365, 50);
-            lblTitle.TabIndex = 0;
+            lblTitle.Size = new Size(231, 45);
+            lblTitle.TabIndex = 10;
             lblTitle.Text = "SchemaX SIS";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -53,7 +56,7 @@
             // 
             lblUser.AutoSize = true;
             lblUser.ForeColor = Color.FromArgb(201, 214, 223);
-            lblUser.Location = new Point(52, 91);
+            lblUser.Location = new Point(52, 131);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(60, 15);
             lblUser.TabIndex = 1;
@@ -61,41 +64,38 @@
             // 
             // txtUsername
             // 
-            txtUsername.CharacterCasing = CharacterCasing.Lower;
-            txtUsername.Location = new Point(52, 109);
-            txtUsername.MaxLength = 50;
+            txtUsername.Location = new Point(52, 149);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(263, 23);
-            txtUsername.TabIndex = 2;
+            txtUsername.TabIndex = 8;
             // 
             // lblPass
             // 
             lblPass.AutoSize = true;
             lblPass.ForeColor = Color.FromArgb(201, 214, 223);
-            lblPass.Location = new Point(52, 148);
+            lblPass.Location = new Point(52, 185);
             lblPass.Name = "lblPass";
             lblPass.Size = new Size(57, 15);
             lblPass.TabIndex = 3;
             lblPass.Text = "Password";
             // 
-            // textBox1
+            // txtPassword
             // 
-            txtPassword.Location = new Point(52, 166);
+            txtPassword.Location = new Point(52, 203);
             txtPassword.MaxLength = 100;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(263, 23);
             txtPassword.TabIndex = 4;
-         
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = SystemColors.ActiveCaption;
+            btnLogin.BackColor = Color.White;
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.ForeColor = Color.DimGray;
-            btnLogin.Location = new Point(156, 204);
+            btnLogin.Location = new Point(130, 243);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(54, 26);
+            btnLogin.Size = new Size(108, 26);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Log In";
             btnLogin.UseVisualStyleBackColor = false;
@@ -106,7 +106,7 @@
             lblNew.AutoSize = true;
             lblNew.Font = new Font("Segoe UI", 7F);
             lblNew.ForeColor = Color.FromArgb(201, 214, 223);
-            lblNew.Location = new Point(106, 276);
+            lblNew.Location = new Point(106, 315);
             lblNew.Name = "lblNew";
             lblNew.Size = new Size(156, 12);
             lblNew.TabIndex = 6;
@@ -114,13 +114,23 @@
             // 
             // btnSignUp
             // 
-            btnSignUp.Location = new Point(146, 291);
+            btnSignUp.Location = new Point(130, 330);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(75, 23);
+            btnSignUp.Size = new Size(108, 23);
             btnSignUp.TabIndex = 7;
             btnSignUp.Text = "Sign up";
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(139, 23);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(84, 73);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
@@ -129,6 +139,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(47, 72, 88);
             ClientSize = new Size(364, 391);
+            Controls.Add(pictureBox1);
             Controls.Add(btnSignUp);
             Controls.Add(lblNew);
             Controls.Add(btnLogin);
@@ -143,6 +154,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SchemaX SIS - Login";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,5 +169,6 @@
         private Button btnLogin;
         private Label lblNew;
         private Button btnSignUp;
+        private PictureBox pictureBox1;
     }
 }

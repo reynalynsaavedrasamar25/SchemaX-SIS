@@ -65,7 +65,6 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(185, 23);
             txtFirstName.TabIndex = 1;
-            txtFirstName.Text = "First Name";
             // 
             // lblSurname
             // 
@@ -85,7 +84,6 @@
             txtSurname.Name = "txtSurname";
             txtSurname.Size = new Size(185, 23);
             txtSurname.TabIndex = 3;
-            txtSurname.Text = "Surname";
             // 
             // lblEmail
             // 
@@ -106,8 +104,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(185, 23);
             txtEmail.TabIndex = 5;
-            txtEmail.Text = "bicol university email";
-            
             // 
             // txtHint
             // 
@@ -139,7 +135,6 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(185, 23);
             txtUsername.TabIndex = 8;
-            txtUsername.Text = "username";
             // 
             // label2
             // 
@@ -198,7 +193,6 @@
             txtConfirm.PasswordChar = '*';
             txtConfirm.Size = new Size(185, 23);
             txtConfirm.TabIndex = 14;
-            
             // 
             // btnBack
             // 
@@ -217,7 +211,6 @@
             lblError.Name = "lblError";
             lblError.Size = new Size(320, 40);
             lblError.TabIndex = 16;
-            
             // 
             // SignUpForm
             // 

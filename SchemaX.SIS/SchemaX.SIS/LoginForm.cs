@@ -13,6 +13,8 @@ namespace SchemaX.SIS
         public LoginForm()
         {
             InitializeComponent();
+            ButtonStyler.Apply(btnLogin, "", ButtonKind.Solid, ThemeColors.Accent);
+            ButtonStyler.Apply(btnSignUp, "", ButtonKind.Menu);
             txtUsername.TextChanged += ClearErrorState;    // typing again goes back to default colors
             txtPassword.TextChanged += ClearErrorState;
         }

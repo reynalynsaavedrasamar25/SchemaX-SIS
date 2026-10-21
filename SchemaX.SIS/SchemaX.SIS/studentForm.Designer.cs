@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             pnlControl = new Panel();
+            labelFilterTitle = new Label();
             cmbProgram = new ComboBox();
             labelStudentIDHint = new Label();
             btnClearSelection = new Button();
@@ -65,7 +66,6 @@
             ContactNo = new DataGridViewTextBoxColumn();
             mainPanel = new Panel();
             tooltipStudentID = new ToolTip(components);
-            labelFilterTitle = new Label();
             pnlControl.SuspendLayout();
             pnlSearch.SuspendLayout();
             pnlDGV.SuspendLayout();
@@ -102,6 +102,16 @@
             pnlControl.Name = "pnlControl";
             pnlControl.Size = new Size(300, 601);
             pnlControl.TabIndex = 0;
+            // 
+            // labelFilterTitle
+            // 
+            labelFilterTitle.AutoSize = true;
+            labelFilterTitle.Font = new Font("Segoe UI", 14F);
+            labelFilterTitle.Location = new Point(12, 21);
+            labelFilterTitle.Name = "labelFilterTitle";
+            labelFilterTitle.Size = new Size(91, 25);
+            labelFilterTitle.TabIndex = 23;
+            labelFilterTitle.Text = "Filter by...";
             // 
             // cmbProgram
             // 
@@ -434,16 +444,6 @@
             mainPanel.Size = new Size(1008, 601);
             mainPanel.TabIndex = 2;
             // 
-            // labelFilterTitle
-            // 
-            labelFilterTitle.AutoSize = true;
-            labelFilterTitle.Font = new Font("Segoe UI", 14F);
-            labelFilterTitle.Location = new Point(12, 21);
-            labelFilterTitle.Name = "labelFilterTitle";
-            labelFilterTitle.Size = new Size(91, 25);
-            labelFilterTitle.TabIndex = 23;
-            labelFilterTitle.Text = "Filter by...";
-            // 
             // studentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -484,7 +484,6 @@
         private Button btnViewClear;
         private ComboBox cmbProgramFilter;
         private ComboBox cmbYrFilter;
-        private Panel pnlDashboardFilter;
         private Label labelStudentsShown;
         private TextBox txtFirstName;
         private TextBox txtSurname;
