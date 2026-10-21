@@ -36,10 +36,13 @@ namespace SchemaX.SIS
 
             ButtonStyler.Apply(btnAdd, "\xE710", ButtonKind.Menu);
             ButtonStyler.Apply(btnEdit, "\xE70F", ButtonKind.Menu);
-            ButtonStyler.Apply(btnDelete, "\xE74D", ButtonKind.Danger);
-            ButtonStyler.Apply(btnClearSelection, "\xE75C", ButtonKind.Solid);
+            ButtonStyler.Apply(btnDelete, "\xE74D", ButtonKind.Solid);
+            ButtonStyler.Apply(btnClearSelection, "\xE75C", ButtonKind.Danger);
             ButtonStyler.Apply(btnExportCSV, "\xE8A5", ButtonKind.Menu);
             ButtonStyler.Apply(btnBack, "\xE72B", ButtonKind.Menu);
+
+            ButtonStyler.Apply(btnViewSearch, "\xE721", ButtonKind.Menu);
+            ButtonStyler.Apply(btnViewClear, "\xE894", ButtonKind.Menu);
         }
 
         public studentForm()

@@ -328,7 +328,7 @@
             pnlSearch.Location = new Point(439, 0);
             pnlSearch.Name = "pnlSearch";
             pnlSearch.Padding = new Padding(5);
-            pnlSearch.Size = new Size(569, 42);
+            pnlSearch.Size = new Size(569, 46);
             pnlSearch.TabIndex = 1;
             // 
             // btnViewClear
@@ -336,7 +336,7 @@
             btnViewClear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnViewClear.Location = new Point(431, 5);
             btnViewClear.Name = "btnViewClear";
-            btnViewClear.Size = new Size(132, 32);
+            btnViewClear.Size = new Size(132, 35);
             btnViewClear.TabIndex = 20;
             btnViewClear.Text = "Clear";
             btnViewClear.UseVisualStyleBackColor = true;
@@ -347,7 +347,7 @@
             btnViewSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnViewSearch.Location = new Point(296, 5);
             btnViewSearch.Name = "btnViewSearch";
-            btnViewSearch.Size = new Size(132, 32);
+            btnViewSearch.Size = new Size(132, 35);
             btnViewSearch.TabIndex = 19;
             btnViewSearch.Text = "Search";
             btnViewSearch.UseVisualStyleBackColor = true;
@@ -356,11 +356,11 @@
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtSearch.Font = new Font("Segoe UI", 14F);
+            txtSearch.Font = new Font("Segoe UI", 15.5F);
             txtSearch.Location = new Point(8, 5);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Search students... (leave empty to display all)";
-            txtSearch.Size = new Size(282, 32);
+            txtSearch.Size = new Size(282, 35);
             txtSearch.TabIndex = 18;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -368,10 +368,10 @@
             // 
             pnlDGV.Controls.Add(dgvStudents);
             pnlDGV.Dock = DockStyle.Fill;
-            pnlDGV.Location = new Point(439, 42);
+            pnlDGV.Location = new Point(439, 46);
             pnlDGV.Name = "pnlDGV";
             pnlDGV.Padding = new Padding(5);
-            pnlDGV.Size = new Size(569, 559);
+            pnlDGV.Size = new Size(569, 555);
             pnlDGV.TabIndex = 2;
             // 
             // dgvStudents
@@ -388,7 +388,7 @@
             dgvStudents.Name = "dgvStudents";
             dgvStudents.ReadOnly = true;
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudents.Size = new Size(559, 549);
+            dgvStudents.Size = new Size(559, 545);
             dgvStudents.TabIndex = 0;
             dgvStudents.CellClick += dgvStudents_CellClick;
             // 
