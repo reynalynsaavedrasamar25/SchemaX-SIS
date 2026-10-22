@@ -69,7 +69,7 @@
             lblTitle.AutoSize = true;
             lblTitle.Location = new Point(20, 12);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(90, 15);
+            lblTitle.Size = new Size(88, 15);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Student Record";
             // 
@@ -107,7 +107,7 @@
             txtSubject.Name = "txtSubject";
             txtSubject.PlaceholderText = "Subject";
             txtSubject.Size = new Size(210, 23);
-            txtSubject.TabIndex = 1;
+            txtSubject.TabIndex = 0;
             // 
             // txtSubjectCode
             // 
@@ -116,7 +116,7 @@
             txtSubjectCode.Name = "txtSubjectCode";
             txtSubjectCode.PlaceholderText = "Subject Code";
             txtSubjectCode.Size = new Size(210, 23);
-            txtSubjectCode.TabIndex = 2;
+            txtSubjectCode.TabIndex = 1;
             // 
             // txtUnits
             // 
@@ -125,7 +125,7 @@
             txtUnits.Name = "txtUnits";
             txtUnits.PlaceholderText = "Units";
             txtUnits.Size = new Size(210, 23);
-            txtUnits.TabIndex = 3;
+            txtUnits.TabIndex = 2;
             // 
             // txtGrade
             // 
@@ -134,47 +134,47 @@
             txtGrade.Name = "txtGrade";
             txtGrade.PlaceholderText = "Grade (optional)";
             txtGrade.Size = new Size(210, 23);
-            txtGrade.TabIndex = 4;
+            txtGrade.TabIndex = 3;
             // 
             // btnAddSub
             // 
             btnAddSub.Location = new Point(15, 212);
             btnAddSub.Name = "btnAddSub";
-            btnAddSub.Size = new Size(64, 32);
-            btnAddSub.TabIndex = 5;
+            btnAddSub.Size = new Size(210, 40);
+            btnAddSub.TabIndex = 4;
             btnAddSub.Text = "Add";
             btnAddSub.UseVisualStyleBackColor = true;
             // 
             // btnEditSub
             // 
-            btnEditSub.Location = new Point(88, 212);
+            btnEditSub.Location = new Point(15, 258);
             btnEditSub.Name = "btnEditSub";
-            btnEditSub.Size = new Size(64, 32);
-            btnEditSub.TabIndex = 6;
+            btnEditSub.Size = new Size(210, 40);
+            btnEditSub.TabIndex = 5;
             btnEditSub.Text = "Edit";
             btnEditSub.UseVisualStyleBackColor = true;
             // 
             // btnDeleteSub
             // 
-            btnDeleteSub.Location = new Point(161, 212);
+            btnDeleteSub.Location = new Point(15, 304);
             btnDeleteSub.Name = "btnDeleteSub";
-            btnDeleteSub.Size = new Size(64, 32);
-            btnDeleteSub.TabIndex = 7;
+            btnDeleteSub.Size = new Size(210, 40);
+            btnDeleteSub.TabIndex = 6;
             btnDeleteSub.Text = "Delete";
             btnDeleteSub.UseVisualStyleBackColor = true;
             // 
             // btnClearSub
             // 
-            btnClearSub.Location = new Point(15, 252);
+            btnClearSub.Location = new Point(15, 350);
             btnClearSub.Name = "btnClearSub";
-            btnClearSub.Size = new Size(210, 30);
-            btnClearSub.TabIndex = 8;
+            btnClearSub.Size = new Size(210, 40);
+            btnClearSub.TabIndex = 7;
             btnClearSub.Text = "Clear / New subject";
             btnClearSub.UseVisualStyleBackColor = true;
             // 
             // lblSubjectHint
             // 
-            lblSubjectHint.Location = new Point(15, 295);
+            lblSubjectHint.Location = new Point(15, 393);
             lblSubjectHint.Name = "lblSubjectHint";
             lblSubjectHint.Size = new Size(210, 90);
             lblSubjectHint.TabIndex = 9;
@@ -185,7 +185,7 @@
             btnBack.Location = new Point(15, 548);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(210, 40);
-            btnBack.TabIndex = 10;
+            btnBack.TabIndex = 8;
             btnBack.Text = "Back to Dashboard";
             btnBack.UseVisualStyleBackColor = true;
             // 
@@ -195,7 +195,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Search name or student ID";
             txtSearch.Size = new Size(400, 23);
-            txtSearch.TabIndex = 2;
+            txtSearch.TabIndex = 0;
             // 
             // cmbYear
             // 
@@ -204,7 +204,7 @@
             cmbYear.Location = new Point(270, 100);
             cmbYear.Name = "cmbYear";
             cmbYear.Size = new Size(125, 23);
-            cmbYear.TabIndex = 3;
+            cmbYear.TabIndex = 1;
             // 
             // cmbProgram
             // 
@@ -213,23 +213,23 @@
             cmbProgram.Location = new Point(402, 100);
             cmbProgram.Name = "cmbProgram";
             cmbProgram.Size = new Size(125, 23);
-            cmbProgram.TabIndex = 4;
+            cmbProgram.TabIndex = 2;
             // 
             // btnSort
             // 
             btnSort.Location = new Point(534, 98);
             btnSort.Name = "btnSort";
-            btnSort.Size = new Size(136, 27);
-            btnSort.TabIndex = 5;
+            btnSort.Size = new Size(136, 32);
+            btnSort.TabIndex = 3;
             btnSort.Text = "Sort: by ID";
             btnSort.UseVisualStyleBackColor = true;
             // 
             // dgvStudentList
             // 
-            dgvStudentList.Location = new Point(270, 135);
+            dgvStudentList.Location = new Point(270, 138);
             dgvStudentList.Name = "dgvStudentList";
-            dgvStudentList.Size = new Size(400, 530);
-            dgvStudentList.TabIndex = 6;
+            dgvStudentList.Size = new Size(400, 527);
+            dgvStudentList.TabIndex = 4;
             // 
             // lblEmpty
             // 
@@ -280,9 +280,9 @@
             // 
             btnUpload.Location = new Point(0, 198);
             btnUpload.Name = "btnUpload";
-            btnUpload.Size = new Size(150, 30);
-            btnUpload.TabIndex = 2;
-            btnUpload.Text = "Upload Photo";
+            btnUpload.Size = new Size(150, 40);
+            btnUpload.TabIndex = 0;
+            btnUpload.Text = "Upload";
             btnUpload.UseVisualStyleBackColor = true;
             // 
             // lblFullName
@@ -330,7 +330,7 @@
             dgvAcademic.Location = new Point(0, 278);
             dgvAcademic.Name = "dgvAcademic";
             dgvAcademic.Size = new Size(600, 270);
-            dgvAcademic.TabIndex = 8;
+            dgvAcademic.TabIndex = 1;
             // 
             // lblGwa
             // 
@@ -369,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)picPhoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAcademic).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

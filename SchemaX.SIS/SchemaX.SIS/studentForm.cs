@@ -43,6 +43,21 @@ namespace SchemaX.SIS
 
             ButtonStyler.Apply(btnViewSearch, "\xE721", ButtonKind.Menu);
             ButtonStyler.Apply(btnViewClear, "\xE894", ButtonKind.Menu);
+
+            InputStyler.Apply(txtFirstName);
+            InputStyler.Apply(txtMidName);
+            InputStyler.Apply(txtSurname);
+            InputStyler.Apply(txtBUEmail);
+            InputStyler.Apply(txtContactNo);
+            InputStyler.Apply(txtBloc);
+            InputStyler.Apply(dateBirthDate);
+            InputStyler.Apply(cmbGender);
+            InputStyler.Apply(cmbYrLevel);
+            InputStyler.Apply(cmbProgram);
+            InputStyler.Apply(txtStudentID);
+
+            InputStyler.Apply(cmbProgramFilter);
+            InputStyler.Apply(cmbYrFilter);
         }
 
         public studentForm()

@@ -39,6 +39,8 @@ namespace SchemaX.SIS.Helpers
             b.GotFocus -= OnFocus; b.GotFocus += OnFocus;
             b.LostFocus -= OnBlur; b.LostFocus += OnBlur;
 
+            b.EnabledChanged -= OnEnabledChanged; b.EnabledChanged += OnEnabledChanged;
+
             b.Invalidate();
         }
 
@@ -76,7 +78,7 @@ namespace SchemaX.SIS.Helpers
             {
                 case ButtonKind.Danger:
                     fill = s.Down ? Color.FromArgb(248, 215, 211)
-                         : s.Hover ? Color.FromArgb(253, 236, 234) : Color.White;
+                         : isHighlighted ? Color.FromArgb(253, 236, 234) : Color.White;
                     border = Color.FromArgb(235, 190, 185);
                     textColor = ThemeColors.Danger;
                     circle = ThemeColors.Danger;
@@ -84,7 +86,7 @@ namespace SchemaX.SIS.Helpers
                     break;
                 case ButtonKind.Solid:
                     fill = s.Down ? ControlPaint.Dark(s.Base, 0.2f)
-                         : s.Hover ? ControlPaint.Dark(s.Base, 0.1f) : s.Base;
+                         : isHighlighted ? ControlPaint.Dark(s.Base, 0.1f) : s.Base;
                     border = fill;
                     textColor = Color.White;
                     circle = Color.White;
@@ -92,13 +94,22 @@ namespace SchemaX.SIS.Helpers
                     break;
                 default: // Menu
                     fill = s.Down ? Color.FromArgb(169, 182, 204)
-                         : s.Hover ? Color.FromArgb(186, 200, 222) : Color.White;
+                         : isHighlighted ? Color.FromArgb(186, 200, 222) : Color.White;
                     border = Color.FromArgb(186, 200, 222);
                     textColor = ThemeColors.TextDark;
                     circle = ThemeColors.Accent;
                     glyphColor = Color.White;
                     break;
             }
+            if (!b.Enabled)
+            {
+                fill = Color.FromArgb(241, 243, 247);
+                border = Color.FromArgb(214, 220, 230);
+                textColor = Color.FromArgb(160, 168, 182);
+                circle = Color.FromArgb(200, 207, 218);
+                glyphColor = Color.White;
+            }
+
             if (s.Active)
             {
                 fill = ThemeColors.Accent; border = ThemeColors.Accent;
@@ -130,6 +141,26 @@ namespace SchemaX.SIS.Helpers
             var flags = TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis |
                         (s.Glyph.Length > 0 ? TextFormatFlags.Left : TextFormatFlags.HorizontalCenter);
             TextRenderer.DrawText(g, b.Text, b.Font, textRect, textColor, flags);
+        }
+
+        private static void OnEnabledChanged(object? sender, EventArgs e)
+        {
+            if (sender is not Button b || !States.TryGetValue(b, out var s)) return;
+
+            if (!b.Enabled)
+            {
+                s.Hover = false;
+                s.Down = false;
+                s.Focus = false;
+            }
+            else
+            {
+                // Re-enabled under the cursor: show hover without needing a mouse move
+                s.Hover = b.ClientRectangle.Contains(b.PointToClient(Cursor.Position));
+            }
+
+            b.Cursor = b.Enabled ? Cursors.Hand : Cursors.Default;
+            b.Invalidate();
         }
 
         private static GraphicsPath RoundedRect(Rectangle r, int radius)
