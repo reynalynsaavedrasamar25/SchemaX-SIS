@@ -97,11 +97,23 @@ namespace SchemaX.SIS
             lblAddSubject.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             lblSubjectHint.ForeColor = Color.DimGray;
 
-            StyleButton(btnAddSub, ThemeColors.Accent);
-            StyleButton(btnEditSub, ThemeColors.Accent);
-            StyleButton(btnDeleteSub, ThemeColors.Danger);
-            StyleButton(btnClearSub, ThemeColors.Primary);
-            StyleButton(btnBack, ThemeColors.Primary);
+            ButtonStyler.Apply(btnAddSub, "\xE710", ButtonKind.Menu);
+            ButtonStyler.Apply(btnEditSub, "\xE70F", ButtonKind.Menu);
+            ButtonStyler.Apply(btnDeleteSub, "\xE74D", ButtonKind.Solid);
+            ButtonStyler.Apply(btnClearSub, "\xE75C", ButtonKind.Danger);
+            ButtonStyler.Apply(btnBack, "\xE72B", ButtonKind.Menu);
+
+            ButtonStyler.Apply(btnSort, "\xE8CB", ButtonKind.Menu);
+            ButtonStyler.Apply(btnUpload, "\xE722", ButtonKind.Menu);
+
+            InputStyler.Apply(txtSubject);
+            InputStyler.Apply(txtSubjectCode);
+            InputStyler.Apply(txtUnits);
+            InputStyler.Apply(txtGrade);
+            InputStyler.Apply(txtSearch);
+            InputStyler.Apply(cmbYear);
+            InputStyler.Apply(cmbProgram);
+
             StyleButton(btnSort, ThemeColors.Accent);
             StyleButton(btnUpload, ThemeColors.Accent);
 
