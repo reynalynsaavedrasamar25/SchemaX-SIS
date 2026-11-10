@@ -16,7 +16,7 @@ Documentation is kept in a five-node CherryTree notebook at 'docs/SchemaX-SIS.ct
 
 https://github.com/reynalynsaavedrasamar25/SchemaX-SIS
 
-Midterm version: tag 'v1.0-midterm'. Capstone work is merged into 'develop', then released to 'main' as 'v1.0'.
+Midterm version: tag "v1.0-midterm". Capstone work is merged into 'develop', then released to 'main' as 'v1.0'.
 
 ## Team and roles
 
