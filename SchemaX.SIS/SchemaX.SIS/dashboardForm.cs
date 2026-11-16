@@ -1,4 +1,5 @@
-﻿using SchemaX.SIS.Data;
+﻿using ScottPlot.WinForms;
+using SchemaX.SIS.Data;
 using SchemaX.SIS.Helpers;
 using SchemaX.SIS.Models;
 
@@ -7,6 +8,9 @@ namespace SchemaX.SIS
     public partial class dashboardForm : Form
     {
         private Panel? _pnlBreakdown;
+        private FormsPlot? _yearPlot;
+        private FormsPlot? _programPlot;
+
         public dashboardForm()
         {
             InitializeComponent();
@@ -43,7 +47,6 @@ namespace SchemaX.SIS
 
             pnlSidebar.BackColor = ThemeColors.GridAlternateRow;
 
-
             pnlUserInfo.BackColor = ThemeColors.Surface;
             lblUserName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             pnlSidebar.BackColor = Color.FromArgb(226, 234, 248);
@@ -76,6 +79,7 @@ namespace SchemaX.SIS
             lblUserUsername.Text = "Username: " + (user?.Username ?? "");
             lblUserEmail.Text = user?.Email ?? "";
         }
+
         private void RefreshStats()
         {
             try
@@ -100,28 +104,40 @@ namespace SchemaX.SIS
                 flowStats.ResumeLayout();
 
                 lblBreakdown.Visible = false;
-                _pnlBreakdown?.Dispose();
-                _pnlBreakdown = new Panel
+
+                if (_pnlBreakdown == null)
                 {
-                    Location = new Point(11, 118),
-                    Size = new Size(548, 190)
-                };
-                pnlOverview.Controls.Add(_pnlBreakdown);
+                    _pnlBreakdown = new Panel
+                    {
+                        Location = new Point(11, 118),
+                        Size = new Size(548, 190)
+                    };
+                    pnlOverview.Controls.Add(_pnlBreakdown);
 
-                _pnlBreakdown.Controls.Add(new Panel
-                {
-                    BackColor = Color.Gainsboro,
-                    Location = new Point(0, 0),
-                    Size = new Size(548, 1)
-                });
+                    _pnlBreakdown.Controls.Add(new Panel
+                    {
+                        BackColor = Color.Gainsboro,
+                        Location = new Point(0, 0),
+                        Size = new Size(548, 1)
+                    });
 
-                var years = perYear
-                    .Select(y => new KeyValuePair<string, int>("Year " + y.Key, y.Value)).ToList();
-                var programs = perProgram
-                    .Select(p => new KeyValuePair<string, int>(p.Key, p.Value)).ToList();
+                    _yearPlot = new FormsPlot
+                    {
+                        Location = new Point(0, 8),
+                        Size = new Size(268, 180)
+                    };
 
-                BuildBars(_pnlBreakdown, "Students per year level", years, 0, ThemeColors.Accent);
-                BuildBars(_pnlBreakdown, "Students per program", programs, 286, Color.FromArgb(42, 157, 143));
+                    _programPlot = new FormsPlot
+                    {
+                        Location = new Point(280, 8),
+                        Size = new Size(268, 180)
+                    };
+
+                    _pnlBreakdown.Controls.Add(_yearPlot);
+                    _pnlBreakdown.Controls.Add(_programPlot);
+                }
+
+                RenderCharts(perYear, perProgram);
 
                 lblStatus.Text = "Connected to database.";
             }
@@ -131,6 +147,84 @@ namespace SchemaX.SIS
                 ExceptionHandler.Handle(ex,
                     "Could not load dashboard statistics. Check appsettings.json and that MySQL is running.");
             }
+        }
+
+        private void RenderCharts(Dictionary<int, int> perYear, Dictionary<string, int> perProgram)
+        {
+            if (_yearPlot == null || _programPlot == null) return;
+
+            string[] paletteHex = ["#33658A", "#2A9D8F", "#2F4858", "#E67E22"];
+
+            // --- CHART 1: Bar Chart (Students per Year Level) ---
+            _yearPlot.Plot.Clear();
+            _yearPlot.Plot.Title("Students per Year Level", size: 12);
+
+            if (perYear.Count == 0)
+            {
+                _yearPlot.Plot.Add.Annotation("No students yet");
+            }
+            else
+            {
+                var bars = new List<ScottPlot.Bar>();
+                var ticks = new List<ScottPlot.Tick>();
+                int i = 0;
+
+                foreach (var kv in perYear)
+                {
+                    bars.Add(new ScottPlot.Bar
+                    {
+                        Position = i,
+                        Value = kv.Value,
+                        FillColor = ScottPlot.Color.FromHex(paletteHex[i % paletteHex.Length]),
+                        Label = kv.Value.ToString()
+                    });
+                    ticks.Add(new ScottPlot.Tick(i, $"Yr {kv.Key}"));
+                    i++;
+                }
+
+                var barPlot = _yearPlot.Plot.Add.Bars(bars);
+                barPlot.ValueLabelStyle.IsVisible = true;
+                barPlot.ValueLabelStyle.FontSize = 10;
+
+                _yearPlot.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks.ToArray());
+                _yearPlot.Plot.Axes.Bottom.MajorTickStyle.Length = 0;
+                _yearPlot.Plot.Axes.Margins(bottom: 0, top: 0.25);
+            }
+            _yearPlot.Plot.Axes.AutoScale();
+            _yearPlot.Refresh();
+
+            // --- CHART 2: Pie Chart (Students per Program) ---
+            _programPlot.Plot.Clear();
+            _programPlot.Plot.Title("Students per Program", size: 12);
+
+            if (perProgram.Count == 0)
+            {
+                _programPlot.Plot.Add.Annotation("No students yet");
+            }
+            else
+            {
+                var slices = new List<ScottPlot.PieSlice>();
+                int i = 0;
+
+                foreach (var kv in perProgram)
+                {
+                    slices.Add(new ScottPlot.PieSlice
+                    {
+                        Value = kv.Value,
+                        Label = $"{kv.Key} ({kv.Value})",
+                        FillColor = ScottPlot.Color.FromHex(paletteHex[i % paletteHex.Length])
+                    });
+                    i++;
+                }
+
+                var pie = _programPlot.Plot.Add.Pie(slices);
+                pie.ExplodeFraction = 0.05;
+                _programPlot.Plot.ShowLegend();
+                _programPlot.Plot.Axes.Frameless();
+                _programPlot.Plot.HideGrid();
+            }
+            _programPlot.Plot.Axes.AutoScale();
+            _programPlot.Refresh();
         }
 
         private static Panel MakeCard(string caption, int value, Color accent)
@@ -164,95 +258,6 @@ namespace SchemaX.SIS
                 TextAlign = ContentAlignment.MiddleCenter,
                 Location = new Point(0, 62),
                 Size = new Size(128, 24)
-            });
-            return card;
-        }
-
-        private static void BuildBars(Panel parent, string title,
-            List<KeyValuePair<string, int>> rows, int x, Color barColor)
-        {
-            parent.Controls.Add(new Label
-            {
-                Text = title,
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
-                ForeColor = ThemeColors.Primary,
-                Location = new Point(x, 12),
-                Size = new Size(262, 26)
-            });
-
-            if (rows.Count == 0)
-            {
-                parent.Controls.Add(new Label
-                {
-                    Text = "No students yet",
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = Color.Gray,
-                    Location = new Point(x, 44),
-                    Size = new Size(262, 24)
-                });
-                return;
-            }
-
-            int max = rows.Max(r => r.Value);
-            int y = 44;
-            foreach (var r in rows)
-            {
-                parent.Controls.Add(new Label
-                {
-                    Text = r.Key,
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = ThemeColors.TextDark,
-                    TextAlign = ContentAlignment.MiddleLeft,
-                    Location = new Point(x, y),
-                    Size = new Size(74, 22)
-                });
-
-                int barWidth = max == 0 ? 0 : Math.Max(6, (int)(130.0 * r.Value / max));
-                parent.Controls.Add(new Panel
-                {
-                    BackColor = barColor,
-                    Location = new Point(x + 78, y + 4),
-                    Size = new Size(barWidth, 14)
-                });
-
-                parent.Controls.Add(new Label
-                {
-                    Text = r.Value.ToString(),
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = ThemeColors.TextDark,
-                    TextAlign = ContentAlignment.MiddleLeft,
-                    Location = new Point(x + 78 + barWidth + 6, y),
-                    Size = new Size(40, 22)
-                });
-                y += 26;
-            }
-        }
-
-        private static Panel MakeCard(string caption, int value)
-        {
-            var card = new Panel
-            {
-                Size = new Size(125, 90),
-                BackColor = ThemeColors.Background,
-                Margin = new Padding(6)
-            };
-            card.Controls.Add(new Label
-            {
-                Text = value.ToString(),
-                Font = new Font("Segoe UI", 24F, FontStyle.Bold),
-                ForeColor = ThemeColors.Accent,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Location = new Point(0, 6),
-                Size = new Size(125, 50)
-            });
-            card.Controls.Add(new Label
-            {
-                Text = caption,
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = ThemeColors.TextDark,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Location = new Point(0, 58),
-                Size = new Size(125, 24)
             });
             return card;
         }
