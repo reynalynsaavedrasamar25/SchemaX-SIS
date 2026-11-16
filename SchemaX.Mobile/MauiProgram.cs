@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SchemaX.Mobile.Services;
 
 namespace SchemaX.Mobile
 {
@@ -18,7 +19,7 @@ namespace SchemaX.Mobile
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<IStudentService, FakeStudentService>();
             return builder.Build();
         }
     }
