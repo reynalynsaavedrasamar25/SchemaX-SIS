@@ -22,6 +22,7 @@ namespace SchemaX.Mobile
 #endif
             builder.Services.AddSingleton<IStudentService, FakeStudentService>();
             builder.Services.AddTransient<DirectoryPage>();
+            builder.Services.AddTransient<StudentFormPage>();
             return builder.Build();
         }
     }
