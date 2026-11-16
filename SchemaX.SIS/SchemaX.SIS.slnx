@@ -1,4 +1,7 @@
 <Solution>
+  <Project Path="../SchemaX.Mobile/SchemaX.Mobile.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="../SchemaX.ValidatorTests/SchemaX.ValidatorTests.csproj" />
   <Project Path="SchemaX.SIS/SchemaX.SIS.csproj" />
 </Solution>

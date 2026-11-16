@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SchemaX.Mobile.Models"
+             x:Class="SchemaX.Mobile.Pages.DirectoryPage"
+             Title="Student Directory"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+ Add" Clicked="OnAddClicked" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16,12,16,0" RowSpacing="10">
+
+        <!-- Search Bar (300ms Debounced) -->
+        <Border Grid.Row="0"
+                StrokeShape="RoundRectangle 12"
+                Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+                Padding="4,0">
+            <SearchBar x:Name="StudentSearchBar"
+                       Placeholder="Search by name or student ID..."
+                       TextChanged="OnSearchTextChanged" />
+        </Border>
+
+        <!-- Program Filter Chips -->
+        <ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout x:Name="ProgramChipsLayout" Spacing="8">
+                <Button Text="All" Clicked="OnProgramChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="BSCS" Clicked="OnProgramChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="BSIT" Clicked="OnProgramChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Year Level Filter Chips -->
+        <ScrollView Grid.Row="2" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout x:Name="YearChipsLayout" Spacing="8">
+                <Button Text="All Years" CommandParameter="0" Clicked="OnYearChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="1st Year" CommandParameter="1" Clicked="OnYearChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="2nd Year" CommandParameter="2" Clicked="OnYearChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="3rd Year" CommandParameter="3" Clicked="OnYearChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+                <Button Text="4th Year" CommandParameter="4" Clicked="OnYearChipClicked" CornerRadius="16" HeightRequest="34" Padding="14,0" />
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Student Cards List -->
+        <RefreshView Grid.Row="3" x:Name="DirectoryRefreshView" Refreshing="OnRefreshing">
+            <CollectionView x:Name="StudentsCollection"
+                            SelectionMode="Single"
+                            SelectionChanged="OnStudentSelected">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="6" Padding="24">
+                        <Label Text="No students found" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Label Text="Try adjusting your search or filter chips." FontSize="13" TextColor="{StaticResource TextSecondaryLight}" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Student">
+                        <Border Margin="0,0,0,10"
+                                Padding="14"
+                                StrokeShape="RoundRectangle 14"
+                                Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}">
+                            <Grid ColumnDefinitions="46,*,Auto" ColumnSpacing="12">
+                                <!-- Initials Avatar -->
+                                <Border Grid.Column="0"
+                                        WidthRequest="46"
+                                        HeightRequest="46"
+                                        StrokeShape="RoundRectangle 23"
+                                        StrokeThickness="0"
+                                        BackgroundColor="{StaticResource SchemaAccent}">
+                                    <Label Text="{Binding Initials}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Border>
+
+                                <!-- Name & Student ID -->
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding FullName}"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding StudentId}"
+                                           FontSize="13"
+                                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                                </VerticalStackLayout>
+
+                                <!-- Program / Year / Bloc Pill -->
+                                <Border Grid.Column="2"
+                                        VerticalOptions="Center"
+                                        Padding="10,4"
+                                        StrokeShape="RoundRectangle 10"
+                                        StrokeThickness="0"
+                                        BackgroundColor="{StaticResource SchemaPrimary}">
+                                    <Label TextColor="White" FontSize="12" FontAttributes="Bold">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Program}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding YearLevel}" />
+                                                <Span Text="{Binding Bloc}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+</ContentPage>
