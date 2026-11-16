@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SchemaX.Mobile.Services;
+using SchemaX.Mobile.Pages;
 
 namespace SchemaX.Mobile
 {
@@ -20,6 +21,7 @@ namespace SchemaX.Mobile
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<IStudentService, FakeStudentService>();
+            builder.Services.AddTransient<DirectoryPage>();
             return builder.Build();
         }
     }
