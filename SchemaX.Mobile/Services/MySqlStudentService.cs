@@ -13,10 +13,10 @@ public class MySqlStudentService : IStudentService
         _config = config;
     }
 
-    private async Task<MySqlConnection> OpenAsync()
+    private async Task<MySqlConnection> OpenAsync(CancellationToken ct)
     {
         var conn = new MySqlConnection(_config.BuildConnectionString());
-        await conn.OpenAsync();
+        await conn.OpenAsync(ct);
         return conn;
     }
 
@@ -36,131 +36,106 @@ public class MySqlStudentService : IStudentService
         ContactNo = r.GetString("contact_no")
     };
 
-    public async Task<List<Student>> GetStudentsAsync(string? search = null)
+    public async Task<IReadOnlyList<Student>> GetStudentsAsync(
+        string? search = null,
+        string? program = null,
+        int? year = null,
+        CancellationToken ct = default)
     {
         var list = new List<Student>();
-        try
+
+        await using var conn = await OpenAsync(ct);
+        var sql = @"SELECT student_id, user_id, first_name, middle_name, surname, gender,
+                           year_level, program, bloc, birthday, bu_email, contact_no
+                    FROM students
+                    WHERE user_id = @uid";
+
+        if (!string.IsNullOrWhiteSpace(search))
         {
-            await using var conn = await OpenAsync();
-            var sql = @"SELECT student_id, user_id, first_name, middle_name, surname, gender,
-                               year_level, program, bloc, birthday, bu_email, contact_no
-                        FROM students
-                        WHERE user_id = @uid";
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                sql += @" AND (student_id LIKE @q OR first_name LIKE @q OR surname LIKE @q
-                               OR program LIKE @q OR bu_email LIKE @q)";
-            }
-            sql += " ORDER BY surname, first_name";
-
-            await using var cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@uid", DemoUserId);
-            if (!string.IsNullOrWhiteSpace(search))
-                cmd.Parameters.AddWithValue("@q", $"%{search.Trim()}%");
-
-            await using var reader = await cmd.ExecuteReaderAsync();
-            while (await reader.ReadAsync())
-                list.Add(Map(reader));
+            sql += @" AND (student_id LIKE @q OR first_name LIKE @q OR surname LIKE @q
+                           OR program LIKE @q OR bu_email LIKE @q)";
         }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"GetStudentsAsync failed: {ex.Message}");
-        }
+        if (!string.IsNullOrWhiteSpace(program))
+            sql += " AND program = @program";
+        if (year.HasValue)
+            sql += " AND year_level = @year";
+
+        sql += " ORDER BY surname, first_name";
+
+        await using var cmd = new MySqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@uid", DemoUserId);
+        if (!string.IsNullOrWhiteSpace(search))
+            cmd.Parameters.AddWithValue("@q", $"%{search.Trim()}%");
+        if (!string.IsNullOrWhiteSpace(program))
+            cmd.Parameters.AddWithValue("@program", program.Trim());
+        if (year.HasValue)
+            cmd.Parameters.AddWithValue("@year", year.Value);
+
+        await using var reader = await cmd.ExecuteReaderAsync(ct);
+        while (await reader.ReadAsync(ct))
+            list.Add(Map(reader));
+
         return list;
     }
 
-    public async Task<Student?> GetByIdAsync(string studentId)
+    public async Task<Student?> GetByIdAsync(string studentId, CancellationToken ct = default)
     {
-        try
-        {
-            await using var conn = await OpenAsync();
-            await using var cmd = new MySqlCommand(
-                @"SELECT student_id, user_id, first_name, middle_name, surname, gender,
-                         year_level, program, bloc, birthday, bu_email, contact_no
-                  FROM students
-                  WHERE student_id = @id AND user_id = @uid", conn);
-            cmd.Parameters.AddWithValue("@id", studentId);
-            cmd.Parameters.AddWithValue("@uid", DemoUserId);
+        await using var conn = await OpenAsync(ct);
+        await using var cmd = new MySqlCommand(
+            @"SELECT student_id, user_id, first_name, middle_name, surname, gender,
+                     year_level, program, bloc, birthday, bu_email, contact_no
+              FROM students
+              WHERE student_id = @id AND user_id = @uid", conn);
+        cmd.Parameters.AddWithValue("@id", studentId);
+        cmd.Parameters.AddWithValue("@uid", DemoUserId);
 
-            await using var reader = await cmd.ExecuteReaderAsync();
-            if (await reader.ReadAsync())
-                return Map(reader);
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"GetByIdAsync failed: {ex.Message}");
-        }
-        return null;
+        await using var reader = await cmd.ExecuteReaderAsync(ct);
+        return await reader.ReadAsync(ct) ? Map(reader) : null;
     }
 
-    public async Task<bool> AddAsync(Student s)
+    public async Task AddAsync(Student student, CancellationToken ct = default)
     {
-        try
-        {
-            await using var conn = await OpenAsync();
-            await using var cmd = new MySqlCommand(
-                @"INSERT INTO students
-                    (student_id, user_id, first_name, middle_name, surname, gender,
-                     year_level, program, bloc, birthday, bu_email, contact_no)
-                  VALUES
-                    (@id, @uid, @first, @middle, @surname, @gender,
-                     @year, @program, @bloc, @birthday, @email, @contact)", conn);
-            Bind(cmd, s);
-            return await cmd.ExecuteNonQueryAsync() > 0;
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"AddAsync failed: {ex.Message}");
-            return false;
-        }
+        await using var conn = await OpenAsync(ct);
+        await using var cmd = new MySqlCommand(
+            @"INSERT INTO students
+                (student_id, user_id, first_name, middle_name, surname, gender,
+                 year_level, program, bloc, birthday, bu_email, contact_no)
+              VALUES
+                (@id, @uid, @first, @middle, @surname, @gender,
+                 @year, @program, @bloc, @birthday, @email, @contact)", conn);
+        Bind(cmd, student);
+        await cmd.ExecuteNonQueryAsync(ct);
     }
 
-    public async Task<bool> UpdateAsync(Student s)
+    public async Task UpdateAsync(Student student, CancellationToken ct = default)
     {
-        try
-        {
-            await using var conn = await OpenAsync();
-            await using var cmd = new MySqlCommand(
-                @"UPDATE students SET
-                    first_name = @first, middle_name = @middle, surname = @surname,
-                    gender = @gender, year_level = @year, program = @program,
-                    bloc = @bloc, birthday = @birthday, bu_email = @email,
-                    contact_no = @contact
-                  WHERE student_id = @id AND user_id = @uid", conn);
-            Bind(cmd, s);
-            return await cmd.ExecuteNonQueryAsync() > 0;
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"UpdateAsync failed: {ex.Message}");
-            return false;
-        }
+        await using var conn = await OpenAsync(ct);
+        await using var cmd = new MySqlCommand(
+            @"UPDATE students SET
+                first_name = @first, middle_name = @middle, surname = @surname,
+                gender = @gender, year_level = @year, program = @program,
+                bloc = @bloc, birthday = @birthday, bu_email = @email,
+                contact_no = @contact
+              WHERE student_id = @id AND user_id = @uid", conn);
+        Bind(cmd, student);
+        await cmd.ExecuteNonQueryAsync(ct);
     }
 
-    public async Task<bool> DeleteAsync(string studentId)
+    public async Task DeleteAsync(string studentId, CancellationToken ct = default)
     {
-        try
-        {
-            await using var conn = await OpenAsync();
-            await using var cmd = new MySqlCommand(
-                "DELETE FROM students WHERE student_id = @id AND user_id = @uid", conn);
-            cmd.Parameters.AddWithValue("@id", studentId);
-            cmd.Parameters.AddWithValue("@uid", DemoUserId);
-            return await cmd.ExecuteNonQueryAsync() > 0;
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"DeleteAsync failed: {ex.Message}");
-            return false;
-        }
+        await using var conn = await OpenAsync(ct);
+        await using var cmd = new MySqlCommand(
+            "DELETE FROM students WHERE student_id = @id AND user_id = @uid", conn);
+        cmd.Parameters.AddWithValue("@id", studentId);
+        cmd.Parameters.AddWithValue("@uid", DemoUserId);
+        await cmd.ExecuteNonQueryAsync(ct);
     }
 
-    public async Task<bool> PingAsync()
+    public async Task<bool> PingAsync(CancellationToken ct = default)
     {
         try
         {
-            await using var conn = await OpenAsync();
+            await using var conn = await OpenAsync(ct);
             return true;
         }
         catch
