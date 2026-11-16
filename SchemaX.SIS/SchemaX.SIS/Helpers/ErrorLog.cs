@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SchemaX.SIS.Helpers
 {
@@ -10,7 +8,8 @@ namespace SchemaX.SIS.Helpers
         public static void LogError(Exception ex)
         {
             string logFolder = Path.Combine(
-                AppContext.BaseDirectory,
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "SchemaX",
                 "logs"
             );
 

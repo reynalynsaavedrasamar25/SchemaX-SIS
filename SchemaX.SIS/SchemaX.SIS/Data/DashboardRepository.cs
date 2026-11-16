@@ -40,7 +40,6 @@ namespace SchemaX.SIS.Data
             return Convert.ToInt32(command.ExecuteScalar());
         }
 
-
         public Dictionary<int, int> GetStudentsPerYear()
         {
             var result = new Dictionary<int, int>();
@@ -78,6 +77,30 @@ namespace SchemaX.SIS.Data
             using var reader = command.ExecuteReader();
             while (reader.Read())
                 result[Convert.ToString(reader["program"]) ?? ""] = Convert.ToInt32(reader["total"]);
+            return result;
+        }
+
+        public Dictionary<string, int> GetStudentsByGender()
+        {
+            var result = new Dictionary<string, int>();
+            using var connection = Db.Open();
+
+            string query = @"
+                SELECT gender, COUNT(*) AS total
+                FROM students
+                WHERE user_id = @uid
+                GROUP BY gender
+                ORDER BY gender;";
+
+            using var command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@uid", Session.CurrentUserId);
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                string key = Convert.ToString(reader["gender"]) ?? "Unspecified";
+                if (string.IsNullOrWhiteSpace(key)) key = "Unspecified";
+                result[key] = Convert.ToInt32(reader["total"]);
+            }
             return result;
         }
 

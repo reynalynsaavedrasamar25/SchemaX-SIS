@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Text.Json;
 using MySqlConnector;
@@ -13,12 +12,18 @@ public static class Db
 
     private static string Load()
     {
-        string path = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+        string appDataPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "SchemaX",
+            "appsettings.json");
+        string localPath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+
+        string path = File.Exists(appDataPath) ? appDataPath : localPath;
 
         if (!File.Exists(path))
             throw new FileNotFoundException(
                 "appsettings.json is missing. Copy appsettings.example.json to appsettings.json " +
-                "(same folder) and set your MySQL password.", path);
+                "(in %AppData%\\SchemaX or the app folder) and set your MySQL password.", path);
 
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
 

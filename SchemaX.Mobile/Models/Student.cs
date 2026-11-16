@@ -15,16 +15,17 @@ public class Student
     public string BuEmail { get; set; } = string.Empty;
     public string ContactNo { get; set; } = string.Empty;
 
-    // Computed helpers used by the card layout
-    public string FullName =>
-        string.IsNullOrWhiteSpace(MiddleName)
-            ? $"{FirstName} {Surname}"
-            : $"{FirstName} {MiddleName} {Surname}";
+    public string FullName => string.IsNullOrWhiteSpace(MiddleName)
+        ? $"{FirstName} {Surname}"
+        : $"{FirstName} {MiddleName} {Surname}";
 
-    public string Initials =>
-        $"{(FirstName.Length > 0 ? FirstName[0] : ' ')}{(Surname.Length > 0 ? Surname[0] : ' ')}"
-            .Trim()
-            .ToUpperInvariant();
-
-    public string ProgramYear => $"{Program} · Year {YearLevel}";
+    public string Initials
+    {
+        get
+        {
+            char first = !string.IsNullOrWhiteSpace(FirstName) ? char.ToUpperInvariant(FirstName[0]) : '?';
+            char last = !string.IsNullOrWhiteSpace(Surname) ? char.ToUpperInvariant(Surname[0]) : '?';
+            return $"{first}{last}";
+        }
+    }
 }
