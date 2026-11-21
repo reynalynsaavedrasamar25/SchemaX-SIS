@@ -39,7 +39,7 @@
         </DataTemplate>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
 
         <!-- Header band (same dark teal as the desktop header) -->
         <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="20,28,12,16"
@@ -89,8 +89,22 @@
                         BindableLayout.ItemTemplate="{StaticResource ChipTemplate}" />
         </VerticalStackLayout>
 
+        <!-- Status / error message: its own row, so it never covers the cards -->
+        <Border Grid.Row="3"
+                IsVisible="{Binding HasStatus}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 10"
+                Margin="16,4,16,8"
+                Padding="12,10"
+                BackgroundColor="{AppThemeBinding Light=#FDECEA, Dark=#3B1F1C}">
+            <Label Text="{Binding StatusMessage}"
+                   FontSize="14"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource Danger}, Dark=#F5B7B1}" />
+        </Border>
+
         <!-- Student cards (pull down to refresh) -->
-        <RefreshView Grid.Row="3"
+        <RefreshView Grid.Row="4"
                      IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding RefreshCommand}">
             <CollectionView ItemsSource="{Binding Students}"
@@ -139,10 +153,7 @@
             </CollectionView>
         </RefreshView>
 
-        <!-- Empty-state message and spinner sit on top of the list area -->
-        <Label Grid.Row="3" Text="{Binding StatusMessage}" InputTransparent="True"
-               HorizontalOptions="Center" VerticalOptions="Center" />
-        <ActivityIndicator Grid.Row="3"
+        <ActivityIndicator Grid.Row="4"
                            IsRunning="{Binding ShowSpinner}" IsVisible="{Binding ShowSpinner}"
                            HorizontalOptions="Center" VerticalOptions="Center" />
     </Grid>
