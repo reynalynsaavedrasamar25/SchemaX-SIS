@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.example.json" />
     <None Remove="appsettings.json" />
   </ItemGroup>
 

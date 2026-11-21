@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchemaX.Mobile.Pages.StudentDetailPage"
+             Title="Student Profile"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="OnEditClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator x:Name="LoadingIndicator"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Color="{StaticResource SchemaPrimary}"
+                               HorizontalOptions="Center" />
+
+            <!-- Header Profile Card -->
+            <Border Padding="20"
+                    StrokeShape="RoundRectangle 16"
+                    Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Border WidthRequest="72"
+                            HeightRequest="72"
+                            StrokeShape="RoundRectangle 36"
+                            StrokeThickness="0"
+                            BackgroundColor="{StaticResource SchemaAccent}"
+                            HorizontalOptions="Center">
+                        <Label x:Name="InitialsLabel"
+                               TextColor="White"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Border>
+
+                    <Label x:Name="FullNameLabel"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label x:Name="StudentIdLabel"
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}"
+                           HorizontalOptions="Center" />
+
+                    <Border Padding="12,5"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0"
+                            BackgroundColor="{StaticResource SchemaPrimary}"
+                            HorizontalOptions="Center">
+                        <Label x:Name="AcademicPillLabel"
+                               TextColor="White"
+                               FontSize="13"
+                               FontAttributes="Bold" />
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Academic & Personal Information Card -->
+            <Border Padding="16"
+                    StrokeShape="RoundRectangle 16"
+                    Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}">
+                <Grid ColumnDefinitions="110,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="12" ColumnSpacing="10">
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Program" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="ProgramLabel" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Year &amp; Bloc" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="YearBlocLabel" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Gender" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="2" Grid.Column="1" x:Name="GenderLabel" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Birthday" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="3" Grid.Column="1" x:Name="BirthdayLabel" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="BU Email" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="EmailLabel" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Contact No." FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                    <Label Grid.Row="5" Grid.Column="1" x:Name="ContactLabel" />
+
+                </Grid>
+            </Border>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,6,0,0">
+                <Button Grid.Column="0"
+                        Text="Edit Student"
+                        BackgroundColor="{StaticResource SchemaPrimary}"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="12"
+                        HeightRequest="46"
+                        Clicked="OnEditClicked" />
+
+                <Button Grid.Column="1"
+                        Text="Delete"
+                        BackgroundColor="{StaticResource SchemaDanger}"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="12"
+                        HeightRequest="46"
+                        Clicked="OnDeleteClicked" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

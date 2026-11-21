@@ -1,4 +1,5 @@
-﻿using SchemaX.SIS.Data;
+﻿using ScottPlot.WinForms;
+using SchemaX.SIS.Data;
 using SchemaX.SIS.Helpers;
 using SchemaX.SIS.Models;
 
@@ -142,6 +143,7 @@ namespace SchemaX.SIS
             lblUserUsername.Text = "Username: " + (user?.Username ?? "");
             lblUserEmail.Text = user?.Email ?? "";
         }
+
         private void RefreshStats()
         {
             try
@@ -184,6 +186,84 @@ namespace SchemaX.SIS
                 ExceptionHandler.Handle(ex,
                     "Could not load dashboard statistics. Check appsettings.json and that MySQL is running.");
             }
+        }
+
+        private void RenderCharts(Dictionary<int, int> perYear, Dictionary<string, int> perProgram)
+        {
+            if (_yearPlot == null || _programPlot == null) return;
+
+            string[] paletteHex = ["#33658A", "#2A9D8F", "#2F4858", "#E67E22"];
+
+            // --- CHART 1: Bar Chart (Students per Year Level) ---
+            _yearPlot.Plot.Clear();
+            _yearPlot.Plot.Title("Students per Year Level", size: 12);
+
+            if (perYear.Count == 0)
+            {
+                _yearPlot.Plot.Add.Annotation("No students yet");
+            }
+            else
+            {
+                var bars = new List<ScottPlot.Bar>();
+                var ticks = new List<ScottPlot.Tick>();
+                int i = 0;
+
+                foreach (var kv in perYear)
+                {
+                    bars.Add(new ScottPlot.Bar
+                    {
+                        Position = i,
+                        Value = kv.Value,
+                        FillColor = ScottPlot.Color.FromHex(paletteHex[i % paletteHex.Length]),
+                        Label = kv.Value.ToString()
+                    });
+                    ticks.Add(new ScottPlot.Tick(i, $"Yr {kv.Key}"));
+                    i++;
+                }
+
+                var barPlot = _yearPlot.Plot.Add.Bars(bars);
+                barPlot.ValueLabelStyle.IsVisible = true;
+                barPlot.ValueLabelStyle.FontSize = 10;
+
+                _yearPlot.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks.ToArray());
+                _yearPlot.Plot.Axes.Bottom.MajorTickStyle.Length = 0;
+                _yearPlot.Plot.Axes.Margins(bottom: 0, top: 0.25);
+            }
+            _yearPlot.Plot.Axes.AutoScale();
+            _yearPlot.Refresh();
+
+            // --- CHART 2: Pie Chart (Students per Program) ---
+            _programPlot.Plot.Clear();
+            _programPlot.Plot.Title("Students per Program", size: 12);
+
+            if (perProgram.Count == 0)
+            {
+                _programPlot.Plot.Add.Annotation("No students yet");
+            }
+            else
+            {
+                var slices = new List<ScottPlot.PieSlice>();
+                int i = 0;
+
+                foreach (var kv in perProgram)
+                {
+                    slices.Add(new ScottPlot.PieSlice
+                    {
+                        Value = kv.Value,
+                        Label = $"{kv.Key} ({kv.Value})",
+                        FillColor = ScottPlot.Color.FromHex(paletteHex[i % paletteHex.Length])
+                    });
+                    i++;
+                }
+
+                var pie = _programPlot.Plot.Add.Pie(slices);
+                pie.ExplodeFraction = 0.05;
+                _programPlot.Plot.ShowLegend();
+                _programPlot.Plot.Axes.Frameless();
+                _programPlot.Plot.HideGrid();
+            }
+            _programPlot.Plot.Axes.AutoScale();
+            _programPlot.Refresh();
         }
 
         private static Panel MakeCard(string caption, int value, Color accent)

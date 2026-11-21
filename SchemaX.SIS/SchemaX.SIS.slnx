@@ -1,5 +1,7 @@
 <Solution>
-  <Project Path="../SchemaX.Mobile/SchemaX.Mobile/SchemaX.Mobile.csproj" Id="2778d73a-a74b-431d-81ae-40e206148a70" />
+  <Project Path="../SchemaX.Mobile/SchemaX.Mobile/SchemaX.Mobile.csproj" />
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="../SchemaX.ValidatorTests/SchemaX.ValidatorTests.csproj" />
   <Project Path="SchemaX.SIS/SchemaX.SIS.csproj" />
 </Solution>

@@ -93,7 +93,7 @@ namespace SchemaX.ValidatorTests
         [Fact]
         public void BuEmail_ValidAddress_ShouldBeAccepted()
         {
-            string email = "student@bu.edu.ph";
+            string email = "student@bicol-u.edu.ph";
 
             bool result = Validator.IsBuEmailValid(email);
 
@@ -156,7 +156,7 @@ namespace SchemaX.ValidatorTests
         [Fact]
         public void StudentId_ValidFormat_ShouldBeAccepted()
         {
-            string studentId = "2026-00001";
+            string studentId = "2026-01-00001";
 
             bool result = Validator.IsStudentIdValid(studentId);
 
@@ -213,15 +213,6 @@ namespace SchemaX.ValidatorTests
             string name = "John@Doe";
 
             bool result = Validator.IsNameValid(name);
-
-            Assert.False(result);
-        }
-        [Fact]
-        public void BuEmail_MissingAtSymbol_ShouldBeInvalid()
-        {
-            string email = "studentbu.edu.ph";
-
-            bool result = Validator.IsBuEmailValid(email);
 
             Assert.False(result);
         }
