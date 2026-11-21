@@ -1,34 +1,30 @@
-﻿using SchemaX.Mobile.Models;
+﻿using SchemaX.SIS.Models;
 
 namespace SchemaX.Mobile.Services;
 
 public class FakeStudentService : IStudentService
 {
-    private readonly List<Student> _students =
-    [
-        new() { StudentId = "2025-01-0001", UserId = 1, FirstName = "Juan", MiddleName = "Reyes", Surname = "Dela Cruz", Gender = "Male", YearLevel = 2, Program = "BSCS", Bloc = "A", Birthday = new DateTime(2005, 4, 12), BuEmail = "juan.delacruz@bicol-u.edu.ph", ContactNo = "09171234501" },
-        new() { StudentId = "2025-01-0002", UserId = 1, FirstName = "Maria", MiddleName = "Santos", Surname = "Clara", Gender = "Female", YearLevel = 2, Program = "BSCS", Bloc = "A", Birthday = new DateTime(2005, 8, 21), BuEmail = "maria.clara@bicol-u.edu.ph", ContactNo = "09171234502" },
-        new() { StudentId = "2025-01-0003", UserId = 1, FirstName = "Rafael", MiddleName = null, Surname = "Mendoza", Gender = "Male", YearLevel = 1, Program = "BSIT", Bloc = "B", Birthday = new DateTime(2006, 1, 15), BuEmail = "rafael.mendoza@bicol-u.edu.ph", ContactNo = "09171234503" },
-        new() { StudentId = "2025-01-0004", UserId = 1, FirstName = "Camille", MiddleName = "Diaz", Surname = "Navarro", Gender = "Female", YearLevel = 3, Program = "BSCS", Bloc = "B", Birthday = new DateTime(2004, 11, 3), BuEmail = "camille.navarro@bicol-u.edu.ph", ContactNo = "09171234504" },
-        new() { StudentId = "2025-01-0005", UserId = 1, FirstName = "Gabriel", MiddleName = "Cruz", Surname = "Bautista", Gender = "Male", YearLevel = 4, Program = "BSIT", Bloc = "A", Birthday = new DateTime(2003, 6, 30), BuEmail = "gabriel.bautista@bicol-u.edu.ph", ContactNo = "09171234505" },
-        new() { StudentId = "2025-01-0006", UserId = 1, FirstName = "Sofia", MiddleName = "Gomez", Surname = "Villanueva", Gender = "Female", YearLevel = 1, Program = "BSCS", Bloc = "A", Birthday = new DateTime(2006, 9, 18), BuEmail = "sofia.villanueva@bicol-u.edu.ph", ContactNo = "09171234506" },
-        new() { StudentId = "2025-01-0007", UserId = 1, FirstName = "Miguel", MiddleName = "Torres", Surname = "Aquino", Gender = "Male", YearLevel = 3, Program = "BSIT", Bloc = "C", Birthday = new DateTime(2004, 2, 25), BuEmail = "miguel.aquino@bicol-u.edu.ph", ContactNo = "09171234507" },
-        new() { StudentId = "2025-01-0008", UserId = 1, FirstName = "Isabella", MiddleName = null, Surname = "Ramos", Gender = "Female", YearLevel = 4, Program = "BSCS", Bloc = "A", Birthday = new DateTime(2003, 12, 8), BuEmail = "isabella.ramos@bicol-u.edu.ph", ContactNo = "09171234508" },
-        new() { StudentId = "2025-01-0009", UserId = 1, FirstName = "Daniel", MiddleName = "Lopez", Surname = "Castillo", Gender = "Male", YearLevel = 2, Program = "BSIT", Bloc = "B", Birthday = new DateTime(2005, 5, 19), BuEmail = "daniel.castillo@bicol-u.edu.ph", ContactNo = "09171234509" },
-        new() { StudentId = "2025-01-0010", UserId = 1, FirstName = "Bianca", MiddleName = "Flores", Surname = "Morales", Gender = "Female", YearLevel = 1, Program = "BSIT", Bloc = "A", Birthday = new DateTime(2006, 7, 14), BuEmail = "bianca.morales@bicol-u.edu.ph", ContactNo = "09171234510" },
-        new() { StudentId = "2025-01-0011", UserId = 1, FirstName = "Lorenzo", MiddleName = "Perez", Surname = "Santiago", Gender = "Male", YearLevel = 3, Program = "BSCS", Bloc = "A", Birthday = new DateTime(2004, 3, 27), BuEmail = "lorenzo.santiago@bicol-u.edu.ph", ContactNo = "09171234511" },
-        new() { StudentId = "2025-01-0012", UserId = 1, FirstName = "Angela", MiddleName = null, Surname = "Domingo", Gender = "Female", YearLevel = 2, Program = "BSCS", Bloc = "B", Birthday = new DateTime(2005, 10, 9), BuEmail = "angela.domingo@bicol-u.edu.ph", ContactNo = "09171234512" },
-        new() { StudentId = "2025-01-0013", UserId = 1, FirstName = "Enzo", MiddleName = "Rivera", Surname = "Mercado", Gender = "Male", YearLevel = 4, Program = "BSIT", Bloc = "B", Birthday = new DateTime(2003, 1, 22), BuEmail = "enzo.mercado@bicol-u.edu.ph", ContactNo = "09171234513" },
-        new() { StudentId = "2025-01-0014", UserId = 1, FirstName = "Katrina", MiddleName = "Vargas", Surname = "Salazar", Gender = "Female", YearLevel = 3, Program = "BSIT", Bloc = "A", Birthday = new DateTime(2004, 8, 5), BuEmail = "katrina.salazar@bicol-u.edu.ph", ContactNo = "09171234514" },
-        new() { StudentId = "2025-01-0015", UserId = 1, FirstName = "Mateo", MiddleName = "Castro", Surname = "Ortega", Gender = "Male", YearLevel = 1, Program = "BSCS", Bloc = "B", Birthday = new DateTime(2006, 11, 29), BuEmail = "mateo.ortega@bicol-u.edu.ph", ContactNo = "09171234515" }
-    ];
-
-    public Task<IReadOnlyList<Student>> GetStudentsAsync(
-        string? search = null,
-        string? program = null,
-        int? year = null,
-        CancellationToken ct = default)
+    private static readonly List<Student> _students = new()
     {
+        new Student { StudentId = "2026-01-00001", FirstName = "John", MiddleName = "Jackson", Surname = "Doe",
+                      Program = "BSCS", YearLevel = 2, Gender = "Male", Bloc = "2B", Birthday = new DateTime(2000, 1, 1),
+                      BuEmail = "johnjackson.doe26@bicol-u.edu.ph", ContactNo = "09123456789" },
+        new Student { StudentId = "2026-01-00002", FirstName = "Jane", MiddleName = "Marie", Surname = "Smith",
+                      Program = "BSIT", YearLevel = 3, Gender = "Female", Bloc = "3A", Birthday = new DateTime(2001, 5, 15),
+                      BuEmail = "janemarie.smith26@bicol-u.edu.ph", ContactNo = "09123456789" },
+        new Student { StudentId = "2026-01-00003", FirstName = "Alice", MiddleName = "Elizabeth", Surname = "Johnson",
+                      Program = "BSIT", YearLevel = 1, Gender = "Female", Bloc = "1C", Birthday = new DateTime(2003, 9, 8),
+                      BuEmail = "alice.elizabeth.johnson26@bicol-u.edu.ph", ContactNo = "09123456789" },
+        new Student { StudentId = "2026-01-00004", FirstName = "Bob", MiddleName = "William", Surname = "Brown",
+                      Program = "BSCS", YearLevel = 4, Gender = "Male", Bloc = "4B", Birthday = new DateTime(2002, 12, 25),
+                      BuEmail = "bob.william.brown26@bicol-u.edu.ph", ContactNo = "09123456789" }
+    };
+
+    public async Task<IReadOnlyList<Student>> GetStudentsAsync(
+        string? search = null, string? program = null, int? year = null, CancellationToken ct = default)
+    {
+        await Task.Yield();
+
         IEnumerable<Student> query = _students;
 
         if (!string.IsNullOrWhiteSpace(search))
@@ -36,48 +32,50 @@ public class FakeStudentService : IStudentService
             string q = search.Trim();
             query = query.Where(s =>
                 s.StudentId.Contains(q, StringComparison.OrdinalIgnoreCase) ||
-                s.FullName.Contains(q, StringComparison.OrdinalIgnoreCase));
+                s.FirstName.Contains(q, StringComparison.OrdinalIgnoreCase) ||
+                s.Surname.Contains(q, StringComparison.OrdinalIgnoreCase));
         }
 
-        if (!string.IsNullOrWhiteSpace(program) && !program.Equals("All", StringComparison.OrdinalIgnoreCase))
-        {
+        if (!string.IsNullOrWhiteSpace(program))
             query = query.Where(s => s.Program.Equals(program, StringComparison.OrdinalIgnoreCase));
-        }
 
-        if (year.HasValue && year.Value > 0)
-        {
+        if (year.HasValue)
             query = query.Where(s => s.YearLevel == year.Value);
-        }
 
-        IReadOnlyList<Student> result = query
-            .OrderBy(s => s.Surname)
-            .ThenBy(s => s.FirstName)
-            .ToList();
-
-        return Task.FromResult(result);
+        return query.OrderBy(s => s.Surname).ThenBy(s => s.FirstName).ToList();
     }
 
-    public Task<Student?> GetByIdAsync(string studentId, CancellationToken ct = default) =>
-        Task.FromResult(_students.FirstOrDefault(s => s.StudentId == studentId));
-
-    public Task AddAsync(Student student, CancellationToken ct = default)
+    public async Task<Student?> GetByIdAsync(string studentId, CancellationToken ct = default)
     {
+        await Task.Delay(150, ct);
+        return _students.FirstOrDefault(s => s.StudentId == studentId);
+    }
+
+    public async Task AddAsync(Student student, CancellationToken ct = default)
+    {
+        await Task.Delay(150, ct);
         _students.Add(student);
-        return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(Student student, CancellationToken ct = default)
+    public async Task UpdateAsync(Student student, CancellationToken ct = default)
     {
-        int idx = _students.FindIndex(s => s.StudentId == student.StudentId);
-        if (idx >= 0) _students[idx] = student;
-        return Task.CompletedTask;
+        await Task.Delay(150, ct);
+        int i = _students.FindIndex(s => s.StudentId == student.StudentId);
+        if (i >= 0) _students[i] = student;
     }
 
-    public Task DeleteAsync(string studentId, CancellationToken ct = default)
+    public async Task DeleteAsync(string studentId, CancellationToken ct = default)
     {
+        await Task.Delay(150, ct);
         _students.RemoveAll(s => s.StudentId == studentId);
-        return Task.CompletedTask;
     }
 
     public Task<bool> PingAsync(CancellationToken ct = default) => Task.FromResult(true);
+
+    public async Task<bool> LoginAsync(string username, string password, CancellationToken ct = default)
+    {
+        await Task.Delay(400, ct);
+        // Fake rule: any non-empty username and password works.
+        return !string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password);
+    }
 }

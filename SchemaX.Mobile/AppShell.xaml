@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="SchemaX.Mobile.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:SchemaX.Mobile.Pages"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.BackgroundColor="{StaticResource SchemaPrimary}"
-    Shell.ForegroundColor="White"
-    Shell.TitleColor="White">
+<Shell x:Class="SchemaX.Mobile.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:SchemaX.Mobile.Views"
+       Shell.NavBarIsVisible="False"
+       FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Sign In"
-        Route="login"
-        ContentTemplate="{DataTemplate pages:LoginPage}" />
-
-    <TabBar Route="main">
-        <ShellContent
-            Title="Directory"
-            Route="directory"
-            ContentTemplate="{DataTemplate pages:DirectoryPage}" />
-        <ShellContent
-            Title="Settings"
-            Route="settings"
-            ContentTemplate="{DataTemplate pages:SettingsPage}" />
-    </TabBar>
-
+    <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="students" ContentTemplate="{DataTemplate views:StudentListPage}" />
 </Shell>

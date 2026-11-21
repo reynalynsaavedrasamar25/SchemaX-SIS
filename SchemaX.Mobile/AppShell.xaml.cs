@@ -1,13 +1,13 @@
-﻿using SchemaX.Mobile.Pages;
+using SchemaX.Mobile.Views;
 
-namespace SchemaX.Mobile;
-
-public partial class AppShell : Shell
+namespace SchemaX.Mobile
 {
-    public AppShell()
+    public partial class AppShell : Shell
     {
-        InitializeComponent();
-        Routing.RegisterRoute(nameof(StudentDetailPage), typeof(StudentDetailPage));
-        Routing.RegisterRoute(nameof(StudentFormPage), typeof(StudentFormPage));
+        public AppShell()
+        {
+            InitializeComponent();
+            Routing.RegisterRoute("detail", typeof(StudentDetailPage));
+        }
     }
 }

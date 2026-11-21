@@ -14,6 +14,7 @@ public partial class StudentListViewModel : ObservableObject
     private int? _year;                       // current year filter (null = all)
     private int _loadVersion;                 // lets us ignore outdated results
     private CancellationTokenSource? _searchCts;
+    private CancellationTokenSource? _loadCts;      // cancels the previous load when a new one starts
 
     public StudentListViewModel(IStudentService svc)
     {
@@ -42,7 +43,11 @@ public partial class StudentListViewModel : ObservableObject
     public ObservableCollection<FilterChip> YearFilters { get; }
 
     [ObservableProperty] private string searchText = "";
-    [ObservableProperty] private string statusMessage = "";
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasStatus))]
+    private string statusMessage = "";
+
+    public bool HasStatus => !string.IsNullOrEmpty(StatusMessage);
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ShowSpinner))]
@@ -121,12 +126,21 @@ public partial class StudentListViewModel : ObservableObject
     {
         int version = ++_loadVersion;
 
+        // cancel the previous load and give this one an 8-second limit
+        _loadCts?.Cancel();
+        _loadCts = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+        var ct = _loadCts.Token;
+
         try
         {
             IsBusy = true;
             StatusMessage = "";
 
-            var list = await _svc.GetStudentsAsync(SearchText, _program, _year);
+            // run the query on a background thread so the screen can never freeze
+            string search = SearchText;
+            string? program = _program;
+            int? year = _year;
+            var list = await Task.Run(() => _svc.GetStudentsAsync(search, program, year, ct), ct);
 
             // newer search started while waiting, so drop this result
             if (version != _loadVersion) return;
@@ -137,6 +151,17 @@ public partial class StudentListViewModel : ObservableObject
 
             OnPropertyChanged(nameof(CountText));
             StatusMessage = Students.Count == 0 ? "No students match your search." : "";
+        }
+        catch (OperationCanceledException)
+        {
+            // Replaced by a newer load: ignore. Still the newest load: it hit the 8-second limit.
+            if (version == _loadVersion)
+                StatusMessage = "The database took too long to respond. Pull down to retry.";
+        }
+        catch (DataAccessException ex)
+        {
+            if (version == _loadVersion)
+                StatusMessage = ex.Message;   // "Cannot reach the database. Check that MySQL is running."
         }
         catch (Exception)
         {

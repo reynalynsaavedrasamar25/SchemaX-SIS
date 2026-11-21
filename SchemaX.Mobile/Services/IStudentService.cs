@@ -1,4 +1,4 @@
-﻿using SchemaX.Mobile.Models;
+﻿using SchemaX.SIS.Models;
 
 namespace SchemaX.Mobile.Services;
 
@@ -15,4 +15,5 @@ public interface IStudentService
     Task UpdateAsync(Student student, CancellationToken ct = default);
     Task DeleteAsync(string studentId, CancellationToken ct = default);
     Task<bool> PingAsync(CancellationToken ct = default);
+    Task<bool> LoginAsync(string username, string password, CancellationToken ct = default);
 }
