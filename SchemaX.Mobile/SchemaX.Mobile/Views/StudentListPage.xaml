@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SchemaX.Mobile.ViewModels"
+             xmlns:models="clr-namespace:SchemaX.SIS.Models"
              x:Class="SchemaX.Mobile.Views.StudentListPage"
+             x:DataType="vm:StudentListViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource PageLight}, Dark={StaticResource PageDark}}">
-    <Label Text="Student list coming in Step 3"
-           HorizontalOptions="Center" VerticalOptions="Center" />
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <VerticalStackLayout Grid.Row="0" Padding="20,24,20,12" Spacing="2">
+            <Label Text="Students" FontSize="28" FontAttributes="Bold" />
+            <Label Text="SchemaX Directory"
+                   TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+        </VerticalStackLayout>
+
+        <!-- Student cards -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Students}"
+                        Margin="16,0,16,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Student">
+                    <Border StrokeShape="RoundRectangle 14"
+                            StrokeThickness="1"
+                            Padding="16"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource CardLight}, Dark={StaticResource CardDark}}">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+
+                            <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                <Label Text="{Binding FullName}"
+                                       FontSize="17" FontAttributes="Bold" />
+                                <Label Text="{Binding StudentId}" FontSize="13"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                                <Label Text="{Binding Bloc, StringFormat='Bloc {0}'}" FontSize="13"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                <Border StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="10,4"
+                                        BackgroundColor="{StaticResource Accent}">
+                                    <Label Text="{Binding Program}"
+                                           FontSize="12" FontAttributes="Bold"
+                                           TextColor="White" />
+                                </Border>
+                                <Label Text="{Binding YearLevel, StringFormat='Year {0}'}"
+                                       FontSize="13" HorizontalOptions="End"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Status text and spinner sit on top of the list area -->
+        <Label Grid.Row="1" Text="{Binding StatusMessage}"
+               HorizontalOptions="Center" VerticalOptions="Center" />
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+    </Grid>
 </ContentPage>

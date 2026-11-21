@@ -29,6 +29,10 @@ namespace SchemaX.Mobile
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<LoginPage>();
 
+            // Student list
+            builder.Services.AddTransient<StudentListViewModel>();
+            builder.Services.AddTransient<StudentListPage>();
+
             return builder.Build();
         }
     }
