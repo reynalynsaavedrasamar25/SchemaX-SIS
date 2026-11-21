@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SchemaX.Mobile.ViewModels"
+             xmlns:models="clr-namespace:SchemaX.SIS.Models"
+             x:Class="SchemaX.Mobile.Views.StudentListPage"
+             x:DataType="vm:StudentListViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageLight}, Dark={StaticResource PageDark}}">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="ChipTemplate" x:DataType="vm:FilterChip">
+            <Grid Margin="0,0,8,8">
+                <!-- Normal (grey) chip, always there -->
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 19"
+                        HeightRequest="38"
+                        Padding="16,0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
+                    <Label Text="{Binding Label}" FontSize="13" VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+                </Border>
+
+                <!-- Selected (blue) chip, only visible when IsSelected is true -->
+                <Border IsVisible="{Binding IsSelected}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 19"
+                        HeightRequest="38"
+                        Padding="16,0"
+                        BackgroundColor="{StaticResource Accent}">
+                    <Label Text="{Binding Label}" FontSize="13" VerticalOptions="Center"
+                           TextColor="White" />
+                </Border>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectCommand}"
+                                          CommandParameter="{Binding .}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
+
+        <!-- Header band (same dark teal as the desktop header) -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="20,28,12,16"
+              BackgroundColor="{StaticResource Primary}">
+            <VerticalStackLayout Grid.Column="0" Spacing="2">
+                <Label Text="Students" FontSize="28" FontAttributes="Bold" TextColor="White" />
+                <Label Text="{Binding CountText}" TextColor="{StaticResource Gray200}" />
+            </VerticalStackLayout>
+
+            <Button Grid.Column="1" Text="Log out" Command="{Binding LogoutCommand}"
+                    FontSize="15" HeightRequest="40" MinimumHeightRequest="40"
+                    Padding="14,0" CornerRadius="20" VerticalOptions="Center"
+                    BackgroundColor="Transparent" TextColor="White">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#33FFFFFF" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#55FFFFFF" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+        </Grid>
+
+        <!-- Search bar -->
+        <SearchBar Grid.Row="1"
+                   Placeholder="Search by name or student ID"
+                   Text="{Binding SearchText}"
+                   Margin="8,0,8,4" />
+
+        <!-- Quick filters -->
+        <VerticalStackLayout Grid.Row="2" Padding="16,4,16,0">
+            <FlexLayout Wrap="Wrap"
+                        BindableLayout.ItemsSource="{Binding ProgramFilters}"
+                        BindableLayout.ItemTemplate="{StaticResource ChipTemplate}" />
+            <FlexLayout Wrap="Wrap"
+                        BindableLayout.ItemsSource="{Binding YearFilters}"
+                        BindableLayout.ItemTemplate="{StaticResource ChipTemplate}" />
+        </VerticalStackLayout>
+
+        <!-- Student cards (pull down to refresh) -->
+        <RefreshView Grid.Row="3"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}">
+            <CollectionView ItemsSource="{Binding Students}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnStudentSelected"
+                            Margin="16,0,16,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Student">
+                        <Border StrokeShape="RoundRectangle 14"
+                                StrokeThickness="1"
+                                Padding="16"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource CardLight}, Dark={StaticResource CardDark}}">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+
+                                <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                    <Label Text="{Binding FullName}"
+                                           FontSize="17" FontAttributes="Bold" />
+                                    <Label Text="{Binding StudentId}" FontSize="13"
+                                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                                    <Label Text="{Binding Bloc, StringFormat='Bloc {0}'}" FontSize="13"
+                                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="End">
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 12"
+                                            Padding="10,4"
+                                            BackgroundColor="{StaticResource Accent}">
+                                        <Label Text="{Binding Program}"
+                                               FontSize="12" FontAttributes="Bold"
+                                               TextColor="White" />
+                                    </Border>
+                                    <Label Text="{Binding YearLevel, StringFormat='Year {0}'}"
+                                           FontSize="13" HorizontalOptions="End"
+                                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                                </VerticalStackLayout>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Empty-state message and spinner sit on top of the list area -->
+        <Label Grid.Row="3" Text="{Binding StatusMessage}" InputTransparent="True"
+               HorizontalOptions="Center" VerticalOptions="Center" />
+        <ActivityIndicator Grid.Row="3"
+                           IsRunning="{Binding ShowSpinner}" IsVisible="{Binding ShowSpinner}"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
