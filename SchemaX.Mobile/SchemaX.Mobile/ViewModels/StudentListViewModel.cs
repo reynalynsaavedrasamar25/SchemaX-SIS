@@ -72,6 +72,13 @@ public partial class StudentListViewModel : ObservableObject
         catch (TaskCanceledException) { /* user typed again, ignore */ }
     }
 
+    [RelayCommand]
+    private async Task OpenDetailAsync(Student student)
+    {
+        await Shell.Current.GoToAsync("detail",
+            new ShellNavigationQueryParameters { { "Student", student } });
+    }
+
     [RelayCommand(AllowConcurrentExecutions = true)]
     private async Task SelectFilterAsync(FilterChip chip)
     {

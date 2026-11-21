@@ -72,6 +72,8 @@
         <!-- Student cards -->
         <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Students}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnStudentSelected"
                         Margin="16,0,16,0">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />

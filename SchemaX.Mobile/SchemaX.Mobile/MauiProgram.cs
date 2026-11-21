@@ -33,6 +33,10 @@ namespace SchemaX.Mobile
             builder.Services.AddTransient<StudentListViewModel>();
             builder.Services.AddTransient<StudentListPage>();
 
+            // Student detail
+            builder.Services.AddTransient<StudentDetailViewModel>();
+            builder.Services.AddTransient<StudentDetailPage>();
+
             return builder.Build();
         }
     }

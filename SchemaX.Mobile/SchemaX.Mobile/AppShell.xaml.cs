@@ -1,3 +1,5 @@
+using SchemaX.Mobile.Views;
+
 namespace SchemaX.Mobile
 {
     public partial class AppShell : Shell
@@ -5,6 +7,7 @@ namespace SchemaX.Mobile
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute("detail", typeof(StudentDetailPage));
         }
     }
 }
