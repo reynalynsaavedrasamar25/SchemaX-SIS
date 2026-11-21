@@ -23,14 +23,32 @@ public partial class LoginViewModel : ObservableObject
     [RelayCommand]
     private async Task LoginAsync()
     {
+        ErrorMessage = "";
+
         if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
         {
             ErrorMessage = "Please enter your username and password.";
             return;
         }
 
-        bool ok = await _svc.LoginAsync(Username, Password);
-        if (ok) await Shell.Current.GoToAsync("//students");
-        else ErrorMessage = "Invalid username or password.";
+        try
+        {
+            bool ok = await _svc.LoginAsync(Username, Password);
+            if (ok) await Shell.Current.GoToAsync("//students");
+            else ErrorMessage = "Invalid username or password.";
+        }
+        catch (DataAccessException ex)
+        {
+#if DEBUG
+            // Debug builds also show the technical reason, so we can find the real cause.
+            ErrorMessage = $"{ex.Message} [{ex.InnerException?.Message}]";
+#else
+            ErrorMessage = ex.Message;
+#endif
+        }
+        catch (Exception)
+        {
+            ErrorMessage = "Something went wrong. Please try again.";
+        }
     }
 }

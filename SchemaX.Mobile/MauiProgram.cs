@@ -23,7 +23,9 @@ namespace SchemaX.Mobile
 #endif
 
             // Services
-            builder.Services.AddSingleton<IStudentService, FakeStudentService>(); // REPLACE WITH REAL SERVICE IMPLEMENTATION
+            builder.Services.AddSingleton(DbConfig.Load());
+            builder.Services.AddSingleton<UserSession>();
+            builder.Services.AddSingleton<IStudentService, MySqlStudentService>();
 
             // Login
             builder.Services.AddTransient<LoginViewModel>();
