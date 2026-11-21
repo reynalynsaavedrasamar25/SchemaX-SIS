@@ -7,14 +7,14 @@ namespace SchemaX.SIS
 {
     public partial class dashboardForm : Form
     {
-        private Panel? _pnlBreakdown;
-        private FormsPlot? _yearPlot;
-        private FormsPlot? _programPlot;
-
+        private readonly ScottPlot.WinForms.FormsPlot plotProgram = new();
+        private readonly Button btnRefresh = new();
         public dashboardForm()
         {
             InitializeComponent();
             StyleControls();
+            SetupCharts();
+            SetupRefreshButton();
             ShowUserInfo();
 
             btnUser.Click += btnUser_Click;
@@ -67,6 +67,70 @@ namespace SchemaX.SIS
 
             pnlUserInfo.Location = new Point(10, btnUser.Bottom + 5);
             pnlUserInfo.Visible = false;
+
+            scotPlot.BackColor = BackColor;
+        }
+
+        // move scottplot into overview panel and adds a second one
+        private void SetupCharts()
+        {
+            foreach (var chart in new[] { scotPlot, plotProgram })
+            {
+                chart.BackColor = ThemeColors.Surface;
+                pnlOverview.Controls.Add(chart);   // re-parents scotPlot off the form
+                chart.BringToFront();
+            }
+            scotPlot.SetBounds(11, 118, 268, 192);
+            plotProgram.SetBounds(291, 118, 268, 192);
+        }
+
+        private void SetupRefreshButton()
+        {
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Text = "Refresh Dashboard";
+            btnRefresh.Size = new Size(160, 30);
+            btnRefresh.Location = new Point(pnlOverview.Right - btnRefresh.Width, 520);
+            ButtonStyler.Apply(btnRefresh, "", ButtonKind.Solid, ThemeColors.Accent);
+            btnRefresh.Click += (s, e) => RefreshStats();
+            Controls.Add(btnRefresh);
+        }
+
+        // bar chart scottplot
+        private static void DrawBars(ScottPlot.WinForms.FormsPlot chart, string title,
+            List<KeyValuePair<string, int>> rows, string hexColor)
+        {
+            var plot = chart.Plot;
+            plot.Clear();
+            plot.Title(title);
+
+            if (rows.Count == 0)
+            {
+                plot.Title(title + " (no students yet)");
+                chart.Refresh();
+                return;
+            }
+
+            var fill = ScottPlot.Color.FromHex(hexColor);
+            var bars = new List<ScottPlot.Bar>();
+            var ticks = new List<ScottPlot.Tick>();
+
+            for (int i = 0; i < rows.Count; i++)
+            {
+                bars.Add(new ScottPlot.Bar
+                {
+                    Position = i,
+                    Value = rows[i].Value,
+                    FillColor = fill,
+                    Size = 0.6,
+                    Label = rows[i].Value.ToString()   // number shown above the bar
+                });
+                ticks.Add(new ScottPlot.Tick(i, rows[i].Key));
+            }
+
+            plot.Add.Bars(bars);
+            plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks.ToArray());
+            plot.Axes.Margins(bottom: 0, top: 0.25);
+            chart.Refresh();
         }
 
         private void ShowUserInfo()
@@ -105,41 +169,16 @@ namespace SchemaX.SIS
 
                 lblBreakdown.Visible = false;
 
-                if (_pnlBreakdown == null)
-                {
-                    _pnlBreakdown = new Panel
-                    {
-                        Location = new Point(11, 118),
-                        Size = new Size(548, 190)
-                    };
-                    pnlOverview.Controls.Add(_pnlBreakdown);
+                var years = perYear
+                    .Select(y => new KeyValuePair<string, int>("Year " + y.Key, y.Value)).ToList();
+                var programs = perProgram
+                    .Select(p => new KeyValuePair<string, int>(p.Key, p.Value)).ToList();
 
-                    _pnlBreakdown.Controls.Add(new Panel
-                    {
-                        BackColor = Color.Gainsboro,
-                        Location = new Point(0, 0),
-                        Size = new Size(548, 1)
-                    });
+                DrawBars(scotPlot, "Students per year level", years, "#33658A");
+                DrawBars(plotProgram, "Students per program", programs, "#2A9D8F");
 
-                    _yearPlot = new FormsPlot
-                    {
-                        Location = new Point(0, 8),
-                        Size = new Size(268, 180)
-                    };
-
-                    _programPlot = new FormsPlot
-                    {
-                        Location = new Point(280, 8),
-                        Size = new Size(268, 180)
-                    };
-
-                    _pnlBreakdown.Controls.Add(_yearPlot);
-                    _pnlBreakdown.Controls.Add(_programPlot);
-                }
-
-                RenderCharts(perYear, perProgram);
-
-                lblStatus.Text = "Connected to database.";
+                lblStatus.Text = "Connected to database. Last refreshed " +
+                                 DateTime.Now.ToString("h:mm:ss tt") + ".";
             }
             catch (Exception ex)
             {
@@ -258,6 +297,35 @@ namespace SchemaX.SIS
                 TextAlign = ContentAlignment.MiddleCenter,
                 Location = new Point(0, 62),
                 Size = new Size(128, 24)
+            });
+            return card;
+        }
+
+        private static Panel MakeCard(string caption, int value)
+        {
+            var card = new Panel
+            {
+                Size = new Size(125, 90),
+                BackColor = ThemeColors.Background,
+                Margin = new Padding(6)
+            };
+            card.Controls.Add(new Label
+            {
+                Text = value.ToString(),
+                Font = new Font("Segoe UI", 24F, FontStyle.Bold),
+                ForeColor = ThemeColors.Accent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(0, 6),
+                Size = new Size(125, 50)
+            });
+            card.Controls.Add(new Label
+            {
+                Text = caption,
+                Font = new Font("Segoe UI", 10F),
+                ForeColor = ThemeColors.TextDark,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(0, 58),
+                Size = new Size(125, 24)
             });
             return card;
         }

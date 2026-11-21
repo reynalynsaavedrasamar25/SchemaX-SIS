@@ -160,7 +160,7 @@
             btnSignUp.Location = new Point(96, 445);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(75, 23);
-            btnSignUp.TabIndex = 11;
+            btnSignUp.TabIndex = 12;
             btnSignUp.Text = "Sign Up";
             btnSignUp.UseVisualStyleBackColor = true;
             btnSignUp.Click += btnSignUp_Click;
@@ -172,7 +172,7 @@
             lblTitle.Location = new Point(145, 24);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(85, 28);
-            lblTitle.TabIndex = 12;
+            lblTitle.TabIndex = 15;
             lblTitle.Text = "Sign Up";
             // 
             // label3
@@ -192,14 +192,14 @@
             txtConfirm.Name = "txtConfirm";
             txtConfirm.PasswordChar = '*';
             txtConfirm.Size = new Size(185, 23);
-            txtConfirm.TabIndex = 14;
+            txtConfirm.TabIndex = 11;
             // 
             // btnBack
             // 
             btnBack.Location = new Point(177, 445);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(104, 23);
-            btnBack.TabIndex = 15;
+            btnBack.TabIndex = 13;
             btnBack.Text = "Back to Log In";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
