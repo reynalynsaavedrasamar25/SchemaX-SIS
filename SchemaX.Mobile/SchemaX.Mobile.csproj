@@ -2,36 +2,35 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
+
 		<OutputType>Exe</OutputType>
 		<RootNamespace>SchemaX.Mobile</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-
-		<!-- Enable XAML source generation for faster build times and improved performance. -->
-		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+		<NoWarn>$(NoWarn);MVVMTK0045</NoWarn>
+		<NoWarn>$(NoWarn);NU1701</NoWarn>
 
 		<!-- Display name -->
-		<ApplicationTitle>SchemaX Directory</ApplicationTitle>
+		<ApplicationTitle>SchemaX SIS</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.schemax.directory</ApplicationId>
+		<ApplicationId>com.schemax.sis.mobile</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<!-- Minimum Android 10 (API 29) -->
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">29.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\logo_fg.png" ForegroundScale="0.7" Color="#FFFFFF" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#2F4858" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -44,27 +43,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="11.0.0" />
 		<PackageReference Include="MySqlConnector" Version="2.6.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\DirectoryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\StudentDetailPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\StudentFormPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<Compile Update="Views\LoginPage.xaml.cs">
+			<DependentUpon>LoginPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StudentDetailPage.xaml.cs">
+			<DependentUpon>StudentDetailPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StudentListPage.xaml.cs">
+			<DependentUpon>StudentListPage.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="Views\LoginPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\StudentDetailPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\StudentListPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>

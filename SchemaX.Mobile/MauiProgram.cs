@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using SchemaX.Mobile.Services;
-using SchemaX.Mobile.Pages;
+using SchemaX.Mobile.ViewModels;
+using SchemaX.Mobile.Views;
 
 namespace SchemaX.Mobile
 {
@@ -18,13 +19,24 @@ namespace SchemaX.Mobile
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
-            builder.Services.AddSingleton<IStudentService, FakeStudentService>();
-            builder.Services.AddTransient<DirectoryPage>();
-            builder.Services.AddTransient<StudentFormPage>();
+
+            // Services
+            builder.Services.AddSingleton<IStudentService, FakeStudentService>(); // REPLACE WITH REAL SERVICE IMPLEMENTATION
+
+            // Login
+            builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<LoginPage>();
-            builder.Services.AddTransient<SettingsPage>();
+
+            // Student list
+            builder.Services.AddTransient<StudentListViewModel>();
+            builder.Services.AddTransient<StudentListPage>();
+
+            // Student detail
+            builder.Services.AddTransient<StudentDetailViewModel>();
+            builder.Services.AddTransient<StudentDetailPage>();
+
             return builder.Build();
         }
     }
