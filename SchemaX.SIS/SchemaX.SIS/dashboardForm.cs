@@ -43,7 +43,6 @@ namespace SchemaX.SIS
 
             pnlSidebar.BackColor = ThemeColors.GridAlternateRow;
 
-
             pnlUserInfo.BackColor = ThemeColors.Surface;
             lblUserName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             pnlSidebar.BackColor = Color.FromArgb(226, 234, 248);
@@ -64,6 +63,8 @@ namespace SchemaX.SIS
 
             pnlUserInfo.Location = new Point(10, btnUser.Bottom + 5);
             pnlUserInfo.Visible = false;
+
+            scotPlot.BackColor = BackColor;
         }
 
         private void ShowUserInfo()

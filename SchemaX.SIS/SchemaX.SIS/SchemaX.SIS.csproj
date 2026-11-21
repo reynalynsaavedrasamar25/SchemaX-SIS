@@ -23,7 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
     <PackageReference Include="MySqlConnector" Version="2.6.2" />
+    <PackageReference Include="QuestPDF" Version="2026.9.2" />
+    <PackageReference Include="ScottPlot.WinForms" Version="5.1.59" />
   </ItemGroup>
 
   <ItemGroup>

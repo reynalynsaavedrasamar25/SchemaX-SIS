@@ -39,6 +39,7 @@
             lblBreakdown = new Label();
             lblStatus = new Label();
             label1 = new Label();
+            scotPlot = new ScottPlot.WinForms.FormsPlot();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlSidebar.SuspendLayout();
@@ -241,11 +242,20 @@
             label1.TabIndex = 6;
             label1.Text = "Welcome to SchemaX Student Information System";
             // 
+            // scotPlot
+            // 
+            scotPlot.BackColor = SystemColors.Window;
+            scotPlot.Location = new Point(236, 76);
+            scotPlot.Name = "scotPlot";
+            scotPlot.Size = new Size(141, 108);
+            scotPlot.TabIndex = 7;
+            // 
             // dashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 560);
+            Controls.Add(scotPlot);
             Controls.Add(label1);
             Controls.Add(lblStatus);
             Controls.Add(pnlOverview);
@@ -291,5 +301,6 @@
         private Label lblStatus;
         private Label label1;
         private PictureBox pictureBox1;
+        private ScottPlot.WinForms.FormsPlot scotPlot;
     }
 }
