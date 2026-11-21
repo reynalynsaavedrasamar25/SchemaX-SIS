@@ -11,14 +11,10 @@
 
             <!-- Brand -->
             <VerticalStackLayout Spacing="6">
-                <Border WidthRequest="72" HeightRequest="72"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 20"
-                        HorizontalOptions="Center"
-                        BackgroundColor="{StaticResource Accent}">
-                    <Label Text="SX" FontSize="28" FontAttributes="Bold" TextColor="White"
-                           HorizontalOptions="Center" VerticalOptions="Center" />
-                </Border>
+                <Image Source="schemax_logo.png"
+                       WidthRequest="96" HeightRequest="96"
+                       HorizontalOptions="Center"
+                       SemanticProperties.Description="SchemaX logo" />
                 <Label Text="SchemaX SIS" FontSize="28" FontAttributes="Bold"
                        HorizontalOptions="Center" />
                 <Label Text="Sign in to view the student directory"
