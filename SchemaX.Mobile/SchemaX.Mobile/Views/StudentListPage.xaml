@@ -7,17 +7,70 @@
              x:DataType="vm:StudentListViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource PageLight}, Dark={StaticResource PageDark}}">
 
-    <Grid RowDefinitions="Auto,*">
+    <ContentPage.Resources>
+        <!-- One look for every quick-filter btn -->
+        <DataTemplate x:Key="ChipTemplate" x:DataType="vm:FilterChip">
+            <Grid>
+                <!-- Normal (grey) chip, always there -->
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 19"
+                        HeightRequest="38"
+                        Padding="16,0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
+                    <Label Text="{Binding Label}" FontSize="13" VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+                </Border>
+
+                <!-- Selected (blue) chip, only visible when IsSelected is true -->
+                <Border IsVisible="{Binding IsSelected}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 19"
+                        HeightRequest="38"
+                        Padding="16,0"
+                        BackgroundColor="{StaticResource Accent}">
+                    <Label Text="{Binding Label}" FontSize="13" VerticalOptions="Center"
+                           TextColor="White" />
+                </Border>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectCommand}"
+                                          CommandParameter="{Binding .}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
 
         <!-- Header -->
-        <VerticalStackLayout Grid.Row="0" Padding="20,24,20,12" Spacing="2">
+        <VerticalStackLayout Grid.Row="0" Padding="20,24,20,8" Spacing="2">
             <Label Text="Students" FontSize="28" FontAttributes="Bold" />
             <Label Text="SchemaX Directory"
                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
         </VerticalStackLayout>
 
+        <!-- Search bar -->
+        <SearchBar Grid.Row="1"
+                   Placeholder="Search by name or student ID"
+                   Text="{Binding SearchText}"
+                   Margin="8,0,8,4" />
+
+        <!-- Quick filters -->
+        <VerticalStackLayout Grid.Row="2" Spacing="8" Padding="0,4,0,8">
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="8" Padding="16,0"
+                                       BindableLayout.ItemsSource="{Binding ProgramFilters}"
+                                       BindableLayout.ItemTemplate="{StaticResource ChipTemplate}" />
+            </ScrollView>
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="8" Padding="16,0"
+                                       BindableLayout.ItemsSource="{Binding YearFilters}"
+                                       BindableLayout.ItemTemplate="{StaticResource ChipTemplate}" />
+            </ScrollView>
+        </VerticalStackLayout>
+
         <!-- Student cards -->
-        <CollectionView Grid.Row="1"
+        <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Students}"
                         Margin="16,0,16,0">
             <CollectionView.ItemsLayout>
@@ -61,10 +114,10 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <!-- Status text and spinner sit on top of the list area -->
-        <Label Grid.Row="1" Text="{Binding StatusMessage}"
+        <!-- Status msg and spinner drawn on top of list area -->
+        <Label Grid.Row="3" Text="{Binding StatusMessage}"
                HorizontalOptions="Center" VerticalOptions="Center" />
-        <ActivityIndicator Grid.Row="1"
+        <ActivityIndicator Grid.Row="3"
                            IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
                            HorizontalOptions="Center" VerticalOptions="Center" />
     </Grid>
