@@ -8,6 +8,7 @@ namespace SchemaX.Mobile
         {
             InitializeComponent();
             Routing.RegisterRoute("detail", typeof(StudentDetailPage));
+            Routing.RegisterRoute("studentform", typeof(StudentFormPage));
         }
     }
 }

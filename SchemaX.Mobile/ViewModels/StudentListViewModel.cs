@@ -105,6 +105,12 @@ public partial class StudentListViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private async Task AddStudentAsync()
+    {
+        await Shell.Current.GoToAsync("studentform");
+    }
+
+    [RelayCommand]
     private async Task OpenDetailAsync(Student student)
     {
         await Shell.Current.GoToAsync("detail",

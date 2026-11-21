@@ -42,14 +42,26 @@
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
 
         <!-- Header band (same dark teal as the desktop header) -->
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="20,28,12,16"
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Padding="20,28,12,16"
               BackgroundColor="{StaticResource Primary}">
             <VerticalStackLayout Grid.Column="0" Spacing="2">
                 <Label Text="Students" FontSize="28" FontAttributes="Bold" TextColor="White" />
                 <Label Text="{Binding CountText}" TextColor="{StaticResource Gray200}" />
             </VerticalStackLayout>
 
-            <Button Grid.Column="1" Text="Log out" Command="{Binding LogoutCommand}"
+            <Button Grid.Column="1"
+                Text="+ Add"
+                Command="{Binding AddStudentCommand}"
+                FontSize="14"
+                HeightRequest="40"
+                Padding="12,0"
+                CornerRadius="20"
+                BackgroundColor="White"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="Center"
+                Margin="0,0,8,0"/>
+
+            <Button Grid.Column="2" Text="Log out" Command="{Binding LogoutCommand}"
                     FontSize="15" HeightRequest="40" MinimumHeightRequest="40"
                     Padding="14,0" CornerRadius="20" VerticalOptions="Center"
                     BackgroundColor="Transparent" TextColor="White">
