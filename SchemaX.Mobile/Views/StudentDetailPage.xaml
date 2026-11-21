@@ -83,6 +83,19 @@
                         <Label Grid.Row="6" Grid.Column="1" Text="{Binding Student.ContactNo}" Style="{StaticResource FieldValue}" />
                     </Grid>
                 </Border>
+                <Label Text="{Binding StatusMessage}"
+                        TextColor="Red"
+                        HorizontalTextAlignment="Center"/>
+
+                <Button Text="Edit Student"
+                        Command="{Binding EditCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"/>
+
+                <Button Text="Delete Student"
+                        Command="{Binding DeleteCommand}"
+                        BackgroundColor="#C62828"
+                        TextColor="White"/>
 
             </VerticalStackLayout>
         </ScrollView>
