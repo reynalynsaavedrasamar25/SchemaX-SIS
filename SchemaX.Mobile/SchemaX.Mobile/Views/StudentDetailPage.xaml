@@ -27,7 +27,7 @@
         <!-- Back link -->
         <Label Grid.Row="0" Text="←  Back" FontSize="16"
                Padding="20,24,20,8"
-               TextColor="{StaticResource Accent}">
+               TextColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource PrimaryDark}}">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding GoBackCommand}" />
             </Label.GestureRecognizers>

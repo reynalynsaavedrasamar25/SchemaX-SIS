@@ -12,7 +12,7 @@ public partial class StudentListViewModel : ObservableObject
 
     private string? _program;                 // current program filter (null = all)
     private int? _year;                       // current year filter (null = all)
-    private int _loadVersion;                 // ignore outdated results
+    private int _loadVersion;                 // lets us ignore outdated results
     private CancellationTokenSource? _searchCts;
 
     public StudentListViewModel(IStudentService svc)
@@ -42,8 +42,20 @@ public partial class StudentListViewModel : ObservableObject
     public ObservableCollection<FilterChip> YearFilters { get; }
 
     [ObservableProperty] private string searchText = "";
-    [ObservableProperty] private bool isBusy;
     [ObservableProperty] private string statusMessage = "";
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ShowSpinner))]
+    private bool isBusy;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ShowSpinner))]
+    private bool isRefreshing;
+
+    // center spinner only for normal loads; pull-to-refresh has independent spinner
+    public bool ShowSpinner => IsBusy && !IsRefreshing;
+
+    public string CountText => Students.Count == 1 ? "1 student" : $"{Students.Count} students";
 
     private FilterChip Chip(string kind, string label, string? value, bool selected = false) => new()
     {
@@ -54,10 +66,10 @@ public partial class StudentListViewModel : ObservableObject
         SelectCommand = SelectFilterCommand
     };
 
-    // Run after text change in search bar
+    // run every time the search text changes, but only search after a short delay
     partial void OnSearchTextChanged(string value) => _ = DebouncedSearchAsync();
 
-    // Delay search until user stops typing for a moment, to avoid too many requests
+    // wait 350 ms after last keystroke to avoid query spamming the service
     private async Task DebouncedSearchAsync()
     {
         _searchCts?.Cancel();
@@ -66,17 +78,10 @@ public partial class StudentListViewModel : ObservableObject
 
         try
         {
-            await Task.Delay(350, token);
+            await Task.Delay(150, token);
             await LoadAsync();
         }
         catch (TaskCanceledException) { /* user typed again, ignore */ }
-    }
-
-    [RelayCommand]
-    private async Task OpenDetailAsync(Student student)
-    {
-        await Shell.Current.GoToAsync("detail",
-            new ShellNavigationQueryParameters { { "Student", student } });
     }
 
     [RelayCommand(AllowConcurrentExecutions = true)]
@@ -95,6 +100,23 @@ public partial class StudentListViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private async Task OpenDetailAsync(Student student)
+    {
+        await Shell.Current.GoToAsync("detail",
+            new ShellNavigationQueryParameters { { "Student", student } });
+    }
+
+    [RelayCommand]
+    private async Task RefreshAsync()
+    {
+        try { await LoadAsync(); }
+        finally { IsRefreshing = false; }
+    }
+
+    [RelayCommand]
+    private async Task LogoutAsync() => await Shell.Current.GoToAsync("//login");
+
+    [RelayCommand]
     private async Task LoadAsync()
     {
         int version = ++_loadVersion;
@@ -106,13 +128,14 @@ public partial class StudentListViewModel : ObservableObject
 
             var list = await _svc.GetStudentsAsync(SearchText, _program, _year);
 
-            // new search started while waiting, so drop this result
+            // newer search started while waiting, so drop this result
             if (version != _loadVersion) return;
 
             Students.Clear();
             foreach (var s in list)
                 Students.Add(s);
 
+            OnPropertyChanged(nameof(CountText));
             StatusMessage = Students.Count == 0 ? "No students match your search." : "";
         }
         catch (Exception)

@@ -13,6 +13,13 @@ public partial class LoginViewModel : ObservableObject
     [ObservableProperty] private string password = "";
     [ObservableProperty] private string errorMessage = "";
 
+    public void Reset()
+    {
+        Username = "";
+        Password = "";
+        ErrorMessage = "";
+    }
+
     [RelayCommand]
     private async Task LoginAsync()
     {

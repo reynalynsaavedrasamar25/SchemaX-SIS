@@ -25,7 +25,7 @@ namespace SchemaX.Mobile.Services
 
         public async Task<List<Student>> GetStudentsAsync(string? search = null, string? program = null, int? yearLevel = null)
         {
-            await Task.Delay(300); // simulate network latency so you can see the loading spinner
+            await Task.Yield();
 
             IEnumerable<Student> query = _students;
 
