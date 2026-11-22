@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SchemaX.Mobile.ViewModels"
+             x:Class="SchemaX.Mobile.Views.StudentDetailPage"
+             x:DataType="vm:StudentDetailViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageLight}, Dark={StaticResource PageDark}}">
+
+    <ContentPage.Resources>
+        <Style x:Key="FieldLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+        </Style>
+        <Style x:Key="FieldValue" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="HorizontalTextAlignment" Value="End" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Back link -->
+        <Label Grid.Row="0" Text="←  Back" FontSize="16"
+               Padding="20,24,20,8"
+               TextColor="{AppThemeBinding Light={StaticResource Accent}, Dark={StaticResource PrimaryDark}}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,24" Spacing="16">
+
+                <!-- Profile header -->
+                <VerticalStackLayout Spacing="6">
+                    <Border WidthRequest="88" HeightRequest="88"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 44"
+                            HorizontalOptions="Center"
+                            BackgroundColor="{StaticResource Accent}">
+                        <Label Text="{Binding Initials}"
+                               FontSize="32" FontAttributes="Bold" TextColor="White"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <Label Text="{Binding Student.FullName}"
+                           FontSize="22" FontAttributes="Bold"
+                           HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Student.StudentId}" FontSize="14"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                </VerticalStackLayout>
+
+                <!-- Details card -->
+                <Border StrokeShape="RoundRectangle 14" StrokeThickness="1" Padding="16"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource CardLight}, Dark={StaticResource CardDark}}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" RowSpacing="14"
+                          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                        <Label Grid.Row="0" Text="Program" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Student.Program}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="1" Text="Year Level" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Student.YearLevel}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="2" Text="Bloc" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Student.Bloc}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="3" Text="Gender" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Student.Gender}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="4" Text="Birthday" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Student.Birthday, StringFormat='{0:MMMM d, yyyy}'}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="5" Text="BU Email" Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding Student.BuEmail}" Style="{StaticResource FieldValue}" />
+
+                        <Label Grid.Row="6" Text="Contact No." Style="{StaticResource FieldLabel}" />
+                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding Student.ContactNo}" Style="{StaticResource FieldValue}" />
+                    </Grid>
+                </Border>
+                <Label Text="{Binding StatusMessage}"
+                        TextColor="Red"
+                        HorizontalTextAlignment="Center"/>
+
+                <Button Text="Edit Student"
+                        Command="{Binding EditCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"/>
+
+                <Button Text="Delete Student"
+                        Command="{Binding DeleteCommand}"
+                        BackgroundColor="#C62828"
+                        TextColor="White"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

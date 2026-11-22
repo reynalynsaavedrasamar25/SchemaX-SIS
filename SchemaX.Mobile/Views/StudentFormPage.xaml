@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SchemaX.Mobile.ViewModels"
+             x:Class="SchemaX.Mobile.Views.StudentFormPage"
+             x:DataType="vm:StudentFormViewModel"
+             Title="Student Form"
+             Padding="20">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="12">
+
+            <Label Text="{Binding PageTitle}"
+                   FontSize="25"
+                   FontAttributes="Bold" />
+
+            <Label Text="Student ID"/>
+            <Entry Text="{Binding StudentId}"
+                   Placeholder="e.g. 2026-01-00001"
+                   IsReadOnly="{Binding IsEditing}"/>
+
+            <Label Text="First Name"/>
+            <Entry Text="{Binding FirstName}" Placeholder="First name"/>
+
+            <Label Text="Middle Name (Optional)"/>
+            <Entry Text="{Binding MiddleName}" Placeholder="Middle name"/>
+
+            <Label Text="Surname"/>
+            <Entry Text="{Binding Surname}" Placeholder="Surname"/>
+
+            <Label Text="Gender"/>
+            <Picker Title="Select gender"
+                    ItemsSource="{Binding Genders}"
+                    SelectedItem="{Binding Gender}"/>
+
+            <Label Text="Program"/>
+            <Picker Title="Select program"
+                    ItemsSource="{Binding Programs}"
+                    SelectedItem="{Binding Program}"/>
+
+            <Label Text="Year Level"/>
+            <Picker Title="Select year"
+                    ItemsSource="{Binding YearLevels}"
+                    SelectedItem="{Binding YearLevel}"/>
+
+            <Label Text="Bloc"/>
+            <Entry Text="{Binding Bloc}" Placeholder="e.g. 1B"/>
+
+            <Label Text="Birthday"/>
+            <DatePicker Date="{Binding Birthday}"
+                        MaximumDate="{Binding Today}"/>
+
+            <Label Text="BU Email"/>
+            <Entry Text="{Binding BuEmail}"
+                   Placeholder="student@bicol-u.edu.ph"
+                   Keyboard="Email"/>
+
+            <Label Text="Contact Number"/>
+            <Entry Text="{Binding ContactNo}"
+                   Placeholder="Contact number"
+                   Keyboard="Telephone"/>
+
+            <Label Text="{Binding StatusMessage}"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"/>
+
+            <Button Text="{Binding SaveButtonText}"
+                    Command="{Binding SaveCommand}"
+                    IsEnabled="{Binding IsNotBusy}"/>
+
+            <Button Text="Cancel"
+                    Command="{Binding CancelCommand}"
+                    BackgroundColor="Gray"/>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

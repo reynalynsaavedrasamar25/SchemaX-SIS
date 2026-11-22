@@ -1,0 +1,18 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+
+# OS-generated files
+.DS_Store
+
+# Local database credentials
+Resources/Raw/appsettings.json
+
+# Android signing files
+*.keystore
+*.jks

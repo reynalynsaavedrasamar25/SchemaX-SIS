@@ -361,3 +361,19 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+**/logs/
+
+# Local database credentials
+appsettings.json
+bin/
+obj/
+logs/
+
+# Capstone: signing keys and build outputs
+*.keystore
+*.jks
+*.apk
+*.aab
+*.msi
+release/
