@@ -1,6 +1,6 @@
-SchemaX Installation Packages
+## SchemaX Installation Package
 
-This folder contains the installation packages for the SchemaX Student Information System. Unfortunately, we cannot upload the installers directly inside the folder due to the exceeding amount of MB required. Here's the guide to download them instead :)
+Unfortunately, we cannot upload the installers directly inside the folder due to the exceeding amount of MB required. Here's the guide to download them instead :)
 
 1. Desktop Installer (Windows)
 
